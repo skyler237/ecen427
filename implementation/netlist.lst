@@ -1,0 +1,16 @@
+E:\ecen427_ws\implementation\system.ngc 1472844562
+E:/ecen427_ws/implementation/push_buttons_5bits_wrapper.ngc 1472844438
+E:/ecen427_ws/implementation/dip_switches_8bits_wrapper.ngc 1472844492
+E:/ecen427_ws/implementation/rs232_uart_1_wrapper.ngc 1472844410
+E:/ecen427_ws/implementation/proc_sys_reset_0_wrapper.ngc 1472843992
+E:/ecen427_ws/implementation/clock_generator_0_wrapper.ngc 1472844512
+E:/ecen427_ws/implementation/microblaze_0_ilmb_wrapper.ngc 1472844498
+E:/ecen427_ws/implementation/microblaze_0_dlmb_wrapper.ngc 1472844502
+E:/ecen427_ws/implementation/axi4lite_0_wrapper.ngc 1472844516
+E:/ecen427_ws/implementation/microblaze_0_wrapper.ngc 1472844508
+E:/ecen427_ws/implementation/microblaze_0_i_bram_ctrl_wrapper.ngc 1472844014
+E:/ecen427_ws/implementation/microblaze_0_d_bram_ctrl_wrapper.ngc 1472844034
+E:/ecen427_ws/implementation/debug_module_wrapper.ngc 1472844328
+E:/ecen427_ws/implementation/leds_8bits_wrapper.ngc 1472844466
+E:/ecen427_ws/implementation/microblaze_0_bram_block_wrapper.ngc 1472844046
+OK
