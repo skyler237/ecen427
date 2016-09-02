@@ -1,0 +1,21 @@
+!SESSION 2016-09-02 13:44:19.782 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -data E:\ecen427_ws\HelloWorld -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-02 13:44:45.438
+!MESSAGE Indexed 'hello_world_0' (2 sources, 26 headers) in 0.52 sec: 777 declarations; 787 references; 5 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.06%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-02 13:44:45.605
+!MESSAGE Indexed 'hello_world_bsp_0' (0 sources, 8 headers) in 0.06 sec: 0 declarations; 0 references; 8 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2016-09-02 14:54:26.759 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-09-02 14:55:03.731
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

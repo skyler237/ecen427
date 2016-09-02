@@ -1,0 +1,36 @@
+/*
+ * fibonacci.c
+ *
+ *  Created on: Sep 2, 2016
+ *      Author: superman
+ */
+
+#include <stdio.h>
+#include "platform.h"
+
+void print(char *str);
+
+void fibonacci(){
+	int digit1 = 1;
+	int digit2 = 1;
+	int i = 2;
+	for (i=2; i < 20; i++) {
+		int result = digit1 + digit2;
+		digit1 = digit2;
+		digit2 = result;
+		xil_printf("%d ", result);
+	}
+}
+
+int main()
+{
+    init_platform();
+
+    fibonacci();
+
+    cleanup_platform();
+
+    return 0;
+}
+
+

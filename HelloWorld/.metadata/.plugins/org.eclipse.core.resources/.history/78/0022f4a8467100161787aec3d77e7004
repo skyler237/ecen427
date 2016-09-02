@@ -1,0 +1,22 @@
+/*
+ * fibonacci.c
+ *
+ *  Created on: Sep 2, 2016
+ *      Author: superman
+ */
+
+int main() {
+	fibonacci();
+}
+
+int fibonacci(){
+	int digit1 = 1;
+	int digit2 = 1;
+	int i = 2
+	for (i; i <100; i++) {
+		int result = digit1 + digit2;
+		digit1 = digit2;
+		digit2 = result;
+	}
+	return digit2;
+}
