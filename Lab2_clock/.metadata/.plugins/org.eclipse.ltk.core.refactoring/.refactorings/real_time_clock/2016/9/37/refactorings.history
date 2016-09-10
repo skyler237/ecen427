@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;real_time_clock/src/helloworld.c&apos; to &apos;real_time_clock.c&apos;" description="Rename resource &apos;helloworld.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/helloworld.c" name="real_time_clock.c" stamp="1473518298307" updateReferences="true"/>
+</session>
