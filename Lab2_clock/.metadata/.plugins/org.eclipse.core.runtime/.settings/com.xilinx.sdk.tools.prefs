@@ -1,0 +1,14 @@
+#Sat Sep 10 09:48:00 MDT 2016
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:Heap-size=1024
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.sdata2=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:Heap=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.text=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.sbss2=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.rodata=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.sdata=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:Stack-size=1024
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.sbss=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+eclipse.preferences.version=1
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.data=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:Stack=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.real_time_clock\:.bss=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl

@@ -38,6 +38,8 @@ uint8_t secondsValue; // Holds the current seconds value for the clock
 uint8_t minutesValue; // Holds the current minutes value for the clock
 uint8_t hoursValue; // Holds the current hours value for the clock
 
+
+
 // Push Button Definitions
 #define CENTER_BTN 0x01
 #define RIGHT_BTN 0x02
@@ -47,20 +49,28 @@ uint8_t hoursValue; // Holds the current hours value for the clock
 #define DEBOUNCE_MAX 5
 
 // Clock Definitions
-#define SEC_COUNTER_MAX 1
+#define SEC_COUNTER_MAX 100
 #define SEC_VALUE_MAX 59
+#define SEC_VALUE_MIN 0
 #define MIN_VALUE_MAX 59
+#define MIN_VALUE_MIN 0
 #define HR_VALUE_MAX 12
 #define HR_VALUE_MIN 1
+#define HALF_SECOND 50
 
 #define TIME_OVERFLOW 1
 #define NO_TIME_OVERFLOW 0
 
+#define TRUE 1
+#define FALSE 0
+
+uint8_t downHalfSecond = HALF_SECOND;
+uint8_t upHalfSecond = HALF_SECOND;
 // Increment seconds and check for roll-over
 // @return: returns 1/true if there is roll-over - must increment minutes
 uint8_t increment_seconds(){
 	if(secondsValue == SEC_VALUE_MAX){ // If at max...
-		secondsValue = 0; // Loop back to zero
+		secondsValue = SEC_VALUE_MIN; // Loop back to zero
 		return TIME_OVERFLOW; // Indicate time roll-over
 	}
 	else{ // Otherwise,
@@ -73,7 +83,7 @@ uint8_t increment_seconds(){
 // @return: returns 1/true if there is roll-over - must increment hours
 uint8_t increment_minutes(){
 	if(minutesValue == MIN_VALUE_MAX){ // If at max...
-		minutesValue = 0; // Loop back to zero
+		minutesValue = MIN_VALUE_MIN; // Loop back to zero
 		return TIME_OVERFLOW; // Indicate time roll-over
 	}
 	else{ // Otherwise,
@@ -92,84 +102,147 @@ void increment_hours(){
 	}
 }
 
+uint8_t decrement_seconds(){
+	if(secondsValue == SEC_VALUE_MIN){ // If at min...
+		secondsValue = SEC_VALUE_MAX; // Loop back to top
+		return TIME_OVERFLOW; // Indicate time roll-over
+	}
+	else{ // Otherwise,
+		secondsValue--; // just increment time
+		return NO_TIME_OVERFLOW; // and return normal (no overflow)
+	}
+}
+
+// Increment minutes and check for roll-over
+// @return: returns 1/true if there is roll-over - must increment hours
+uint8_t decrement_minutes(){
+	if(minutesValue == MIN_VALUE_MIN){ // If at min...
+		minutesValue = MIN_VALUE_MAX; // Loop back to top
+		return TIME_OVERFLOW; // Indicate time roll-over
+	}
+	else{ // Otherwise,
+		minutesValue--; // just increment time
+		return NO_TIME_OVERFLOW; // and return normal (no overflow)
+	}
+}
+
+// Increment hours and check for roll-over
+void decrement_hours(){
+	if(hoursValue == HR_VALUE_MIN){ // If at min...
+		hoursValue = HR_VALUE_MAX; // Loop back to max
+	}
+	else{ // Otherwise,
+		hoursValue--; // just increment time
+	}
+}
+
 // This is invoked in response to a timer interrupt.
 // It does 2 things: 1) debounce switches, and 2) advances the time.
 void timer_interrupt_handler() {
+
+	uint8_t secondsDebounced = FALSE;
+	uint8_t minutesDebounced = FALSE;
+	uint8_t hoursDebounced = FALSE;
+
 	// -----Debounce switches-----
 	// Check which buttons are pressed - increment debounce count
 	if(currentButtonState & CENTER_BTN) { // If center button is pressed...
-	  if(centerBtnDebounceCounter < DEBOUNCE_MAX) {
-		  centerBtnDebounceCounter++;
-	  }
-	}
-
-	if(currentButtonState & RIGHT_BTN) { // If right button is pressed...
-		if(rightBtnDebounceCounter < DEBOUNCE_MAX) {
-			rightBtnDebounceCounter++;
+		if(centerBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+		  centerBtnDebounceCounter++; // Increment debounce counter
+		}
+		else if(centerBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+			minutesDebounced = TRUE;
 		}
 	}
 
-	if(currentButtonState & DOWN_BTN) { // If down button is pressed...
-		if(downBtnDebounceCounter < DEBOUNCE_MAX) {
-			downBtnDebounceCounter++;
+	if(currentButtonState & RIGHT_BTN) { // If right button is pressed...
+		if(rightBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+		rightBtnDebounceCounter++; // Increment debounce counter
+		}
+		else if(rightBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+			secondsDebounced = TRUE;
 		}
 	}
 
 	if(currentButtonState & LEFT_BTN) { // If left button is pressed...
-		if(leftBtnDebounceCounter < DEBOUNCE_MAX) {
-			leftBtnDebounceCounter++;
+		if(leftBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+			leftBtnDebounceCounter++; // Increment debounce counter
+		}
+		else if(leftBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+			hoursDebounced = TRUE;
 		}
 	}
 
-	if(currentButtonState & UP_BTN) { // If up button is pressed...
-		if(upBtnDebounceCounter < DEBOUNCE_MAX) {
-			upBtnDebounceCounter++;
+	if (secondsDebounced|| minutesDebounced || hoursDebounced){
+		if(currentButtonState & DOWN_BTN) { // If down button is pressed...
+			if(downBtnDebounceCounter < SEC_COUNTER_MAX) { // If not at max,
+				downBtnDebounceCounter++; // Increment debounce counter
+			}
+			else {
+				if (downHalfSecond < HALF_SECOND) {
+					downHalfSecond++;
+				}
+				else {
+					downHalfSecond = 0;
+				}
+			}
+			if(downBtnDebounceCounter == DEBOUNCE_MAX || (downBtnDebounceCounter == SEC_COUNTER_MAX && downHalfSecond == HALF_SECOND)) { // If the button is debounced...
+				if(secondsDebounced == TRUE) {
+					decrement_seconds();
+				}
+				if(minutesDebounced == TRUE) {
+					decrement_minutes();
+				}
+				if(hoursDebounced == TRUE) {
+					decrement_hours();
+				}
+				// Increment past max so we don't register continuous presses
+				downBtnDebounceCounter++;
+				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+			}
+
 		}
-	}
 
-
-	// If debounce timer = 50ms, register button press/hold
-	if(centerBtnDebounceCounter == DEBOUNCE_MAX) {
-		xil_printf("C");
-	}
-
-	// If debounce timer = 50ms, register button press/hold
-	if(rightBtnDebounceCounter == DEBOUNCE_MAX) {
-		xil_printf("R");
-	}
-
-	// If debounce timer = 50ms, register button press/hold
-	if(downBtnDebounceCounter == DEBOUNCE_MAX) {
-		xil_printf("D");
-	}
-
-	// If debounce timer = 50ms, register button press/hold
-	if(leftBtnDebounceCounter == DEBOUNCE_MAX) {
-		xil_printf("L");
-	}
-
-	// If debounce timer = 50ms, register button press/hold
-	if(upBtnDebounceCounter == DEBOUNCE_MAX) {
-		xil_printf("U");
-	}
-
-	// -----Advance the time-----
-	// increment time counter
-	secondCounter++;
-	// Check for max
-	if(secondCounter == SEC_COUNTER_MAX) {
-		// if 1 second has passed (100 ticks) increment clock
-		//===========================COMMENT HERE=====================
-		if(increment_seconds()){
-			if(increment_minutes()){
-				increment_hours();
+		if(currentButtonState & UP_BTN) { // If up button is pressed...
+			if(upBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+			upBtnDebounceCounter++; // Increment debounce counter
+			}
+			else if(upBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+				if(secondsDebounced == TRUE) {
+					increment_seconds();
+				}
+				if(minutesDebounced == TRUE) {
+					increment_minutes();
+				}
+				if(hoursDebounced == TRUE) {
+					increment_hours();
+				}
+				// Increment past max so we don't register continuous presses
+				upBtnDebounceCounter++;
+				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
 			}
 		}
-		// Update clock display
-		xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+	}
 
-		// Reset second counter
-		secondCounter = 0;
+	else{
+		// -----Advance the time-----
+		// increment time counter
+		secondCounter++;
+		// Check for max
+		if(secondCounter == SEC_COUNTER_MAX) {
+			// if 1 second has passed (100 ticks) increment clock
+			//===========================COMMENT HERE=====================
+			if(increment_seconds()){
+				if(increment_minutes()){
+					increment_hours();
+				}
+			}
+			// Update clock display
+			xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+
+			// Reset second counter
+			secondCounter = 0;
+		}
 	}
 }
 
