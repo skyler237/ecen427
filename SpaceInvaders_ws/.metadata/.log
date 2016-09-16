@@ -1,0 +1,159 @@
+!SESSION 2016-09-16 08:41:41.887 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-16 08:49:29.765
+!MESSAGE Indexed 'space_invaders' (55 sources, 47 headers) in 0.94 sec: 1,797 declarations; 8,368 references; 18 unresolved inclusions; 0 syntax errors; 77 unresolved names (0.75%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-16 08:49:29.937
+!MESSAGE Indexed 'hello_world_0' (2 sources, 31 headers) in 0.17 sec: 871 declarations; 826 references; 3 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.06%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-16 08:50:01.308
+!MESSAGE Indexed 'space_invaders_bsp_0' (0 sources, 8 headers) in 0.02 sec: 0 declarations; 0 references; 8 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-16 08:50:10.607
+!MESSAGE Indexed 'space_invaders' (0 sources, 21 headers) in 0.06 sec: 153 declarations; 291 references; 3 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.22%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-16 08:52:41.376
+!MESSAGE Indexed 'space_invaders' (2 sources, 26 headers) in 0.08 sec: 777 declarations; 787 references; 5 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.06%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-16 08:52:41.392
+!MESSAGE Indexed 'space_invaders_bsp' (0 sources, 8 headers) in 0.02 sec: 0 declarations; 0 references; 8 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2016-09-16 09:49:26.579
+!MESSAGE Unexpected error: Warning more than one options found for kind 1
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.setUserEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.obtainEntriesFromLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.setEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.setEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyLangSettings(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.addPathEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.ConfigBasedPathEntryStore.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryStoreProxy.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.saveRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.SetPathEntriesOperation.executeOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager$2.runInWorkspace(Unknown Source)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2016-09-16 09:49:26.579
+!MESSAGE Unexpected error: Warning more than one options found for kind 16
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.setUserEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.obtainEntriesFromLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.setEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.setEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyLangSettings(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.addPathEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.ConfigBasedPathEntryStore.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryStoreProxy.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.saveRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.SetPathEntriesOperation.executeOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager$2.runInWorkspace(Unknown Source)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2016-09-16 09:49:26.579
+!MESSAGE Unexpected error: Warning more than one options found for kind 32
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.setUserEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.obtainEntriesFromLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.setEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.setEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyLangSettings(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.addPathEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.ConfigBasedPathEntryStore.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryStoreProxy.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.saveRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.SetPathEntriesOperation.executeOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager$2.runInWorkspace(Unknown Source)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2016-09-16 09:49:26.579
+!MESSAGE Unexpected error: Warning more than one options found for kind 16
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.setUserEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.obtainEntriesFromLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.setEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.setEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyLangSettings(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.addPathEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.ConfigBasedPathEntryStore.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryStoreProxy.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.saveRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.SetPathEntriesOperation.executeOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager$2.runInWorkspace(Unknown Source)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2016-09-16 09:49:26.579
+!MESSAGE Unexpected error: Warning more than one options found for kind 32
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.setUserEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.obtainEntriesFromLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.setEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.setEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyLangSettings(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.addPathEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.PathEntryTranslator.applyPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.ConfigBasedPathEntryStore.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryStoreProxy.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.saveRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.SetPathEntriesOperation.executeOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager.setRawPathEntries(Unknown Source)
+	at org.eclipse.cdt.internal.core.model.PathEntryManager$2.runInWorkspace(Unknown Source)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

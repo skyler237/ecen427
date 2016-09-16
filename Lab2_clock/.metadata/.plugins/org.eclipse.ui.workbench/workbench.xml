@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="21" version="2.0">
 <workbenchAdvisor/>
-<window height="1160" width="1470" x="0" y="0">
+<window height="1160" width="1724" x="0" y="0">
 <fastViewData fastViewLocation="1024"/>
-<intro standby="true"/>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
@@ -44,9 +43,9 @@
 <editor id="com.xilinx.sdk.sw.MSSEditor" name="system.mss" partName="system.mss" path="C:/Users/superman/ecen427/Lab2_clock/real_time_clock_bsp_0/system.mss" title="system.mss" tooltip="real_time_clock_bsp_0/system.mss" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/real_time_clock_bsp_0/system.mss"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="real_time_clock.c" partName="real_time_clock.c" path="C:/Users/superman/ecen427/Lab2_clock/real_time_clock/src/real_time_clock.c" title="real_time_clock.c" tooltip="real_time_clock/src/real_time_clock.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="real_time_clock.c" partName="real_time_clock.c" path="C:/Users/superman/Documents/ecen427/Lab2_clock/real_time_clock/src/real_time_clock.c" title="real_time_clock.c" tooltip="real_time_clock/src/real_time_clock.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/real_time_clock/src/real_time_clock.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3485" selectionTopPixel="918"/>
+<editorState selectionHorizontalPixel="0" selectionLength="14852" selectionOffset="0" selectionTopPixel="4998"/>
 </editor>
 </editors>
 <views>
@@ -59,7 +58,6 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (1 item)"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
@@ -72,12 +70,6 @@
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
-</view>
-<view id="org.eclipse.ui.internal.introview" partName="Welcome">
-<viewState>
-<presentation currentPage="file:///C:/Xilinx/13.4/ISE_DS/EDK/eclipse/nt64/eclipse/plugins/com.xilinx.sdk.product_1.0.0/intro/index.html" restore="true"/>
-<standbyPart/>
-</viewState>
 </view>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
@@ -140,7 +132,6 @@
 <view id="org.eclipse.tm.terminal.view.TerminalView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.cdt.make.ui.views.MakeView"/>
-<view id="org.eclipse.ui.internal.introview"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -156,18 +147,16 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@48ec9441" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="topLeft">
-<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="2">
-<page content="org.eclipse.ui.internal.introview" label="Welcome"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.7496136" ratioLeft="485" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
@@ -204,7 +193,6 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/real_time_clock/src/helloworld.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/real_time_clock/src/real_time_clock.c"/>
 </editors>
-<item historyLabel="system.xml" index="0"/>
 <item historyLabel="system.mss" index="1"/>
 <item historyLabel="helloworld.c" index="2">
 <position info="not_deleted" x="0" y="0"/>
@@ -280,8 +268,74 @@
 </item>
 <item historyLabel="system.mss" index="1"/>
 <item historyLabel="system.xml" index="0"/>
-<item active="true" historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="3">
 <position info="not_deleted" x="2322" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="5355" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6276" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6740" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6646" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6673" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="5885" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6267" y="55"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="5750" y="67"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6124" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6274" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6577" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="2494" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="6198" y="64"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position info="not_deleted" x="7520" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item historyLabel="real_time_clock.c" index="3">
+<position/>
+</item>
+<item active="true" historyLabel="real_time_clock.c" index="3">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
