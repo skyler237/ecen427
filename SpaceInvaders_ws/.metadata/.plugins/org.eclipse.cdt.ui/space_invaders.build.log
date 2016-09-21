@@ -2,23 +2,12 @@
 **** Build of configuration Debug for project space_invaders ****
 
 make all 
-Building file: ../src/globals.c
+Building file: ../src/platform.c
 Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -IC:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders_bsp/microblaze_0/include -c -fmessage-length=0 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/globals.d" -MT"src/globals.d" -o"src/globals.o" "../src/globals.c"
-In file included from ../src/globals.c:9:
-../src/globals.h:20: error: expected specifier-qualifier-list before 'bulletType_t'
-../src/globals.h:24: error: expected specifier-qualifier-list before 'erosionState_t'
-../src/globals.h:36: error: expected declaration specifiers or '...' before 'bulletType_t'
-../src/globals.h:37: error: expected ')' before 'index'
-../src/globals.h:38: error: expected ')' before 'index'
-../src/globals.h:39: error: expected ')' before 'index'
-../src/globals.h:41: error: expected ')' before 'bunker_index'
-../src/globals.h:42: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'getBlockState'
-../src/globals.h:43: error: expected ')' before 'bunker_index'
-../src/globals.h:45: error: expected ')' before 'index'
-../src/globals.h:46: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'alienIsAlive'
-../src/globals.h:48: error: expected ')' before 'lives'
-../src/globals.h:49: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'getLives'
-../src/globals.h:51: error: expected ')' before 'score'
-../src/globals.h:52: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'getScore'
-make: *** [src/globals.o] Error 1
+mb-gcc -Wall -O0 -g3 -IC:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders_bsp/microblaze_0/include -c -fmessage-length=0 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
+../src/platform.c:19:25: error: xparameters.h: No such file or directory
+../src/platform.c:20:23: error: xil_cache.h: No such file or directory
+../src/platform.c: In function 'disable_caches':
+../src/platform.c:51: warning: implicit declaration of function 'Xil_DCacheDisable'
+../src/platform.c:52: warning: implicit declaration of function 'Xil_ICacheDisable'
+make: *** [src/platform.o] Error 1

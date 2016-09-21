@@ -14,17 +14,18 @@ static point_t tankBulletPosition;
 static point_t alienBlockPosition;
 
 // Here are the accessors.
-void setTankPositionGlobal(point_t val) {
-  tankPosition = val;
+void setTankPositionGlobal(uint16_t x, uint16_t y) {
+  tankPosition.x = x;
+  tankPosition.y = y;
 }
 
 point_t getTankPositionGlobal() {
   return tankPosition;
 }
 
-void setTankBulletPosition(point_t val) {
-  tankBulletPosition.x = val.x;
-  tankBulletPosition.y = val.y;
+void setTankBulletPosition(uint16_t x, uint16_t y) {
+  tankBulletPosition.x = x;
+  tankBulletPosition.y = y;
 }
 
 point_t getTankBulletPosition() {

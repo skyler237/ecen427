@@ -8,33 +8,37 @@
 #ifndef GLOBALS_H_
 #define GLOBALS_H_
 
-enum bool {FALSE, TRUE};
+#include <stdint.h>
+
+typedef enum  {FALSE, TRUE}bool;
 
 #define OFF_SCREEN 700 //Denotes an off-screen point
 typedef struct {unsigned short x; unsigned short y;} point_t;
 
-enum bulletType_t {CROSS_UP, CROSS_DOWN, CROSS_MID2UP, CROSS_MID2DOWN, LIGHTNING1, LIGHTNING2};
+typedef enum { CROSS_UP, CROSS_DOWN, CROSS_MID2UP, CROSS_MID2DOWN, LIGHTNING1, LIGHTNING2 } bulletType_t;
+
+bulletType_t global_test;
 
 typedef struct {
 	point_t position;
 	bulletType_t type;
 } bullet_t;
 
-enum erosionState_t {WHOLE, HIT1, HIT2, HIT3, DEAD};
+typedef enum  {WHOLE, HIT1, HIT2, HIT3, DEAD} erosionState_t;
 typedef struct {erosionState_t erosion_state; point_t position;} block_t;
 typedef struct {block_t blocks[10];} bunker_t;
 
-void setTankPositionGlobal(point_t val);
+void setTankPositionGlobal(uint16_t x, uint16_t y);
 point_t getTankPositionGlobal();
 
-void setTankBulletPosition(point_t val);
+void setTankBulletPosition(uint16_t x, uint16_t y);
 point_t getTankBulletPosition();
 
-void setAlienBlockPosition(point_t val);
+void setAlienBlockPosition(uint16_t x, uint16_t y);
 point_t getAlienBlockPosition();
 
-void createAlienBullet(point_t val, bulletType_t type); // Initializes a new alien bullet
-void updateAlienBullet(uint8_t index, point_t val); // Updates an existing alien bullet's position
+void createAlienBullet(uint16_t x, uint16_t y, bulletType_t type); // Initializes a new alien bullet
+void updateAlienBullet(uint8_t index, uint16_t x, uint16_t y); // Updates an existing alien bullet's position
 bullet_t getAlienBullet(uint8_t index);
 point_t getAlienBulletPosition(uint8_t index);
 
