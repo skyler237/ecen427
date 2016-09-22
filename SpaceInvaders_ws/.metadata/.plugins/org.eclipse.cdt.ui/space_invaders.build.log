@@ -2,12 +2,33 @@
 **** Build of configuration Debug for project space_invaders ****
 
 make all 
-Building file: ../src/platform.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -IC:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders_bsp/microblaze_0/include -c -fmessage-length=0 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
-../src/platform.c:19:25: error: xparameters.h: No such file or directory
-../src/platform.c:20:23: error: xil_cache.h: No such file or directory
-../src/platform.c: In function 'disable_caches':
-../src/platform.c:51: warning: implicit declaration of function 'Xil_DCacheDisable'
-../src/platform.c:52: warning: implicit declaration of function 'Xil_ICacheDisable'
-make: *** [src/platform.o] Error 1
+Building target: space_invaders.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -o"space_invaders.elf"  ./src/globals.o ./src/platform.o ./src/render.o ./src/vdmaTest.o   
+./src/platform.o: In function `enable_caches':
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/platform.c:40: undefined reference to `microblaze_enable_icache'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/platform.c:43: undefined reference to `microblaze_enable_dcache'
+./src/platform.o: In function `disable_caches':
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/platform.c:51: undefined reference to `Xil_DCacheDisable'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/platform.c:52: undefined reference to `Xil_ICacheDisable'
+./src/vdmaTest.o: In function `main':
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:44: undefined reference to `XAxiVdma_LookupConfig'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:46: undefined reference to `XAxiVdma_CfgInitialize'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:50: undefined reference to `XAxiVdma_SetFrmStore'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:62: undefined reference to `XAxiVdma_SetFrameCounter'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:77: undefined reference to `XAxiVdma_DmaConfig'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:87: undefined reference to `XAxiVdma_DmaSetBufferAddr'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:104: undefined reference to `XAxiVdma_DmaStart'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:133: undefined reference to `XAxiVdma_StartParking'
+C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaders_ws\space_invaders\Debug/../src/vdmaTest.c:140: undefined reference to `XAxiVdma_StartParking'
+c:/xilinx/13.4/ise_ds/edk/gnu/microblaze/nt64/bin/../lib/gcc/microblaze-xilinx-elf/4.1.2/../../../../microblaze-xilinx-elf/lib/bs/m/le\libxil.a(xil_printf.o): In function `padding':
+/proj/epdsw/gnu/mb_gnu/src/gcc/libgloss/microblaze/xil_printf.c:50: undefined reference to `outbyte'
+c:/xilinx/13.4/ise_ds/edk/gnu/microblaze/nt64/bin/../lib/gcc/microblaze-xilinx-elf/4.1.2/../../../../microblaze-xilinx-elf/lib/bs/m/le\libxil.a(xil_printf.o): In function `outnum':
+/proj/epdsw/gnu/mb_gnu/src/gcc/libgloss/microblaze/xil_printf.c:110: undefined reference to `outbyte'
+c:/xilinx/13.4/ise_ds/edk/gnu/microblaze/nt64/bin/../lib/gcc/microblaze-xilinx-elf/4.1.2/../../../../microblaze-xilinx-elf/lib/bs/m/le\libxil.a(xil_printf.o): In function `xil_printf':
+/proj/epdsw/gnu/mb_gnu/src/gcc/libgloss/microblaze/xil_printf.c:150: undefined reference to `outbyte'
+/proj/epdsw/gnu/mb_gnu/src/gcc/libgloss/microblaze/xil_printf.c:194: undefined reference to `outbyte'
+/proj/epdsw/gnu/mb_gnu/src/gcc/libgloss/microblaze/xil_printf.c:200: undefined reference to `outbyte'
+c:/xilinx/13.4/ise_ds/edk/gnu/microblaze/nt64/bin/../lib/gcc/microblaze-xilinx-elf/4.1.2/../../../../microblaze-xilinx-elf/lib/bs/m/le\libxil.a(xil_printf.o):/proj/epdsw/gnu/mb_gnu/src/gcc/libgloss/microblaze/xil_printf.c:233: more undefined references to `outbyte' follow
+collect2: ld returned 1 exit status
+make: *** [space_invaders.elf] Error 1
