@@ -4,6 +4,7 @@
 	<comment>space_invaders_bsp - microblaze_0</comment>
 	<projects>
 		<project>space_invaders_bsp</project>
+		<project>SpaceInvadersHW_hw_platform</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,0 +1,14 @@
+#Wed Sep 21 17:18:23 MDT 2016
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.sbss2=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:Heap-size=1024
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.rodata=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.bss=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.sdata=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.text=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:Heap=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:Stack-size=4024
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.sbss=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+eclipse.preferences.version=1
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.data=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:.sdata2=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
+com.xilinx.sdk.linkgen.prefs.space_invaders\:Stack=microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl
