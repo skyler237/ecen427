@@ -337,20 +337,6 @@ void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_
 	}
 }
 
-void drawTank_fast(uint32_t* framePtr) {
-	point_t tank_prev;
-	point_t tank_current;
-
-	int8_t diff = tank_current.x - tank_prev.x;
-
-	uint32_t current_row; //Extract this from bitmap
-	uint32_t old_row = (row >> diff);
-	uint32_t same = current_row & old_row; // TODO: verify this!! (negative shift??)
-	uint32_t to_draw = current_row & (~same);
-	uint32_t to_erase = old_row & (~same);
-
-}
-
 //void drawTank(uint32_t* framePtr) {
 //	int row, col;
 //	point_t tank_pos = getTankPositionGlobal();
