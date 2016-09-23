@@ -218,7 +218,10 @@ packword6(1,1,1,1,1,1),
 packword6(1,1,1,1,1,1)
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 #define SCALING_CONST 2
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
@@ -249,6 +252,10 @@ void drawTank(unsigned int* framePtr) {
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 void render(unsigned int* framePtr) {
 	setTankPositionGlobal(0, 0);
 
@@ -269,3 +276,7 @@ void render(unsigned int* framePtr) {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437

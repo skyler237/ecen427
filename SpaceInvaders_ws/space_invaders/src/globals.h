@@ -9,8 +9,7 @@
 #define GLOBALS_H_
 
 #include <stdint.h>
-
-typedef enum  {FALSE, TRUE}bool;
+#include <stdbool.h>
 
 #define OFF_SCREEN 700 //Denotes an off-screen point
 typedef struct {unsigned short x; unsigned short y;} point_t;
@@ -37,7 +36,7 @@ point_t getTankBulletPosition();
 void setAlienBlockPosition(uint16_t x, uint16_t y);
 point_t getAlienBlockPosition();
 
-void createAlienBullet(uint16_t x, uint16_t y, bulletType_t type); // Initializes a new alien bullet
+void createAlienBullet(uint16_t x, uint16_t y); // Initializes a new alien bullet
 void updateAlienBullet(uint8_t index, uint16_t x, uint16_t y); // Updates an existing alien bullet's position
 bullet_t getAlienBullet(uint8_t index);
 point_t getAlienBulletPosition(uint8_t index);

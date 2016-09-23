@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item value="77" key="DIALOG_Y_ORIGIN"/>
 		<item value="583" key="DIALOG_X_ORIGIN"/>
@@ -9,4 +10,6 @@
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 		</list>
 	</section>
+=======
+>>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 </section>

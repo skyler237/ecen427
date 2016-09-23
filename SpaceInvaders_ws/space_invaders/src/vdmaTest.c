@@ -27,7 +27,7 @@
 #include "xio.h"
 #include "time.h"
 #include "unistd.h"
-#include "render.h"
+//#include "render.h"
 #define DEBUG
 void print(char *str);
 
@@ -145,7 +145,11 @@ int main()
     	 while (sillyTimer) sillyTimer--;    // Decrement the timer.
     	 sillyTimer = MAX_SILLY_TIMER;       // Reset the timer.
          frameIndex = 0;  	// Only use frame0
+<<<<<<< HEAD
          render(framePointer0);
+=======
+//         render(framePointer0);
+>>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
          if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
         	 xil_printf("vdma parking failed\n\r");
          }
