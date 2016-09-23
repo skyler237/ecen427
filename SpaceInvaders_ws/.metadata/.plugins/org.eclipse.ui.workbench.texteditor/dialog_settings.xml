@@ -2,43 +2,29 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-<<<<<<< HEAD
 		<item value="335" key="DIALOG_Y_ORIGIN"/>
-		<item value="840" key="DIALOG_X_ORIGIN"/>
-=======
-		<item value="243" key="DIALOG_Y_ORIGIN"/>
-		<item value="369" key="DIALOG_X_ORIGIN"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="840" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-<<<<<<< HEAD
-		<item value="XAxiVdma_LookupConfig" key="selection"/>
+		<item value="uint32_t" key="selection"/>
 		<list key="findhistory">
-			<item value="XAxiVdma_LookupConfig"/>
+			<item value="unsigned int"/>
+			<item value="unsigned int*"/>
+			<item value="static const int"/>
 			<item value="tank_15x8"/>
-		</list>
-		<list key="replacehistory">
-=======
-		<item value="XAxiVdma_Config" key="selection"/>
-		<list key="findhistory">
-			<item value="XAxiVdma_Config"/>
 			<item value="XAxiVdma_LookupConfig"/>
-			<item value=";"/>
-			<item value="microblaze_enable_"/>
-			<item value="microblaze_enable_icache"/>
-			<item value="packWord"/>
 		</list>
 		<list key="replacehistory">
-			<item value="{"/>
-			<item value="packword"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
+			<item value="uint32_t"/>
+			<item value="uint32_t*"/>
+			<item value="static const  uint32_t"/>
 		</list>
 	</section>
 </section>

@@ -7,6 +7,7 @@
 
 #include "globals.h"
 #include "render.h"
+#include <stdio.h>
 
 //================================================================================================================
 // 								Bitmap Declarations
@@ -227,6 +228,24 @@ packword6(1,1,1,1,1,1),
 packword6(1,1,1,1,1,1)
 };
 
+static const uint32_t livesText_24x5[] =
+{
+		packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,1,0,0,1,1,1,1),
+		packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0),
+		packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,0,0,0,1,1,1,0),
+		packword24(1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1),
+		packword24(1,1,1,1,0,1,0,0,0,1,0,0,0,1,1,1,1,1,0,1,1,1,1,0)
+};
+
+static const uint32_t scoreText_32x5[] =
+{
+		packword32(0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,1),
+		packword32(0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0),
+		packword32(0,0,0,0,1,1,1,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,1,1,1,1,0),
+		packword32(0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0),
+		packword32(0,0,0,1,1,1,1,0,0,0,1,1,1,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,1,1,1)
+};
+
 #define SCALING_CONST 2
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
@@ -254,9 +273,24 @@ packword6(1,1,1,1,1,1)
 #define BOTTOM_ALIEN_ROW 3
 #define ALIEN_WIDTH 12
 #define ALIEN_HEIGHT 8
-#define ALIEN_COLOR 0x00000000
-#define ALIEN_X_SPACING (ALIEN_WIDTH + 3)
+#define ALIEN_COLOR 0xFFFFFFFF
+#define ALIEN_X_SPACING (ALIEN_WIDTH + 4)
 #define ALIEN_Y_SPACING (ALIEN_HEIGHT + 6)
+
+#define STATUS_BAR_Y 10
+#define TEXT_COLOR 0xFFFFFFFF
+#define SCORE_TEXT_X 15
+#define SCORE_TEXT_WIDTH 32
+#define SCORE_TEXT_HEIGHT 5
+#define LIVES_TEXT_X (SCREEN_WIDTH*2/3)
+#define LIVES_TEXT_WIDTH 24
+#define LIVES_TEXT_HEIGHT 5
+#define TEXT_2_LIFE_SPACING 10
+#define LIFE_2_LIFE_SPACING 5
+#define LIFE_TANK_OFFSET (TANK_HEIGHT - LIVES_TEXT_HEIGHT)
+
+#define BASE_LINE_Y (SCREEN_HEIGHT - 5)
+#define BASE_LINE_COLOR 0x0000FF00
 //=======================================================================================
 // 							Private Helper Functions
 //=======================================================================================
@@ -289,14 +323,15 @@ void render_blankScreen(uint32_t* framePtr) {
 /**
  * Generic draw sprite function
  */
-void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteWidth, uint8_t spriteHeight, uint16_t sprite_color) {
+void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
 	int row, col;
 	for(row=0; row < spriteHeight; row++) {
-		uint16_t sprite_row = spriteArray[row];
+		uint32_t sprite_row = spriteArray[row];
 		for(col=0; col < spriteWidth; col++) {
 			uint32_t msb = 0x01 << (spriteWidth - 1);
 			if(sprite_row & (msb >> col)) {
-				writePixel(framePtr, row+sprite_pos.x, col+sprite_pos.y, sprite_color);
+				writePixel(framePtr, row+sprite_pos.y, col+sprite_pos.x, sprite_color);
+//				xil_printf("Printing pixel: row=%d,  col=%d\n\r", row+sprite_pos.x, col+sprite_pos.y);
 			}
 		}
 	}
@@ -316,21 +351,23 @@ void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_
 //}
 
 void drawTank(uint32_t* framePtr) {
-	point_t tank_pos = getTankPositionGlobal();
+	point_t tank_pos = global_getTankPositionGlobal();
 	drawSprite(framePtr, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 }
 
 void drawBunkers(uint32_t* framePtr) {
 	int bunker;
 	for(bunker = 0; bunker < BUNKER_CNT; bunker++) {
-		point_t bunker_pos = getBunkerPosition(bunker);
+		point_t bunker_pos = global_getBunkerPosition(bunker);
+		xil_printf("Bunker pos: index=%d, x=%d, y=%d\n\r", bunker, bunker_pos.x, bunker_pos.y);
+
 		drawSprite(framePtr, bunker_24x18, bunker_pos, BUNKER_WIDTH, BUNKER_HEIGHT, BUNKER_COLOR);
 	}
 }
 
 void drawErodedBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) {
-	point_t block_pos = getBlockPosition(bunker, block_index);
-	erosionState_t block_state = getBlockState(bunker, block_index);
+	point_t block_pos = global_getBlockPosition(bunker, block_index);
+	erosionState_t block_state = global_getBlockState(bunker, block_index);
 	const uint32_t* block_bitmap;
 	switch(block_state) {
 	case WHOLE:
@@ -359,38 +396,78 @@ void drawErodedBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) {
 void drawAliens(uint32_t* framePtr) {
 	uint8_t row, col;
 	const uint32_t* alien_bitmap;
-	point_t alien_block_pos = getAlienBlockPosition();
+	point_t alien_block_pos = global_getAlienBlockPosition();
+	xil_printf("alien block position: x=%d, y=%d\n\r", alien_block_pos.x, alien_block_pos.y);
 	for(row=0; row < ALIEN_ROWS; row++) { // Iterate through the 5 rows
 		for(col=0; col < ALIEN_COLS; col++) { // Iterate through each of the 11 aliens on a row
-			if(isAlienAlive(row,col)) { // Check to see if the alien is still alive
+			if(global_isAlienAlive(row,col)) { // Check to see if the alien is still alive
+				xil_printf("Alien is alive at row=%d col=%d\n\r", row, col);
 				if(row == TOP_ALIEN_ROW) { // If we are drawing the top row...
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (isAlienPosIn() ? alien_top_in_12x8 : alien_top_out_12x8);
+					alien_bitmap = (global_isAlienPosIn() ? alien_top_in_12x8 : alien_top_out_12x8);
 				}
 				else if(row >= MID_ALIEN_ROW && row < BOTTOM_ALIEN_ROW) { // If we are in the middle two rows...
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (isAlienPosIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
+					alien_bitmap = (global_isAlienPosIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
 				}
 				else { // If we are in the bottom two rows
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (isAlienPosIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
+					alien_bitmap = (global_isAlienPosIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
 				}
 
 				// Calculate the particular alien position
 				point_t alien_pos;
 				alien_pos.x = alien_block_pos.x + (col*ALIEN_X_SPACING); // Index off of the alien block position
 				alien_pos.y = alien_block_pos.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
+				xil_printf("alien position: x=%d, y=%d\n\r", alien_pos.x, alien_pos.y);
 				drawSprite(framePtr, alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
 			}
 		}
 	}
 }
 
+void drawStatusBar(uint32_t* framePtr) {
+	point_t score_pos;
+	score_pos.x = SCORE_TEXT_X;
+	score_pos.y = STATUS_BAR_Y;
+	drawSprite(framePtr, scoreText_32x5, score_pos, SCORE_TEXT_WIDTH, SCORE_TEXT_HEIGHT, TEXT_COLOR);
+
+	point_t lives_pos;
+	lives_pos.x = LIVES_TEXT_X;
+	lives_pos.y = STATUS_BAR_Y;
+	drawSprite(framePtr, livesText_24x5, lives_pos, LIVES_TEXT_WIDTH, LIVES_TEXT_HEIGHT, TEXT_COLOR);
+
+	uint16_t score = global_getScore();
+	// Draw the score here...
+
+	uint8_t lives = global_getLives();
+	uint8_t i;
+	for(i = 0; i < lives; i++) {
+		point_t life_pos;
+		life_pos.x = (LIVES_TEXT_X + LIVES_TEXT_WIDTH + TEXT_2_LIFE_SPACING + (LIFE_2_LIFE_SPACING + TANK_WIDTH)*i);
+		life_pos.y = (STATUS_BAR_Y - LIFE_TANK_OFFSET);
+
+		drawSprite(framePtr, tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
+	}
+
+}
+
+void drawBaseLine(uint32_t* framePtr) {
+	uint16_t i;
+	for(i=0; i < SCREEN_WIDTH; i++) {
+		writePixel(framePtr, BASE_LINE_Y, i, BASE_LINE_COLOR);
+	}
+}
 
 void render_game(uint32_t* framePtr) {
-	setTankPositionGlobal(0, 0);
+	globals_init();
 
 	drawTank(framePtr);
+	drawBunkers(framePtr);
+	drawAliens(framePtr);
+
+	drawStatusBar(framePtr);
+	drawBaseLine(framePtr);
 }
 
 

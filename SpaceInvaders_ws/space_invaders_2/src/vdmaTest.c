@@ -142,15 +142,16 @@ int main()
      // Oscillate between frame 0 and frame 1.
      int sillyTimer = MAX_SILLY_TIMER;  // Just a cheap delay between frames.
      render_blankScreen(framePointer0);
-     while (1) {
+//     while (1) {
     	 while (sillyTimer) sillyTimer--;    // Decrement the timer.
     	 sillyTimer = MAX_SILLY_TIMER;       // Reset the timer.
          frameIndex = 0;  	// Only use frame0
+
          render_game(framePointer0);
          if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
         	 xil_printf("vdma parking failed\n\r");
          }
-     }
+//     }
      cleanup_platform();
 
     return 0;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-<<<<<<< HEAD
 	<item value="Default C source template" key="LastUsedSourceTemplate"/>
 	<item value="Default C header template" key="LastUsedHeaderTemplate"/>
 	<section name="completion_proposal_size">
@@ -8,10 +7,6 @@
 	<section name="CPathsPropertyPage">
 		<item value="0" key="pageIndex"/>
 	</section>
-=======
-	<section name="completion_proposal_size">
-	</section>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>
 </section>

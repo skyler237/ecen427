@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <workbench progressCount="21" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="225" y="225">
 <fastViewData fastViewLocation="1024"/>
 <intro standby="true"/>
-=======
-<workbench progressCount="20" version="2.0">
-<workbenchAdvisor/>
-<window height="1080" maximized="true" width="1772" x="41" y="23">
-<fastViewData fastViewLocation="1024"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
@@ -28,97 +21,20 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<<<<<<< HEAD
 <coolItem id="org.eclipse.cdt.make.editor" itemType="typePlaceholder" x="-1" y="-1"/>
-=======
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-<coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<<<<<<< HEAD
 <page aggregateWorkingSetId="Aggregate for window 1474036989244" focus="true" label="Workspace - C/C++">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
-=======
-<page aggregateWorkingSetId="Aggregate for window 1474500386243" focus="true" label="Workspace - C/C++">
-<editors>
-<editorArea activeWorkbook="DefaultEditorWorkbook">
-<info part="org.eclipse.ui.internal.EditorStack@28b4330">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
-</folder>
-</info>
-<info part="DefaultEditorWorkbook" ratio="0.45305377" ratioLeft="497" ratioRight="600" relationship="2" relative="org.eclipse.ui.internal.EditorStack@28b4330">
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-<folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<<<<<<< HEAD
-=======
-<part id="5"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<<<<<<< HEAD
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="vdmaTest.c" partName="vdmaTest.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders/src/vdmaTest.c" title="vdmaTest.c" tooltip="space_invaders/src/vdmaTest.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/vdmaTest.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1047" selectionTopPixel="1048"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" partName="globals.h" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders/src/globals.h" title="globals.h" tooltip="space_invaders/src/globals.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/globals.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="430" selectionTopPixel="108"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="globals.c" partName="globals.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders/src/globals.c" title="globals.c" tooltip="space_invaders/src/globals.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/globals.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="151" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="render.c" partName="render.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders/src/render.c" title="render.c" tooltip="space_invaders/src/render.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/render.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8395" selectionTopPixel="3610"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="platform.c" partName="platform.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws/space_invaders/src/platform.c" title="platform.c" tooltip="space_invaders/src/platform.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/platform.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="905" selectionTopPixel="204"/>
-=======
-<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" partName="globals.h" path="C:/Users/superman/Documents/AndSky/ecen427/SpaceInvaders_ws/space_invaders/src/globals.h" title="globals.h" tooltip="space_invaders/src/globals.h" workbook="org.eclipse.ui.internal.EditorStack@28b4330">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/globals.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="381" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="render.c" partName="render.c" path="C:/Users/superman/Documents/AndSky/ecen427/SpaceInvaders_ws/space_invaders/src/render.c" title="render.c" tooltip="space_invaders/src/render.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/render.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9133" selectionTopPixel="3743"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="vdmaTest.c" partName="vdmaTest.c" path="C:/Users/superman/Documents/AndSky/ecen427/SpaceInvaders_ws/space_invaders/src/vdmaTest.c" title="vdmaTest.c" tooltip="space_invaders/src/vdmaTest.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/vdmaTest.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="1611" selectionTopPixel="187"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="platform.c" partName="platform.c" path="C:/Users/superman/Documents/AndSky/ecen427/SpaceInvaders_ws/space_invaders/src/platform.c" title="platform.c" tooltip="space_invaders/src/platform.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/platform.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1325" selectionTopPixel="513"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.c" partName="globals.c" path="C:/Users/superman/Documents/AndSky/ecen427/SpaceInvaders_ws/space_invaders/src/globals.c" title="globals.c" tooltip="space_invaders/src/globals.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/globals.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1276" selectionTopPixel="547"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="render.h" partName="render.h" path="C:/Users/superman/Documents/AndSky/ecen427/SpaceInvaders_ws/space_invaders/src/render.h" title="render.h" tooltip="space_invaders/src/render.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/render.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="xaxivdma.h" partName="xaxivdma.h" title="xaxivdma.h" tooltip="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_bsp\microblaze_0\include\xaxivdma.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_bsp\microblaze_0\include\xaxivdma.h" project="space_invaders"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="18455" selectionTopPixel="7191"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -129,14 +45,6 @@
 <view id="org.eclipse.tm.terminal.view.TerminalView" partName="Terminal"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<<<<<<< HEAD
-<expanded>&#x0A;<category IMemento.internal.id="Errors"/>
-=======
-<expanded>
-<category IMemento.internal.id="Errors (2 items)"/>
-<category IMemento.internal.id="Errors"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -148,25 +56,18 @@
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
 </view>
-<<<<<<< HEAD
 <view id="org.eclipse.ui.internal.introview" partName="Welcome">
 <viewState>
 <presentation currentPage="file:///C:/Xilinx/13.4/ISE_DS/EDK/eclipse/nt64/eclipse/plugins/com.xilinx.sdk.product_1.0.0/intro/index.html" restore="true"/>
 <standbyPart/>
 </viewState>
 </view>
-=======
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 </views>
-<<<<<<< HEAD
-<perspectives activePart="org.eclipse.ui.internal.introview" activePerspective="org.eclipse.cdt.ui.CPerspective">
-=======
 <perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.cdt.ui.CPerspective">
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -222,10 +123,7 @@
 <view id="org.eclipse.tm.terminal.view.TerminalView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.cdt.make.ui.views.MakeView"/>
-<<<<<<< HEAD
 <view id="org.eclipse.ui.internal.introview"/>
-=======
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -240,7 +138,6 @@
 </presentation>
 </folder>
 </info>
-<<<<<<< HEAD
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@b2e0e2f" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="topLeft">
 <folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="2">
 <page content="org.eclipse.ui.internal.introview" label="Welcome"/>
@@ -253,17 +150,6 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.7496136" ratioLeft="485" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
-=======
-<info folder="true" part="stickyFolderRight" ratio="0.7497083" ratioLeft="1285" ratioRight="429" relationship="2" relative="topLeft">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
-<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
-</folder>
-</info>
-<info part="org.eclipse.ui.editorss" ratio="0.17391305" ratioLeft="332" ratioRight="1577" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.7497244" ratioLeft="680" ratioRight="227" relationship="4" relative="org.eclipse.ui.editorss">
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -279,11 +165,7 @@
 </presentation>
 </folder>
 </info>
-<<<<<<< HEAD
 <info folder="true" part="topRight" ratio="0.7493333" ratioLeft="562" ratioRight="188" relationship="2" relative="org.eclipse.ui.editorss">
-=======
-<info folder="true" part="topRight" ratio="0.83735704" ratioLeft="1318" ratioRight="256" relationship="2" relative="org.eclipse.ui.editorss">
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Target"/>
@@ -298,322 +180,7 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<<<<<<< HEAD
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.hw.ui.HwSpecXMLEditor" path="/SpaceInvadersHW_hw_platform/system.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/platform.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" path="/space_invaders_bsp/system.mss"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/helloworld.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/vdmaTest.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/include/globals.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.h"/>
-=======
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/render.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/vdmaTest.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/platform.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders_bsp/microblaze_0/include/xil_cache.h"/>
-<<<<<<< HEAD
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/platform.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders_bsp/microblaze_0/include/xaxivdma.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" path="/space_invaders_bsp/system.mss"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.hw.ui.HwSpecXMLEditor" path="/SpaceInvadersHW_hw_platform/system.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/space_invaders/Debug/makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/vdmaTest.c"/>
-</editors>
-<item historyLabel="platform.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="system.xml" index="0"/>
-<item historyLabel="system.mss" index="2"/>
-<item historyLabel="helloworld.c" index="3">
-<position info="not_deleted" x="0" y="7017"/>
-</item>
-<item historyLabel="vdmaTest.c" index="4">
-<position info="not_deleted" x="5758" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1342" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="845" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="991" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1079" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="692" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1342" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="600" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1342" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1374" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1409" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1430" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1463" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1497" y="0"/>
-</item>
-<item historyLabel="globals.h" index="5">
-<position info="not_deleted" x="1521" y="0"/>
-</item>
-<item historyLabel="globals.c" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="globals.h" index="7">
-<position info="not_deleted" x="1530" y="0"/>
-</item>
-<item historyLabel="globals.h" index="7">
-<position info="not_deleted" x="443" y="0"/>
-</item>
-<item historyLabel="globals.h" index="7">
-<position info="not_deleted" x="951" y="98"/>
-</item>
-<item historyLabel="globals.h" index="7">
-<position info="not_deleted" x="858" y="0"/>
-</item>
-<item historyLabel="globals.h" index="7">
-<position info="not_deleted" x="430" y="0"/>
-</item>
-<item historyLabel="globals.c" index="6">
-<position info="not_deleted" x="151" y="0"/>
-</item>
-<item historyLabel="render.c" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="6815" y="0"/>
-</item>
-<item historyLabel="platform.c" index="10">
-<position info="not_deleted" x="862" y="9"/>
-</item>
-<item historyLabel="xil_cache.h" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="platform.c" index="10">
-<position info="not_deleted" x="862" y="9"/>
-</item>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="6815" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="4495" y="13"/>
-</item>
-<item historyLabel="globals.c" index="12">
-<position info="not_deleted" x="151" y="0"/>
-</item>
-<item historyLabel="platform.c" index="13">
-<position info="not_deleted" x="905" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="947" y="10"/>
-</item>
-<item historyLabel="xaxivdma.h" index="14">
-<position/>
-</item>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="947" y="10"/>
-</item>
-<item historyLabel="system.mss" index="15"/>
-<item historyLabel="system.xml" index="16"/>
-<item historyLabel="system.mss" index="15"/>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="947" y="8"/>
-</item>
-<item historyLabel="xaxivdma.h" index="14">
-<position info="not_deleted" x="18318" y="21"/>
-</item>
-<item historyLabel="platform.c" index="13">
-<position info="not_deleted" x="905" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="9">
-<position info="not_deleted" x="1047" y="0"/>
-</item>
-<item historyLabel="makefile" index="17">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item active="true" historyLabel="vdmaTest.c" index="18">
-<position info="not_deleted" x="1047" y="0"/>
-=======
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders_bsp/microblaze_0/include/xparameters.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders_bsp/microblaze_0/include/xil_cache.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/render.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/vdmaTest.c"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_bsp\microblaze_0\include\xaxivdma.h" project="space_invaders"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.c"/>
-</editors>
-<item historyLabel="render.c" index="0">
-<position info="not_deleted" x="8219" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="1">
-<position info="not_deleted" x="958" y="0"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1348" y="14"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1366" y="25"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1241" y="19"/>
-</item>
-<item historyLabel="vdmaTest.c" index="1">
-<position info="not_deleted" x="936" y="0"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1241" y="16"/>
-</item>
-<item historyLabel="xil_cache.h" index="3">
-<position info="not_deleted" x="3535" y="11"/>
-</item>
-<item historyLabel="xparameters.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="xil_cache.h" index="3">
-<position info="not_deleted" x="3535" y="11"/>
-</item>
-<item historyLabel="xparameters.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1247" y="0"/>
-</item>
-<item historyLabel="xil_cache.h" index="5">
-<position info="not_deleted" x="7576" y="0"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1325" y="0"/>
-</item>
-<item historyLabel="render.c" index="0">
-<position info="not_deleted" x="9138" y="0"/>
-</item>
-<item historyLabel="globals.h" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="globals.h" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1858" y="0"/>
-</item>
-<item historyLabel="globals.h" index="6">
-<position info="not_deleted" x="834" y="743"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1858" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="368" y="0"/>
-</item>
-<item historyLabel="globals.h" index="6">
-<position info="not_deleted" x="799" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="368" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1025" y="0"/>
-</item>
-<item historyLabel="globals.h" index="6">
-<position info="not_deleted" x="156" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="494" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1259" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1133" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1248" y="0"/>
-</item>
-<item historyLabel="globals.h" index="6">
-<position info="not_deleted" x="965" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1025" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1228" y="0"/>
-</item>
-<item historyLabel="platform.c" index="2">
-<position info="not_deleted" x="1325" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="1">
-<position info="not_deleted" x="936" y="0"/>
-</item>
-<item historyLabel="globals.c" index="7">
-<position info="not_deleted" x="1276" y="0"/>
-</item>
-<item historyLabel="render.h" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="render.c" index="0">
-<position info="not_deleted" x="9138" y="0"/>
-</item>
-<item historyLabel="globals.h" index="9">
-<position info="not_deleted" x="115" y="0"/>
-</item>
-<item historyLabel="render.c" index="0">
-<position info="not_deleted" x="9133" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="10">
-<position info="not_deleted" x="947" y="10"/>
-</item>
-<item historyLabel="xaxivdma.h" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="vdmaTest.c" index="10">
-<position info="not_deleted" x="1611" y="21"/>
-</item>
-<item historyLabel="xaxivdma.h" index="11">
-<position info="not_deleted" x="18455" y="0"/>
-</item>
-<item historyLabel="globals.h" index="9">
-<position info="not_deleted" x="444" y="0"/>
-</item>
-<item active="true" historyLabel="globals.c" index="12">
-<position info="not_deleted" x="1276" y="0"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -630,30 +197,30 @@
 </trimLayout>
 </window>
 <mruList>
-<<<<<<< HEAD
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" tooltip="space_invaders_2/src/globals.h">
+<persistable path="/space_invaders_2/src/globals.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="render.h" tooltip="space_invaders_2/src/render.h">
+<persistable path="/space_invaders_2/src/render.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="render.c" tooltip="space_invaders_2/src/render.c">
+<persistable path="/space_invaders_2/src/render.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vdmaTest.c" tooltip="space_invaders_2/src/vdmaTest.c">
+<persistable path="/space_invaders_2/src/vdmaTest.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.c" tooltip="space_invaders_2/src/globals.c">
+<persistable path="/space_invaders_2/src/globals.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" name="makefile" tooltip="space_invaders/Debug/makefile">
 <persistable path="/space_invaders/Debug/makefile"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xaxivdma.h" tooltip="space_invaders_bsp/microblaze_0/include/xaxivdma.h">
 <persistable path="/space_invaders_bsp/microblaze_0/include/xaxivdma.h"/>
-=======
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xaxivdma.h" tooltip="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_bsp\microblaze_0\include\xaxivdma.h">
-<persistable path="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_bsp\microblaze_0\include\xaxivdma.h" project="space_invaders"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="render.h" tooltip="space_invaders/src/render.h">
-<persistable path="/space_invaders/src/render.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.c" tooltip="space_invaders/src/globals.c">
-<persistable path="/space_invaders/src/globals.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" tooltip="space_invaders/src/globals.h">
-<persistable path="/space_invaders/src/globals.h"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xil_cache.h" tooltip="space_invaders_bsp/microblaze_0/include/xil_cache.h">
 <persistable path="/space_invaders_bsp/microblaze_0/include/xil_cache.h"/>
 </file>
-<<<<<<< HEAD
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="platform.c" tooltip="space_invaders/src/platform.c">
 <persistable path="/space_invaders/src/platform.c"/>
 </file>
@@ -675,22 +242,5 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" name="system.mss" tooltip="space_invaders/system.mss">
 <persistable path="/space_invaders/system.mss"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.hw.ui.HwSpecXMLEditor" name="system.xml" tooltip="SpaceInvadersHW_hw_platform/system.xml">
-<persistable path="/SpaceInvadersHW_hw_platform/system.xml"/>
-</file>
-=======
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xparameters.h" tooltip="space_invaders_bsp/microblaze_0/include/xparameters.h">
-<persistable path="/space_invaders_bsp/microblaze_0/include/xparameters.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="platform.c" tooltip="space_invaders/src/platform.c">
-<persistable path="/space_invaders/src/platform.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vdmaTest.c" tooltip="space_invaders/src/vdmaTest.c">
-<persistable path="/space_invaders/src/vdmaTest.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="render.c" tooltip="space_invaders/src/render.c">
-<persistable path="/space_invaders/src/render.c"/>
-</file>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
 </mruList>
 </workbench>

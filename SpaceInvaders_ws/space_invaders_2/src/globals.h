@@ -16,46 +16,39 @@ typedef struct {unsigned short x; unsigned short y;} point_t;
 
 typedef enum { CROSS_UP, CROSS_DOWN, CROSS_MID2UP, CROSS_MID2DOWN, LIGHTNING1, LIGHTNING2 } bulletType_t;
 
-bulletType_t global_test;
-
-typedef struct {
-	point_t position;
-	bulletType_t type;
-} bullet_t;
-
 typedef enum  {WHOLE, HIT1, HIT2, HIT3, DEAD} erosionState_t;
-typedef struct {erosionState_t erosion_state; point_t position;} block_t;
-typedef struct {block_t blocks[10];} bunker_t;
 
-void setTankPositionGlobal(uint16_t x, uint16_t y);
-point_t getTankPositionGlobal();
+void globals_init();
 
-void setTankBulletPosition(uint16_t x, uint16_t y);
-point_t getTankBulletPosition();
+void global_setTankPositionGlobal(uint16_t x, uint16_t y);
+point_t global_getTankPositionGlobal();
 
-void setAlienBlockPosition(uint16_t x, uint16_t y);
-point_t getAlienBlockPosition();
-bool isAlienAlive(uint8_t row, uint8_t col);
-bool isAlienPosIn();
+void global_setTankBulletPosition(uint16_t x, uint16_t y);
+point_t global_getTankBulletPosition();
 
-void createAlienBullet(uint16_t x, uint16_t y); // Initializes a new alien bullet
-void updateAlienBullet(uint8_t index, uint16_t x, uint16_t y); // Updates an existing alien bullet's position
-bullet_t getAlienBullet(uint8_t index);
-point_t getAlienBulletPosition(uint8_t index);
+void global_setAlienBlockPosition(uint16_t x, uint16_t y);
+point_t global_getAlienBlockPosition();
 
-void erodeBunkerBlock(uint8_t bunker_index, uint8_t block_index);
-erosionState_t getBlockState(uint8_t bunker_index, uint8_t block_index);
-point_t getBlockPosition(uint8_t bunker_index, uint8_t block_index);
-point_t getBunkerPosition(uint8_t bunker);
+void global_createAlienBullet(uint16_t x, uint16_t y); // Initializes a new alien bullet
+void global_updateAlienBullet(uint8_t index, uint16_t x, uint16_t y); // Updates an existing alien bullet's position
+bulletType_t global_getAlienBulletType(uint8_t index);
+point_t global_getAlienBulletPosition(uint8_t index);
 
-void killAlien(uint8_t index);
-bool alienIsAlive(uint8_t index);
+void global_erodeBunkerBlock(uint8_t bunker_index, uint8_t block_index);
+erosionState_t global_getBlockState(uint8_t bunker_index, uint8_t block_index);
+point_t global_getBlockPosition(uint8_t bunker_index, uint8_t block_index);
+point_t global_getBunkerPosition(uint8_t bunker_index);
+void global_setBunkerPosition(uint8_t bunker_index, uint8_t x, uint8_t y);
 
-void setLives(uint8_t lives);
-uint8_t getLives();
+void global_killAlien(uint8_t row, uint8_t col);
+bool global_isAlienAlive(uint8_t row, uint8_t col);
+bool global_isAlienPosIn();
 
-void setScore(uint16_t score);
-uint16_t getScore();
+void global_setLives(uint8_t lives);
+uint8_t global_getLives();
+
+void global_setScore(uint16_t score);
+uint16_t global_getScore();
 
 
 #endif /* GLOBALS_H_ */

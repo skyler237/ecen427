@@ -5,15 +5,31 @@ make all
 Building file: ../src/render.c
 Invoking: MicroBlaze gcc compiler
 mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../space_invaders_bsp_2/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/render.d" -MT"src/render.d" -o"src/render.o" "../src/render.c"
+../src/render.c: In function 'drawStatusBar':
+../src/render.c:440: warning: unused variable 'score'
 Finished building: ../src/render.c
 ' '
 Building target: space_invaders_2.elf
 Invoking: MicroBlaze gcc linker
 mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../space_invaders_bsp_2/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -o"space_invaders_2.elf"  ./src/globals.o ./src/platform.o ./src/render.o ./src/vdmaTest.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-./src/render.o: In function `drawBunkers':
-C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_2\Debug/../src/render.c:326: undefined reference to `getBunkerPosition'
-./src/render.o: In function `drawErodedBlock':
-C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_2\Debug/../src/render.c:332: undefined reference to `getBlockPosition'
-C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\space_invaders_2\Debug/../src/render.c:332: undefined reference to `getBlockState'
-collect2: ld returned 1 exit status
-make: *** [space_invaders_2.elf] Error 1
+Finished building target: space_invaders_2.elf
+' '
+Invoking: MicroBlaze Print Size
+mb-size space_invaders_2.elf  |tee "space_invaders_2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17542	    380	   5634	  23556	   5c04	space_invaders_2.elf
+Finished building: space_invaders_2.elf.size
+' '
+Invoking: Xilinx ELF Check
+elfcheck space_invaders_2.elf -hw ../../SpaceInvadersHW_hw_platform/system.xml -pe microblaze_0  |tee "space_invaders_2.elf.elfcheck"
+elfcheck
+Xilinx EDK 13.4 Build EDK_O.87xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../SpaceInvadersHW_hw_platform/system.xml -pe
+microblaze_0 space_invaders_2.elf 
+
+ELF file	: space_invaders_2.elf
+elfcheck passed.
+Finished building: space_invaders_2.elf.elfcheck
+' '
