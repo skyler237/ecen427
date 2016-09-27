@@ -7,6 +7,7 @@
 
 // Demonstrates one way to handle globals safely in C.
 #include "globals.h"
+#include <stdio.h>
 
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
@@ -81,9 +82,13 @@ static uint16_t current_score;
 void globals_init() {
 	tankPosition.x = TANK_INIT_X;
 	tankPosition.y = TANK_INIT_Y;
+	tankPosition.prev_x = TANK_INIT_X;
+	tankPosition.prev_y = TANK_INIT_Y;
 
 	alienBlockPosition.x = ALIEN_BLOCK_INIT_X;
 	alienBlockPosition.y = ALIEN_BLOCK_INIT_Y;
+	alienBlockPosition.prev_x = ALIEN_BLOCK_INIT_X;
+	alienBlockPosition.prev_y = ALIEN_BLOCK_INIT_Y;
 	int i;
 	for(i=0; i < ALIEN_ROWS; i++) {
 		alienPositions[i] = ALIEN_INIT_ROW;
@@ -119,8 +124,14 @@ void init_bunker_blocks(uint8_t bunker_index){
 
 // Here are the accessors.
 void global_setTankPositionGlobal(uint16_t x, uint16_t y) {
-  tankPosition.x = x;
+	tankPosition.prev_x = tankPosition.x;
+	tankPosition.prev_y = tankPosition.y;
+	tankPosition.x = x;
   tankPosition.y = y;
+}
+
+void global_moveTank(int8_t dx, int8_t dy) {
+	global_setTankPositionGlobal(tankPosition.x + dx, tankPosition.y + dy);
 }
 
 point_t global_getTankPositionGlobal() {
@@ -128,6 +139,8 @@ point_t global_getTankPositionGlobal() {
 }
 
 void global_setTankBulletPosition(uint16_t x, uint16_t y) {
+	tankBulletPosition.prev_x = tankBulletPosition.x;
+		tankBulletPosition.prev_y = tankBulletPosition.y;
   tankBulletPosition.x = x;
   tankBulletPosition.y = y;
 }
@@ -137,6 +150,8 @@ point_t global_getTankBulletPosition() {
 }
 
 void global_setAlienBlockPosition(uint16_t x, uint16_t y){
+	alienBlockPosition.prev_x = alienBlockPosition.x;
+	alienBlockPosition.prev_y = alienBlockPosition.y;
 	alienBlockPosition.x = x;
 	alienBlockPosition.y = y;
 }
@@ -161,6 +176,8 @@ void global_createAlienBullet(uint16_t x, uint16_t y){
 
 void global_updateAlienBullet(uint8_t index, uint16_t x, uint16_t y) {
 	// Updates an existing alien bullet's position
+	alienBullets[index].position.prev_x = alienBullets[index].position.x;
+	alienBullets[index].position.prev_y = alienBullets[index].position.y;
 	alienBullets[index].position.x = x;
 	alienBullets[index].position.y = y;
 }

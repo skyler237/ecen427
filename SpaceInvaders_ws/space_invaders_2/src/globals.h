@@ -12,7 +12,7 @@
 #include <stdbool.h>
 
 #define OFF_SCREEN 700 //Denotes an off-screen point
-typedef struct {unsigned short x; unsigned short y;} point_t;
+typedef struct {unsigned short x; unsigned short y; unsigned short prev_x; unsigned short prev_y;} point_t;
 
 typedef enum { CROSS_UP, CROSS_DOWN, CROSS_MID2UP, CROSS_MID2DOWN, LIGHTNING1, LIGHTNING2 } bulletType_t;
 
@@ -21,6 +21,7 @@ typedef enum  {WHOLE, HIT1, HIT2, HIT3, DEAD} erosionState_t;
 void globals_init();
 
 void global_setTankPositionGlobal(uint16_t x, uint16_t y);
+void global_moveTank(int8_t dx, int8_t dy);
 point_t global_getTankPositionGlobal();
 
 void global_setTankBulletPosition(uint16_t x, uint16_t y);

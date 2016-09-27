@@ -12,6 +12,7 @@
 
 void render_blankScreen(uint32_t* framePtr);
 
-void render_game(uint32_t* framePtr);
+void render_init(uint32_t* framePtr);
+void render_refresh(uint32_t* framePtr);
 
 #endif /* RENDER_H_ */

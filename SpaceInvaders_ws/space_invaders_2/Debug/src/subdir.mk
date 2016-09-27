@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/control.c \
 ../src/globals.c \
 ../src/platform.c \
 ../src/render.c \
@@ -13,12 +14,14 @@ LD_SRCS += \
 ../src/lscript.ld 
 
 OBJS += \
+./src/control.o \
 ./src/globals.o \
 ./src/platform.o \
 ./src/render.o \
 ./src/vdmaTest.o 
 
 C_DEPS += \
+./src/control.d \
 ./src/globals.d \
 ./src/platform.d \
 ./src/render.d \
