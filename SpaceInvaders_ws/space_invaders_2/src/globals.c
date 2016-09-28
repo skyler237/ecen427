@@ -11,6 +11,7 @@
 
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
+#define BASE_LINE_Y (SCREEN_HEIGHT - 5)
 
 #define TANK_WIDTH 15
 #define TANK_HEIGHT 8
@@ -18,8 +19,12 @@
 #define BUNKER_HEIGHT 18
 #define ALIEN_WIDTH 12
 #define ALIEN_HEIGHT 8
+#define ALIEN_X_SPACING (ALIEN_WIDTH + 4)
+#define ALIEN_Y_SPACING (ALIEN_HEIGHT + 6)
+#define ALIEN_CENTER (ALIEN_WIDTH / 2)
 #define ALIEN_BLOCK_WIDTH (ALIEN_WIDTH*11 + 30)
 #define SCORE_BAR_HEIGHT 15
+#define TEXT_HEIGHT 5
 
 #define TANK_INIT_X ((SCREEN_WIDTH - TANK_WIDTH)/2)
 #define TANK_INIT_Y (SCREEN_HEIGHT -20)
@@ -36,6 +41,8 @@
 
 #define BULLET_COUNT 4
 #define BULLET_TYPES 6
+#define TANK_BULLET_X_OFFSET 7
+#define BULLET_HEIGHT 5
 
 #define ALIEN_ROWS 5
 
@@ -57,6 +64,7 @@
 #define KILL_ALIEN_MASK (0xFFFFFBFF)
 
 #define LIVES_INIT_VALUE 3
+#define STATUS_BAR_Y 10
 
 typedef struct {erosionState_t erosion_state; point_t position;} block_t;
 typedef struct {block_t blocks[BUNKER_BLOCK_CNT]; point_t position;} bunker_t;
@@ -79,34 +87,6 @@ static uint8_t current_lives;
 static uint16_t current_score;
 
 
-void globals_init() {
-	tankPosition.x = TANK_INIT_X;
-	tankPosition.y = TANK_INIT_Y;
-	tankPosition.prev_x = TANK_INIT_X;
-	tankPosition.prev_y = TANK_INIT_Y;
-
-	alienBlockPosition.x = ALIEN_BLOCK_INIT_X;
-	alienBlockPosition.y = ALIEN_BLOCK_INIT_Y;
-	alienBlockPosition.prev_x = ALIEN_BLOCK_INIT_X;
-	alienBlockPosition.prev_y = ALIEN_BLOCK_INIT_Y;
-	int i;
-	for(i=0; i < ALIEN_ROWS; i++) {
-		alienPositions[i] = ALIEN_INIT_ROW;
-	}
-
-	bunkers[BUNKER_0].position.x = BUNKER_0_INIT_X;
-	bunkers[BUNKER_0].position.y = BUNKER_INIT_Y;
-	bunkers[BUNKER_1].position.x = BUNKER_1_INIT_X;
-	bunkers[BUNKER_1].position.y = BUNKER_INIT_Y;
-	bunkers[BUNKER_2].position.x = BUNKER_2_INIT_X;
-	bunkers[BUNKER_2].position.y = BUNKER_INIT_Y;
-	bunkers[BUNKER_3].position.x = BUNKER_3_INIT_X;
-	bunkers[BUNKER_3].position.y = BUNKER_INIT_Y;
-
-	current_lives = LIVES_INIT_VALUE;
-
-}
-
 void init_bunker_blocks(uint8_t bunker_index){
 	point_t bunker_pos = bunkers[bunker_index].position;
 	int block_index;
@@ -121,6 +101,48 @@ void init_bunker_blocks(uint8_t bunker_index){
 		}
 	}
 }
+
+void globals_init() {
+	tankPosition.x = TANK_INIT_X;
+	tankPosition.y = TANK_INIT_Y;
+	tankPosition.prev_x = TANK_INIT_X;
+	tankPosition.prev_y = TANK_INIT_Y;
+	tankBulletPosition.y = OFF_SCREEN;
+	tankBulletPosition.x = OFF_SCREEN;
+
+	alienBlockPosition.x = ALIEN_BLOCK_INIT_X;
+	alienBlockPosition.y = ALIEN_BLOCK_INIT_Y;
+	alienBlockPosition.prev_x = ALIEN_BLOCK_INIT_X;
+	alienBlockPosition.prev_y = ALIEN_BLOCK_INIT_Y;
+	uint8_t i;
+	for(i=0; i < ALIEN_ROWS; i++) {
+		alienPositions[i] = ALIEN_INIT_ROW;
+	}
+
+	for (i = 0; i < BULLET_COUNT; i++){
+		alienBullets[i].position.x = OFF_SCREEN;
+		alienBullets[i].position.y = OFF_SCREEN;
+	}
+
+	bunkers[BUNKER_0].position.x = BUNKER_0_INIT_X;
+	bunkers[BUNKER_0].position.y = BUNKER_INIT_Y;
+	bunkers[BUNKER_1].position.x = BUNKER_1_INIT_X;
+	bunkers[BUNKER_1].position.y = BUNKER_INIT_Y;
+	bunkers[BUNKER_2].position.x = BUNKER_2_INIT_X;
+	bunkers[BUNKER_2].position.y = BUNKER_INIT_Y;
+	bunkers[BUNKER_3].position.x = BUNKER_3_INIT_X;
+	bunkers[BUNKER_3].position.y = BUNKER_INIT_Y;
+
+
+	for(i=0; i < BUNKER_COUNT; i++) {
+		init_bunker_blocks(i);
+	}
+
+	current_lives = LIVES_INIT_VALUE;
+
+}
+
+
 
 // Here are the accessors.
 void global_setTankPositionGlobal(uint16_t x, uint16_t y) {
@@ -145,6 +167,22 @@ void global_setTankBulletPosition(uint16_t x, uint16_t y) {
   tankBulletPosition.y = y;
 }
 
+void global_moveTankBullet(int8_t dx, int8_t dy){
+	if(tankBulletPosition.y+dy < STATUS_BAR_Y+TEXT_HEIGHT || tankBulletPosition.y == OFF_SCREEN){
+		global_setTankBulletPosition(OFF_SCREEN, OFF_SCREEN);
+	}
+	else {
+		global_setTankBulletPosition(tankBulletPosition.x+dx, tankBulletPosition.y+dy);
+	}
+}
+
+void global_fireTankBullet(){
+	if(tankBulletPosition.y == OFF_SCREEN){
+	tankBulletPosition.x = tankPosition.x + TANK_BULLET_X_OFFSET;
+	tankBulletPosition.y = tankPosition.y - BULLET_HEIGHT;
+	}
+}
+
 point_t global_getTankBulletPosition() {
   return tankBulletPosition;
 }
@@ -164,15 +202,16 @@ point_t global_getAlienBlockPosition(){
 	return alienBlockPosition;
 }
 
-void global_createAlienBullet(uint16_t x, uint16_t y){
+void global_createAlienBullet(uint8_t row, uint8_t col){
+//	xil_printf("global_createAlienBullet\n\r");
 	// Initializes a new alien bullet
 	int i = 0;
 	bool created = false;
 	while (!created && i < BULLET_COUNT) {
 		if (alienBullets[i].position.y == OFF_SCREEN) {
-			alienBullets[i].position.x = x;
-			alienBullets[i].position.y = y;
-			alienBullets[i].type = x % BULLET_TYPES;
+			alienBullets[i].position.x = alienBlockPosition.x + col*ALIEN_X_SPACING + ALIEN_CENTER;
+			alienBullets[i].position.y = alienBlockPosition.y + row*ALIEN_Y_SPACING + ALIEN_HEIGHT;
+			alienBullets[i].type = alienBullets[i].position.x % BULLET_TYPES;
 			created = true;
 		}
 		i++;
@@ -185,7 +224,37 @@ void global_updateAlienBullet(uint8_t index, uint16_t x, uint16_t y) {
 	alienBullets[index].position.prev_y = alienBullets[index].position.y;
 	alienBullets[index].position.x = x;
 	alienBullets[index].position.y = y;
+	switch(alienBullets[index].type){
+			case CROSS_UP:
+				alienBullets[index].type = CROSS_MID2DOWN;
+				break;
+			case CROSS_DOWN:
+				alienBullets[index].type = CROSS_MID2UP;
+				break;
+			case CROSS_MID2UP:
+				alienBullets[index].type = CROSS_UP;
+				break;
+			case CROSS_MID2DOWN:
+				alienBullets[index].type = CROSS_DOWN;
+				break;
+			case LIGHTNING1:
+				alienBullets[index].type = LIGHTNING2;
+				break;
+			case LIGHTNING2:
+				alienBullets[index].type = LIGHTNING1;
+				break;
+			}
 }
+
+void global_moveAlienBullet(uint8_t index, int8_t dx, int8_t dy){
+	if(alienBullets[index].position.y+dy > BASE_LINE_Y-BULLET_HEIGHT){
+		global_updateAlienBullet(index, OFF_SCREEN, OFF_SCREEN);
+	}
+	else {
+		global_updateAlienBullet(index, alienBullets[index].position.x + dx, alienBullets[index].position.y + dy);
+	}
+}
+
 bulletType_t global_getAlienBulletType(uint8_t index){
 	return alienBullets[index].type;
 }

@@ -10,12 +10,17 @@
 
 #include "globals.h"
 
+void control_init();
 
 void control_moveTankLeft();
 
 void control_moveTankRight();
 
-void control_updateAlienBlock();
+void control_updateAlienBlock(uint32_t* framePtr);
+
+void control_manageBullets(uint32_t* framePtr);
+
+void control_fireAlienBullet(uint32_t* framePtr);
 
 
 #endif /* CONTROL_H_ */

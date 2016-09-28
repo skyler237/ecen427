@@ -46,6 +46,9 @@
 #define packword6(b5,b4,b3,b2,b1,b0) \
 ((b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
 
+#define packword3(b2,b1,b0) \
+((b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
 // Must define packword for each of the different bit-widths.
 static const  uint32_t saucer_16x7[] =
 {
@@ -246,6 +249,60 @@ static const uint32_t scoreText_32x5[] =
 		packword32(0,0,0,1,1,1,1,0,0,0,1,1,1,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,1,1,1)
 };
 
+static const uint32_t tankBullet_1x5[] =
+{
+		1,
+		1,
+		1,
+		1,
+		1
+};
+
+static const uint32_t bulletCrossUp_3x5[] =
+{
+		packword3(0,1,0),
+		packword3(1,1,1),
+		packword3(0,1,0),
+		packword3(0,1,0),
+		packword3(0,1,0)
+};
+
+static const uint32_t bulletCrossMid_3x5[] =
+{
+		packword3(0,1,0),
+		packword3(0,1,0),
+		packword3(1,1,1),
+		packword3(0,1,0),
+		packword3(0,1,0)
+};
+
+static const uint32_t bulletCrossDown_3x5[] =
+{
+		packword3(0,1,0),
+		packword3(0,1,0),
+		packword3(0,1,0),
+		packword3(1,1,1),
+		packword3(0,1,0)
+};
+
+static const uint32_t bulletLightningOne_3x5[] =
+{
+		packword3(0,1,0),
+		packword3(1,0,0),
+		packword3(0,1,0),
+		packword3(0,0,1),
+		packword3(0,1,0)
+};
+
+static const uint32_t bulletLightningTwo_3x5[] =
+{
+		packword3(0,1,0),
+		packword3(0,0,1),
+		packword3(0,1,0),
+		packword3(1,0,0),
+		packword3(0,1,0)
+};
+
 #define SCALING_CONST 2
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
@@ -263,8 +320,7 @@ static const uint32_t scoreText_32x5[] =
 #define BUNKER_WIDTH 24
 #define BUNKER_HEIGHT 18
 #define BUNKER_COLOR 0x0000FF00
-#define BLOCK_WIDTH 6
-#define BLOCK_HEIGHT 6
+#define BUNKER_BLOCK_SIZE 6
 
 #define ALIEN_ROWS 5
 #define ALIEN_COLS 11
@@ -291,6 +347,12 @@ static const uint32_t scoreText_32x5[] =
 
 #define BASE_LINE_Y (SCREEN_HEIGHT - 5)
 #define BASE_LINE_COLOR 0x0000FF00
+
+#define BULLET_COLOR 0xFFFFFFFF
+#define BULLET_HEIGHT 5
+#define TANK_BULLET_WIDTH 1
+#define ALIEN_BULLET_WIDTH 3
+#define BULLET_COUNT 4
 //=======================================================================================
 // 							Private Helper Functions
 //=======================================================================================
@@ -453,7 +515,7 @@ void drawBunkers(uint32_t* framePtr) {
 	}
 }
 
-void drawErodedBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) {
+void render_erodeBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) {
 	point_t block_pos = global_getBlockPosition(bunker, block_index);
 	erosionState_t block_state = global_getBlockState(bunker, block_index);
 	const uint32_t* block_bitmap;
@@ -478,7 +540,69 @@ void drawErodedBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) {
 			block_bitmap = bunkerDead_6x6;
 	}
 
-	drawSprite(framePtr, block_bitmap, block_pos, BLOCK_WIDTH, BLOCK_HEIGHT, BUNKER_COLOR);
+
+	uint8_t row, col;
+	for(row=0; row < BUNKER_BLOCK_SIZE; row++) {
+		uint32_t to_erase = ~block_bitmap[row];
+		for(col = 0; col < BUNKER_BLOCK_SIZE; col++) {
+			uint32_t msb = 0x01 << (BUNKER_BLOCK_SIZE - 1);
+			if(to_erase & (msb >> col)) {
+				writePixel(framePtr, row+block_pos.y, col+block_pos.x, BACKGROUND_COLOR);
+//				xil_printf("Erasing pixel: row=%d,  col=%d\n\r", row+block_pos.x, col+block_pos.y);
+			}
+		}
+
+	}
+}
+
+void render_bullets(uint32_t* framePtr){
+//	xil_printf("render_bullets\n\r");
+	point_t tank_bullet = global_getTankBulletPosition();
+	point_t tank_bullet_prev;
+	tank_bullet_prev.x = tank_bullet.prev_x;
+	tank_bullet_prev.y = tank_bullet.prev_y;
+
+	drawSprite(framePtr, tankBullet_1x5, tank_bullet_prev, TANK_BULLET_WIDTH, BULLET_HEIGHT, BACKGROUND_COLOR);
+	drawSprite(framePtr, tankBullet_1x5, tank_bullet, TANK_BULLET_WIDTH, BULLET_HEIGHT, BULLET_COLOR);
+	uint8_t i;
+	for(i = 0; i < BULLET_COUNT; i++){
+		const uint32_t* bitmap;
+		const uint32_t* old_bitmap;
+		point_t bullet_loc = global_getAlienBulletPosition(i);
+		point_t loc_old;
+		loc_old.x = bullet_loc.prev_x;
+		loc_old.y = bullet_loc.prev_y;
+		bulletType_t type = global_getAlienBulletType(i);
+		switch(type){
+		case CROSS_UP:
+			bitmap = bulletCrossUp_3x5;
+			old_bitmap = bulletCrossMid_3x5;
+			break;
+		case CROSS_DOWN:
+			bitmap = bulletCrossDown_3x5;
+			old_bitmap = bulletCrossMid_3x5;
+			break;
+		case CROSS_MID2UP:
+			bitmap = bulletCrossMid_3x5;
+			old_bitmap = bulletCrossDown_3x5;
+			break;
+		case CROSS_MID2DOWN:
+			bitmap = bulletCrossMid_3x5;
+			old_bitmap = bulletCrossUp_3x5;
+			break;
+		case LIGHTNING1:
+			bitmap = bulletLightningOne_3x5;
+			old_bitmap = bulletLightningTwo_3x5;
+			break;
+		case LIGHTNING2:
+			bitmap = bulletLightningTwo_3x5;
+			old_bitmap = bulletLightningOne_3x5;
+			break;
+		}
+
+		drawSprite(framePtr, old_bitmap, loc_old, ALIEN_BULLET_WIDTH, BULLET_HEIGHT, BACKGROUND_COLOR);
+		drawSprite(framePtr, bitmap, bullet_loc, ALIEN_BULLET_WIDTH, BULLET_HEIGHT, BULLET_COLOR);
+	}
 }
 
 void drawAliens(uint32_t* framePtr) {
@@ -548,6 +672,27 @@ void render_refreshAliens(uint32_t* framePtr) {
 			}
 		}
 	}
+}
+
+void render_eraseAlien(uint32_t* framePtr, uint8_t row, uint8_t col) {
+	const uint32_t* alien_bitmap;
+	point_t alien_block_pos = global_getAlienBlockPosition();
+	if(row == TOP_ALIEN_ROW) { // If we are drawing the top row...
+		// Check if the position is in or out and assign the appropriate bitmap
+		alien_bitmap = (global_isAlienPoseIn() ? alien_top_in_12x8 : alien_top_out_12x8);
+	}
+	else if(row >= MID_ALIEN_ROW && row < BOTTOM_ALIEN_ROW) { // If we are in the middle two rows...
+		// Check if the position is in or out and assign the appropriate bitmap
+		alien_bitmap = (global_isAlienPoseIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
+	}
+	else { // If we are in the bottom two rows
+		// Check if the position is in or out and assign the appropriate bitmap
+		alien_bitmap = (global_isAlienPoseIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
+	}
+	point_t alien_pos;
+	alien_pos.x = alien_block_pos.x + (col*ALIEN_X_SPACING); // Index off of the alien block position
+	alien_pos.y = alien_block_pos.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
+	drawSprite(framePtr, alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, BACKGROUND_COLOR);
 }
 
 void drawStatusBar(uint32_t* framePtr) {

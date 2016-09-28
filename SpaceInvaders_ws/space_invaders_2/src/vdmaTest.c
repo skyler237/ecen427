@@ -36,6 +36,12 @@ void print(char *str);
 #define FRAME_BUFFER_0_ADDR 0xC1000000  // Starting location in DDR where we will store the images that we display.
 #define MAX_SILLY_TIMER 10000000;
 
+#define ASCII_NUM_OFFSET 48
+
+#define BUNKER_BLOCKS 12
+#define ALIEN_COLS 11
+
+
 int main()
 {
 	init_platform();                   // Necessary for all programs.
@@ -142,13 +148,11 @@ int main()
 //    	 xil_printf("vdma parking failed\n\r");
      }
      // Oscillate between frame 0 and frame 1.
-     int sillyTimer = MAX_SILLY_TIMER;  // Just a cheap delay between frames.
      render_blankScreen(framePointer0);
      render_init(framePointer0);
+     control_init();
      char input;
      while (1) {
-    	 while (sillyTimer) sillyTimer--;    // Decrement the timer.
-    	 sillyTimer = MAX_SILLY_TIMER;       // Reset the timer.
          frameIndex = 0;  	// Only use frame0
 
          if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
@@ -156,18 +160,51 @@ int main()
          }
          input = getchar();
          uint8_t tank_diff = 4;
-         uint8_t alien_diff = 4;
+         uint8_t tens;
+         uint8_t ones;
          switch(input) {
+         case '3':
+        	 control_fireAlienBullet(framePointer0);
+        	 render_bullets(framePointer0);
+        	 break;
          case '4': //Move Left
         	 global_moveTank(-tank_diff, 0);
-        	 render_refresh(framePointer0);
+        	 render_refreshTank(framePointer0);
+        	 break;
+         case '5':
+        	 global_fireTankBullet();
+        	 render_bullets(framePointer0);
         	 break;
          case '6'://Move Right
         	 global_moveTank(tank_diff, 0);
-        	 render_refresh(framePointer0);
+        	 render_refreshTank(framePointer0);
+        	 break;
+         case '7':
+        	 input = getchar() - ASCII_NUM_OFFSET;
+        	 uint8_t i;
+        	 for(i=0; i < BUNKER_BLOCKS; i++) {
+        		 global_erodeBunkerBlock(input, i);
+        		 render_erodeBlock(framePointer0, input, i);
+        	 }
         	 break;
          case '8'://move Aliens
         	 control_updateAlienBlock(framePointer0);
+        	 break;
+
+         case '2':
+        	 tens = getchar() - ASCII_NUM_OFFSET;
+        	 ones = getchar() - ASCII_NUM_OFFSET;
+        	 input = 10*tens + ones;
+
+        	 uint8_t row = input / ALIEN_COLS;
+        	 uint8_t col = input % ALIEN_COLS;
+
+        	 global_killAlien(row, col);
+        	 render_eraseAlien(framePointer0, row, col);
+        	 break;
+         case '9':
+        	 control_manageBullets(framePointer0);
+        	 render_bullets(framePointer0);
         	 break;
          }
 

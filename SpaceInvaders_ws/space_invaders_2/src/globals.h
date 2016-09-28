@@ -25,14 +25,17 @@ void global_moveTank(int8_t dx, int8_t dy);
 point_t global_getTankPositionGlobal();
 
 void global_setTankBulletPosition(uint16_t x, uint16_t y);
+void global_moveTankBullet(int8_t dx, int8_t dy);
+void global_fireTankBullet();
 point_t global_getTankBulletPosition();
 
 void global_setAlienBlockPosition(uint16_t x, uint16_t y);
 void global_moveAlienBlock(uint16_t dx, uint16_t dy);
 point_t global_getAlienBlockPosition();
 
-void global_createAlienBullet(uint16_t x, uint16_t y); // Initializes a new alien bullet
+void global_createAlienBullet(uint8_t row, uint8_t col); // Initializes a new alien bullet
 void global_updateAlienBullet(uint8_t index, uint16_t x, uint16_t y); // Updates an existing alien bullet's position
+void global_moveAlienBullet(uint8_t index,int8_t dx, int8_t dy);
 bulletType_t global_getAlienBulletType(uint8_t index);
 point_t global_getAlienBulletPosition(uint8_t index);
 
