@@ -347,10 +347,49 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 	point_t index_pos;
 //	xil_printf("\n\nCall Entered");
 //	xil_printf("curr_x = %d, prev_x = %d\n\r", current_pos.x, current_pos.prev_x);
-	int row, col;
-		for(row=0; row < spriteHeight; row++) {
+	uint16_t row, col;
+	int8_t y_diff = current_pos.y - current_pos.prev_y;
+	uint8_t abs_y_diff = y_diff;
+	if (y_diff < 0) {
+		abs_y_diff = -y_diff;
+	}
+		for(row=0; row < spriteHeight + abs_y_diff; row++) {
+
 			int8_t diff = current_pos.x - current_pos.prev_x;
-			if(diff >= 0) {
+			if (y_diff != 0) {
+				if (y_diff > 0) {
+					if(row < spriteHeight) {
+						old_row = oldSpriteArray[row];
+					}
+					else {
+						old_row = 0;
+					}
+					if(row - y_diff >= 0) {
+						current_row = spriteArray[row - y_diff];
+					}
+					else {
+						current_row = 0;
+					}
+					index_pos.x = current_pos.prev_x;
+					index_pos.y = current_pos.prev_y;
+				}
+				else {
+					if(row < spriteHeight) {
+						current_row = spriteArray[row];
+					}
+					else {
+						current_row = 0;
+					}
+					if(row - y_diff >= 0) {
+						old_row = oldSpriteArray[row - y_diff];
+					}
+					else {
+						old_row = 0;
+					}
+					index_pos = current_pos;
+				}
+			}
+			else if(diff >= 0) {
 				current_row = spriteArray[row];
 				old_row = (oldSpriteArray[row] << diff);
 				index_pos.x = current_pos.prev_x;
