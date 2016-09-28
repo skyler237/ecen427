@@ -12,7 +12,7 @@
 #include <stdbool.h>
 
 #define OFF_SCREEN 700 //Denotes an off-screen point
-typedef struct {unsigned short x; unsigned short y; unsigned short prev_x; unsigned short prev_y;} point_t;
+typedef struct {int16_t x; int16_t y; int16_t prev_x; int16_t prev_y;} point_t;
 
 typedef enum { CROSS_UP, CROSS_DOWN, CROSS_MID2UP, CROSS_MID2DOWN, LIGHTNING1, LIGHTNING2 } bulletType_t;
 
@@ -28,6 +28,7 @@ void global_setTankBulletPosition(uint16_t x, uint16_t y);
 point_t global_getTankBulletPosition();
 
 void global_setAlienBlockPosition(uint16_t x, uint16_t y);
+void global_moveAlienBlock(uint16_t dx, uint16_t dy);
 point_t global_getAlienBlockPosition();
 
 void global_createAlienBullet(uint16_t x, uint16_t y); // Initializes a new alien bullet
@@ -43,7 +44,8 @@ void global_setBunkerPosition(uint8_t bunker_index, uint8_t x, uint8_t y);
 
 void global_killAlien(uint8_t row, uint8_t col);
 bool global_isAlienAlive(uint8_t row, uint8_t col);
-bool global_isAlienPosIn();
+bool global_isAlienPoseIn();
+void global_toggleAlienPose();
 
 void global_setLives(uint8_t lives);
 uint8_t global_getLives();

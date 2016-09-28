@@ -29,6 +29,7 @@
 #include "unistd.h"
 #include "render.h"
 #include "globals.h"
+#include "control.h"
 #define DEBUG
 void print(char *str);
 
@@ -155,14 +156,18 @@ int main()
          }
          input = getchar();
          uint8_t tank_diff = 4;
+         uint8_t alien_diff = 4;
          switch(input) {
-         case '4':
+         case '4': //Move Left
         	 global_moveTank(-tank_diff, 0);
         	 render_refresh(framePointer0);
         	 break;
-         case '6':
+         case '6'://Move Right
         	 global_moveTank(tank_diff, 0);
         	 render_refresh(framePointer0);
+        	 break;
+         case '8'://move Aliens
+        	 control_updateAlienBlock(framePointer0);
         	 break;
          }
 

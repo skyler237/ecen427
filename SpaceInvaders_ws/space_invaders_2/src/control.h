@@ -15,5 +15,7 @@ void control_moveTankLeft();
 
 void control_moveTankRight();
 
+void control_updateAlienBlock();
+
 
 #endif /* CONTROL_H_ */

@@ -345,35 +345,37 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 	uint32_t to_draw;
 	uint32_t to_erase;
 	point_t index_pos;
-	int8_t diff = current_pos.x - current_pos.prev_x;
-	xil_printf("\n\nCall Entered");
+//	xil_printf("\n\nCall Entered");
+//	xil_printf("curr_x = %d, prev_x = %d\n\r", current_pos.x, current_pos.prev_x);
 	int row, col;
 		for(row=0; row < spriteHeight; row++) {
+			int8_t diff = current_pos.x - current_pos.prev_x;
 			if(diff >= 0) {
 				current_row = spriteArray[row];
 				old_row = (oldSpriteArray[row] << diff);
-				index_pos = current_pos;
-			}
-			else {
-				old_row = oldSpriteArray[row];
-				current_row = (spriteArray[row] << diff);
 				index_pos.x = current_pos.prev_x;
 				index_pos.y = current_pos.prev_y;
 			}
-
+			else {
+				diff = -diff;
+				old_row = oldSpriteArray[row];
+				current_row = (spriteArray[row] << diff);
+				index_pos = current_pos;
+			}
+//			xil_printf("index_pos = %d\n\r", index_pos.x);
 			to_draw = current_row & ~old_row;
 			to_erase = old_row & ~current_row;
-			xil_printf("TO Draw: %d\n To Erase: %d\n", to_draw, to_erase );
+//			xil_printf("TO Draw: %d\n To Erase: %d\n", to_draw, to_erase );
 
 			for(col=0; col < (spriteWidth + diff); col++) {
 				uint32_t msb = 0x01 << (spriteWidth + diff - 1);
 				if(to_draw & (msb >> col)) {
 					writePixel(framePtr, row+index_pos.y, col+index_pos.x, sprite_color);
-					xil_printf("Printing pixel: row=%d,  col=%d\n\r", row+index_pos.x, col+index_pos.y);
+//					xil_printf("Printing pixel: row=%d,  col=%d\n\r", row+index_pos.x, col+index_pos.y);
 				}
 				if(to_erase & (msb >> col)) {
 					writePixel(framePtr, row+index_pos.y, col+index_pos.x, BACKGROUND_COLOR);
-					xil_printf("Erasing pixel: row=%d,  col=%d\n\r", row+index_pos.x, col+index_pos.y);
+//					xil_printf("Erasing pixel: row=%d,  col=%d\n\r", row+index_pos.x, col+index_pos.y);
 				}
 			}
 		}
@@ -398,7 +400,7 @@ void drawTank(uint32_t* framePtr) {
 	drawSprite(framePtr, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 }
 
-void refreshTank(uint32_t* framePtr) {
+void render_refreshTank(uint32_t* framePtr) {
 	point_t tank_pos = global_getTankPositionGlobal();
 	refreshSprite(framePtr, tank_15x8, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 }
@@ -449,15 +451,15 @@ void drawAliens(uint32_t* framePtr) {
 			if(global_isAlienAlive(row,col)) { // Check to see if the alien is still alive
 				if(row == TOP_ALIEN_ROW) { // If we are drawing the top row...
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (global_isAlienPosIn() ? alien_top_in_12x8 : alien_top_out_12x8);
+					alien_bitmap = (global_isAlienPoseIn() ? alien_top_in_12x8 : alien_top_out_12x8);
 				}
 				else if(row >= MID_ALIEN_ROW && row < BOTTOM_ALIEN_ROW) { // If we are in the middle two rows...
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (global_isAlienPosIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
+					alien_bitmap = (global_isAlienPoseIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
 				}
 				else { // If we are in the bottom two rows
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (global_isAlienPosIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
+					alien_bitmap = (global_isAlienPoseIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
 				}
 
 				// Calculate the particular alien position
@@ -471,34 +473,37 @@ void drawAliens(uint32_t* framePtr) {
 	}
 }
 
-void refreshAliens(uint32_t* framePtr) {
+void render_refreshAliens(uint32_t* framePtr) {
 	uint8_t row, col;
 	const uint32_t* alien_bitmap;
 	const uint32_t* old_alien_bitmap;
 	point_t alien_block_pos = global_getAlienBlockPosition();
+//	xil_printf("Alien_pos: x=%d, y=%d\n\r", alien_block_pos.x, alien_block_pos.y);
 	for(row=0; row < ALIEN_ROWS; row++) { // Iterate through the 5 rows
 		for(col=0; col < ALIEN_COLS; col++) { // Iterate through each of the 11 aliens on a row
 			if(global_isAlienAlive(row,col)) { // Check to see if the alien is still alive
 				if(row == TOP_ALIEN_ROW) { // If we are drawing the top row...
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (global_isAlienPosIn() ? alien_top_in_12x8 : alien_top_out_12x8);
-					old_alien_bitmap = (global_isAlienPosIn() ? alien_top_out_12x8 : alien_top_in_12x8);
+					alien_bitmap = (global_isAlienPoseIn() ? alien_top_in_12x8 : alien_top_out_12x8);
+					old_alien_bitmap = (global_isAlienPoseIn() ? alien_top_out_12x8 : alien_top_in_12x8);
 				}
 				else if(row >= MID_ALIEN_ROW && row < BOTTOM_ALIEN_ROW) { // If we are in the middle two rows...
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (global_isAlienPosIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
-					old_alien_bitmap = (global_isAlienPosIn() ? alien_middle_out_12x8 : alien_middle_in_12x8);
+					alien_bitmap = (global_isAlienPoseIn() ? alien_middle_in_12x8 : alien_middle_out_12x8);
+					old_alien_bitmap = (global_isAlienPoseIn() ? alien_middle_out_12x8 : alien_middle_in_12x8);
 				}
 				else { // If we are in the bottom two rows
 					// Check if the position is in or out and assign the appropriate bitmap
-					alien_bitmap = (global_isAlienPosIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
-					old_alien_bitmap = (global_isAlienPosIn() ? alien_bottom_out_12x8 : alien_bottom_in_12x8);
+					alien_bitmap = (global_isAlienPoseIn() ? alien_bottom_in_12x8 : alien_bottom_out_12x8);
+					old_alien_bitmap = (global_isAlienPoseIn() ? alien_bottom_out_12x8 : alien_bottom_in_12x8);
 				}
 
 				// Calculate the particular alien position
 				point_t alien_pos;
 				alien_pos.x = alien_block_pos.x + (col*ALIEN_X_SPACING); // Index off of the alien block position
 				alien_pos.y = alien_block_pos.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
+				alien_pos.prev_x = alien_block_pos.prev_x + (col*ALIEN_X_SPACING); // Index off of the alien block position
+				alien_pos.prev_y = alien_block_pos.prev_y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
 //				xil_printf("alien position: x=%d, y=%d\n\r", alien_pos.x, alien_pos.y);
 				refreshSprite(framePtr, alien_bitmap, old_alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
 			}
@@ -551,9 +556,9 @@ void render_init(uint32_t* framePtr) {
 }
 
 void render_refresh(uint32_t* framePtr) {
-	refreshTank(framePtr);
+	render_refreshTank(framePtr);
 //	refreshBunkers(framePtr);
-//	refreshAliens(framePtr);
+	render_refreshAliens(framePtr);
 
 //	refreshStatusBar(framePtr);
 }

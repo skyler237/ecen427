@@ -127,7 +127,7 @@ void global_setTankPositionGlobal(uint16_t x, uint16_t y) {
 	tankPosition.prev_x = tankPosition.x;
 	tankPosition.prev_y = tankPosition.y;
 	tankPosition.x = x;
-  tankPosition.y = y;
+	tankPosition.y = y;
 }
 
 void global_moveTank(int8_t dx, int8_t dy) {
@@ -155,6 +155,11 @@ void global_setAlienBlockPosition(uint16_t x, uint16_t y){
 	alienBlockPosition.x = x;
 	alienBlockPosition.y = y;
 }
+
+void global_moveAlienBlock(uint16_t dx, uint16_t dy){
+	global_setAlienBlockPosition(alienBlockPosition.x + dx, alienBlockPosition.y + dy);
+}
+
 point_t global_getAlienBlockPosition(){
 	return alienBlockPosition;
 }
@@ -225,8 +230,11 @@ bool global_isAlienAlive(uint8_t row, uint8_t col) {
 	return alien_row & (ALIEN_ROW_MSB >> col);
 }
 
-bool global_isAlienPosIn() {
+bool global_isAlienPoseIn() {
 	return alienPosIn;
+}
+void global_toggleAlienPose() {
+	alienPosIn = !alienPosIn;
 }
 
 void global_setLives(uint8_t lives){
