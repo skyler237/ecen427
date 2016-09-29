@@ -79,7 +79,7 @@ void init_bunker_blocks(uint8_t bunker_index){
 	point_t bunker_pos = bunkers[bunker_index].position;
 	
 	// Loop through the different blocks
-	int block_index; 
+	uint8_t block_index; 
 	for(block_index = 0; block_index < BUNKER_BLOCK_CNT; block_index++){
 		// Calculate the block offset based on the index 
 		bunkers[bunker_index].blocks[block_index].position.x = bunker_pos.x + BUNKER_BLOCK_SIZE*(block_index % BUNKER_BLOCK_COLS); // Get the x offset (col)
@@ -268,7 +268,7 @@ point_t global_getAlienBlockPosition(){
 */
 void global_createAlienBullet(uint8_t row, uint8_t col){
 	// Initializes a new alien bullet
-	int i = 0;
+	uint8_t i = 0;
 	bool created = false;
 	// Iterate through the bullets
 	while (!created && i < BULLET_COUNT) { // Keep looping until we have created, or until we have tried all bullets

@@ -356,7 +356,7 @@ void writePixel(uint32_t* framePtr, uint16_t row, uint16_t col, uint32_t color) 
  * Iterates through the entire screen, making all the pixels black
  */
 void render_blankScreen(uint32_t* framePtr) {
-	int row, col;
+	uint16_t row, col;
 	for(row=0; row < SCREEN_HEIGHT; row++) { // Iterate through rows
 		for(col=0; col < SCREEN_WIDTH; col++) { // Iterate through columns
 			writePixel(framePtr, row, col, BACKGROUND_COLOR); // Write black to the whole screen
@@ -370,7 +370,7 @@ void render_blankScreen(uint32_t* framePtr) {
  */
 void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
 	// Iterate through all rows of the sprite
-	int row, col;
+	uint8_t row, col;
 	for(row=0; row < spriteHeight; row++) {
 		// Extract a row from the bitmap
 		uint32_t sprite_row = spriteArray[row];
@@ -528,7 +528,7 @@ void render_refreshTank(uint32_t* framePtr) {
 */
 void drawBunkers(uint32_t* framePtr) {
 	// Iterate over bunkers
-	int bunker;
+	uint8_t bunker;
 	for(bunker = 0; bunker < BUNKER_COUNT; bunker++) {
 		// Get bunker position
 		point_t bunker_pos = global_getBunkerPosition(bunker);
