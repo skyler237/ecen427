@@ -38,9 +38,6 @@ void print(char *str);
 
 #define ASCII_NUM_OFFSET 48
 
-#define BUNKER_BLOCKS 12
-#define ALIEN_COLS 11
-
 
 int main()
 {
@@ -182,7 +179,7 @@ int main()
          case '7':
         	 input = getchar() - ASCII_NUM_OFFSET;
         	 uint8_t i;
-        	 for(i=0; i < BUNKER_BLOCKS; i++) {
+        	 for(i=0; i < BUNKER_BLOCK_CNT; i++) {
         		 global_erodeBunkerBlock(input, i);
         		 render_erodeBlock(framePointer0, input, i);
         	 }
