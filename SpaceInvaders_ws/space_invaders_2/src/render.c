@@ -303,15 +303,12 @@ static const uint32_t bulletLightningTwo_3x5[] =
 		packword3(0,1,0)
 };
 
-<<<<<<< HEAD
 #define FRAME_BUFFER_0_ADDR 0xC1000000
 #define EXPLOSION_DEFAULT -1
 
 static point_t explosion_location;
 static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 // Screen constants
 #define SCALING_CONST 2 // Scaling constant between game pixels and actual screen density
 #define LINE_WIDTH 640	// Number of screen pixels in one line
@@ -327,21 +324,14 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define MID_ALIEN_ROW 1			// Middle two rows starting index
 #define BOTTOM_ALIEN_ROW 3		// Bottow two rows starting index
 #define ALIEN_COLOR 0xFFFFFFFF	// Alien color
-<<<<<<< HEAD
 #define ALIEN_EXPLOSION_HEIGHT 10 //Height in pixels of the explosion sprite
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 #define TEXT_COLOR 0xFFFFFFFF	// General text color
 #define SCORE_TEXT_X 15			// Score text sprite x offset
 #define SCORE_TEXT_WIDTH 32		// Score text sprite width
 #define SCORE_TEXT_HEIGHT TEXT_HEIGHT	// Score text sprite height
 #define LIVES_TEXT_X (SCREEN_WIDTH*2/3)	// Lives text x offset
-<<<<<<< HEAD
 #define LIVES_TEXT_WIDTH 24		// Lives text sprite width
-=======
-#define LIVES_TEXT_WIDTH 24		// Lives text sprite width	
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 #define LIVES_TEXT_HEIGHT TEXT_HEIGHT	// Lives text sprite height
 #define TEXT_2_LIFE_SPACING 10	// Spacing from lives text to the first life sprite (tank)
 #define LIFE_2_LIFE_SPACING 5	// Spacing between life sprites (tanks)
@@ -372,11 +362,7 @@ void writePixel(uint16_t row, uint16_t col, uint32_t color) {
 /**
  * Iterates through the entire screen, making all the pixels black
  */
-<<<<<<< HEAD
 void render_blankScreen() {
-=======
-void render_blankScreen(uint32_t* framePtr) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	uint16_t row, col;
 	for(row=0; row < SCREEN_HEIGHT; row++) { // Iterate through rows
 		for(col=0; col < SCREEN_WIDTH; col++) { // Iterate through columns
@@ -389,11 +375,7 @@ void render_blankScreen(uint32_t* framePtr) {
  * Generic draw sprite function
  * @param spriteArray: a pointer to the sprite bitmap
  */
-<<<<<<< HEAD
 void drawSprite(const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
-=======
-void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	// Iterate through all rows of the sprite
 	uint8_t row, col;
 	for(row=0; row < spriteHeight; row++) {
@@ -406,11 +388,7 @@ void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_
 			// Check if the particular column is a 1
 			if(sprite_row & (msb >> col)) {
 				// If there is a 1, draw a pixel
-<<<<<<< HEAD
 				writePixel(row+sprite_pos.y, col+sprite_pos.x, sprite_color);
-=======
-				writePixel(framePtr, row+sprite_pos.y, col+sprite_pos.x, sprite_color);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 			}
 		}
 	}
@@ -422,39 +400,22 @@ void drawSprite(uint32_t* framePtr, const uint32_t* spriteArray, point_t sprite_
 * @param spriteArray: the sprite bitmap to be drawn
 * @param oldSpriteArray: the bitmap of the previous guise (to erase)
 */
-<<<<<<< HEAD
 void refreshSprite(const uint32_t* spriteArray, const uint32_t* oldSpriteArray, point_t current_pos,
 								uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
 
 	uint32_t current_row; // Holds the row we want to leave draw
 	uint32_t old_row;	// Holds the old row
-=======
-void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32_t* oldSpriteArray, point_t current_pos,
-								uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
-
-	uint32_t current_row; // Holds the row we want to leave draw
-	uint32_t old_row;	// Holds the old row 
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	uint32_t to_draw;	// Holds the new bits to be drawn
 	uint32_t to_erase;	// Holds the old bits to erase
  	point_t index_pos;	// Holds the upper left position from which we will calculate offsets
 
 	uint16_t row, col;
-<<<<<<< HEAD
 	int8_t y_diff = current_pos.y - current_pos.prev_y; // Calculate the y offset
 	uint8_t abs_y_diff = y_diff;
 	// Calculate the absolute value of the y difference
 	if (y_diff < 0) {
 		// If it's negative, switch it to positive
 		abs_y_diff = -y_diff;
-=======
-	int8_t y_diff = current_pos.y - current_pos.prev_y; // Calculate the y offset 
-	uint8_t abs_y_diff = y_diff; 
-	// Calculate the absolute value of the y difference
-	if (y_diff < 0) {
-		// If it's negative, switch it to positive
-		abs_y_diff = -y_diff; 
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	}
 
 	// Iterate over all the rows of the sprite
@@ -463,11 +424,7 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 		int8_t diff = current_pos.x - current_pos.prev_x;
 
 		// Handle case that there is a change in y
-<<<<<<< HEAD
 		if (y_diff != 0) {
-=======
-		if (y_diff != 0) {			
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 			if (y_diff > 0) { // If the move was downward (dy > 0)...
 
 				// Extract the old row
@@ -496,7 +453,6 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 				// Extract the current row
 				if(row < spriteHeight) { // If we are still within the bounds of the new sprite
 					current_row = spriteArray[row]; // just extract the row
-<<<<<<< HEAD
 				}
 				else { // Otherwise, we are past the new sprite
 					current_row = 0; // Set the current row to be empty
@@ -510,21 +466,6 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 					old_row = 0; // Set the old row to be empty
 				}
 
-=======
-				}
-				else { // Otherwise, we are past the new sprite
-					current_row = 0; // Set the current row to be empty
-				}
-
-				// Extract the old row
-				if(row - y_diff >= 0) { // If we aren't above the old sprite
-					old_row = oldSpriteArray[row - y_diff]; // Just extract the offset row
-				}
-				else { // We are above the old sprite
-					old_row = 0; // Set the old row to be empty
-				}
-
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 				// We want to index off of the new sprite position
 				index_pos = current_pos;
 			}
@@ -557,20 +498,12 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 			// If the column has a bit set in "to_draw" then draw a pixel there
 			if(to_draw & (msb >> col)) {
 				// Call wirte pixel function with sprite color
-<<<<<<< HEAD
 				writePixel(row+index_pos.y, col+index_pos.x, sprite_color);
-=======
-				writePixel(framePtr, row+index_pos.y, col+index_pos.x, sprite_color);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 			}
 			// If the column has a bit set in "to_erase" then draw the background
 			else if(to_erase & (msb >> col)) {
 				// Call wirte pixel function with background color
-<<<<<<< HEAD
 				writePixel(row+index_pos.y, col+index_pos.x, BACKGROUND_COLOR);
-=======
-				writePixel(framePtr, row+index_pos.y, col+index_pos.x, BACKGROUND_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 			}
 		}
 	}
@@ -580,58 +513,34 @@ void refreshSprite(uint32_t* framePtr, const uint32_t* spriteArray, const uint32
 /**
 * Draws the tank sprite (only used on to initialize)
 */
-<<<<<<< HEAD
 void drawTank() {
 	// Get the current position
 	point_t tank_pos = global_getTankPositionGlobal();
 	// Call the draw sprite function
 	drawSprite(tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
-=======
-void drawTank(uint32_t* framePtr) {
-	// Get the current position
-	point_t tank_pos = global_getTankPositionGlobal();
-	// Call the draw sprite function
-	drawSprite(framePtr, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 }
 
 /**
 * Refreshes the tank sprite
 */
-<<<<<<< HEAD
 void render_refreshTank() {
 	// Get the current position
 	point_t tank_pos = global_getTankPositionGlobal();
 	// Call the refresh sprite function
 	refreshSprite(tank_15x8, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
-=======
-void render_refreshTank(uint32_t* framePtr) {
-	// Get the current position
-	point_t tank_pos = global_getTankPositionGlobal();
-	// Call the refresh sprite function
-	refreshSprite(framePtr, tank_15x8, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 }
 
 /**
 * Draws the bunkers (only used at init)
 */
-<<<<<<< HEAD
 void drawBunkers() {
-=======
-void drawBunkers(uint32_t* framePtr) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	// Iterate over bunkers
 	uint8_t bunker;
 	for(bunker = 0; bunker < BUNKER_COUNT; bunker++) {
 		// Get bunker position
 		point_t bunker_pos = global_getBunkerPosition(bunker);
 		// Draw the full bunker sprite
-<<<<<<< HEAD
 		drawSprite(bunker_24x18, bunker_pos, BUNKER_WIDTH, BUNKER_HEIGHT, BUNKER_COLOR);
-=======
-		drawSprite(framePtr, bunker_24x18, bunker_pos, BUNKER_WIDTH, BUNKER_HEIGHT, BUNKER_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	}
 }
 
@@ -639,20 +548,12 @@ void drawBunkers(uint32_t* framePtr) {
 * Updates a block to reflect an increased erosion state
 * -- NOTE: this does not actually changed the erosion state of any blocks
 */
-<<<<<<< HEAD
 void render_erodeBlock(uint8_t bunker, uint8_t block_index) {
-=======
-void render_erodeBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	// Get the block position
 	point_t block_pos = global_getBlockPosition(bunker, block_index);
 	// Get the current erosion state
 	erosionState_t block_state = global_getBlockState(bunker, block_index);
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	// Use a switch to determine the appropriate bitmap
 	const uint32_t* block_bitmap;
 	switch(block_state) {
@@ -689,7 +590,6 @@ void render_erodeBlock(uint32_t* framePtr, uint8_t bunker, uint8_t block_index) 
 			// If the selected row should be erased...
 			if(to_erase & (msb >> col)) {
 				// Write the background color to that pixel
-<<<<<<< HEAD
 				writePixel(row+block_pos.y, col+block_pos.x, BACKGROUND_COLOR);
 			}
 		}
@@ -766,84 +666,6 @@ void render_bullets() {
 * Draws all the aliens which are still alive -- only called at init
 */
 void drawAliens() {
-=======
-				writePixel(framePtr, row+block_pos.y, col+block_pos.x, BACKGROUND_COLOR);
-			}
-		}
-	}
-}
-
-/**
-* Refreshes the bullet sprites
-*/
-void render_bullets(uint32_t* framePtr) {
-	// Get the tank bullet position
-	point_t tank_bullet = global_getTankBulletPosition(); 
-	// Get the previous position
-	point_t tank_bullet_prev; 
-	tank_bullet_prev.x = tank_bullet.prev_x;
-	tank_bullet_prev.y = tank_bullet.prev_y;
-
-	// Erase the previous bullet
-	drawSprite(framePtr, tankBullet_1x5, tank_bullet_prev, TANK_BULLET_WIDTH, BULLET_HEIGHT, BACKGROUND_COLOR);
-	// Draw the new one
-	drawSprite(framePtr, tankBullet_1x5, tank_bullet, TANK_BULLET_WIDTH, BULLET_HEIGHT, BULLET_COLOR);
-
-	// Loop through the alien bullets
-	uint8_t i;
-	for(i = 0; i < BULLET_COUNT; i++){
-		const uint32_t* bitmap; // Stores current bullet bitmap
-		const uint32_t* old_bitmap; // Stores the old bullet bitmap
-
-		// Get the current position of the bullet
-		point_t bullet_loc = global_getAlienBulletPosition(i);
-		// Get the old position of the bullet
-		point_t loc_old;
-		loc_old.x = bullet_loc.prev_x;
-		loc_old.y = bullet_loc.prev_y;
-		// Get the bullet type
-		bulletType_t type = global_getAlienBulletType(i);
-
-		// Depending on the type, determine both the current and previous bitmaps
-		switch(type){
-		case CROSS_UP:			// For the CROSS_UP position,
-			bitmap = bulletCrossUp_3x5;			// The current sprite is CROSS_UP
-			old_bitmap = bulletCrossMid_3x5;	// The previous sprite was CROSS_MID
-			break;
-		case CROSS_DOWN:		// For the CROSS_DOWN position,
-			bitmap = bulletCrossDown_3x5;		// The current sprite is CROSS_DOWN
-			old_bitmap = bulletCrossMid_3x5;	// The previous sprite was CROSS_MID
-			break;
-		case CROSS_MID2UP:		// For the CROSS_MID2UP position,
-			bitmap = bulletCrossMid_3x5;		// The current sprite is CROSS_MID2UP
-			old_bitmap = bulletCrossDown_3x5;	// The previous sprite was CROSS_DOWN
-			break;
-		case CROSS_MID2DOWN:	// For the CROSS_MID2DOWN position,
-			bitmap = bulletCrossMid_3x5;		// The current sprite is CROSS_MID2DOWN
-			old_bitmap = bulletCrossUp_3x5;		// The previous sprite was CROSS_UP
-			break;
-		case LIGHTNING1:		// For the LIGHTNING1 position,
-			bitmap = bulletLightningOne_3x5;		// The current sprite is LIGHTNING1
-			old_bitmap = bulletLightningTwo_3x5;	// The previous sprite was LIGHTNING2
-			break;
-		case LIGHTNING2:		// For the LIGHTNING2 position,
-			bitmap = bulletLightningTwo_3x5;		// The current sprite is LIGHTNING2
-			old_bitmap = bulletLightningOne_3x5;	// The previous sprite was LIGHTNING1
-			break;
-		}
-
-		// Erase the old sprite
-		drawSprite(framePtr, old_bitmap, loc_old, ALIEN_BULLET_WIDTH, BULLET_HEIGHT, BACKGROUND_COLOR);
-		// Draw the new one!
-		drawSprite(framePtr, bitmap, bullet_loc, ALIEN_BULLET_WIDTH, BULLET_HEIGHT, BULLET_COLOR);
-	}
-}
-
-/**
-* Draws all the aliens which are still alive -- only called at init
-*/
-void drawAliens(uint32_t* framePtr) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	uint8_t row, col;
 	const uint32_t* alien_bitmap;
 	// Get the alien block position (upper left)
@@ -870,11 +692,7 @@ void drawAliens(uint32_t* framePtr) {
 				alien_pos.y = alien_block_pos.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
 
 				// Draw the apporpriate sprite
-<<<<<<< HEAD
 				drawSprite(alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
-=======
-				drawSprite(framePtr, alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 			}
 		}
 	}
@@ -883,11 +701,7 @@ void drawAliens(uint32_t* framePtr) {
 /**
 * Refreshes all the alien sprites
 */
-<<<<<<< HEAD
 void render_refreshAliens() {
-=======
-void render_refreshAliens(uint32_t* framePtr) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	uint8_t row, col;
 	const uint32_t* alien_bitmap; // Stores the new alien bitmap
 	const uint32_t* old_alien_bitmap; // Stores the old alien bitmap
@@ -919,25 +733,14 @@ void render_refreshAliens(uint32_t* framePtr) {
 				alien_pos.prev_y = alien_block_pos.prev_y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
 
 				// Call the refresh sprite function for this alien
-<<<<<<< HEAD
 				refreshSprite(alien_bitmap, old_alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
-=======
-				refreshSprite(framePtr, alien_bitmap, old_alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 			}
 		}
 	}
 }
 
-<<<<<<< HEAD
 //Draws the alien explosion
 void render_killAlien(uint8_t row, uint8_t col){
-=======
-/**
-* Erases a given alien
-*/
-void render_eraseAlien(uint32_t* framePtr, uint8_t row, uint8_t col) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	const uint32_t* alien_bitmap;
 
 	// Get the alien block position
@@ -960,7 +763,6 @@ void render_eraseAlien(uint32_t* framePtr, uint8_t row, uint8_t col) {
 	alien_pos.y = alien_block_pos.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
 
 	// Draw over the alien with the background color (erase it)
-<<<<<<< HEAD
 	drawSprite(alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, BACKGROUND_COLOR);
 
 	// Draw over the alien with the background color (erase it)
@@ -974,29 +776,18 @@ void render_eraseAlien(uint32_t* framePtr, uint8_t row, uint8_t col) {
 */
 void render_eraseAlien(uint8_t row, uint8_t col) {
 	drawSprite(alien_explosion_12x10, explosion_location, ALIEN_WIDTH, ALIEN_EXPLOSION_HEIGHT, BACKGROUND_COLOR);
-=======
-	drawSprite(framePtr, alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, BACKGROUND_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 }
 
 /**
 * Draws the status bar
 */
-<<<<<<< HEAD
 void drawStatusBar() {
-=======
-void drawStatusBar(uint32_t* framePtr) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	// Set the score position
 	point_t score_pos;
 	score_pos.x = SCORE_TEXT_X;
 	score_pos.y = STATUS_BAR_Y;
 	// Draw the score text sprite
-<<<<<<< HEAD
 	drawSprite(scoreText_32x5, score_pos, SCORE_TEXT_WIDTH, SCORE_TEXT_HEIGHT, TEXT_COLOR);
-=======
-	drawSprite(framePtr, scoreText_32x5, score_pos, SCORE_TEXT_WIDTH, SCORE_TEXT_HEIGHT, TEXT_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 
 	// Set the lives text position
@@ -1004,11 +795,7 @@ void drawStatusBar(uint32_t* framePtr) {
 	lives_pos.x = LIVES_TEXT_X;
 	lives_pos.y = STATUS_BAR_Y;
 	// Draw the lives text sprite
-<<<<<<< HEAD
 	drawSprite(livesText_24x5, lives_pos, LIVES_TEXT_WIDTH, LIVES_TEXT_HEIGHT, TEXT_COLOR);
-=======
-	drawSprite(framePtr, livesText_24x5, lives_pos, LIVES_TEXT_WIDTH, LIVES_TEXT_HEIGHT, TEXT_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 	// Get the current score
 	uint16_t score = global_getScore();
@@ -1025,11 +812,7 @@ void drawStatusBar(uint32_t* framePtr) {
 		life_pos.y = (STATUS_BAR_Y - LIFE_TANK_OFFSET); // Align the bottom of the tank with the bottom of the text
 
 		// Draw a tank to represent a life
-<<<<<<< HEAD
 		drawSprite(tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
-=======
-		drawSprite(framePtr, tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	}
 
 }
@@ -1037,27 +820,18 @@ void drawStatusBar(uint32_t* framePtr) {
 /**
 * Draws the base line
 */
-<<<<<<< HEAD
 void drawBaseLine() {
-=======
-void drawBaseLine(uint32_t* framePtr) {
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	// Loop over the whole screen (left to right)
 	uint16_t i;
 	for(i=0; i < SCREEN_WIDTH; i++) {
 		// At the given y-value, draw each pixel, making a solid line across the screen
-<<<<<<< HEAD
 		writePixel(BASE_LINE_Y, i, BASE_LINE_COLOR);
-=======
-		writePixel(framePtr, BASE_LINE_Y, i, BASE_LINE_COLOR);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 	}
 }
 
 /**
 * Initializes all the sprites
 */
-<<<<<<< HEAD
 void render_init() {
 	// Initialize position and values
 	globals_init();
@@ -1072,20 +846,6 @@ void render_init() {
 	drawStatusBar(); // Draw the status bar
 	drawBaseLine(); // Draw the base line
 }
-=======
-void render_init(uint32_t* framePtr) {
-	// Initialize position and values
-	globals_init();
-
-	drawTank(framePtr); // Draw the tank
-	drawBunkers(framePtr); // Draw the bunkers
-	drawAliens(framePtr); // Draw the aliens
-
-	drawStatusBar(framePtr); // Draw the status bar
-	drawBaseLine(framePtr); // Draw the base line
-}
-
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 
 

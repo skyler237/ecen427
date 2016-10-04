@@ -17,13 +17,10 @@
 //				Global constants
 //===================================================
 
-<<<<<<< HEAD
 // Init value constants
 #define TANK_INIT_X ((SCREEN_WIDTH - TANK_WIDTH)/2)				// Tank initial x position
 #define TANK_INIT_Y (SCREEN_HEIGHT -20)							// Tank initial y position
 
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 // Screen constants
 #define SCREEN_WIDTH 320	// Screen width in game pixels
 #define SCREEN_HEIGHT 240	// Screen height in game pixels
@@ -37,18 +34,14 @@
 #define ALIEN_HEIGHT 8		// Alien sprite height
 #define ALIEN_X_SPACING (ALIEN_WIDTH + 4)	// Difference in x from one alien position to the next
 #define ALIEN_Y_SPACING (ALIEN_HEIGHT + 6)	// Difference in y from one alien position to the next
-<<<<<<< HEAD
 #define ALIEN_BLOCK_WIDTH (ALIEN_X_SPACING*ALIEN_COLS - 4)	// Total width of the alien block
 #define ALIEN_BLOCK_HEIGHT (ALIEN_Y_SPACING*ALIEN_ROWS - 6)	// Total height of the alien block
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 // Tank constants
 #define TANK_WIDTH 15		// Tank sprite width
 #define TANK_HEIGHT 8		// Tank sprite height
 
 // Bunker constants
-<<<<<<< HEAD
 #define BUNKER_0 0	// Bunker index values
 #define BUNKER_1 1
 #define BUNKER_2 2
@@ -60,19 +53,14 @@
 #define BUNKER_2_X (SCREEN_WIDTH/4*2.5 - BUNKER_WIDTH/2)	// Bunker 2 initial x position
 #define BUNKER_3_X (SCREEN_WIDTH/4*3.5 - BUNKER_WIDTH/2)	// Bunker 3 initial x position
 #define BUNKER_Y (TANK_INIT_Y - 40)		// All bunkers initial y value
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 #define BUNKER_WIDTH 24		// Full bunker sprite width
 #define BUNKER_HEIGHT 18	// Full bunker sprite height
 #define BUNKER_COUNT 4		// Number of bunkers in the game
 #define BUNKER_BLOCK_CNT 12 // Really only 10, but blocks 9 and 10 (0 indexed) are initialized to dead
 #define BUNKER_BLOCK_SIZE 6	// Size of a bunker block (in pixels) - width = height = size
-<<<<<<< HEAD
 // These two blocks are set as "invisible" -- using 12 blocks makes indexing easier
 #define INVISIBLE_BLOCK_1 9	 // These blocks will always be set to DEAD
 #define INVISIBLE_BLOCK_2 10
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 // Bullet constants
 #define BULLET_HEIGHT 5		// Height of bullet sprite
@@ -99,11 +87,7 @@ typedef enum  {WHOLE, HIT1, HIT2, HIT3, DEAD} erosionState_t;
 void globals_init();
 
 // Sets the tank position and updates previous position
-<<<<<<< HEAD
 void global_setTankPositionGlobal(int16_t x, int16_t y);
-=======
-void global_setTankPositionGlobal(uint16_t x, uint16_t y);
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 // Moves the tank by dx and dy
 void global_moveTank(int8_t dx, int8_t dy);
 // Returns the tank position point
@@ -136,11 +120,7 @@ point_t global_getAlienBulletPosition(uint8_t index);
 
 // Increases the erosion state of a given block
 void global_erodeBunkerBlock(uint8_t bunker_index, uint8_t block_index);
-<<<<<<< HEAD
 // Returns the erosion state of the given block
-=======
-// Returns the erosion state of the given block 
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 erosionState_t global_getBlockState(uint8_t bunker_index, uint8_t block_index);
 // Returns the bunker block position of the given block
 point_t global_getBlockPosition(uint8_t bunker_index, uint8_t block_index);

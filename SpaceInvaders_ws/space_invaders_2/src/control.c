@@ -102,7 +102,6 @@ void control_updateAlienBlock(uint32_t* framePtr) {
 }
 
 /**
-<<<<<<< HEAD
  * Check for collision with aliens and kill if needed
  */
 void control_checkTankBulletAlienCollision(point_t bulletPoint) {
@@ -196,21 +195,15 @@ void control_checkTankBulletBunkerCollision(point_t bulletPoint) {
 
 /**
 * Update all the bullets
-=======
-* Update all the bullets 
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 */
 void control_manageBullets(uint32_t* framePtr) {
 	// Move the tank bullet upward
 	global_moveTankBullet(0, -BULLET_SPEED);
-<<<<<<< HEAD
 	point_t bulletPoint = global_getTankBulletPosition();
 	// Check for collision with aliens and kill if needed
 	control_checkTankBulletAlienCollision(bulletPoint);
 	// Check for collision with bunker and erode if needed
 	control_checkTankBulletBunkerCollision(bulletPoint);
-=======
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 
 	// Iterate through all alien bullets
 	uint8_t i;
@@ -229,11 +222,7 @@ void control_fireAlienBullet(uint32_t* framePtr) {
 	// Assume that the current column is empty
 	bool column_empty = true;
 	while(column_empty) { // Keep looping until we find a non-empty column
-<<<<<<< HEAD
 		col = rand() % ALIEN_COLS; // Choose a random column
-=======
-		col = rand() % ALIEN_COL_COUNT; // Choose a random column
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 		row = ALIEN_ROW_MAX; // Start at the bottom row of aliens
 
 		while(row >= 0 && column_empty) { // Look through all possible rows until we find an existing alien
