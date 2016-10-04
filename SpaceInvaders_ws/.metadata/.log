@@ -1391,13 +1391,18 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.osgi 2 1 2016-09-27 17:55:28.996
 !MESSAGE NLS missing message: RenameCSourceFolderChange_ErroMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
+<<<<<<< HEAD
 !SESSION 2016-09-28 07:04:49.761 -----------------------------------------------
+=======
+!SESSION 2016-09-28 07:09:39.259 -----------------------------------------------
+>>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 eclipse.buildId=Release 13.4 Build SDK_O.87xd
 java.version=1.6.0_21
 java.vendor=Sun Microsystems Inc.
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.resources 2 10035 2016-09-28 07:05:06.391
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 !SESSION 2016-10-03 17:07:09.041 -----------------------------------------------
@@ -1432,4 +1437,10 @@ C Model Exception: C Model Status [Element control.c does not exist.]
 !MESSAGE NLS unused message: RenameCSourceFolderChange_ErrorMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
 
 !ENTRY org.eclipse.osgi 2 1 2016-10-03 18:33:19.914
+=======
+!ENTRY org.eclipse.osgi 2 1 2016-09-28 07:27:40.847
+!MESSAGE NLS unused message: RenameCSourceFolderChange_ErrorMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-09-28 07:27:40.847
+>>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 !MESSAGE NLS missing message: RenameCSourceFolderChange_ErroMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages

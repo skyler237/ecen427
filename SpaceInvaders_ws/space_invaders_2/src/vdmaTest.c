@@ -159,7 +159,11 @@ int main()
         	 uint8_t i;
         	 for(i=0; i < BUNKER_BLOCK_CNT; i++) {
         		 global_erodeBunkerBlock(input, i);
+<<<<<<< HEAD
         		 render_erodeBlock(input, i);
+=======
+        		 render_erodeBlock(framePointer0, input, i);
+>>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
         	 }
         	 break;
 
@@ -176,7 +180,11 @@ int main()
         	 uint8_t col = input % ALIEN_COLS;
 
         	 global_killAlien(row, col);
+<<<<<<< HEAD
 //        	 render_eraseAlien(row, col);
+=======
+        	 render_eraseAlien(framePointer0, row, col);
+>>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
         	 break;
 
          case '9': // Update bullets
