@@ -13,13 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="uint32_t" key="selection"/>
+		<item value="IsR" key="selection"/>
 		<list key="findhistory">
-			<item value="unsigned int"/>
-			<item value="unsigned int*"/>
-			<item value="static const int"/>
-			<item value="tank_15x8"/>
-			<item value="XAxiVdma_LookupConfig"/>
+			<item value="ISR"/>
+			<item value="XGpio"/>
+			<item value="XIntc_AckIntr"/>
+			<item value="subroutine"/>
+			<item value=".rodata"/>
+			<item value=".heap"/>
+			<item value=".stack"/>
+			<item value="nop"/>
 		</list>
 		<list key="replacehistory">
 			<item value="uint32_t"/>

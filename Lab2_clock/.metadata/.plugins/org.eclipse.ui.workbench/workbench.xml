@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="21" version="2.0">
+<workbench progressCount="20" version="2.0">
 <workbenchAdvisor/>
-<window height="1160" width="1724" x="0" y="0">
+<window height="1160" width="1724" x="59" y="10">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -20,6 +20,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -31,21 +32,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="com.xilinx.sdk.hw.ui.HwSpecXMLEditor" name="system.xml" partName="system.xml" path="C:/Users/superman/ecen427/Lab2_clock/Lab2_clock_hw_platform/system.xml" title="system.xml" tooltip="Lab2_clock_hw_platform/system.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lab2_clock_hw_platform/system.xml"/>
-</editor>
-<editor id="com.xilinx.sdk.sw.MSSEditor" name="system.mss" partName="system.mss" path="C:/Users/superman/ecen427/Lab2_clock/real_time_clock_bsp_0/system.mss" title="system.mss" tooltip="real_time_clock_bsp_0/system.mss" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/real_time_clock_bsp_0/system.mss"/>
-</editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="real_time_clock.c" partName="real_time_clock.c" path="C:/Users/superman/Documents/ecen427/Lab2_clock/real_time_clock/src/real_time_clock.c" title="real_time_clock.c" tooltip="real_time_clock/src/real_time_clock.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/real_time_clock/src/real_time_clock.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="14852" selectionOffset="0" selectionTopPixel="4998"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1333" selectionTopPixel="187"/>
 </editor>
 </editors>
 <views>
@@ -60,7 +53,7 @@
 <expanded>
 <category IMemento.internal.id="Errors"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
+<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="557"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -155,7 +148,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.7496136" ratioLeft="485" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.5028958" ratioLeft="521" ratioRight="515" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -190,152 +183,154 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.hw.ui.HwSpecXMLEditor" path="/Lab2_clock_hw_platform/system.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" path="/real_time_clock_bsp_0/system.mss"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/real_time_clock/src/helloworld.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/real_time_clock/src/real_time_clock.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/real_time_clock/Debug/real_time_clock.elf.size"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/real_time_clock/Debug/real_time_clock.elf.elfcheck"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" path="/real_time_clock_bsp_0/system.mss"/>
 </editors>
-<item historyLabel="system.mss" index="1"/>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="real_time_clock.c" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="real_time_clock.c" index="3">
-<position info="not_deleted" x="906" y="0"/>
-</item>
-<item historyLabel="real_time_clock.c" index="3">
-<position info="not_deleted" x="6809" y="0"/>
-</item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="1511" y="22"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="1434" y="20"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="3963" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="4674" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="4696" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6565" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6973" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5482" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5510" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5511" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5534" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="2324" y="0"/>
 </item>
 <item historyLabel="system.mss" index="1"/>
 <item historyLabel="system.xml" index="0"/>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="2322" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5355" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6276" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6740" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6646" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6673" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5885" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6267" y="55"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="5750" y="67"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6124" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6274" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6577" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="2494" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="6198" y="64"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position info="not_deleted" x="7520" y="0"/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
 </item>
-<item active="true" historyLabel="real_time_clock.c" index="3">
+<item historyLabel="real_time_clock.c" index="2">
 <position/>
+</item>
+<item historyLabel="real_time_clock.elf.size" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="real_time_clock.elf.elfcheck" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="real_time_clock.c" index="2">
+<position info="not_deleted" x="1333" y="0"/>
+</item>
+<item historyLabel="system.mss" index="5"/>
+<item active="true" historyLabel="real_time_clock.c" index="2">
+<position info="not_deleted" x="1333" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

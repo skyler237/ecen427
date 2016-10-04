@@ -10,11 +10,22 @@
 
 #include <stdint.h>
 
-void render_blankScreen(uint32_t* framePtr);
-void render_refreshTank(uint32_t* framePtr);
-void render_refreshAliens(uint32_t* framePtr);
+// Draws the backround color to the whole screen
+void render_blankScreen();
+// Refreshes the tank sprite
+void render_refreshTank();
+// Refreshes the alien sprites
+void render_refreshAliens();
+// Erases the given alien sprite
+void render_eraseAlien(uint8_t row, uint8_t col);
+// Updates a block to reflect an increased erosion state -- doesn't actually cause the erosion
+void render_erodeBlock(uint8_t bunker, uint8_t block_index);
+// Renders all the current bullets
+void render_bullets();
+//Draws the alien explosion
+void render_killAlien(uint8_t row, uint8_t col);
 
-void render_init(uint32_t* framePtr);
-void render_refresh(uint32_t* framePtr);
+// Initializes all the sprites. Also draws the status bar and sprites
+void render_init();
 
 #endif /* RENDER_H_ */

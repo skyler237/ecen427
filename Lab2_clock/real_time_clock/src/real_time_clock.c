@@ -223,7 +223,7 @@ void timer_interrupt_handler() {
 
 
 				// Update the time display
-				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+//				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
 			}
 
 		}
@@ -268,7 +268,7 @@ void timer_interrupt_handler() {
 				// Increment past max so we don't register continuous presses
 				upBtnDebounceCounter++;
 				// Update the time display
-				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+//				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
 			}
 		}
 	}
@@ -290,7 +290,7 @@ void timer_interrupt_handler() {
 				}
 			}
 			// Update clock display
-			xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+//			xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
 
 			// Reset second counter
 			secondCounter = SEC_VALUE_MIN;
