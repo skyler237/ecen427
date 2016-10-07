@@ -23,7 +23,7 @@ WARNING:EDK - INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable
    qualify for Xilinx software updates or new releases.
 
 
-Parse C:/Users/superman/Documents/ecen427/SpaceInvadersHW/system.mhs ...
+Parse C:/Users/superman/Documents/skyand/ecen427/SpaceInvadersHW/system.mhs ...
 
 Read MPD definitions ...
 WARNING:EDK:3605 - Use of the repository located at
@@ -124,7 +124,8 @@ WARNING:EDK:4180 - PORT: bscan_tdo1, CONNECTOR: bscan_tdo1 - No driver found.
    _v2_1_0.mpd line 239 
 WARNING:EDK:4181 - PORT: axi4lite_0_M_AXI_ACLK_pin, CONNECTOR: axi4lite_0_M_ACLK
    - floating connection -
-   C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 39 
+   C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 39
+    
 WARNING:EDK:4181 - PORT: bscan_tdi, CONNECTOR: bscan_tdi - floating connection -
    C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
    _v2_1_0.mpd line 232 
@@ -166,7 +167,8 @@ WARNING:EDK:4181 - PORT: s2mm_prmry_reset_out_n, CONNECTOR: S2MM_RESET_OUT_N -
    a\axi_vdma_v2_1_0.mpd line 224 
 WARNING:EDK:4181 - PORT: M_AXIS_S2MM_ACLK, CONNECTOR: M_AXIS_S2MM_ACLK_int -
    floating connection -
-   C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 229 
+   C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line
+   229 
 
 Performing Clock DRCs...
 
@@ -298,66 +300,66 @@ Managing hardware (BBD-specified) netlist files ...
 
 Managing cache ...
 IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 65 - Copying
-cache implementation netlist
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 65 -
+Copying cache implementation netlist
 IPNAME:lmb_v10 INSTANCE:microblaze_0_ilmb -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 78 - Copying
-cache implementation netlist
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 78 -
+Copying cache implementation netlist
 IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_i_bram_ctrl -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 85 - Copying
-cache implementation netlist
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 85 -
+Copying cache implementation netlist
 IPNAME:lmb_v10 INSTANCE:microblaze_0_dlmb -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 94 - Copying
-cache implementation netlist
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 94 -
+Copying cache implementation netlist
 IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_d_bram_ctrl -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 101 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 101 -
 Copying cache implementation netlist
 IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 110 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 110 -
 Copying cache implementation netlist
 IPNAME:microblaze INSTANCE:microblaze_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 117 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 117 -
 Copying cache implementation netlist
 IPNAME:mdm INSTANCE:debug_module -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 144 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 144 -
 Copying cache implementation netlist
 IPNAME:axi_vdma INSTANCE:axi_vdma_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 179 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 179 -
 Copying cache implementation netlist
 IPNAME:axi_hdmi INSTANCE:axi_hdmi_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 199 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 199 -
 Copying cache implementation netlist
 IPNAME:axi_ac97 INSTANCE:axi_ac97_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 233 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 233 -
 Copying cache implementation netlist
 IPNAME:axi_interconnect INSTANCE:axi4lite_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 248 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 248 -
 Copying cache implementation netlist
 IPNAME:axi_interconnect INSTANCE:axi4_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 256 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 256 -
 Copying cache implementation netlist
 IPNAME:axi_uartlite INSTANCE:rs232_uart_1 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 263 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 263 -
 Copying cache implementation netlist
 IPNAME:axi_s6_ddrx INSTANCE:mcb_ddr2 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 278 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 278 -
 Copying cache implementation netlist
 IPNAME:d_qspi_axi INSTANCE:digilent_quadspi_cntlr -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 326 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 326 -
 Copying cache implementation netlist
 IPNAME:axi_intc INSTANCE:axi_intc_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 338 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 338 -
 Copying cache implementation netlist
 IPNAME:axi_timer INSTANCE:axi_timer_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 348 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 348 -
 Copying cache implementation netlist
 
 Elaborating instances ...
 IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 110 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 110 -
 elaborating IP
 IPNAME:clock_generator INSTANCE:clock_generator_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 157 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 157 -
 elaborating IP
 ClkGen elaborate status: PASSED
 ----------------------------------------
@@ -368,7 +370,7 @@ Inserting wrapper level ...
 Completion time: 0.00 seconds
 
 Constructing platform-level connectivity ...
-Completion time: 1.00 seconds
+Completion time: 0.00 seconds
 
 Writing (top-level) BMM ...
 
@@ -382,15 +384,15 @@ INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
    IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
    synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
 INSTANCE:clock_generator_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 157 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 157 -
 Running XST synthesis
 INSTANCE:axi_ac97_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 233 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 233 -
 Running XST synthesis
 
 Running NGCBUILD ...
 IPNAME:clock_generator_0_wrapper INSTANCE:clock_generator_0 -
-C:\Users\superman\Documents\ecen427\SpaceInvadersHW\system.mhs line 157 -
+C:\Users\superman\Documents\skyand\ecen427\SpaceInvadersHW\system.mhs line 157 -
 Running NGCBUILD
 INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
    If any constraint needs to be overridden, this should be done by modifying
@@ -398,4 +400,4 @@ INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
 
 Rebuilding cache ...
 
-Total run time: 23.00 seconds
+Total run time: 30.00 seconds
