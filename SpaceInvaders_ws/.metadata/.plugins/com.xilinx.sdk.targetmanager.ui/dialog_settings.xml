@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-<<<<<<< HEAD
 	<item value="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\SpaceInvadersHW_hw_platform\system.bit" key="SpaceInvadersHW_hw_platform-bitFile"/>
 	<item value="bootloop" key="SpaceInvadersHW_hw_platform-microblaze_0-initElf"/>
 	<item value="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws\SpaceInvadersHW_hw_platform\system_bd.bmm" key="SpaceInvadersHW_hw_platform-bmmFile"/>
-=======
-	<item value="C:\Users\superman\Documents\skyand\ecen427\SpaceInvaders_ws\SpaceInvadersHW_hw_platform\system.bit" key="SpaceInvadersHW_hw_platform-bitFile"/>
-	<item value="bootloop" key="SpaceInvadersHW_hw_platform-microblaze_0-initElf"/>
-	<item value="C:\Users\superman\Documents\skyand\ecen427\SpaceInvaders_ws\SpaceInvadersHW_hw_platform\system_bd.bmm" key="SpaceInvadersHW_hw_platform-bmmFile"/>
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 </section>

@@ -5,6 +5,7 @@
 	<section name="completion_proposal_size">
 	</section>
 	<section name="CRenameRefactoringInputPage">
+		<item value="false" key="preprocessor"/>
 		<item value="false" key="macroDefinition"/>
 		<item value="3" key="scope"/>
 		<item value="false" key="comment"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="C:\Users\superman\Documents\ecen427\Lab2_clock\Lab2_clock_hw_platform\system.bit" key="Lab2_clock_hw_platform-bitFile"/>
-	<item value="C:\Users\superman\Documents\ecen427\Lab2_clock\real_time_clock\Debug\real_time_clock.elf" key="Lab2_clock_hw_platform-microblaze_0-initElf"/>
+	<item value="bootloop" key="Lab2_clock_hw_platform-microblaze_0-initElf"/>
 	<item value="C:\Users\superman\Documents\ecen427\Lab2_clock\Lab2_clock_hw_platform\system_bd.bmm" key="Lab2_clock_hw_platform-bmmFile"/>
 </section>

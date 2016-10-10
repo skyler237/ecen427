@@ -2,28 +2,32 @@
 **** Build of configuration Debug for project real_time_clock ****
 
 make all 
+Building file: ../src/real_time_clock.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../real_time_clock_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/real_time_clock.d" -MT"src/real_time_clock.d" -o"src/real_time_clock.o" "../src/real_time_clock.c"
+Finished building: ../src/real_time_clock.c
+' '
 Building target: real_time_clock.elf
 Invoking: MicroBlaze gcc linker
 mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../real_time_clock_bsp_0/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -o"real_time_clock.elf"  ./src/platform.o ./src/real_time_clock.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: region microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl is full (real_time_clock.elf section .text)
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .init [00000050 -> 0000008f] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .fini [00000090 -> 000000af] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .ctors [000000b0 -> 000000b7] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .dtors [000000b8 -> 000000bf] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .rodata [000000c0 -> 00000633] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .sdata2 [00000634 -> 00000637] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .data [00000638 -> 00000bc7] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .eh_frame [00000bc8 -> 00000bcb] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .jcr [00000bcc -> 00000bcf] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .bss [00000bd0 -> 00000c73] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .heap [00000c74 -> 00001077] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: section .stack [00001078 -> 00001477] overlaps section .text [00000050 -> 0000d7a3]
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: region microblaze_0_i_bram_ctrl_microblaze_0_d_bram_ctrl is full (real_time_clock.elf section .text)
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: real_time_clock.elf: section .text lma 0x50 overlaps previous sections
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: real_time_clock.elf: section .fini lma 0x90 overlaps previous sections
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: real_time_clock.elf: section .ctors lma 0xb0 overlaps previous sections
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: real_time_clock.elf: section .dtors lma 0xb8 overlaps previous sections
-c:\xilinx\13.4\ise_ds\edk\gnu\microblaze\nt64\bin\..\lib\gcc\microblaze-xilinx-elf\4.1.2\..\..\..\..\microblaze-xilinx-elf\bin\ld.exe: real_time_clock.elf: section .rodata lma 0xc0 overlaps previous sections
-c:/xilinx/13.4/ise_ds/edk/gnu/microblaze/nt64/bin/../lib/gcc/microblaze-xilinx-elf/4.1.2/bs/m/le/crtend.o:(.init+0x0): relocation truncated to fit: R_MICROBLAZE_32_PCREL_LO against `.text'
-collect2: ld returned 1 exit status
-make: *** [real_time_clock.elf] Error 1
+Finished building target: real_time_clock.elf
+' '
+Invoking: MicroBlaze Print Size
+mb-size real_time_clock.elf  |tee "real_time_clock.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   6438	    392	   2146	   8976	   2310	real_time_clock.elf
+Finished building: real_time_clock.elf.size
+' '
+Invoking: Xilinx ELF Check
+elfcheck real_time_clock.elf -hw ../../Lab2_clock_hw_platform/system.xml -pe microblaze_0  |tee "real_time_clock.elf.elfcheck"
+elfcheck
+Xilinx EDK 13.4 Build EDK_O.87xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../Lab2_clock_hw_platform/system.xml -pe
+microblaze_0 real_time_clock.elf 
+
+ELF file	: real_time_clock.elf
+elfcheck passed.
+Finished building: real_time_clock.elf.elfcheck
+' '

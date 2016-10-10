@@ -18,7 +18,7 @@
 
 // Alien constants
 #define ALIEN_BLOCK_INIT_X (SCREEN_WIDTH/2 - ALIEN_BLOCK_WIDTH/2)	// Alien block initial x position
-#define ALIEN_BLOCK_INIT_Y (SCORE_BAR_HEIGHT + 10)	// Alien block initial y position
+#define ALIEN_BLOCK_INIT_Y (SCORE_BAR_HEIGHT + 100)	// Alien block initial y position
 #define ALIEN_CENTER (ALIEN_WIDTH / 2)	// Center of an alien (used for firing bullets)
 #define ALIEN_INIT_ROW 0x7FF // Initial value for the alienPositions array (indicates all aliens are alive)
 #define ALIEN_ROW_MSB 0x400  // Most significant byte of the alien row (used for a mask)
@@ -290,6 +290,13 @@ point_t global_getAlienBlockPosition(){
 	return alienBlockPosition;
 }
 
+point_t global_getAlienPosition(uint8_t row, uint8_t col) {
+	point_t alien_pos;
+	alien_pos.x = alienBlockPosition.x + (col*ALIEN_X_SPACING); // Index off of the alien block position
+	alien_pos.y = alienBlockPosition.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
+	return alien_pos;
+}
+
 /*
 	Creates a new alien bullet, but only if one is available
 	@param row, col: the row and column of the alien from which the bullet will fire
@@ -416,6 +423,13 @@ void global_initBlockState(uint8_t bunker_index, uint8_t block_index){
 */
 erosionState_t global_getBlockState(uint8_t bunker_index, uint8_t block_index){
 	return bunkers[bunker_index].blocks[block_index].erosion_state;
+}
+
+/**
+ * Sets the block state
+ */
+void global_setBlockState(uint8_t bunker_index, uint8_t block_index, erosionState_t state) {
+	bunkers[bunker_index].blocks[block_index].erosion_state = state;
 }
 
 /*

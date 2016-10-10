@@ -390,23 +390,23 @@ void real_time_clock_test() {
 	// Test increment and decrement functions
 	secondsValue = 0;
 	decrement_seconds();
-	printf("Seconds = %d\n", secondsValue);
+//	printf("Seconds = %d\n", secondsValue);
 	increment_seconds();
 	increment_seconds();
-	printf("Seconds = %d\n", secondsValue);
+//	printf("Seconds = %d\n", secondsValue);
 
 	minutesValue = 0;
 	decrement_minutes();
-	printf("minutes = %d\n", minutesValue);
+//	printf("minutes = %d\n", minutesValue);
 	increment_minutes();
 	increment_minutes();
-	printf("minutes = %d\n", minutesValue);
+//	printf("minutes = %d\n", minutesValue);
 
 	hoursValue = 0;
 	decrement_hours();
-	printf("hours = %d\n", hoursValue);
+//	printf("hours = %d\n", hoursValue);
 	increment_hours();
 	increment_hours();
-	printf("hours = %d\n", hoursValue);
+//	printf("hours = %d\n", hoursValue);
 
 }

@@ -123,6 +123,8 @@ void global_setAlienBlockPosition(uint16_t x, uint16_t y);
 void global_moveAlienBlock(uint16_t dx, uint16_t dy);
 // Returns the alien block position
 point_t global_getAlienBlockPosition();
+// Returns the position of the specified alien
+point_t global_getAlienPosition(uint8_t row, uint8_t col);
 
 // Creates a new alien bullet, but only if one is available
 void global_createAlienBullet(uint8_t row, uint8_t col);
@@ -139,6 +141,8 @@ point_t global_getAlienBulletPosition(uint8_t index);
 void global_erodeBunkerBlock(uint8_t bunker_index, uint8_t block_index);
 // Returns the erosion state of the given block
 erosionState_t global_getBlockState(uint8_t bunker_index, uint8_t block_index);
+// Sets the block state
+void global_setBlockState(uint8_t bunker_index, uint8_t block_index, erosionState_t state);
 // Returns the bunker block position of the given block
 point_t global_getBlockPosition(uint8_t bunker_index, uint8_t block_index);
 // Returns the position of a given bunker

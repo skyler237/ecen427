@@ -20,6 +20,8 @@ void render_refreshAliens();
 void render_eraseAlien(uint8_t row, uint8_t col);
 // Updates a block to reflect an increased erosion state -- doesn't actually cause the erosion
 void render_erodeBlock(uint8_t bunker, uint8_t block_index);
+// Completely erases the given bunker block
+void render_eraseBlock(uint8_t bunker_index, uint8_t block_index);
 // Renders all the current bullets
 void render_bullets();
 //Draws the alien explosion

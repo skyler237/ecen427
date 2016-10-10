@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="335" key="DIALOG_Y_ORIGIN"/>
-		<item value="840" key="DIALOG_X_ORIGIN"/>
+		<item value="256" key="DIALOG_Y_ORIGIN"/>
+		<item value="1194" key="DIALOG_X_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
@@ -13,29 +13,19 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-<<<<<<< HEAD
-		<item value="IsR" key="selection"/>
+		<item value="explosion" key="selection"/>
 		<list key="findhistory">
+			<item value="explosion"/>
+			<item value="framePtr, "/>
+			<item value="framePtr"/>
+			<item value="kill"/>
+			<item value="ALIEN_BLOCK_WIDTH"/>
+			<item value="moveTank"/>
 			<item value="ISR"/>
 			<item value="XGpio"/>
-			<item value="XIntc_AckIntr"/>
-			<item value="subroutine"/>
-			<item value=".rodata"/>
-			<item value=".heap"/>
-			<item value=".stack"/>
-			<item value="nop"/>
-=======
-		<item value="index_pos" key="selection"/>
-		<list key="findhistory">
-			<item value="index_pos"/>
-			<item value="unsigned int"/>
-			<item value="unsigned int*"/>
-			<item value="static const int"/>
-			<item value="tank_15x8"/>
-			<item value="XAxiVdma_LookupConfig"/>
->>>>>>> a488b33a0129a43e4a88fa10073cdf55f655d39c
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 			<item value="uint32_t"/>
 			<item value="uint32_t*"/>
 			<item value="static const  uint32_t"/>

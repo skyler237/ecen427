@@ -638,6 +638,14 @@ void render_erodeBlock(uint8_t bunker, uint8_t block_index) {
 }
 
 /**
+ * Erases the given block
+ */
+void render_eraseBlock(uint8_t bunker_index, uint8_t block_index) {
+	point_t block_pos = global_getBlockPosition(bunker_index, block_index);
+	drawSprite(bunkerDamage3_6x6, block_pos, BUNKER_BLOCK_SIZE, BUNKER_BLOCK_SIZE, BACKGROUND_COLOR);
+}
+
+/**
 * Refreshes the bullet sprites
 */
 void render_bullets() {

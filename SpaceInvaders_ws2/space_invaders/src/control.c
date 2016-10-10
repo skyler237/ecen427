@@ -27,6 +27,76 @@ void control_init(){
 	// Might need later...
 }
 
+void checkAlienBlockCollision(uint8_t alienRow, uint8_t alienCol) {
+	uint8_t bunker_index;
+	point_t alien_pos = global_getAlienPosition(alienRow, alienCol);
+
+	if((alien_pos.x >= BUNKER_0_X && alien_pos.x <= BUNKER_0_X + BUNKER_WIDTH) ||  // Left edge of alien
+			(alien_pos.x + ALIEN_WIDTH >= BUNKER_0_X && alien_pos.x + ALIEN_WIDTH <= BUNKER_0_X + BUNKER_WIDTH)){ // Right edge of alien
+		bunker_index = BUNKER_0;
+	}
+	else if((alien_pos.x >= BUNKER_1_X && alien_pos.x <= BUNKER_1_X + BUNKER_WIDTH) ||  // Left edge of alien
+			(alien_pos.x + ALIEN_WIDTH >= BUNKER_1_X && alien_pos.x + ALIEN_WIDTH <= BUNKER_1_X + BUNKER_WIDTH)){ // Right edge of alien
+		bunker_index = BUNKER_1;
+	}
+	else if((alien_pos.x >= BUNKER_2_X && alien_pos.x <= BUNKER_2_X + BUNKER_WIDTH) ||  // Left edge of alien
+			(alien_pos.x + ALIEN_WIDTH >= BUNKER_2_X && alien_pos.x + ALIEN_WIDTH <= BUNKER_2_X + BUNKER_WIDTH)){ // Right edge of alien
+		bunker_index = BUNKER_2;
+	}
+	else if((alien_pos.x >= BUNKER_3_X && alien_pos.x <= BUNKER_3_X + BUNKER_WIDTH) ||  // Left edge of alien
+			(alien_pos.x + ALIEN_WIDTH >= BUNKER_3_X && alien_pos.x + ALIEN_WIDTH <= BUNKER_3_X + BUNKER_WIDTH)){ // Right edge of alien
+		bunker_index = BUNKER_3;
+	}
+	else {
+		return;
+	}
+
+	uint8_t block_index;
+	for (block_index = 0; block_index < BUNKER_BLOCK_CNT; block_index++) {
+		if(global_getBlockState(bunker_index, block_index) != DEAD) {
+			point_t block_pos = global_getBlockPosition(bunker_index, block_index);
+			// Check x-bounds
+			if((block_pos.x >= alien_pos.x && block_pos.x <= alien_pos.x + ALIEN_WIDTH) ||
+					((block_pos.x + BUNKER_BLOCK_SIZE) >= alien_pos.x && (block_pos.x + BUNKER_BLOCK_SIZE) <= (alien_pos.x + ALIEN_WIDTH)) ) {
+				// Check y-bounds
+				if(block_pos.y <= alien_pos.y + ALIEN_HEIGHT) {
+
+
+					// Set block to dead
+					global_setBlockState(bunker_index, block_index, DEAD);
+
+					// Erase block
+					render_eraseBlock(bunker_index, block_index);
+				}
+			}
+		}
+	}
+}
+
+void control_checkAlienBunkerCollision() {
+	point_t alienBlockPos = global_getAlienBlockPosition();
+	bool foundBottomAliens = false;
+
+	// Check if we are low enough for a collision
+
+	int8_t row;
+	uint8_t col;
+	for(row = ALIEN_ROWS - 1; row >= 0; row--) { // Start at the bottom row and work our way up
+		if((alienBlockPos.y + row*ALIEN_Y_SPACING + ALIEN_HEIGHT) >= BUNKER_Y ) {
+			for(col = 0; col < ALIEN_COLS; col++) {
+				if(global_isAlienAlive(row, col)) {
+					checkAlienBlockCollision(row, col);
+					foundBottomAliens = true;
+				}
+			}
+			if(foundBottomAliens) { // We only need to check the bottom most row
+				return;
+			}
+		}
+	}
+
+}
+
 /**
 * Updates the alien block one frame
 */
@@ -97,7 +167,8 @@ void control_updateAlienBlock(uint32_t* framePtr) {
 		global_moveAlienBlock(-ALIEN_MOVE_X, 0);
 	}
 
-	// TODO: Kill bunker blocks if colliding
+	// Kill bunker blocks if colliding
+	control_checkAlienBunkerCollision();
 
 	// Refresh all the aliens
 	render_refreshAliens(framePtr);
@@ -162,18 +233,6 @@ bool control_checkAlienBulletTankCollision(point_t bulletPoint, uint8_t index) {
 	}
 }
 
-void control_checkAlienBunkerCollision() {
-	point_t alienBlockPos = global_getAlienBlockPosition();
-
-	// Check if we are low enough for a collision
-	if((alienBlockPos.y + ALIEN_BLOCK_HEIGHT) < BUNKER_Y ) {
-		return;
-	}
-	else {
-		int i;
-
-	}
-}
 
 /**
  * Check for collision with bunkers and erode if needed

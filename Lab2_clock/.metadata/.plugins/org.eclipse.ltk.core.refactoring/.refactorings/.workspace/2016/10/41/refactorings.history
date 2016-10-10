@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;real_time_clock/Debug&apos;" deleteContents="false" description="Delete resource &apos;real_time_clock/Debug&apos;" element1="/real_time_clock/Debug" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1475610601885"/>
+</session>
