@@ -23,6 +23,15 @@
 #define ALIEN_INIT_ROW 0x7FF // Initial value for the alienPositions array (indicates all aliens are alive)
 #define ALIEN_ROW_MSB 0x400  // Most significant byte of the alien row (used for a mask)
 #define KILL_ALIEN_MASK (0xFFFFFBFF) // Mask used to clear alien-alive bits
+#define TOP_ROW_POINTS 40
+#define MID_ROW_POINTS 20
+#define BOTTOM_ROW_POINTS 10
+
+// UFO score is calculated as follows: (rand() % UFO_MAX_SCORE + UFO_SCORE_OFFSET) * UFO_SCORE_MULTIPLIER
+#define UFO_MAX_SCORE 30 // This value caps the max
+#define UFO_SCORE_OFFSET 5 // Specifies lowest value (offset * multiplier)
+#define UFO_SCORE_MULTIPLIER 10 // Specifies increments
+
 
 // Bullet constants
 #define BULLET_TYPES 6	// Number of different bullet types/states
@@ -32,6 +41,7 @@
 // Status bar constants
 #define SCORE_BAR_HEIGHT 15
 #define LIVES_INIT_VALUE 3
+
 
 // A block stores a position and an erosion state
 typedef struct {erosionState_t erosion_state; point_t position;} block_t;
@@ -53,13 +63,19 @@ static point_t alienBlockPosition; // Upper left corner of the full alien block
 static uint16_t alienPositions[ALIEN_ROWS]; // low 11 bits of each word represent each alien in a row -- 1 = alive, 0 = dead
 static bullet_t alienBullets[BULLET_COUNT]; // Array of 4 alien bullets
 static bool alienPosIn; // Keeps track of whether the aliens are "in" or "out" -- 1 = in, 0 = out
+static point_t UFOPosition; // Upper left corner of UFO sprite
 static bunker_t bunkers[BUNKER_COUNT]; // Array of 4 bunkers
 static uint8_t current_lives; // Lives left
 static uint16_t current_score; // Accumulated score
 
 // Global counters
 static uint32_t tankDeathTimer;
-
+static uint32_t UFOEntryTimer;
+static uint32_t alienMoveTimer;
+static uint32_t tankMoveTimer;
+static uint32_t bulletUpdateTimer;
+static uint32_t alienMoveTimer;
+static uint32_t flashingTimer;
 
 
 /*
@@ -527,15 +543,37 @@ void global_setScore(uint16_t score){
 	current_score = score;
 }
 /*
-	Increments the current score by the given amount
-	@param score: this is the number of points we will add to the current score
+	Increments the current score by the proper amount, based on the row hit
+	@param alien_row: this is the row of the alien that was hit - score is calculated accordingly
 */
-void global_addToScore(uint16_t score){
-	current_score += score;
+void global_incrementScore(uint8_t alien_row) {
+	if(alien_row == UFO_ID) {
+		uint16_t random_score = (rand() % UFO_MAX_SCORE + UFO_SCORE_OFFSET) * UFO_SCORE_MULTIPLIER;
+	}
+	else if (alien_row >= BOTTOM_ALIEN_ROW) {
+		current_score += BOTTOM_ROW_POINTS;
+	}
+	else if(alien_row >= MID_ALIEN_ROW) {
+		current_score += MID_ROW_POINTS;
+	}
+	else if(alien_row == TOP_ALIEN_ROW) {
+		current_score += TOP_ROW_POINTS;
+	}
+
+	render_score(current_score);
 }
+
 /*
 	Returns the current score
 */
 uint16_t global_getScore(){
 	return current_score;
+}
+
+/**
+ * Decrements all timers and does not overflow past zero
+ * @return: each bit represents a certain timer - if it is one, that timer has finished this cycle
+ */
+uint8_t global_decrementTimers() {
+
 }

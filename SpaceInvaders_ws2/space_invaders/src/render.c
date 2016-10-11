@@ -42,12 +42,19 @@
  (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) |						  \
  (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
 
-// Packs each horizontal line of the figures into a single 15 bit word.
+// Packs each horizontal line of the figures into a single 6 bit word.
 #define packword6(b5,b4,b3,b2,b1,b0) \
 ((b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
 
+// Packs each horizontal line of the figures into a single 5 bit word.
+#define packword5(b4,b3,b2,b1,b0) \
+((b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 3 bit word.
 #define packword3(b2,b1,b0) \
 ((b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+
 
 // Must define packword for each of the different bit-widths.
 static const  uint32_t saucer_16x7[] =
@@ -273,6 +280,97 @@ static const uint32_t scoreText_32x5[] =
 		packword32(0,0,0,1,1,1,1,0,0,0,1,1,1,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,1,1,1)
 };
 
+
+static const uint32_t zeroText_5x5[] =
+{
+	packword5(0,1,1,1,0),
+	packword5(1,0,0,0,1),
+	packword5(1,0,0,0,1),
+	packword5(1,0,0,0,1),
+	packword5(0,1,1,1,0),
+};
+
+static const uint32_t oneText_5x5[] =
+{
+	packword5(0,0,0,1,1),
+	packword5(0,0,0,0,1),
+	packword5(0,0,0,0,1),
+	packword5(0,0,0,0,1),
+	packword5(0,0,0,0,1),
+};
+
+static const uint32_t twoText_5x5[] =
+{
+	packword5(1,1,1,1,0),
+	packword5(0,0,0,0,1),
+	packword5(0,1,1,1,1),
+	packword5(1,0,0,0,0),
+	packword5(1,1,1,1,1),
+};
+
+static const uint32_t threeText_5x5[] =
+{
+	packword5(1,1,1,1,0),
+	packword5(0,0,0,0,1),
+	packword5(0,1,1,1,1),
+	packword5(0,0,0,0,1),
+	packword5(1,1,1,1,0),
+};
+
+static const uint32_t fourText_5x5[] =
+{
+	packword5(1,0,0,0,1),
+	packword5(1,0,0,0,1),
+	packword5(1,1,1,1,1),
+	packword5(0,0,0,0,1),
+	packword5(0,0,0,0,1),
+};
+
+static const uint32_t fiveText_5x5[] =
+{
+	packword5(1,1,1,1,1),
+	packword5(1,0,0,0,0),
+	packword5(1,1,1,1,0),
+	packword5(0,0,0,0,1),
+	packword5(1,1,1,1,0),
+};
+
+static const uint32_t sixText_5x5[] =
+{
+	packword5(0,1,1,1,0),
+	packword5(1,0,0,0,0),
+	packword5(1,1,1,1,0),
+	packword5(1,0,0,0,1),
+	packword5(0,1,1,1,0),
+};
+
+static const uint32_t sevenText_5x5[] =
+{
+	packword5(0,1,1,1,1),
+	packword5(0,0,0,0,1),
+	packword5(0,0,0,0,1),
+	packword5(0,0,0,1,0),
+	packword5(0,0,0,1,0),
+};
+
+static const uint32_t eightText_5x5[] =
+{
+	packword5(0,1,1,1,0),
+	packword5(1,0,0,0,1),
+	packword5(0,1,1,1,0),
+	packword5(1,0,0,0,1),
+	packword5(0,1,1,1,0),
+};
+
+static const uint32_t nineText_5x5[] =
+{
+	packword5(0,1,1,1,0),
+	packword5(1,0,0,0,1),
+	packword5(0,1,1,1,1),
+	packword5(0,0,0,0,1),
+	packword5(0,1,1,1,0),
+};
+
 static const uint32_t tankBullet_1x5[] =
 {
 		1,
@@ -338,15 +436,14 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define LINE_WIDTH 640	// Number of screen pixels in one line
 #define NEXT_COL 1		// Denotes the next column over
 #define BACKGROUND_COLOR 0x00000000	// Background color for the screen
+#define GREEN 0x0000FF00
 
 #define TANK_MSB 0x8000			// Most significant bit of the tank sprite rows
-#define TANK_COLOR 0x0000FF00	// Tank color
+#define TANK_COLOR GREEN		// Tank color
 
-#define BUNKER_COLOR 0x0000FF00 // Bunker color
+#define BUNKER_COLOR GREEN // Bunker color
 
-#define TOP_ALIEN_ROW 0			// Top alien row index
-#define MID_ALIEN_ROW 1			// Middle two rows starting index
-#define BOTTOM_ALIEN_ROW 3		// Bottow two rows starting index
+
 #define ALIEN_COLOR 0xFFFFFFFF	// Alien color
 #define ALIEN_EXPLOSION_HEIGHT 10 //Height in pixels of the explosion sprite
 
@@ -354,6 +451,16 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define SCORE_TEXT_X 15			// Score text sprite x offset
 #define SCORE_TEXT_WIDTH 32		// Score text sprite width
 #define SCORE_TEXT_HEIGHT TEXT_HEIGHT	// Score text sprite height
+#define SCORE_NUMBER_X (SCORE_TEXT_X + SCORE_TEXT_WIDTH + 6)
+#define NUMBER_WIDTH 5
+#define NUMBER_HEIGHT 5
+#define NUMBER_SPACING (NUMBER_WIDTH + 1)
+#define NUMBER_COLOR GREEN
+
+#define THOUSANDS_PLACE 1000
+#define HUNDREDS_PLACE 100
+#define TENS_PLACE 10
+
 #define LIVES_TEXT_X (SCREEN_WIDTH*2/3)	// Lives text x offset
 #define LIVES_TEXT_WIDTH 24		// Lives text sprite width
 #define LIVES_TEXT_HEIGHT TEXT_HEIGHT	// Lives text sprite height
@@ -411,6 +518,28 @@ void drawSprite(const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteW
 			if(sprite_row & (msb >> col)) {
 				// If there is a 1, draw a pixel
 				writePixel(row+sprite_pos.y, col+sprite_pos.x, sprite_color);
+			}
+		}
+	}
+}
+
+void drawSpriteWithBG(const uint32_t* spriteArray, point_t sprite_pos, uint8_t spriteWidth, uint8_t spriteHeight, uint32_t sprite_color) {
+	// Iterate through all rows of the sprite
+	uint8_t row, col;
+	for(row=0; row < spriteHeight; row++) {
+		// Extract a row from the bitmap
+		uint32_t sprite_row = spriteArray[row];
+		// Iterate through each column
+		for(col=0; col < spriteWidth; col++) {
+			// Calculate the most significant bit of (based on sprite width)
+			uint32_t msb = 0x01 << (spriteWidth - 1);
+			// Check if the particular column is a 1
+			if(sprite_row & (msb >> col)) {
+				// If there is a 1, draw a pixel
+				writePixel(row+sprite_pos.y, col+sprite_pos.x, sprite_color);
+			}
+			else {
+				writePixel(row+sprite_pos.y, col+sprite_pos.x, BACKGROUND_COLOR);
 			}
 		}
 	}
@@ -848,7 +977,8 @@ void drawStatusBar() {
 
 	// Get the current score
 	uint16_t score = global_getScore();
-	// TODO: Draw the score here...
+	// Draw the score
+	render_score(score);
 
 	// Get the number of lives
 	uint8_t lives = global_getLives();
@@ -894,6 +1024,70 @@ void render_init() {
 
 	drawStatusBar(); // Draw the status bar
 	drawBaseLine(); // Draw the base line
+}
+
+/**
+ * Returns a pointer to the appropriate number bitmap for the given digit
+ */
+const uint32_t* getNumberBitmap(uint8_t digit) {
+	switch(digit) {
+	case 0:
+		return zeroText_5x5;
+	case 1:
+		return oneText_5x5;
+	case 2:
+		return twoText_5x5;
+	case 3:
+		return threeText_5x5;
+	case 4:
+		return fourText_5x5;
+	case 5:
+		return fiveText_5x5;
+	case 6:
+		return sixText_5x5;
+	case 7:
+		return sevenText_5x5;
+	case 8:
+		return eightText_5x5;
+	case 9:
+		return nineText_5x5;
+	}
+	return 0;
+}
+
+/**
+ * Updates the score bar
+ */
+void render_score(uint16_t score) {
+	const uint32_t* bitmap;
+	uint8_t thousands = score / THOUSANDS_PLACE;
+	score -= thousands * THOUSANDS_PLACE;
+	uint8_t hundreds = score / HUNDREDS_PLACE;
+	score -= hundreds * HUNDREDS_PLACE;
+	uint8_t tens = score / TENS_PLACE;
+	uint8_t ones = score % TENS_PLACE;
+
+	point_t cursor;
+	cursor.x = SCORE_NUMBER_X;
+	cursor.y = STATUS_BAR_Y;
+
+	if(thousands != 0) {
+		bitmap = getNumberBitmap(thousands);
+		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+		cursor.x += NUMBER_SPACING;
+	}
+	if (hundreds != 0 || thousands != 0) {
+		bitmap = getNumberBitmap(hundreds);
+		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+		cursor.x += NUMBER_SPACING;
+	}
+	if (tens != 0 || hundreds != 0 || thousands != 0) {
+		bitmap = getNumberBitmap(tens);
+		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+		cursor.x += NUMBER_SPACING;
+	}
+	bitmap = getNumberBitmap(ones);
+	drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
 }
 
 

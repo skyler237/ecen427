@@ -30,6 +30,10 @@
 #include "render.h"
 #include "globals.h"
 #include "control.h"
+#include "mb_interface.h"   // provides the microblaze interrupt enables, etc.
+#include "xintc_l.h"        // Provides handy macros for the interrupt controller.
+#include "xgpio.h"          // Provides access to PB GPIO driver.
+
 #define DEBUG
 void print(char *str);
 
@@ -39,6 +43,73 @@ void print(char *str);
 #define ASCII_NUM_OFFSET 48
 #define TANK_SPEED 4
 
+XGpio gpLED;  // This is a handle for the LED GPIO block.
+XGpio gpPB;   // This is a handle for the push-button GPIO block.
+
+void timer_interrupt_handler() {
+	// Decrement all counters
+	global_decrementTimers();
+
+	// Check for timers that are finished
+
+	// Update stuff through controller
+
+}
+
+// This is invoked each time there is a change in the button state (result of a push or a bounce).
+void pb_interrupt_handler() {
+  // Clear the GPIO interrupt.
+  XGpio_InterruptGlobalDisable(&gpPB);                // Turn off all PB interrupts for now.
+//  currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
+//  // Check which buttons are high/low
+//  if(!(currentButtonState & CENTER_BTN)) { // If center button is not pressed...
+//	  // Clear the debounce timer
+//	  centerBtnDebounceCounter = 0;
+//  }
+//
+//  if(!(currentButtonState & RIGHT_BTN)) { // If right button is not pressed...
+//	  // Clear the debounce timer
+//	  rightBtnDebounceCounter = 0;
+//  }
+//
+//  if(!(currentButtonState & DOWN_BTN)) { // If down button is not pressed...
+//	  // Clear the debounce timer
+//	  downBtnDebounceCounter = 0;
+//  }
+//
+//  if(!(currentButtonState & LEFT_BTN)) { // If left button is not pressed...
+//	  // Clear the debounce timer
+//	  leftBtnDebounceCounter = 0;
+//  }
+//
+//  if(!(currentButtonState & UP_BTN)) { // If up button is not pressed...
+//	  // Clear the debounce timer
+//	  upBtnDebounceCounter = 0;
+//  }
+
+  XGpio_InterruptClear(&gpPB, 0xFFFFFFFF);            // Ack the PB interrupt.
+  XGpio_InterruptGlobalEnable(&gpPB);                 // Re-enable PB interrupts.
+}
+
+// Main interrupt handler, queries the interrupt controller to see what peripheral
+// fired the interrupt and then dispatches the corresponding interrupt handler.
+// This routine acks the interrupt at the controller level but the peripheral
+// interrupt must be ack'd by the dispatched interrupt handler.
+// Question: Why is the timer_interrupt_handler() called after ack'ing the interrupt controller
+// but pb_interrupt_handler() is called before ack'ing the interrupt controller?
+void interrupt_handler_dispatcher(void* ptr) {
+	int intc_status = XIntc_GetIntrStatus(XPAR_INTC_0_BASEADDR);
+	// Check the FIT interrupt first.
+	if (intc_status & XPAR_FIT_TIMER_0_INTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_FIT_TIMER_0_INTERRUPT_MASK);
+		timer_interrupt_handler();
+	}
+	// Check the push buttons.
+	if (intc_status & XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK){
+		pb_interrupt_handler();
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK);
+	}
+}
 
 int main()
 {
@@ -117,10 +188,24 @@ int main()
      if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
     	 xil_printf("vdma parking failed\n\r");
      }
-     // Oscillate between frame 0 and frame 1.
+
      render_blankScreen(framePointer0);
-     render_init(framePointer0);
+     render_init();
      control_init();
+
+     // Set the push button peripheral to be inputs.
+	 XGpio_SetDataDirection(&gpPB, 1, 0x0000001F);
+     // Enable the global GPIO interrupt for push buttons.
+	 XGpio_InterruptGlobalEnable(&gpPB);
+	 // Enable all interrupts in the push button peripheral.
+	 XGpio_InterruptEnable(&gpPB, 0xFFFFFFFF);
+
+	 microblaze_register_handler(interrupt_handler_dispatcher, NULL);
+	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
+			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK));
+	 XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
+	 microblaze_enable_interrupts();
+
      char input;
      while (1) {
          frameIndex = 0;  	// Only use frame0

@@ -26,6 +26,8 @@ void render_eraseBlock(uint8_t bunker_index, uint8_t block_index);
 void render_bullets();
 //Draws the alien explosion
 void render_killAlien(uint8_t row, uint8_t col);
+// Updates the score bar
+void render_score(uint16_t score);
 
 // Initializes all the sprites. Also draws the status bar and sprites
 void render_init();

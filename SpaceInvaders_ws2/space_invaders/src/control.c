@@ -201,6 +201,8 @@ void control_checkTankBulletAlienCollision(point_t bulletPoint) {
 			if(global_isAlienAlive(alien_row, alien_col)) {
 				global_killAlien(alien_row, alien_col); // Kill the alien
 				global_collideTankBullet(); // Move the bullet off screen
+
+				global_incrementScore(alien_row);
 			}
 		}
 	}

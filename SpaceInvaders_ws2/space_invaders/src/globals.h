@@ -36,6 +36,10 @@
 #define ALIEN_Y_SPACING (ALIEN_HEIGHT + 6)	// Difference in y from one alien position to the next
 #define ALIEN_BLOCK_WIDTH (ALIEN_X_SPACING*ALIEN_COLS - 4)	// Total width of the alien block
 #define ALIEN_BLOCK_HEIGHT (ALIEN_Y_SPACING*ALIEN_ROWS - 6)	// Total height of the alien block
+#define TOP_ALIEN_ROW 0			// Top alien row index
+#define MID_ALIEN_ROW 1			// Middle two rows starting index
+#define BOTTOM_ALIEN_ROW 3		// Bottow two rows starting index
+#define UFO_ID	5				// Identifies the UFO
 
 // Tank constants
 #define TANK_WIDTH 15		// Tank sprite width
@@ -81,7 +85,23 @@
 #define DEATH_GUISES 2
 #define REVIVE_TANK 1
 
-
+// Timer values
+#define TANK_DEATH_TIMER_MASK 0x01
+#define UFO_ENTRY_TIMER_MASK 0x02
+#define ALIEN_MOVE_TIMER_MASK 0x04
+#define TANK_MOVE_TIMER_MASK 0x08
+#define BULLET_UPDATE_TIMER_MASK 0x10
+#define FLASHING_TIMER_MASK 0x20
+#define UFO_MOVE_TIMER_MASK 0x40
+// Each tick is 10 ms
+#define TANK_DEATH_TIMER_MAX 5
+#define UFO_ENTRY_TIMER_MIN 15*100
+#define UFO_ENTRY_TIMER_RANGE 25*100
+#define ALIEN_MOVE_TIMER_MAX 50
+#define TANK_MOVE_TIMER_MAX 5
+#define BULLET_UPDATE_TIMER_MAX 5
+#define FLASHING_TIMER_MAX 25
+#define UFO_MOVE_TIMER_MAX 7
 
 // A point will keep track of an x,y position and a previous x,y position
 typedef struct {int16_t x; int16_t y; int16_t prev_x; int16_t prev_y;} point_t;
@@ -166,10 +186,13 @@ uint8_t global_getLives();
 
 // Sets the current score
 void global_setScore(uint16_t score);
-// Increments the current score by the given amount
-void global_addToScore(uint16_t score);
+// Increments the current score by the proper amount, based on the row hit
+void global_incrementScore(uint8_t alien_row);
 // Returns the current score
 uint16_t global_getScore();
+
+// Decrements all timers and does not overflow past zero
+uint8_t global_decrementTimers();
 
 
 #endif /* GLOBALS_H_ */
