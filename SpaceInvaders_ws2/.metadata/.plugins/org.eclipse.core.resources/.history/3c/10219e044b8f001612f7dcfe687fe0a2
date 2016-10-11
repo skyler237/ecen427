@@ -76,7 +76,6 @@ static uint32_t tankMoveTimer;
 static uint32_t bulletUpdateTimer;
 static uint32_t alienMoveTimer;
 static uint32_t flashingTimer;
-static uint32_t UFOMoveTimer;
 
 
 /*
@@ -576,12 +575,5 @@ uint16_t global_getScore(){
  * @return: each bit represents a certain timer - if it is one, that timer has finished this cycle
  */
 uint8_t global_decrementTimers() {
-	uint32_t tankDeathTimer;
-	uint32_t UFOEntryTimer;
-	uint32_t alienMoveTimer;
-	uint32_t tankMoveTimer;
-	uint32_t bulletUpdateTimer;
-	uint32_t alienMoveTimer;
-	uint32_t flashingTimer;
-	uint32_t UFOMoveTimer;
+
 }
