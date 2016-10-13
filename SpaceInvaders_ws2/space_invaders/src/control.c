@@ -36,16 +36,16 @@ void control_updateTank() {
 	// Move the tank
 	global_moveTank(tankDirection*TANK_SPEED, 0);
 
-
-
-	// Render tank
-
 }
 
+/**
+* Checks for a collision between a specific alien and any of the existing bunker blocks
+*/
 void checkAlienBlockCollision(uint8_t alienRow, uint8_t alienCol) {
 	uint8_t bunker_index;
-	point_t alien_pos = global_getAlienPosition(alienRow, alienCol);
+	point_t alien_pos = global_getAlienPosition(alienRow, alienCol); // Get the alien position
 
+	// Extract the correct bunker index
 	if((alien_pos.x >= BUNKER_0_X && alien_pos.x <= BUNKER_0_X + BUNKER_WIDTH) ||  // Left edge of alien
 			(alien_pos.x + ALIEN_WIDTH >= BUNKER_0_X && alien_pos.x + ALIEN_WIDTH <= BUNKER_0_X + BUNKER_WIDTH)){ // Right edge of alien
 		bunker_index = BUNKER_0;
@@ -66,14 +66,17 @@ void checkAlienBlockCollision(uint8_t alienRow, uint8_t alienCol) {
 		return;
 	}
 
-	uint8_t block_index;
+	// Loop through all the blocks
+	uint8_t block_index;	
 	for (block_index = 0; block_index < BUNKER_BLOCK_CNT; block_index++) {
+		// Get the block position
 		point_t block_pos = global_getBlockPosition(bunker_index, block_index);
 		// Check x-bounds
 		if((block_pos.x >= alien_pos.x && block_pos.x <= alien_pos.x + ALIEN_WIDTH) ||
 				((block_pos.x + BUNKER_BLOCK_SIZE) >= alien_pos.x && (block_pos.x + BUNKER_BLOCK_SIZE) <= (alien_pos.x + ALIEN_WIDTH)) ) {
 			// Check y-bounds
 			if(block_pos.y <= alien_pos.y + ALIEN_HEIGHT) {
+				// If we overlap and the block isn't already dead...
 				if(global_getBlockState(bunker_index, block_index) != DEAD) {
 
 					// Set block to dead
@@ -82,6 +85,7 @@ void checkAlienBlockCollision(uint8_t alienRow, uint8_t alienCol) {
 					// Erase block
 					render_eraseBlock(bunker_index, block_index);
 				}
+				// If we overlap and we are at the bottom row, it's game over!
 				else if (block_index >= BOTTOM_BUNKER_ROW) {
 					global_endGame();
 				}
@@ -90,20 +94,27 @@ void checkAlienBlockCollision(uint8_t alienRow, uint8_t alienCol) {
 	}
 }
 
+/**
+ *  Handles collisions between the alien block and the bunkers
+ */
 void control_checkAlienBunkerCollision() {
+	// Get the alien block position
 	point_t alienBlockPos = global_getAlienBlockPosition();
 	bool foundBottomAliens = false;
 
 	// Check if we are low enough for a collision
-
 	int8_t row;
 	uint8_t col;
 	for(row = ALIEN_ROWS - 1; row >= 0; row--) { // Start at the bottom row and work our way up
+		// Check if we are low enough to touch the bunkers
 		if((alienBlockPos.y + row*ALIEN_Y_SPACING + ALIEN_HEIGHT) >= BUNKER_Y ) {
+			// Loop through each alien on the row
 			for(col = 0; col < ALIEN_COLS; col++) {
+				// If the alien is alive,
 				if(global_isAlienAlive(row, col)) {
+					// Check to see if there is a collision with one of the blocks
 					checkAlienBlockCollision(row, col);
-					foundBottomAliens = true;
+					foundBottomAliens = true; // Once we find an alien low enough to touch the bunkers, we don't need to keep loopin up the rows
 				}
 			}
 			if(foundBottomAliens) { // We only need to check the bottom most row
@@ -130,14 +141,15 @@ bool control_checkTankBulletAlienCollision(point_t bulletPoint) {
 		return false;
 	}
 	else {
+		// Calculate the x and y offsets for the bullet's current position
 		uint16_t x_offset = bulletPoint.x - alienBlockPos.x;
 		uint16_t y_offset = bulletPoint.y - alienBlockPos.y;
+		// Calculate the x and y offsets for the bullet's previous position
 		uint16_t x_offset_prev = bulletPoint.prev_x - alienBlockPos.x ;
-		uint16_t y_offset_prev = bulletPoint.prev_y - alienBlockPos.y + BULLET_HEIGHT;
+		uint16_t y_offset_prev = bulletPoint.prev_y - alienBlockPos.y + BULLET_HEIGHT; // Use the bottom of the previous (helps eliminate artifacts)
 
 
 		// Check to see if we hit the actual guise or a gap between them
-
 		if(!(x_offset_prev % ALIEN_X_SPACING > ALIEN_WIDTH || y_offset_prev % ALIEN_Y_SPACING > ALIEN_HEIGHT)){
 			// We know there is a collision with the previous position
 			// Get the column
@@ -257,26 +269,34 @@ void control_updateAlienBlock() {
 	render_refreshAliens();
 }
 
+/**
+ * Kills the tank (temporarily)
+ */
 void control_killTank(){
 	point_t tankPos = global_getTankPosition();
 	global_setTankPosition(tankPos.x, tankPos.y);//Update prev_x and prev_y so that they are the same
 												//That lets the render work
+	// Set the state of the tank to dead
 	global_killTank();
+	// Refresh the sprite to show the dead guise
 	render_refreshTank();
 }
 
 /**
  * Check for collision with aliens and kill if needed
+ * @return: true if a collision occured
  */
 bool control_checkAlienBulletTankCollision(point_t bulletPoint, uint8_t index) {
+	// Get the tank position
 	point_t tankPos = global_getTankPosition();
 
-	if(bulletPoint.y >= tankPos.y && bulletPoint.y <= (tankPos.y + TANK_HEIGHT) &&
-			bulletPoint.x >= tankPos.x && bulletPoint.x <= (tankPos.x + TANK_WIDTH) &&
-			!global_isTankDead()) {
+	// Check to see if the bullet point hit the tank 
+	if(bulletPoint.y >= tankPos.y && bulletPoint.y <= (tankPos.y + TANK_HEIGHT) && // Check y bounds
+			bulletPoint.x >= tankPos.x && bulletPoint.x <= (tankPos.x + TANK_WIDTH) && // Check x bounds
+			!global_isTankDead()) { // Can't hit the tank again if it's already dead
 		// Set tank state to dead
-		control_killTank();
-		global_collideAlienBullet(index);
+		control_killTank(); 
+		global_collideAlienBullet(index); // Causes the bullet to disappear
 		return true;
 	}
 	else {
@@ -287,6 +307,7 @@ bool control_checkAlienBulletTankCollision(point_t bulletPoint, uint8_t index) {
 
 /**
  * Check for collision with bunkers and erode if needed
+ * True if a collision occured
  */
 bool control_checkBulletBunkerCollision(point_t bulletPoint, int8_t bullet_index) {
 	uint8_t bunker_index;
@@ -342,7 +363,7 @@ bool control_checkBulletBunkerCollision(point_t bulletPoint, int8_t bullet_index
 				global_collideTankBullet(); // Move the bullet off screen
 			}
 			else {
-				global_collideAlienBullet(bullet_index);
+				global_collideAlienBullet(bullet_index); // Move the bullet off screen
 			}
 			return true;
 		}
@@ -350,9 +371,13 @@ bool control_checkBulletBunkerCollision(point_t bulletPoint, int8_t bullet_index
 	}
 }
 
+/**
+ * Handles collisions with tank bullets and the UFO
+ */
 void control_checkUFOCollision(point_t bulletPoint){
-	if(bulletPoint.y >= UFO_Y && bulletPoint.y < UFO_Y + UFO_HEIGHT){
-		if(bulletPoint.x >= global_getUFOPosition().x && bulletPoint.x < global_getUFOPosition().x + UFO_WIDTH){
+	if(bulletPoint.y >= UFO_Y && bulletPoint.y < UFO_Y + UFO_HEIGHT){ // Check y bounds
+		if(bulletPoint.x >= global_getUFOPosition().x && bulletPoint.x < global_getUFOPosition().x + UFO_WIDTH){ // Check x bounds
+			// If there is a collision, kill UFO and erase bullet
 			global_killUFO();
 			global_collideTankBullet();
 		}
@@ -360,8 +385,8 @@ void control_checkUFOCollision(point_t bulletPoint){
 }
 
 /**
-* Update all the bullets
-*/
+ * Update all the bullets
+ */
 void control_manageBullets() {
 	// Move the tank bullet upward
 	global_moveTankBullet(0, -BULLET_SPEED);
@@ -371,18 +396,22 @@ void control_manageBullets() {
 	// Check for collision with bunker and erode if needed
 	control_checkBulletBunkerCollision(bulletPoint, TANK_BULLET_INDEX);
 	control_checkUFOCollision(bulletPoint);
+
 	// Iterate through all alien bullets
 	uint8_t i;
 	for(i = 0; i < BULLET_COUNT; i++){
-		// Move each alien bullet downward
+		// Move the alien bullet downward
 		global_moveAlienBullet(i, 0, BULLET_SPEED);
+		// Get it's new position (top of the bullet)
 		point_t location = global_getAlienBulletPosition(i);
+		// Get the location of the bottom of the bullet
 		point_t bot_location = location;
 		bot_location.y += BULLET_HEIGHT;
 		uint8_t j;
-		for(j = 0; j < ALIEN_BULLET_WIDTH; j++){
+		for(j = 0; j < ALIEN_BULLET_WIDTH; j++){ // Check for collisions with any part of the bullet
+			// Check for bunker collisions with both the top and bottom of the bullet, then check for a collision with the tank
 			if (control_checkBulletBunkerCollision(location, i) || control_checkBulletBunkerCollision(bot_location, i) || control_checkAlienBulletTankCollision(location, i)) {
-				break;
+				break; // If a collision is detected, no need to keep looping
 			}
 			location.x++;
 		}

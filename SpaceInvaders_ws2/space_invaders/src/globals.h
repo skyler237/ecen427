@@ -81,19 +81,20 @@
 #define BASE_LINE_Y (SCREEN_HEIGHT - 5)	// Y value of the base line
 
 //Ticks between switching which guise the dead tank is in
-#define SWITCH_DEATH_SPRITE 5
-#define DEATH_GUISES 2
-#define REVIVE_TANK 1
+#define SWITCH_DEATH_SPRITE 5 
+#define DEATH_GUISES 2 // Number of death guises
+#define REVIVE_TANK 1  // Counter value at which we revive the tank
 
+// UFO values
 #define UFO_WIDTH 16
 #define UFO_HEIGHT 7
 #define UFO_Y 45
-#define UFO_LEFT (-UFO_WIDTH)
-#define UFO_RIGHT (SCREEN_WIDTH)
+#define UFO_LEFT (-UFO_WIDTH) // Screen position at which the UFO is off the left side of the screen
+#define UFO_RIGHT (SCREEN_WIDTH) // Screen position at which the UFO is off the right side of the screen
 #define UFO_SPEED 2
-#define UFO_COLOR 0x00FF0000
+#define UFO_COLOR GREEN
 
-// Timer values
+// Timer mask values
 #define TANK_DEATH_TIMER_MASK 0x01
 #define UFO_ENTRY_TIMER_MASK 0x02
 #define ALIEN_MOVE_TIMER_MASK 0x04
@@ -102,6 +103,8 @@
 #define FLASHING_TIMER_MASK 0x20
 #define UFO_MOVE_TIMER_MASK 0x40
 #define ALIEN_SHOOT_TIMER_MASK 0x80
+
+// Timer Max/Range Values
 // Each tick is 10 ms
 #define TANK_DEATH_TIMER_MAX 100
 #define UFO_ENTRY_TIMER_MIN (10*100)
@@ -114,13 +117,15 @@
 #define FLASHING_TIMER_MAX 20
 #define UFO_MOVE_TIMER_MAX 7
 
-#define BOTTOM_BUNKER_ROW 8
+#define BOTTOM_BUNKER_ROW 8 // INdex of the bottom blocks in a bunker
 
+// Status bar values
 #define SCORE_TEXT_X 15			// Score text sprite x offset
 #define SCORE_TEXT_WIDTH 32		// Score text sprite width
 #define SCORE_TEXT_HEIGHT TEXT_HEIGHT	// Score text sprite height
 #define SCORE_NUMBER_X (SCORE_TEXT_X + SCORE_TEXT_WIDTH + 6)
 
+// The color green
 #define GREEN 0x0000FF00
 
 // A point will keep track of an x,y position and a previous x,y position
@@ -220,15 +225,21 @@ uint16_t global_incrementScore(uint8_t alien_row);
 // Returns the current score
 uint16_t global_getScore();
 
+// Starts the UFO moving on the screen again
 void global_startUFO();
+// Moves the UFO
 void global_moveUFO();
+// Returns the UFO position
 point_t global_getUFOPosition();
+// Kills the UFO
 void global_killUFO();
 
 // Decrements all timers and does not overflow past zero
 uint8_t global_decrementTimers();
 
+// Returns whether or not the game is over
 bool global_isGameOver();
+// Sets the game over flag
 void global_endGame();
 
 

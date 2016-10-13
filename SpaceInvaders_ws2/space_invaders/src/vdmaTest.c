@@ -38,7 +38,6 @@
 void print(char *str);
 
 #define FRAME_BUFFER_0_ADDR 0xC1000000  // Starting location in DDR where we will store the images that we display.
-#define MAX_SILLY_TIMER 10000000;
 
 #define ASCII_NUM_OFFSET 48
 
@@ -61,8 +60,11 @@ void timer_interrupt_handler() {
 	// Decrement all counters
 	static bool over = false;
 	uint8_t finishedTimers = global_decrementTimers(); // return value holds finished timers
+	// Check for a game over
 	if (global_isGameOver()){
+		// Only display the splash screen once
 		if(!over){
+			// Display the splash screen
 			render_gameOver();
 			over = true;
 		}
@@ -70,10 +72,12 @@ void timer_interrupt_handler() {
 	}
 	// Update stuff through controller
 	if(finishedTimers & TANK_DEATH_TIMER_MASK) {
+		// Keep drawing the tank (it will be displaying the tank explosion at this point)
 		render_refreshTank();
 		return;
 	}
 	if(finishedTimers & UFO_ENTRY_TIMER_MASK) {
+		// Cause the UFO to re-enter the screen
 		global_startUFO();
 	}
 	if(finishedTimers & ALIEN_MOVE_TIMER_MASK) {
@@ -83,21 +87,28 @@ void timer_interrupt_handler() {
 	if(finishedTimers & TANK_MOVE_TIMER_MASK) {
 		// Move the tank
 		control_updateTank();
+		// Redraw the tank
 		render_refreshTank();
 	}
 	if(finishedTimers & BULLET_UPDATE_TIMER_MASK) {
+		// Update all bullets and bullet collisions
 		control_manageBullets();
+		// Redraw the bullets
 		render_bullets();
 	}
 	if(finishedTimers & FLASHING_TIMER_MASK) {
-		render_eraseAlien();
-		render_eraseUFOScore();
+		// The flashing explosion or score is done...
+		render_eraseAlien();	// Erase the alien explosion
+		render_eraseUFOScore(); // Erase the UFO score
 	}
 	if(finishedTimers & UFO_MOVE_TIMER_MASK) {
+		// Move the UFO
 		global_moveUFO();
+		// Redraw the UFO
 		render_UFO();
 	}
 	if(finishedTimers & ALIEN_SHOOT_TIMER_MASK) {
+		// Shoot an alien bullet
 		control_fireAlienBullet();
 	}
 }
@@ -108,26 +119,30 @@ void pb_interrupt_handler() {
   XGpio_InterruptGlobalDisable(&gpPB);                // Turn off all PB interrupts for now.
   currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
   // Check which buttons are high/low
-  if((currentButtonState & CENTER_BTN)) { // If center button is not pressed...
+  if((currentButtonState & CENTER_BTN)) { // If center button is pressed...
 	  // Shoot bullet
 	  global_fireTankBullet();
   }
 
-  if(currentButtonState & RIGHT_BTN) { // If right button is not pressed...
+  if(currentButtonState & RIGHT_BTN) { // If right button is pressed...
+	  // Move the tank right
 	  global_setTankDirection(RIGHT);
   }
 
-  if(currentButtonState & DOWN_BTN) { // If down button is not pressed...
-	  xil_printf("%d\n\r", counter);
+  if(currentButtonState & DOWN_BTN) { // If down button is pressed...
+	  // Currently do nothing
   }
 
-  if(currentButtonState & LEFT_BTN) { // If left button is not pressed...
+  if(currentButtonState & LEFT_BTN) { // If left button is pressed...
+	  // Move the tank left
 	  global_setTankDirection(LEFT);
   }
 
-  if(!(currentButtonState & UP_BTN)) { // If up button is not pressed...
+  if(currentButtonState & UP_BTN) { // If up button is pressed...
+      // Currently do nothing
   }
 
+  // When neither or both buttons are pressed, keep the tank stopped
   if(!((currentButtonState & LEFT_BTN) ^ (currentButtonState & RIGHT_BTN))){
 	  global_setTankDirection(STOPPED);
   }
@@ -233,10 +248,11 @@ int main()
     	 xil_printf("vdma parking failed\n\r");
      }
 
-     render_blankScreen(framePointer0);
-     render_init();
-     control_init();
-     globals_init();
+	 // Initialize the game
+     render_blankScreen(framePointer0); // Blank the screen
+     render_init();		// Initialize the renderer
+     control_init();	// Initialize control stuff
+     globals_init();	// Initialize global values
 
      XGpio_Initialize(&gpPB, XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID);
      // Set the push button peripheral to be inputs.
@@ -246,6 +262,7 @@ int main()
 	 // Enable all interrupts in the push button peripheral.
 	 XGpio_InterruptEnable(&gpPB, 0xFFFFFFFF);
 
+	 // Set up interrupts
 	 microblaze_register_handler(interrupt_handler_dispatcher, NULL);
 	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
 			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK));
@@ -256,9 +273,9 @@ int main()
 
 
      while (1) {
-         /*if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
+         if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
         	 xil_printf("vdma parking failed\n\r");
-         }*/
+         }
     	 counter++;
      }
      cleanup_platform();

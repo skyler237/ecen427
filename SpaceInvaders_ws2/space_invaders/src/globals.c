@@ -23,9 +23,9 @@
 #define ALIEN_INIT_ROW 0x7FF // Initial value for the alienPositions array (indicates all aliens are alive)
 #define ALIEN_ROW_MSB 0x400  // Most significant byte of the alien row (used for a mask)
 #define KILL_ALIEN_MASK (0xFFFFFBFF) // Mask used to clear alien-alive bits
-#define TOP_ROW_POINTS 40
-#define MID_ROW_POINTS 20
-#define BOTTOM_ROW_POINTS 10
+#define TOP_ROW_POINTS 40 // Point value for top row of aliens
+#define MID_ROW_POINTS 20 // Point value for middle row of aliens
+#define BOTTOM_ROW_POINTS 10 // Point value for bottom row of aliens
 
 // UFO score is calculated as follows: (rand() % UFO_MAX_SCORE + UFO_SCORE_OFFSET) * UFO_SCORE_MULTIPLIER
 #define UFO_MAX_SCORE 30 // This value caps the max
@@ -42,7 +42,8 @@
 #define SCORE_BAR_HEIGHT 15
 #define LIVES_INIT_VALUE 3
 
-#define LEFT_RIGHT 2
+// Used when determining if the UFO should enter from the left or right of screen
+#define LEFT_OR_RIGHT 2
 
 // A block stores a position and an erosion state
 typedef struct {erosionState_t erosion_state; point_t position;} block_t;
@@ -70,18 +71,18 @@ static uint8_t UFODirection;
 static bunker_t bunkers[BUNKER_COUNT]; // Array of 4 bunkers
 static uint8_t current_lives; // Lives left
 static uint16_t current_score; // Accumulated score
-static uint8_t alien_count;
-static bool gameOver;
+static uint8_t alien_count; // Number of aliens still alive
+static bool gameOver; // Is there a gameover?
 
 // Global counters
-static uint32_t tankDeathTimer;
-static uint32_t UFOEntryTimer;
-static uint32_t alienMoveTimer;
-static uint32_t tankMoveTimer;
-static uint32_t bulletUpdateTimer;
-static uint32_t alienShootTimer;
-static uint32_t flashingTimer;
-static uint32_t UFOMoveTimer;
+static uint32_t tankDeathTimer;		// Timer for how long the tank stays in dead state
+static uint32_t UFOEntryTimer;		// Timer for how long until the UFO will enter again
+static uint32_t alienMoveTimer;		// Timer for how long until we move the aliens again
+static uint32_t tankMoveTimer;		// Timer for how long until we move the tank again
+static uint32_t bulletUpdateTimer;  // Timer for how long until we update the bullets again
+static uint32_t alienShootTimer;	// Timer for how long until we fire another alien bullet
+static uint32_t flashingTimer;		// Timer for how long until we switch guises in flashing animation
+static uint32_t UFOMoveTimer;		// Timer for how long until we move the UFO again
 
 
 /*
@@ -99,7 +100,7 @@ void init_bunker_blocks(uint8_t bunker_index){
 		bunkers[bunker_index].blocks[block_index].position.y = bunker_pos.y + BUNKER_BLOCK_SIZE*(block_index / BUNKER_BLOCK_COLS); // Get the y offset (row)
 
 		// If the block index is 9 or 10, we just treat it as dead (the blocks under the arch)
-		if (block_index == INVISIBLE_BLOCK_1 || block_index == INVISIBLE_BLOCK_2){
+		if (block_index == INVISIBLE_BLOCK_1 || block_index == INVISIBLE_BLOCK_2) {
 			// Initialize "invisible" blocks to DEAD
 			bunkers[bunker_index].blocks[block_index].erosion_state = DEAD;
 		}
@@ -168,21 +169,23 @@ void globals_init() {
 	// Set the initial value of the lives
 	current_lives = LIVES_INIT_VALUE;
 
-	UFOPosition.x = OFF_SCREEN;
-	UFOPosition.y = UFO_Y;
-	UFOPosition.prev_x = OFF_SCREEN;
+	// UFO Initialization
+	UFOPosition.x = OFF_SCREEN; // UFO starts off screen
+	UFOPosition.y = UFO_Y; // UFO has consistent y
+	UFOPosition.prev_x = OFF_SCREEN; // Initialize previous position
 	UFOPosition.prev_y = UFO_Y;
 
+	// Definitely don't want to start the game with a game over
 	gameOver = false;
 
 	// Initialize counter values
-	tankDeathTimer = 0;
-	UFOEntryTimer = rand()%UFO_ENTRY_TIMER_RANGE + UFO_ENTRY_TIMER_MIN;
+	tankDeathTimer = 0; // Tank is not dead, initialize it to zero
+	UFOEntryTimer = rand()%UFO_ENTRY_TIMER_RANGE + UFO_ENTRY_TIMER_MIN; // Random value in given range
 	alienMoveTimer = ALIEN_MOVE_TIMER_MAX;
 	tankMoveTimer = TANK_MOVE_TIMER_MAX;
 	bulletUpdateTimer = BULLET_UPDATE_TIMER_MAX;
-	alienShootTimer = rand()%ALIEN_SHOOT_TIMER_RANGE + ALIEN_SHOOT_TIMER_MIN;
-	flashingTimer = 0;
+	alienShootTimer = rand()%ALIEN_SHOOT_TIMER_RANGE + ALIEN_SHOOT_TIMER_MIN; // Random value in given range
+	flashingTimer = 0; // No flashing animation yet, initialize to zero
 	UFOMoveTimer = UFO_MOVE_TIMER_MAX;
 
 }
@@ -245,10 +248,19 @@ point_t global_getTankPosition() {
  * sets the tank to the dead state
  */
 void global_killTank(){
+	// Start the tank death timer
 	tankDeathTimer = TANK_DEATH_TIMER_MAX;
+
+	// Decrement lives
 	current_lives--;
+
+	// Update the lives display
 	render_loseLife();
 }
+
+/**
+ * Returns the current value of the tank death timer
+ */
 uint32_t global_getDeathTimer(){
 	return tankDeathTimer;
 }
@@ -273,6 +285,9 @@ void global_setTankBulletPosition(uint16_t x, uint16_t y) {
 	tankBulletPosition.y = y;
 }
 
+/**
+ * Moves the tank bullet off screen without changing previous values
+ */
 void global_collideTankBullet(){
 	tankBulletPosition.x = OFF_SCREEN;
 	tankBulletPosition.y = OFF_SCREEN;
@@ -584,22 +599,28 @@ void global_setScore(uint16_t score){
 	@param alien_row: this is the row of the alien that was hit - score is calculated accordingly
 */
 uint16_t global_incrementScore(uint8_t alien_row) {
+	// Calculate a random score if the UFO was hit
 	uint16_t random_score;
-	if(alien_row == UFO_ID) {
+	if(alien_row == UFO_ID) { 
 		random_score = (rand() % UFO_MAX_SCORE + UFO_SCORE_OFFSET) * UFO_SCORE_MULTIPLIER;
 		current_score += random_score;
 	}
+	// Check which row was hit and increment the score accordingly
 	else if (alien_row >= BOTTOM_ALIEN_ROW) {
+		// Add bottom row points
 		current_score += BOTTOM_ROW_POINTS;
 	}
 	else if(alien_row >= MID_ALIEN_ROW) {
+		// Add middle row points
 		current_score += MID_ROW_POINTS;
 	}
 	else if(alien_row == TOP_ALIEN_ROW) {
+		// Add top row points
 		current_score += TOP_ROW_POINTS;
 	}
+	// Update the score display
 	render_score(current_score, SCORE_NUMBER_X, STATUS_BAR_Y, GREEN);
-	return random_score;
+	return random_score; // Return the random score so we can flash it on the display
 }
 
 /*
@@ -614,44 +635,68 @@ void global_setFlashingTimer(){
 }
 
 void global_startUFO(){
-	//Determine if the UFO will come from the left or the right
-	UFODirection = rand() % LEFT_RIGHT;
+	// Determine if the UFO will come from the left or the right
+	UFODirection = rand() % LEFT_OR_RIGHT;
+	// The UFO should move left
 	if(UFODirection){
 		UFOPosition.x = UFO_LEFT;
 	}
+	// The UFO should move right
 	else {
 		UFOPosition.x = UFO_RIGHT;
 	}
 	UFOPosition.y = UFO_Y;
 }
 
+/**
+ * Moves the UFO
+ */
 void global_moveUFO(){
+	// If the UFO is not on the screen, just return 
 	if (UFOPosition.x == OFF_SCREEN){
 		return;
 	}
+
+	// Get the previous position
 	UFOPosition.prev_x = UFOPosition.x;
+
+	// If moving left, add the speed
 	if(UFODirection){
 		UFOPosition.x += UFO_SPEED;
 	}
+	// If moving right, subtract the speed
 	else {
 		UFOPosition.x -= UFO_SPEED;
 	}
+	// Check if we are at the edge
 	if(UFOPosition.x < UFO_LEFT || UFOPosition.x > UFO_RIGHT){
+		// Move the UFO off the screen
 		UFOPosition.x = OFF_SCREEN;
 		UFOPosition.y = OFF_SCREEN;
+		// Set the UFO entry timer
 		UFOEntryTimer = rand()%UFO_ENTRY_TIMER_RANGE + UFO_ENTRY_TIMER_MIN;
 	}
 }
 
+/**
+ * Returns the UFO position
+ */
 point_t global_getUFOPosition(){
 	return UFOPosition;
 }
 
+/**
+ * Kill the UFO
+ */
 void global_killUFO(){
+	// Increment the score and get the score value to display
 	uint16_t score = global_incrementScore(UFO_ID);
+	// Update the UFO and display the score
 	render_killUFO(score);
+	// Move the UFO off screen
 	UFOPosition.x = OFF_SCREEN;
 	UFOPosition.y = OFF_SCREEN;
+	// Start the flashing timer (for the flashing score)
 	global_setFlashingTimer();
 }
 
@@ -665,40 +710,46 @@ uint8_t global_decrementTimers() {
 		tankDeathTimer--;//Decrement the timer
 		return TANK_DEATH_TIMER_MASK;//Return to the ISR that the tank is dead
 	}
-	if(UFOEntryTimer-- == 0) {
-		finishedTimers |= UFO_ENTRY_TIMER_MASK;
+	if(UFOEntryTimer-- == 0) { // Decrement the UFO entry timer 
+		finishedTimers |= UFO_ENTRY_TIMER_MASK; // If it's done, set the flag
 	}
-	if(alienMoveTimer-- == 0) {
-		finishedTimers |= ALIEN_MOVE_TIMER_MASK;
-		alienMoveTimer = ALIEN_MOVE_TIMER_MAX;
+	if(alienMoveTimer-- == 0) { // Decrement the alien move timer 
+		finishedTimers |= ALIEN_MOVE_TIMER_MASK; // If it's done, set the flag
+		alienMoveTimer = ALIEN_MOVE_TIMER_MAX;	 // Reset the timer
 	}
-	if(tankMoveTimer-- == 0) {
-		finishedTimers |= TANK_MOVE_TIMER_MASK;
-		tankMoveTimer = TANK_MOVE_TIMER_MAX;
+	if(tankMoveTimer-- == 0) { // Decrement the tank move timer 
+		finishedTimers |= TANK_MOVE_TIMER_MASK; // If it's done, set the flag
+		tankMoveTimer = TANK_MOVE_TIMER_MAX;	// Reset the timer
 	}
-	if(bulletUpdateTimer-- == 0) {
-		finishedTimers |= BULLET_UPDATE_TIMER_MASK;
-		bulletUpdateTimer = BULLET_UPDATE_TIMER_MAX;
+	if(bulletUpdateTimer-- == 0) { // Decrement the bullet update timer 
+		finishedTimers |= BULLET_UPDATE_TIMER_MASK; // If it's done, set the flag
+		bulletUpdateTimer = BULLET_UPDATE_TIMER_MAX;// Reset the timer
 	}
-	if(alienShootTimer-- == 0) {
-		finishedTimers |= ALIEN_SHOOT_TIMER_MASK;
-		alienShootTimer = rand()%ALIEN_SHOOT_TIMER_RANGE + ALIEN_SHOOT_TIMER_MIN;
+	if(alienShootTimer-- == 0) { // Decrement the alien shooting timer 
+		finishedTimers |= ALIEN_SHOOT_TIMER_MASK; // If it's done, set the flag
+		alienShootTimer = rand()%ALIEN_SHOOT_TIMER_RANGE + ALIEN_SHOOT_TIMER_MIN; // Reset the timer to random value
 	}
-	if(flashingTimer-- == 0) {
-		finishedTimers |= FLASHING_TIMER_MASK;
+	if(flashingTimer-- == 0) { // Decrement the flashing timer 
+		finishedTimers |= FLASHING_TIMER_MASK; // If it's done, set the flag
 	}
-	if(UFOMoveTimer-- == 0) {
-		finishedTimers |= UFO_MOVE_TIMER_MASK;
-		UFOMoveTimer = UFO_MOVE_TIMER_MAX;
-	}
+	if(UFOMoveTimer-- == 0) { // Decrement the UFO move timer 
+		finishedTimers |= UFO_MOVE_TIMER_MASK; // If it's done, set the flag
+		UFOMoveTimer = UFO_MOVE_TIMER_MAX;	   // Reset the timer
+	} 
 
 	return finishedTimers;
 }
 
+/**
+ * Returns true if the game is done
+ */
 bool global_isGameOver(){
 	return (alien_count == 0 || current_lives == 0 || gameOver);
 }
 
+/**
+ * Sets the game over flag
+ */
 void global_endGame(){
 	gameOver = true;
 }

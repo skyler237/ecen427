@@ -541,10 +541,11 @@ static const uint32_t R_10x10[] =
 #define FRAME_BUFFER_0_ADDR 0xC1000000
 #define EXPLOSION_DEFAULT -1
 
-static point_t explosion_location;
-static point_t score_loc;
-static uint16_t ufo_score;
-static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
+static point_t explosion_location; // Keeps track of the last exploding alien guise
+static point_t score_loc; // Keeps track of the location for the flashing score (when killing the UFO)
+static uint16_t ufo_score; // Keeps track of the UFO score to flash
+// General frame pointer for all rendering
+static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR; 
 
 // Screen constants
 #define SCALING_CONST 2 // Scaling constant between game pixels and actual screen density
@@ -552,26 +553,30 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define NEXT_COL 1		// Denotes the next column over
 #define BACKGROUND_COLOR 0x00000000	// Background color for the screen
 
-
+// Tank values
 #define TANK_MSB 0x8000			// Most significant bit of the tank sprite rows
 #define TANK_COLOR GREEN		// Tank color
 
+// Bunker values
 #define BUNKER_COLOR GREEN // Bunker color
 
-
+// Alien values
 #define ALIEN_COLOR 0xFFFFFFFF	// Alien color
 #define ALIEN_EXPLOSION_HEIGHT 10 //Height in pixels of the explosion sprite
 
+// Text values
 #define TEXT_COLOR 0xFFFFFFFF	// General text color
 #define NUMBER_WIDTH 5
 #define NUMBER_HEIGHT 5
 #define NUMBER_SPACING (NUMBER_WIDTH + 1)
 #define NUMBER_COLOR GREEN
 
+// Modulus values
 #define THOUSANDS_PLACE 1000
 #define HUNDREDS_PLACE 100
 #define TENS_PLACE 10
 
+// Lives display values
 #define LIVES_TEXT_X (SCREEN_WIDTH*2/3)	// Lives text x offset
 #define LIVES_TEXT_WIDTH 24		// Lives text sprite width
 #define LIVES_TEXT_HEIGHT TEXT_HEIGHT	// Lives text sprite height
@@ -579,13 +584,14 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define LIFE_2_LIFE_SPACING 5	// Spacing between life sprites (tanks)
 #define LIFE_TANK_OFFSET (TANK_HEIGHT - LIVES_TEXT_HEIGHT)	// Offset to help align life sprites and lives text
 
+// Game over splash text values
 #define GAMEOVER_TEXT_HEIGHT 10
 #define GAMEOVER_TEXT_WIDTH 10
 #define GAMEOVER_M_TEXT_WIDTH 14 // the 'M' character is wider than the rest
 #define GAMEOVER_TEXT_X 110
 #define GAMEOVER_TEXT_Y 80
-#define GAMEOVER_TEXT_SPACING 1
-#define GAMEOVER_WORD_SPACING 6
+#define GAMEOVER_TEXT_SPACING 1 // Spacing between individual letters
+#define GAMEOVER_WORD_SPACING 6 // Spacing between the words
 #define GAMEOVER_TEXT_COLOR GREEN
 
 #define BASE_LINE_COLOR GREEN	// Base line color
@@ -802,22 +808,28 @@ void render_refreshTank() {
 	// Get the current position
 	point_t tank_pos = global_getTankPosition();
 	// Call the refresh sprite function
-	if (!global_isTankDead()){
+	if (!global_isTankDead()){ // When the tank is not dead, draw like normal
 		refreshSprite(tank_15x8, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 	}
-	else {
+	else { // If the tank is dead, show "rubble" guise
+		// Get the death timer value
 		uint32_t deathTimer = global_getDeathTimer();
+		// If the timer is just starting, display the tank explosion
 		if (deathTimer == TANK_DEATH_TIMER_MAX){
 			refreshSprite(tank_explosion1_15x8, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 		}
+		// For ever "flashing timer" interval...
 		else if (deathTimer % FLASHING_TIMER_MAX == 0){//Switch which death sprite is shown
+			// For even increments of the flashing count, show one guise
 			if((deathTimer / FLASHING_TIMER_MAX)%DEATH_GUISES == 0){
 				refreshSprite(tank_explosion1_15x8, tank_explosion2_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 			}
-			else {
+			// For odd increments of the flashing count, show the other guise
+			else { 
 				refreshSprite(tank_explosion2_15x8, tank_explosion1_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 			}
 		}
+		// When the timer is almost all done, redraw the original tank
 		else if (deathTimer == REVIVE_TANK){
 			refreshSprite(tank_15x8, tank_explosion2_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 		}
@@ -1081,35 +1093,56 @@ void render_eraseAlien() {
 	drawSprite(alien_explosion_12x10, explosion_location, ALIEN_WIDTH, ALIEN_EXPLOSION_HEIGHT, BACKGROUND_COLOR);
 }
 
+/**
+ * Draws the GAME OVER splash screen text 
+ */
 void render_gameOver(){
+	// Erases all the aliens
 	drawAliens(BACKGROUND_COLOR);
 
+	// Keep a cursor to draw each individual letter
 	point_t cursor;
 	cursor.x = GAMEOVER_TEXT_X;
 	cursor.y = GAMEOVER_TEXT_Y;
 
+	// Draw the 'G'
 	drawSpriteWithBG(G_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
+	// Draw the 'A'
 	drawSpriteWithBG(A_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
+	// Draw the 'M'
 	drawSpriteWithBG(M_10x14, cursor, GAMEOVER_M_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_M_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
+	// Draw the 'E'
 	drawSpriteWithBG(E_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
-	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_WORD_SPACING;
+	// Move the cursor -- add the space between words
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_WORD_SPACING; 
 
+	// Draw the 'O'
 	drawSpriteWithBG(O_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
+	// Draw the 'V'
 	drawSpriteWithBG(V_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
+	// Draw the 'E'
 	drawSpriteWithBG(E_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
+	// Draw the 'R'
 	drawSpriteWithBG(R_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	// Move the cursor
 	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
 
 }
@@ -1160,7 +1193,7 @@ void render_loseLife(){
 	life_pos.y = (STATUS_BAR_Y - LIFE_TANK_OFFSET); // Align the bottom of the tank with the bottom of the text
 
 	// Draw a tank to represent a life
-		drawSprite(tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, BACKGROUND_COLOR);
+	drawSprite(tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, BACKGROUND_COLOR);
 }
 
 /**
@@ -1176,12 +1209,13 @@ void drawBaseLine() {
 }
 
 /**
-* Initializes all the sprites
-*/
+ * Initializes all the sprites
+ */
 void render_init() {
 	// Initialize position and values
 	globals_init();
 
+	// Initialize the explosion location
 	explosion_location.x = EXPLOSION_DEFAULT;
 	explosion_location.y = EXPLOSION_DEFAULT;
 
@@ -1198,25 +1232,25 @@ void render_init() {
  */
 const uint32_t* getNumberBitmap(uint8_t digit) {
 	switch(digit) {
-	case 0:
+	case 0: // Get '0' bitmap
 		return zeroText_5x5;
-	case 1:
+	case 1: // Get '1' bitmap
 		return oneText_5x5;
-	case 2:
+	case 2: // Get '2' bitmap
 		return twoText_5x5;
-	case 3:
+	case 3: // Get '3' bitmap
 		return threeText_5x5;
-	case 4:
+	case 4: // Get '4' bitmap
 		return fourText_5x5;
-	case 5:
+	case 5: // Get '5' bitmap
 		return fiveText_5x5;
-	case 6:
+	case 6: // Get '6' bitmap
 		return sixText_5x5;
-	case 7:
+	case 7: // Get '7' bitmap
 		return sevenText_5x5;
-	case 8:
+	case 8: // Get '8' bitmap
 		return eightText_5x5;
-	case 9:
+	case 9: // Get '9' bitmap
 		return nineText_5x5;
 	}
 	return 0;
@@ -1226,48 +1260,78 @@ const uint32_t* getNumberBitmap(uint8_t digit) {
  * Updates the score bar
  */
 void render_score(uint16_t score, uint16_t x, uint16_t y, uint32_t color) {
+	// Keep a cursor to draw the score digits
 	point_t cursor;
 	cursor.x = x;
 	cursor.y = y;
-	const uint32_t* bitmap;
-	uint8_t thousands = score / THOUSANDS_PLACE;
-	score -= thousands * THOUSANDS_PLACE;
-	uint8_t hundreds = score / HUNDREDS_PLACE;
-	score -= hundreds * HUNDREDS_PLACE;
-	uint8_t tens = score / TENS_PLACE;
-	uint8_t ones = score % TENS_PLACE;
 
-	if(thousands != 0) {
+	const uint32_t* bitmap;
+
+	// Extract each digit
+	uint8_t thousands = score / THOUSANDS_PLACE; // Get thousands place digit
+	score -= thousands * THOUSANDS_PLACE;
+	uint8_t hundreds = score / HUNDREDS_PLACE;   // Get hundreds place digit
+	score -= hundreds * HUNDREDS_PLACE;
+	uint8_t tens = score / TENS_PLACE;			 // Get tens place digit
+	uint8_t ones = score % TENS_PLACE;			 // Get ones place digit
+
+	if(thousands != 0) { // If there is a thousands place digit,
+		// Get the appropriate bitmap
 		bitmap = getNumberBitmap(thousands);
+		// Draw the digit
 		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
+		// Move the cursor
 		cursor.x += NUMBER_SPACING;
 	}
 	if (hundreds != 0 || thousands != 0) {
+		// Get the appropriate bitmap
 		bitmap = getNumberBitmap(hundreds);
+		// Draw the digit
 		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
+		// Move the cursor
 		cursor.x += NUMBER_SPACING;
 	}
 	if (tens != 0 || hundreds != 0 || thousands != 0) {
+		// Get the appropriate bitmap
 		bitmap = getNumberBitmap(tens);
+		// Draw the digit
 		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
+		// Move the cursor
 		cursor.x += NUMBER_SPACING;
 	}
+	// Get the appropriate bitmap
 	bitmap = getNumberBitmap(ones);
+	// Draw the digit
 	drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
 }
 
+/**
+ * Draws the UFO sprite
+ */
 void render_UFO(){
 	refreshSprite(saucer_16x7, saucer_16x7, global_getUFOPosition(), UFO_WIDTH, UFO_HEIGHT, UFO_COLOR);
 }
 
+/**
+ * When the UFO is hit, it updates the UFO position and flashes the score
+ */
 void render_killUFO(uint16_t score){
+	// Get the position for the score to flash
 	score_loc.x = global_getUFOPosition().x;
 	score_loc.y = global_getUFOPosition().y;
+	
+	// Update the UFO score variable
 	ufo_score = score;
+
+	// Draw the UFO
 	drawSprite(saucer_16x7, score_loc, UFO_WIDTH, UFO_HEIGHT, BACKGROUND_COLOR);
+	// Flash the score
 	render_score(score, score_loc.x, score_loc.y, UFO_COLOR);
 }
 
+/**
+ * Erases the UFO score display
+ */ 
 void render_eraseUFOScore(){
 	render_score(ufo_score, score_loc.x, score_loc.y, BACKGROUND_COLOR);
 }

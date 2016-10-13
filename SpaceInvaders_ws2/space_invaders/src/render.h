@@ -32,8 +32,11 @@ void render_score(uint16_t score, uint16_t x, uint16_t y, uint32_t color);
 void render_loseLife();
 //Draws the UFO at the top of the screen
 void render_UFO();
+// Flashes the score in place of where the UFO was
 void render_killUFO(uint16_t score);
+// Erase the UFO score display
 void render_eraseUFOScore();
+// Displays the Game Over splash text
 void render_gameOver();
 // Initializes all the sprites. Also draws the status bar and sprites
 void render_init();
