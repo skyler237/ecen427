@@ -26,10 +26,21 @@
  (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
 
 // Packs each horizontal line of the figures into a single 12 bit word.
+#define packword10(b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | \
+ (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 12 bit word.
 #define packword12(b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
 ((b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
  (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | \
  (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 15 bit word.
+#define packword14(b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) |						  \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
 
 // Packs each horizontal line of the figures into a single 15 bit word.
 #define packword15(b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
@@ -425,10 +436,114 @@ static const uint32_t bulletLightningTwo_3x5[] =
 		packword3(0,1,0)
 };
 
+static const uint32_t G_10x10[] =
+{
+		packword10(0,0,1,1,1,1,1,1,1,1),
+		packword10(0,0,1,1,1,1,1,1,1,1),
+		packword10(1,1,0,0,0,0,0,0,0,0),
+		packword10(1,1,0,0,0,0,0,0,0,0),
+		packword10(1,1,0,0,1,1,1,1,1,1),
+		packword10(1,1,0,0,1,1,1,1,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(0,0,1,1,1,1,1,1,1,1),
+		packword10(0,0,1,1,1,1,1,1,1,1)
+};
+
+static const uint32_t A_10x10[] =
+{
+		packword10(0,0,1,1,1,1,1,1,0,0),
+		packword10(0,0,1,1,1,1,1,1,0,0),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,1,1,1,1,1,1,1,1),
+		packword10(1,1,1,1,1,1,1,1,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1)
+};
+
+
+
+static const uint32_t M_10x14[] =
+{
+		packword14(1,1,1,1,1,1,0,0,1,1,1,1,0,0),
+		packword14(1,1,1,1,1,1,0,0,1,1,1,1,0,0),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1),
+		packword14(1,1,0,0,0,0,1,1,0,0,0,0,1,1)
+};
+
+static const uint32_t E_10x10[] =
+{
+		packword10(1,1,1,1,1,1,1,1,1,1),
+		packword10(1,1,1,1,1,1,1,1,1,1),
+		packword10(1,1,0,0,0,0,0,0,0,0),
+		packword10(1,1,0,0,0,0,0,0,0,0),
+		packword10(1,1,1,1,1,1,1,1,0,0),
+		packword10(1,1,1,1,1,1,1,1,0,0),
+		packword10(1,1,0,0,0,0,0,0,0,0),
+		packword10(1,1,0,0,0,0,0,0,0,0),
+		packword10(1,1,1,1,1,1,1,1,1,1),
+		packword10(1,1,1,1,1,1,1,1,1,1)
+};
+
+static const uint32_t O_10x10[] =
+{
+		packword10(0,0,1,1,1,1,1,1,0,0),
+		packword10(0,0,1,1,1,1,1,1,0,0),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(0,0,1,1,1,1,1,1,0,0),
+		packword10(0,0,1,1,1,1,1,1,0,0)
+};
+
+static const uint32_t V_10x10[] =
+{
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(0,0,1,1,0,0,1,1,0,0),
+		packword10(0,0,1,1,0,0,1,1,0,0),
+		packword10(0,0,0,0,1,1,0,0,0,0),
+		packword10(0,0,0,0,1,1,0,0,0,0)
+};
+
+static const uint32_t R_10x10[] =
+{
+		packword10(1,1,1,1,1,1,1,1,0,0),
+		packword10(1,1,1,1,1,1,1,1,0,0),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,1,1,1,1,1,1,0,0),
+		packword10(1,1,1,1,1,1,1,1,0,0),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1),
+		packword10(1,1,0,0,0,0,0,0,1,1)
+};
+
+
+
 #define FRAME_BUFFER_0_ADDR 0xC1000000
 #define EXPLOSION_DEFAULT -1
 
 static point_t explosion_location;
+static point_t score_loc;
+static uint16_t ufo_score;
 static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 
 // Screen constants
@@ -436,7 +551,7 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define LINE_WIDTH 640	// Number of screen pixels in one line
 #define NEXT_COL 1		// Denotes the next column over
 #define BACKGROUND_COLOR 0x00000000	// Background color for the screen
-#define GREEN 0x0000FF00
+
 
 #define TANK_MSB 0x8000			// Most significant bit of the tank sprite rows
 #define TANK_COLOR GREEN		// Tank color
@@ -448,10 +563,6 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define ALIEN_EXPLOSION_HEIGHT 10 //Height in pixels of the explosion sprite
 
 #define TEXT_COLOR 0xFFFFFFFF	// General text color
-#define SCORE_TEXT_X 15			// Score text sprite x offset
-#define SCORE_TEXT_WIDTH 32		// Score text sprite width
-#define SCORE_TEXT_HEIGHT TEXT_HEIGHT	// Score text sprite height
-#define SCORE_NUMBER_X (SCORE_TEXT_X + SCORE_TEXT_WIDTH + 6)
 #define NUMBER_WIDTH 5
 #define NUMBER_HEIGHT 5
 #define NUMBER_SPACING (NUMBER_WIDTH + 1)
@@ -468,7 +579,16 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;;
 #define LIFE_2_LIFE_SPACING 5	// Spacing between life sprites (tanks)
 #define LIFE_TANK_OFFSET (TANK_HEIGHT - LIVES_TEXT_HEIGHT)	// Offset to help align life sprites and lives text
 
-#define BASE_LINE_COLOR 0x0000FF00	// Base line color
+#define GAMEOVER_TEXT_HEIGHT 10
+#define GAMEOVER_TEXT_WIDTH 10
+#define GAMEOVER_M_TEXT_WIDTH 14 // the 'M' character is wider than the rest
+#define GAMEOVER_TEXT_X 110
+#define GAMEOVER_TEXT_Y 80
+#define GAMEOVER_TEXT_SPACING 1
+#define GAMEOVER_WORD_SPACING 6
+#define GAMEOVER_TEXT_COLOR GREEN
+
+#define BASE_LINE_COLOR GREEN	// Base line color
 
 #define BULLET_COLOR 0xFFFFFFFF		// Bullet color
 //=======================================================================================
@@ -649,12 +769,16 @@ void refreshSprite(const uint32_t* spriteArray, const uint32_t* oldSpriteArray, 
 			// If the column has a bit set in "to_draw" then draw a pixel there
 			if(to_draw & (msb >> col)) {
 				// Call wirte pixel function with sprite color
-				writePixel(row+index_pos.y, col+index_pos.x, sprite_color);
+				if ((row + index_pos.y >= 0) && (row + index_pos.y < SCREEN_HEIGHT) && (col + index_pos.x >= 0) && (col + index_pos.x < SCREEN_WIDTH)){
+					writePixel(row+index_pos.y, col+index_pos.x, sprite_color);
+				}
 			}
 			// If the column has a bit set in "to_erase" then draw the background
 			else if(to_erase & (msb >> col)) {
 				// Call wirte pixel function with background color
-				writePixel(row+index_pos.y, col+index_pos.x, BACKGROUND_COLOR);
+				if ((row + index_pos.y >= 0) && (row + index_pos.y < SCREEN_HEIGHT) && (col + index_pos.x >= 0) && (col + index_pos.x < SCREEN_WIDTH)){
+					writePixel(row+index_pos.y, col+index_pos.x, BACKGROUND_COLOR);
+				}
 			}
 		}
 	}
@@ -683,11 +807,11 @@ void render_refreshTank() {
 	}
 	else {
 		uint32_t deathTimer = global_getDeathTimer();
-		if (deathTimer == TANK_DEATH_TIMER){
+		if (deathTimer == TANK_DEATH_TIMER_MAX){
 			refreshSprite(tank_explosion1_15x8, tank_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 		}
-		else if (deathTimer % SWITCH_DEATH_SPRITE == 0){//Switch which death sprite is shown
-			if((deathTimer / SWITCH_DEATH_SPRITE)%DEATH_GUISES == 0){
+		else if (deathTimer % FLASHING_TIMER_MAX == 0){//Switch which death sprite is shown
+			if((deathTimer / FLASHING_TIMER_MAX)%DEATH_GUISES == 0){
 				refreshSprite(tank_explosion1_15x8, tank_explosion2_15x8, tank_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 			}
 			else {
@@ -843,7 +967,7 @@ void render_bullets() {
 /**
 * Draws all the aliens which are still alive -- only called at init
 */
-void drawAliens() {
+void drawAliens(uint32_t color) {
 	uint8_t row, col;
 	const uint32_t* alien_bitmap;
 	// Get the alien block position (upper left)
@@ -870,7 +994,7 @@ void drawAliens() {
 				alien_pos.y = alien_block_pos.y + (row*ALIEN_Y_SPACING); // Index off of the alien block position
 
 				// Draw the apporpriate sprite
-				drawSprite(alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, ALIEN_COLOR);
+				drawSprite(alien_bitmap, alien_pos, ALIEN_WIDTH, ALIEN_HEIGHT, color);
 			}
 		}
 	}
@@ -947,13 +1071,47 @@ void render_killAlien(uint8_t row, uint8_t col){
 	drawSprite(alien_explosion_12x10, alien_pos, ALIEN_WIDTH, ALIEN_EXPLOSION_HEIGHT, ALIEN_COLOR);
 	explosion_location.x = alien_pos.x;
 	explosion_location.y = alien_pos.y;
+	global_setFlashingTimer();
 }
 
 /**
 * Erases a given alien
 */
-void render_eraseAlien(uint8_t row, uint8_t col) {
+void render_eraseAlien() {
 	drawSprite(alien_explosion_12x10, explosion_location, ALIEN_WIDTH, ALIEN_EXPLOSION_HEIGHT, BACKGROUND_COLOR);
+}
+
+void render_gameOver(){
+	drawAliens(BACKGROUND_COLOR);
+
+	point_t cursor;
+	cursor.x = GAMEOVER_TEXT_X;
+	cursor.y = GAMEOVER_TEXT_Y;
+
+	drawSpriteWithBG(G_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
+	drawSpriteWithBG(A_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
+	drawSpriteWithBG(M_10x14, cursor, GAMEOVER_M_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_M_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
+	drawSpriteWithBG(E_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_WORD_SPACING;
+
+	drawSpriteWithBG(O_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
+	drawSpriteWithBG(V_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
+	drawSpriteWithBG(E_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
+	drawSpriteWithBG(R_10x10, cursor, GAMEOVER_TEXT_WIDTH, GAMEOVER_TEXT_HEIGHT, GAMEOVER_TEXT_COLOR);
+	cursor.x += GAMEOVER_TEXT_WIDTH+GAMEOVER_TEXT_SPACING;
+
 }
 
 /**
@@ -978,7 +1136,7 @@ void drawStatusBar() {
 	// Get the current score
 	uint16_t score = global_getScore();
 	// Draw the score
-	render_score(score);
+	render_score(score, SCORE_NUMBER_X, STATUS_BAR_Y, GREEN);
 
 	// Get the number of lives
 	uint8_t lives = global_getLives();
@@ -993,7 +1151,16 @@ void drawStatusBar() {
 		// Draw a tank to represent a life
 		drawSprite(tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, TANK_COLOR);
 	}
+}
 
+void render_loseLife(){
+	uint8_t lives = global_getLives();
+	point_t life_pos;
+	life_pos.x = (LIVES_TEXT_X + LIVES_TEXT_WIDTH + TEXT_2_LIFE_SPACING + (LIFE_2_LIFE_SPACING + TANK_WIDTH)*(lives)); // Offset from the text
+	life_pos.y = (STATUS_BAR_Y - LIFE_TANK_OFFSET); // Align the bottom of the tank with the bottom of the text
+
+	// Draw a tank to represent a life
+		drawSprite(tank_15x8, life_pos, TANK_WIDTH, TANK_HEIGHT, BACKGROUND_COLOR);
 }
 
 /**
@@ -1020,7 +1187,7 @@ void render_init() {
 
 	drawTank(); // Draw the tank
 	drawBunkers(); // Draw the bunkers
-	drawAliens(); // Draw the aliens
+	drawAliens(ALIEN_COLOR); // Draw the aliens
 
 	drawStatusBar(); // Draw the status bar
 	drawBaseLine(); // Draw the base line
@@ -1058,7 +1225,10 @@ const uint32_t* getNumberBitmap(uint8_t digit) {
 /**
  * Updates the score bar
  */
-void render_score(uint16_t score) {
+void render_score(uint16_t score, uint16_t x, uint16_t y, uint32_t color) {
+	point_t cursor;
+	cursor.x = x;
+	cursor.y = y;
 	const uint32_t* bitmap;
 	uint8_t thousands = score / THOUSANDS_PLACE;
 	score -= thousands * THOUSANDS_PLACE;
@@ -1067,30 +1237,40 @@ void render_score(uint16_t score) {
 	uint8_t tens = score / TENS_PLACE;
 	uint8_t ones = score % TENS_PLACE;
 
-	point_t cursor;
-	cursor.x = SCORE_NUMBER_X;
-	cursor.y = STATUS_BAR_Y;
-
 	if(thousands != 0) {
 		bitmap = getNumberBitmap(thousands);
-		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
 		cursor.x += NUMBER_SPACING;
 	}
 	if (hundreds != 0 || thousands != 0) {
 		bitmap = getNumberBitmap(hundreds);
-		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
 		cursor.x += NUMBER_SPACING;
 	}
 	if (tens != 0 || hundreds != 0 || thousands != 0) {
 		bitmap = getNumberBitmap(tens);
-		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+		drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
 		cursor.x += NUMBER_SPACING;
 	}
 	bitmap = getNumberBitmap(ones);
-	drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, NUMBER_COLOR);
+	drawSpriteWithBG(bitmap, cursor, NUMBER_WIDTH, NUMBER_HEIGHT, color);
 }
 
+void render_UFO(){
+	refreshSprite(saucer_16x7, saucer_16x7, global_getUFOPosition(), UFO_WIDTH, UFO_HEIGHT, UFO_COLOR);
+}
 
+void render_killUFO(uint16_t score){
+	score_loc.x = global_getUFOPosition().x;
+	score_loc.y = global_getUFOPosition().y;
+	ufo_score = score;
+	drawSprite(saucer_16x7, score_loc, UFO_WIDTH, UFO_HEIGHT, BACKGROUND_COLOR);
+	render_score(score, score_loc.x, score_loc.y, UFO_COLOR);
+}
+
+void render_eraseUFOScore(){
+	render_score(ufo_score, score_loc.x, score_loc.y, BACKGROUND_COLOR);
+}
 
 
 

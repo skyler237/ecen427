@@ -41,52 +41,96 @@ void print(char *str);
 #define MAX_SILLY_TIMER 10000000;
 
 #define ASCII_NUM_OFFSET 48
-#define TANK_SPEED 4
+
+// Push Button Definitions
+#define CENTER_BTN 0x01 // GPIO Masks...
+#define RIGHT_BTN 0x02
+#define DOWN_BTN 0x04
+#define LEFT_BTN 0x08
+#define UP_BTN 0x10
+#define DEBOUNCE_MAX 5 // 5 FIT ticks = 50ms
 
 XGpio gpLED;  // This is a handle for the LED GPIO block.
 XGpio gpPB;   // This is a handle for the push-button GPIO block.
+static uint8_t currentButtonState; // Holds the current value of the push buttons (updated each PB interrupt)
+
+static uint32_t counter;
 
 void timer_interrupt_handler() {
+	//xil_printf("%d\n\r", counter);
 	// Decrement all counters
-	global_decrementTimers();
-
-	// Check for timers that are finished
-
+	static bool over = false;
+	uint8_t finishedTimers = global_decrementTimers(); // return value holds finished timers
+	if (global_isGameOver()){
+		if(!over){
+			render_gameOver();
+			over = true;
+		}
+		return;
+	}
 	// Update stuff through controller
-
+	if(finishedTimers & TANK_DEATH_TIMER_MASK) {
+		render_refreshTank();
+		return;
+	}
+	if(finishedTimers & UFO_ENTRY_TIMER_MASK) {
+		global_startUFO();
+	}
+	if(finishedTimers & ALIEN_MOVE_TIMER_MASK) {
+		// Move the aliens
+		control_updateAlienBlock();
+	}
+	if(finishedTimers & TANK_MOVE_TIMER_MASK) {
+		// Move the tank
+		control_updateTank();
+		render_refreshTank();
+	}
+	if(finishedTimers & BULLET_UPDATE_TIMER_MASK) {
+		control_manageBullets();
+		render_bullets();
+	}
+	if(finishedTimers & FLASHING_TIMER_MASK) {
+		render_eraseAlien();
+		render_eraseUFOScore();
+	}
+	if(finishedTimers & UFO_MOVE_TIMER_MASK) {
+		global_moveUFO();
+		render_UFO();
+	}
+	if(finishedTimers & ALIEN_SHOOT_TIMER_MASK) {
+		control_fireAlienBullet();
+	}
 }
 
 // This is invoked each time there is a change in the button state (result of a push or a bounce).
 void pb_interrupt_handler() {
   // Clear the GPIO interrupt.
   XGpio_InterruptGlobalDisable(&gpPB);                // Turn off all PB interrupts for now.
-//  currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
-//  // Check which buttons are high/low
-//  if(!(currentButtonState & CENTER_BTN)) { // If center button is not pressed...
-//	  // Clear the debounce timer
-//	  centerBtnDebounceCounter = 0;
-//  }
-//
-//  if(!(currentButtonState & RIGHT_BTN)) { // If right button is not pressed...
-//	  // Clear the debounce timer
-//	  rightBtnDebounceCounter = 0;
-//  }
-//
-//  if(!(currentButtonState & DOWN_BTN)) { // If down button is not pressed...
-//	  // Clear the debounce timer
-//	  downBtnDebounceCounter = 0;
-//  }
-//
-//  if(!(currentButtonState & LEFT_BTN)) { // If left button is not pressed...
-//	  // Clear the debounce timer
-//	  leftBtnDebounceCounter = 0;
-//  }
-//
-//  if(!(currentButtonState & UP_BTN)) { // If up button is not pressed...
-//	  // Clear the debounce timer
-//	  upBtnDebounceCounter = 0;
-//  }
+  currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
+  // Check which buttons are high/low
+  if((currentButtonState & CENTER_BTN)) { // If center button is not pressed...
+	  // Shoot bullet
+	  global_fireTankBullet();
+  }
 
+  if(currentButtonState & RIGHT_BTN) { // If right button is not pressed...
+	  global_setTankDirection(RIGHT);
+  }
+
+  if(currentButtonState & DOWN_BTN) { // If down button is not pressed...
+	  xil_printf("%d\n\r", counter);
+  }
+
+  if(currentButtonState & LEFT_BTN) { // If left button is not pressed...
+	  global_setTankDirection(LEFT);
+  }
+
+  if(!(currentButtonState & UP_BTN)) { // If up button is not pressed...
+  }
+
+  if(!((currentButtonState & LEFT_BTN) ^ (currentButtonState & RIGHT_BTN))){
+	  global_setTankDirection(STOPPED);
+  }
   XGpio_InterruptClear(&gpPB, 0xFFFFFFFF);            // Ack the PB interrupt.
   XGpio_InterruptGlobalEnable(&gpPB);                 // Re-enable PB interrupts.
 }
@@ -192,7 +236,9 @@ int main()
      render_blankScreen(framePointer0);
      render_init();
      control_init();
+     globals_init();
 
+     XGpio_Initialize(&gpPB, XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID);
      // Set the push button peripheral to be inputs.
 	 XGpio_SetDataDirection(&gpPB, 1, 0x0000001F);
      // Enable the global GPIO interrupt for push buttons.
@@ -204,72 +250,16 @@ int main()
 	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
 			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK));
 	 XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
+	 xil_printf("start\n\r");
 	 microblaze_enable_interrupts();
 
-     char input;
+
+
      while (1) {
-         frameIndex = 0;  	// Only use frame0
-
-         if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
+         /*if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
         	 xil_printf("vdma parking failed\n\r");
-         }
-		 // Get input from keyboard
-         input = getchar();
-         uint8_t tank_diff = TANK_SPEED;
-         uint8_t tens;
-         uint8_t ones;
-         switch(input) {
-         case '3': // Fire alien bullet
-        	 control_fireAlienBullet(framePointer0);
-        	 render_bullets(framePointer0);
-        	 break;
-
-         case '4': // Move Left
-        	 global_moveTank(-tank_diff, 0);
-        	 render_refreshTank(framePointer0);
-        	 break;
-
-         case '5': // Fire tank bullet
-        	 global_fireTankBullet();
-        	 render_bullets(framePointer0);
-        	 break;
-
-         case '6':// Move Right
-        	 global_moveTank(tank_diff, 0);
-        	 render_refreshTank(framePointer0);
-        	 break;
-
-         case '7': // Erode bunker
-        	 input = getchar() - ASCII_NUM_OFFSET;
-        	 uint8_t i;
-        	 for(i=0; i < BUNKER_BLOCK_CNT; i++) {
-        		 global_erodeBunkerBlock(input, i);
-        		 render_erodeBlock(input, i);
-        	 }
-        	 break;
-
-         case '8': // Move Aliens
-        	 control_updateAlienBlock(framePointer0);
-        	 break;
-
-         case '2': // Kill alien
-        	 tens = getchar() - ASCII_NUM_OFFSET;
-        	 ones = getchar() - ASCII_NUM_OFFSET;
-        	 input = 10*tens + ones;
-
-        	 uint8_t row = input / ALIEN_COLS;
-        	 uint8_t col = input % ALIEN_COLS;
-
-        	 global_killAlien(row, col);
-//        	 render_eraseAlien(row, col);
-        	 break;
-
-         case '9': // Update bullets
-        	 control_manageBullets(framePointer0);
-        	 render_bullets(framePointer0);
-        	 break;
-         }
-
+         }*/
+    	 counter++;
      }
      cleanup_platform();
 

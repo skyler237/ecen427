@@ -28,6 +28,7 @@
 // Alien constants
 #define ALIEN_ROWS 5		// Number of alien rows
 #define ALIEN_COLS 11		// Number of alien constants
+#define ALIEN_COUNT 55
 #define ALIEN_ROW_MAX (ALIEN_ROWS - 1)	// Max row index (0 indexed)
 #define ALIEN_COL_MAX (ALIEN_COLS - 1)	// Max col index (0 indexed)
 #define ALIEN_WIDTH 12		// Alien sprite width
@@ -44,6 +45,7 @@
 // Tank constants
 #define TANK_WIDTH 15		// Tank sprite width
 #define TANK_HEIGHT 8		// Tank sprite height
+#define TANK_SPEED 2
 
 // Bunker constants
 #define BUNKER_0 0	// Bunker index values
@@ -78,12 +80,18 @@
 
 #define BASE_LINE_Y (SCREEN_HEIGHT - 5)	// Y value of the base line
 
-//Max values of the timers
-#define TANK_DEATH_TIMER 30
 //Ticks between switching which guise the dead tank is in
 #define SWITCH_DEATH_SPRITE 5
 #define DEATH_GUISES 2
 #define REVIVE_TANK 1
+
+#define UFO_WIDTH 16
+#define UFO_HEIGHT 7
+#define UFO_Y 45
+#define UFO_LEFT (-UFO_WIDTH)
+#define UFO_RIGHT (SCREEN_WIDTH)
+#define UFO_SPEED 2
+#define UFO_COLOR 0x00FF0000
 
 // Timer values
 #define TANK_DEATH_TIMER_MASK 0x01
@@ -93,15 +101,27 @@
 #define BULLET_UPDATE_TIMER_MASK 0x10
 #define FLASHING_TIMER_MASK 0x20
 #define UFO_MOVE_TIMER_MASK 0x40
+#define ALIEN_SHOOT_TIMER_MASK 0x80
 // Each tick is 10 ms
-#define TANK_DEATH_TIMER_MAX 5
-#define UFO_ENTRY_TIMER_MIN 15*100
-#define UFO_ENTRY_TIMER_RANGE 25*100
+#define TANK_DEATH_TIMER_MAX 100
+#define UFO_ENTRY_TIMER_MIN (10*100)
+#define UFO_ENTRY_TIMER_RANGE (15*100)
 #define ALIEN_MOVE_TIMER_MAX 50
-#define TANK_MOVE_TIMER_MAX 5
+#define ALIEN_SHOOT_TIMER_RANGE (150)
+#define ALIEN_SHOOT_TIMER_MIN (10)
+#define TANK_MOVE_TIMER_MAX 3
 #define BULLET_UPDATE_TIMER_MAX 5
-#define FLASHING_TIMER_MAX 25
+#define FLASHING_TIMER_MAX 20
 #define UFO_MOVE_TIMER_MAX 7
+
+#define BOTTOM_BUNKER_ROW 8
+
+#define SCORE_TEXT_X 15			// Score text sprite x offset
+#define SCORE_TEXT_WIDTH 32		// Score text sprite width
+#define SCORE_TEXT_HEIGHT TEXT_HEIGHT	// Score text sprite height
+#define SCORE_NUMBER_X (SCORE_TEXT_X + SCORE_TEXT_WIDTH + 6)
+
+#define GREEN 0x0000FF00
 
 // A point will keep track of an x,y position and a previous x,y position
 typedef struct {int16_t x; int16_t y; int16_t prev_x; int16_t prev_y;} point_t;
@@ -112,6 +132,9 @@ typedef enum { CROSS_UP, CROSS_DOWN, CROSS_MID2UP, CROSS_MID2DOWN, LIGHTNING1, L
 // Keeps track of the erosion status of a bunker block
 typedef enum  {WHOLE, HIT1, HIT2, HIT3, DEAD} erosionState_t;
 
+// Different movement states of the tank
+typedef enum {LEFT=-1, RIGHT=1, STOPPED=0} tankMotion_t;
+
 // Initializes all positions and other relevant game data
 void globals_init();
 
@@ -119,6 +142,10 @@ void globals_init();
 void global_setTankPosition(int16_t x, int16_t y);
 // Moves the tank by dx and dy
 void global_moveTank(int8_t dx, int8_t dy);
+// Sets the tank motion
+void global_setTankDirection(tankMotion_t direction);
+// Gets the tank motion
+tankMotion_t global_getTankDirection();
 // Returns the tank position point
 point_t global_getTankPosition();
 void global_killTank();
@@ -178,6 +205,8 @@ bool global_isAlienAlive(uint8_t row, uint8_t col);
 bool global_isAlienPoseIn();
 // Toggles the alien position between in and out
 void global_toggleAlienPose();
+//Sets the timer to erase alien explosions
+void global_setFlashingTimer();
 
 // Sets the current life count
 void global_setLives(uint8_t lives);
@@ -187,12 +216,20 @@ uint8_t global_getLives();
 // Sets the current score
 void global_setScore(uint16_t score);
 // Increments the current score by the proper amount, based on the row hit
-void global_incrementScore(uint8_t alien_row);
+uint16_t global_incrementScore(uint8_t alien_row);
 // Returns the current score
 uint16_t global_getScore();
 
+void global_startUFO();
+void global_moveUFO();
+point_t global_getUFOPosition();
+void global_killUFO();
+
 // Decrements all timers and does not overflow past zero
 uint8_t global_decrementTimers();
+
+bool global_isGameOver();
+void global_endGame();
 
 
 #endif /* GLOBALS_H_ */

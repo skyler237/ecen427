@@ -13,22 +13,19 @@
 // Initialize the control
 void control_init();
 
-// Move the tank left
-void control_moveTankLeft();
-
-// Move the tank right
-void control_moveTankRight();
+// Updates the tank (move left or right and shoot)
+void control_updateTank();
 
 // Update the alien block one frame
 // -- Changes position and toggles guises
-void control_updateAlienBlock(uint32_t* framePtr);
+void control_updateAlienBlock();
 
 // Update bullet positions
 // -- Also manages collisions
-void control_manageBullets(uint32_t* framePtr);
+void control_manageBullets();
 
 // Fires a random alien bullet from the bottom-most row
-void control_fireAlienBullet(uint32_t* framePtr);
+void control_fireAlienBullet();
 
 
 #endif /* CONTROL_H_ */

@@ -17,7 +17,7 @@ void render_refreshTank();
 // Refreshes the alien sprites
 void render_refreshAliens();
 // Erases the given alien sprite
-void render_eraseAlien(uint8_t row, uint8_t col);
+void render_eraseAlien();
 // Updates a block to reflect an increased erosion state -- doesn't actually cause the erosion
 void render_erodeBlock(uint8_t bunker, uint8_t block_index);
 // Completely erases the given bunker block
@@ -27,8 +27,14 @@ void render_bullets();
 //Draws the alien explosion
 void render_killAlien(uint8_t row, uint8_t col);
 // Updates the score bar
-void render_score(uint16_t score);
-
+void render_score(uint16_t score, uint16_t x, uint16_t y, uint32_t color);
+//Erases one of the lives off of the score bar
+void render_loseLife();
+//Draws the UFO at the top of the screen
+void render_UFO();
+void render_killUFO(uint16_t score);
+void render_eraseUFOScore();
+void render_gameOver();
 // Initializes all the sprites. Also draws the status bar and sprites
 void render_init();
 
