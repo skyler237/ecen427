@@ -1,0 +1,46 @@
+/*
+ * sound_control.c
+ *
+ *  Created on: Oct 21, 2016
+ *      Author: superman
+ */
+#include "sound_control.h"
+#include "xac97_l.h"
+#include <xbasic_types.h>
+#include <xio.h>
+#include "xparameters.h"
+#define SOUND_FIFO_ADD 200
+
+
+// Keep track of current indexes for each sound
+uint16_t tankFireSoundIndex;
+uint32_t soundBuffer[SOUND_FIFO_ADD];
+
+void sound_control_init(){
+	XAC97_HardReset(XPAR_AXI_AC97_0_BASEADDR);
+	XAC97_mSetControl(AC97_ExtendedAudioStat, AC97_EXTENDED_AUDIO_CONTROL_VRA);
+	XAC97_mSetControl(XPAR_AXI_AC97_0_BASEADDR, AC97_ENABLE_IN_FIFO_INTERRUPT);
+	tankFireSoundIndex = tankFireSoundFrames;
+}
+
+//Loads all of the sounds that we want to play into a buffer that will be loaded into the sound chip
+void load_sound_buffer(){
+	uint16_t i;
+	for(i = 0; i < SOUND_FIFO_ADD; i++){
+		uint8_t sound_count;
+		if(tankFireSoundIndex < tankFireSoundFrames){
+			soundBuffer[i] += tankFireSound[tankFireSoundIndex];
+			tankFireSoundIndex++;
+			sound_count++;
+		}
+	}
+}
+
+//Loads the current contents of the buffer into the FIFO on the sound chip
+void sound_control_load_sound() {
+	uint16_t i;
+	for(i = 0; i < SOUND_FIFO_ADD; i++){
+		XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundBuffer[i]);
+	}
+}
+

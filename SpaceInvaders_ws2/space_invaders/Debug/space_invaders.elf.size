@@ -1,2 +1,2 @@
    text	   data	    bss	    dec	    hex	filename
-  48802	   1492	   5974	  56268	   dbcc	space_invaders.elf
+  68010	   1492	   6486	  75988	  128d4	space_invaders.elf

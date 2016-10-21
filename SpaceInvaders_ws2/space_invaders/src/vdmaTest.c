@@ -33,6 +33,7 @@
 #include "mb_interface.h"   // provides the microblaze interrupt enables, etc.
 #include "xintc_l.h"        // Provides handy macros for the interrupt controller.
 #include "xgpio.h"          // Provides access to PB GPIO driver.
+#include "sound_control.h"
 
 #define DEBUG
 void print(char *str);
@@ -150,6 +151,12 @@ void pb_interrupt_handler() {
   XGpio_InterruptGlobalEnable(&gpPB);                 // Re-enable PB interrupts.
 }
 
+void sound_interrupt_handler() {
+	xil_printf("Sound Interrupt received\n\r");
+	load_sound_buffer();
+	sound_control_load_sound();
+}
+
 // Main interrupt handler, queries the interrupt controller to see what peripheral
 // fired the interrupt and then dispatches the corresponding interrupt handler.
 // This routine acks the interrupt at the controller level but the peripheral
@@ -168,9 +175,14 @@ void interrupt_handler_dispatcher(void* ptr) {
 		pb_interrupt_handler();
 		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK);
 	}
+	// Check the sound controller.
+	if (intc_status & XPAR_AXI_AC97_0_INTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_AXI_AC97_0_INTERRUPT_MASK);
+		sound_interrupt_handler();
+	}
 }
 
-int main()
+int main2()
 {
 	init_platform();                   // Necessary for all programs.
 	int Status;                        // Keep track of success/failure of system function calls.
@@ -253,6 +265,7 @@ int main()
      render_init();		// Initialize the renderer
      control_init();	// Initialize control stuff
      globals_init();	// Initialize global values
+     sound_control_init(); // Initialize the sound control
 
      XGpio_Initialize(&gpPB, XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID);
      // Set the push button peripheral to be inputs.
@@ -265,7 +278,7 @@ int main()
 	 // Set up interrupts
 	 microblaze_register_handler(interrupt_handler_dispatcher, NULL);
 	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
-			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK));
+			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
 	 XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
 	 xil_printf("start\n\r");
 	 microblaze_enable_interrupts();
@@ -273,12 +286,15 @@ int main()
 
 
      while (1) {
+    	 /*
          if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
         	 xil_printf("vdma parking failed\n\r");
          }
+         */
     	 counter++;
      }
      cleanup_platform();
 
     return 0;
 }
+

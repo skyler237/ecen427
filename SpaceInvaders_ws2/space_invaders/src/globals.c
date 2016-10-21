@@ -8,6 +8,7 @@
 // Demonstrates one way to handle globals safely in C.
 #include "globals.h"
 #include "render.h"
+#include "sound_control.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -317,6 +318,7 @@ void global_fireTankBullet() {
 		// Set the bullet to appear just above the tank turret
 		tankBulletPosition.x = tankPosition.x + TANK_BULLET_X_OFFSET;
 		tankBulletPosition.y = tankPosition.y - BULLET_HEIGHT;
+		sound_control_playTankFireSound();
 	}
 }
 

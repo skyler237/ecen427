@@ -1,0 +1,22 @@
+/*
+ * sound_control.c
+ *
+ *  Created on: Oct 21, 2016
+ *      Author: superman
+ */
+#include "tankFireSound.c"
+#define SOUND_FIFO_ADD 200
+
+
+// Keep track of current indexes for each sound
+uint16_t tankFireSoundIndex = tankFireSoundFrames;
+uint32_t soundBuffer[SOUND_FIFO_ADD];
+
+void load_sound_buffer(){
+
+}
+
+void sound_control_load_sound() {
+
+}
+
