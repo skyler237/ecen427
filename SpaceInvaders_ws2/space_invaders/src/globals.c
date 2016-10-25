@@ -257,6 +257,7 @@ void global_killTank(){
 
 	// Update the lives display
 	render_loseLife();
+	sound_control_playTankExplosionSound();
 }
 
 /**
@@ -349,6 +350,7 @@ void global_moveAlienBlock(uint16_t dx, uint16_t dy){
 	// Just increases the position by dx and dy
 	// --NOTE: bounds checking is done by the controller
 	global_setAlienBlockPosition(alienBlockPosition.x + dx, alienBlockPosition.y + dy);
+	sound_control_playAlienMarchingSound();
 }
 
 /*
@@ -549,6 +551,7 @@ void global_killAlien(uint8_t row, uint8_t col){
 	alien_count--;
 	//Draws the explosion sprite in place of the alien sprite
 	render_killAlien(row, col);
+	sound_control_playAlienExplosionSound();
 }
 
 /*
@@ -648,6 +651,7 @@ void global_startUFO(){
 		UFOPosition.x = UFO_RIGHT;
 	}
 	UFOPosition.y = UFO_Y;
+	sound_control_playSaucerFlyingSound();
 }
 
 /**
@@ -677,6 +681,7 @@ void global_moveUFO(){
 		UFOPosition.y = OFF_SCREEN;
 		// Set the UFO entry timer
 		UFOEntryTimer = rand()%UFO_ENTRY_TIMER_RANGE + UFO_ENTRY_TIMER_MIN;
+		sound_control_stopSaucerFlyingSound();
 	}
 }
 
@@ -700,6 +705,8 @@ void global_killUFO(){
 	UFOPosition.y = OFF_SCREEN;
 	// Start the flashing timer (for the flashing score)
 	global_setFlashingTimer();
+	sound_control_stopSaucerFlyingSound();
+	sound_control_playSaucerExplosionSound();
 }
 
 /**

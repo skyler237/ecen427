@@ -152,7 +152,6 @@ void pb_interrupt_handler() {
 }
 
 void sound_interrupt_handler() {
-	xil_printf("Sound Interrupt received\n\r");
 	load_sound_buffer();
 	sound_control_load_sound();
 }
@@ -182,7 +181,7 @@ void interrupt_handler_dispatcher(void* ptr) {
 	}
 }
 
-int main2()
+int main()
 {
 	init_platform();                   // Necessary for all programs.
 	int Status;                        // Keep track of success/failure of system function calls.
