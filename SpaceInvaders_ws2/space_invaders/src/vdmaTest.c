@@ -122,7 +122,9 @@ void pb_interrupt_handler() {
   // Check which buttons are high/low
   if((currentButtonState & CENTER_BTN)) { // If center button is pressed...
 	  // Shoot bullet
-	  global_fireTankBullet();
+	  if(!global_isGameOver()){
+		  global_fireTankBullet();
+	  }
   }
 
   if(currentButtonState & RIGHT_BTN) { // If right button is pressed...

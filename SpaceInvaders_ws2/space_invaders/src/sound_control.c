@@ -13,18 +13,19 @@
 #include "globals.h"
 #define SOUND_FIFO_ADD 128
 #define ALIEN_SOUND_COUNT 4
-#define CHANGE_VOLUME_INCREMENT (AC97_VOL_MIN / 10)
+#define ONE_CHANNEL_MIN_VOLUME 0x1F
+#define CHANGE_VOLUME_INCREMENT (ONE_CHANNEL_MIN_VOLUME / 10)
 
 
 // Keep track of current indexes for each sound
-static uint16_t tankFireSoundIndex;
-static uint16_t alienMarchingSoundIndex;
-static uint16_t saucerFlyingSoundIndex;
+static uint32_t tankFireSoundIndex;
+static uint32_t alienMarchingSoundIndex;
+static uint32_t saucerFlyingSoundIndex;
 static uint8_t playingSaucerSound;
-static uint16_t tankExplosionSoundIndex;
-static uint16_t saucerExplosionSoundIndex;
-static uint16_t alienExplosionSoundIndex;
-static uint32_t soundBuffer[SOUND_FIFO_ADD];
+static uint32_t tankExplosionSoundIndex;
+static uint32_t saucerExplosionSoundIndex;
+static uint32_t alienExplosionSoundIndex;
+static int32_t soundBuffer[SOUND_FIFO_ADD];
 static uint8_t whichAlienSound;
 
 void sound_control_playTankFireSound(){
@@ -105,11 +106,10 @@ void sound_control_simple_test() {
 	}
 }
 
-int32_t getSoundValue(int32_t sound[], uint16_t* index, uint16_t max_index, uint8_t* sound_count){
+int32_t getSoundValue(const int32_t sound[], uint32_t* index, uint32_t max_index, uint8_t* sound_count){
 	if(*index < max_index){
 		int32_t ret = sound[*index];
 		(*index)++;
-//			xil_printf("index: %d\n\r", tankFireSoundIndex);
 		(*sound_count)++;
 		return ret;
 	}
@@ -119,7 +119,7 @@ int32_t getSoundValue(int32_t sound[], uint16_t* index, uint16_t max_index, uint
 //Loads all of the sounds that we want to play into a buffer that will be loaded into the sound chip
 void load_sound_buffer(){
 	uint16_t i;
-	int32_t* alienSound;
+	const int32_t* alienSound;
 	switch(whichAlienSound){
 	case 1:
 		alienSound = alien1_soundData;
@@ -134,6 +134,7 @@ void load_sound_buffer(){
 		alienSound = alien4_soundData;
 		break;
 	}
+//	xil_printf("index: %d\n\r", tankFireSoundIndex);
 	for(i = 0; i < SOUND_FIFO_ADD; i++){
 		uint8_t sound_count = 0;
 		soundBuffer[i] = 0;
@@ -159,6 +160,7 @@ void load_sound_buffer(){
 			soundBuffer[i] = 0;
 		}
 		else {
+//			xil_printf("%d\n\r", sound_count);
 			soundBuffer[i] = soundBuffer[i] / sound_count;
 //			xil_printf("%d\n\r",soundBuffer[i]);
 		}
@@ -171,25 +173,32 @@ void sound_control_load_sound() {
 	for(i = 0; i < SOUND_FIFO_ADD; i++){
 		//xil_printf("Loading: %d\n\r", soundBuffer[i]);
 		uint32_t dual_channel = (soundBuffer[i] << 16) + soundBuffer[i];
+		if(global_isGameOver()){
+			dual_channel = 0;
+		}
 		XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, dual_channel);
 	}
 }
 
 void sound_control_increaseVolume() {
-	int32_t currVol = XAC97_ReadReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol);
+	int8_t currVol = XAC97_ReadReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol);
 	currVol -= CHANGE_VOLUME_INCREMENT;
 	if(currVol < AC97_VOL_MAX){
 		currVol = AC97_VOL_MAX;
 	}
-	XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, currVol);
+	int16_t twoChannel = (currVol << 8) | currVol;
+//	xil_printf("%d\n\r", twoChannel);
+	XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, twoChannel);
 }
 
 void sound_control_decreaseVolume() {
-	int32_t currVol = XAC97_ReadReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol);
+	int8_t currVol = XAC97_ReadReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol);
 	currVol += CHANGE_VOLUME_INCREMENT;
-	if(currVol > AC97_VOL_MIN){
-		currVol = AC97_VOL_MIN;
+	if(currVol > ONE_CHANNEL_MIN_VOLUME){
+		currVol = ONE_CHANNEL_MIN_VOLUME;
 	}
-	XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, currVol);
+	int16_t twoChannel = (currVol << 8) | currVol;
+//	xil_printf("%d\n\r", twoChannel);
+	XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, twoChannel);
 }
 

@@ -92,7 +92,7 @@
 #define UFO_LEFT (-UFO_WIDTH) // Screen position at which the UFO is off the left side of the screen
 #define UFO_RIGHT (SCREEN_WIDTH) // Screen position at which the UFO is off the right side of the screen
 #define UFO_SPEED 2
-#define UFO_COLOR GREEN
+#define UFO_COLOR RED
 
 // Timer mask values
 #define TANK_DEATH_TIMER_MASK 0x01
@@ -127,6 +127,7 @@
 
 // The color green
 #define GREEN 0x0000FF00
+#define RED 0x00FF0000
 
 // A point will keep track of an x,y position and a previous x,y position
 typedef struct {int16_t x; int16_t y; int16_t prev_x; int16_t prev_y;} point_t;
