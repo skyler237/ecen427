@@ -131,7 +131,7 @@ void pb_interrupt_handler() {
   }
 
   if(currentButtonState & DOWN_BTN) { // If down button is pressed...
-	  // Currently do nothing
+	  sound_control_decreaseVolume();
   }
 
   if(currentButtonState & LEFT_BTN) { // If left button is pressed...
@@ -140,7 +140,7 @@ void pb_interrupt_handler() {
   }
 
   if(currentButtonState & UP_BTN) { // If up button is pressed...
-      // Currently do nothing
+	  sound_control_increaseVolume();
   }
 
   // When neither or both buttons are pressed, keep the tank stopped

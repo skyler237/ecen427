@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="227" key="DIALOG_Y_ORIGIN"/>
-		<item value="348" key="DIALOG_HEIGHT"/>
 		<item value="1587" key="DIALOG_X_ORIGIN"/>
+		<item value="348" key="DIALOG_HEIGHT"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="RATE" key="selection"/>
+		<item value="VOL_MAX" key="selection"/>
 		<list key="findhistory">
+			<item value="VOL_MAX"/>
+			<item value="ReadReg"/>
 			<item value="rate"/>
 			<item value="sample"/>
 			<item value="interrupt"/>
 			<item value="vra"/>
 			<item value="register"/>
 			<item value="AC97"/>
-			<item value="XPAR_AUDIO_CODEC"/>
-			<item value="loseLife"/>
 		</list>
 		<list key="replacehistory">
 			<item value="--;"/>

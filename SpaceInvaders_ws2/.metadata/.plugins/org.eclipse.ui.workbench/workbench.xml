@@ -33,56 +33,86 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="9"/>
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
 <part id="8"/>
-<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
+<part id="13"/>
+<part id="14"/>
+<part id="15"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="sound_control.h" partName="sound_control.h" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/sound_control.h" title="sound_control.h" tooltip="space_invaders/src/sound_control.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/sound_control.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="975" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1411" selectionTopPixel="354"/>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="sound_control.c" partName="sound_control.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/sound_control.c" title="sound_control.c" tooltip="space_invaders/src/sound_control.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/sound_control.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="712" selectionTopPixel="306"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2443" selectionTopPixel="2445"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="xac97_l.h" partName="xac97_l.h" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/xac97_l.h" title="xac97_l.h" tooltip="space_invaders/src/xac97_l.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/xac97_l.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="53" selectionOffset="12961" selectionTopPixel="4213"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="xac97_l.c" partName="xac97_l.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/xac97_l.c" title="xac97_l.c" tooltip="space_invaders/src/xac97_l.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/xac97_l.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="286" selectionOffset="1240" selectionTopPixel="473"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="8574" selectionTopPixel="2839"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="tankFireSound.c" partName="tankFireSound.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/tankFireSound.c" title="tankFireSound.c" tooltip="space_invaders/src/tankFireSound.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/tankFireSound.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="416" selectionTopPixel="150"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="416" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="vdmaTest.c" partName="vdmaTest.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/vdmaTest.c" title="vdmaTest.c" tooltip="space_invaders/src/vdmaTest.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/vdmaTest.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3379" selectionTopPixel="1272"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="xparameters.h" partName="xparameters.h" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders_bsp/microblaze_0/include/xparameters.h" title="xparameters.h" tooltip="space_invaders_bsp/microblaze_0/include/xparameters.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders_bsp/microblaze_0/include/xparameters.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="30" selectionOffset="5787" selectionTopPixel="2584"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="control.c" partName="control.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/control.c" title="control.c" tooltip="space_invaders/src/control.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/control.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="6882"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4418" selectionTopPixel="1884"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="globals.c" partName="globals.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/globals.c" title="globals.c" tooltip="space_invaders/src/globals.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/globals.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9038" selectionTopPixel="4111"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="24451" selectionTopPixel="12390"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sountTest.c" partName="sountTest.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/sountTest.c" title="sountTest.c" tooltip="space_invaders/src/sountTest.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/sountTest.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="963" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tankFire.c" partName="tankFire.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/tankFire.c" title="tankFire.c" tooltip="space_invaders/src/tankFire.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/tankFire.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="217964" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="alien_explosion.c" partName="alien_explosion.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/alien_explosion.c" title="alien_explosion.c" tooltip="space_invaders/src/alien_explosion.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/alien_explosion.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" partName="globals.h" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/globals.h" title="globals.h" tooltip="space_invaders/src/globals.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/globals.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="3567"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="xac97_l.c" partName="xac97_l.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/xac97_l.c" title="xac97_l.c" tooltip="space_invaders/src/xac97_l.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/xac97_l.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1137" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="alien1.c" partName="alien1.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/alien1.c" title="alien1.c" tooltip="space_invaders/src/alien1.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/alien1.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="167107" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="alien2.c" partName="alien2.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/alien2.c" title="alien2.c" tooltip="space_invaders/src/alien2.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/alien2.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="alien3.c" partName="alien3.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/alien3.c" title="alien3.c" tooltip="space_invaders/src/alien3.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/alien3.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="alien4.c" partName="alien4.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/alien4.c" title="alien4.c" tooltip="space_invaders/src/alien4.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/alien4.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="saucerExplosion.c" partName="saucerExplosion.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/saucerExplosion.c" title="saucerExplosion.c" tooltip="space_invaders/src/saucerExplosion.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/saucerExplosion.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tankExplosion.c" partName="tankExplosion.c" path="C:/Users/superman/Documents/ecen427/SpaceInvaders_ws2/space_invaders/src/tankExplosion.c" title="tankExplosion.c" tooltip="space_invaders/src/tankExplosion.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/space_invaders/src/tankExplosion.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="449052" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -104,8 +134,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -345,157 +375,166 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/sound_control.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/sound_control.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/globals.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/tankFireSound.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/xac97_l.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/xac97_l.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/sountTest.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/vdmaTest.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/alien1.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/alien2.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/alien3.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/alien4.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/saucerExplosion.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/space_invaders/src/tankExplosion.c"/>
 </editors>
-<item historyLabel="tankFireSound.c" index="3">
-<position info="not_deleted" x="416" y="0"/>
+<item historyLabel="xac97_l.c" index="4">
+<position info="not_deleted" x="1278" y="58"/>
 </item>
 <item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3962" y="0"/>
+<position info="not_deleted" x="5522" y="0"/>
+</item>
+<item historyLabel="xac97_l.c" index="4">
+<position info="not_deleted" x="725" y="7"/>
 </item>
 <item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2526" y="0"/>
+<position info="not_deleted" x="5591" y="0"/>
+</item>
+<item historyLabel="xac97_l.c" index="4">
+<position info="not_deleted" x="1137" y="0"/>
+</item>
+<item historyLabel="xac97_l.h" index="3">
+<position info="not_deleted" x="8647" y="7"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="359" y="0"/>
+</item>
+<item historyLabel="xac97_l.h" index="3">
+<position info="not_deleted" x="8574" y="12"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="359" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="5869" y="0"/>
 </item>
 <item historyLabel="sound_control.h" index="1">
-<position info="not_deleted" x="141" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2526" y="0"/>
-</item>
-<item historyLabel="tankFireSound.c" index="3">
-<position info="not_deleted" x="416" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2526" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2711" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2600" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3962" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2466" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="4027" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2661" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3962" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3285" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3435" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3604" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3707" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3726" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3835" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="915" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="1191" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3854" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="3960" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="2713" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="21104" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="644" y="584"/>
+<position info="not_deleted" x="943" y="15"/>
 </item>
 <item historyLabel="sound_control.h" index="1">
-<position info="not_deleted" x="1237" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="21104" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="21104" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="644" y="584"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="21104" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="21814" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="973" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="21814" y="0"/>
+<position info="not_deleted" x="1945" y="0"/>
 </item>
 <item historyLabel="sound_control.h" index="1">
-<position info="not_deleted" x="1237" y="0"/>
+<position info="not_deleted" x="1985" y="0"/>
 </item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="22384" y="0"/>
-</item>
-<item historyLabel="sound_control.h" index="1">
-<position info="not_deleted" x="1237" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="22384" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="22382" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="11517" y="0"/>
+<item historyLabel="sountTest.c" index="5">
+<position info="not_deleted" x="963" y="0"/>
 </item>
 <item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="973" y="0"/>
+<position info="not_deleted" x="5869" y="0"/>
 </item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="11517" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="9038" y="0"/>
-</item>
-<item historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="973" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="9038" y="0"/>
-</item>
-<item historyLabel="globals.c" index="2">
-<position info="not_deleted" x="9038" y="0"/>
+<item historyLabel="vdmaTest.c" index="6">
+<position info="not_deleted" x="4284" y="0"/>
 </item>
 <item historyLabel="sound_control.h" index="1">
-<position info="not_deleted" x="975" y="0"/>
+<position info="not_deleted" x="1954" y="33"/>
+</item>
+<item historyLabel="vdmaTest.c" index="6">
+<position info="not_deleted" x="4509" y="0"/>
+</item>
+<item historyLabel="alien1.c" index="7">
+<position info="not_deleted" x="0" y="20"/>
+</item>
+<item historyLabel="alien2.c" index="8">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="alien3.c" index="9">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="alien4.c" index="10">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="saucerExplosion.c" index="11">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="tankExplosion.c" index="12">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="4573" y="0"/>
+</item>
+<item historyLabel="sound_control.h" index="1">
+<position info="not_deleted" x="1411" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="5910" y="0"/>
+</item>
+<item historyLabel="alien1.c" index="7">
+<position info="not_deleted" x="167107" y="0"/>
+</item>
+<item historyLabel="alien2.c" index="8">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="alien3.c" index="9">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="alien4.c" index="10">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="saucerExplosion.c" index="11">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="tankExplosion.c" index="12">
+<position info="not_deleted" x="449052" y="0"/>
+</item>
+<item historyLabel="sound_control.h" index="1">
+<position info="not_deleted" x="1411" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="5910" y="0"/>
+</item>
+<item historyLabel="globals.c" index="2">
+<position info="not_deleted" x="24451" y="0"/>
+</item>
+<item historyLabel="sound_control.h" index="1">
+<position info="not_deleted" x="1411" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="5910" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="1076" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="249" y="0"/>
+</item>
+<item historyLabel="globals.c" index="2">
+<position info="not_deleted" x="24451" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="249" y="0"/>
+</item>
+<item historyLabel="globals.c" index="2">
+<position info="not_deleted" x="24451" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="1064" y="0"/>
+</item>
+<item historyLabel="vdmaTest.c" index="6">
+<position info="not_deleted" x="4509" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="1959" y="0"/>
+</item>
+<item historyLabel="sountTest.c" index="5">
+<position info="not_deleted" x="963" y="0"/>
+</item>
+<item historyLabel="sound_control.c" index="0">
+<position info="not_deleted" x="1959" y="0"/>
+</item>
+<item historyLabel="vdmaTest.c" index="6">
+<position info="not_deleted" x="4418" y="0"/>
 </item>
 <item active="true" historyLabel="sound_control.c" index="0">
-<position info="not_deleted" x="973" y="0"/>
+<position info="not_deleted" x="1959" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -514,6 +553,39 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tankExplosion.c" tooltip="space_invaders/src/tankExplosion.c">
+<persistable path="/space_invaders/src/tankExplosion.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="saucerExplosion.c" tooltip="space_invaders/src/saucerExplosion.c">
+<persistable path="/space_invaders/src/saucerExplosion.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="alien4.c" tooltip="space_invaders/src/alien4.c">
+<persistable path="/space_invaders/src/alien4.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="alien3.c" tooltip="space_invaders/src/alien3.c">
+<persistable path="/space_invaders/src/alien3.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="alien2.c" tooltip="space_invaders/src/alien2.c">
+<persistable path="/space_invaders/src/alien2.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="alien1.c" tooltip="space_invaders/src/alien1.c">
+<persistable path="/space_invaders/src/alien1.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xac97_l.c" tooltip="space_invaders/src/xac97_l.c">
+<persistable path="/space_invaders/src/xac97_l.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" tooltip="space_invaders/src/globals.h">
+<persistable path="/space_invaders/src/globals.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="alien_explosion.c" tooltip="space_invaders/src/alien_explosion.c">
+<persistable path="/space_invaders/src/alien_explosion.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tankFire.c" tooltip="space_invaders/src/tankFire.c">
+<persistable path="/space_invaders/src/tankFire.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="saucerFlying.c" tooltip="space_invaders/src/saucerFlying.c">
+<persistable path="/space_invaders/src/saucerFlying.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sountTest.c" tooltip="space_invaders/src/sountTest.c">
 <persistable path="/space_invaders/src/sountTest.c"/>
 </file>
@@ -525,39 +597,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xparameters.h" tooltip="space_invaders_bsp/microblaze_0/include/xparameters.h">
 <persistable path="/space_invaders_bsp/microblaze_0/include/xparameters.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vdmaTest.c" tooltip="space_invaders/src/vdmaTest.c">
-<persistable path="/space_invaders/src/vdmaTest.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tankFireSound.c" tooltip="space_invaders/src/tankFireSound.c">
-<persistable path="/space_invaders/src/tankFireSound.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xac97_l.c" tooltip="space_invaders/src/xac97_l.c">
-<persistable path="/space_invaders/src/xac97_l.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xac97_l.h" tooltip="space_invaders/src/xac97_l.h">
-<persistable path="/space_invaders/src/xac97_l.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sound_control.c" tooltip="space_invaders/src/sound_control.c">
-<persistable path="/space_invaders/src/sound_control.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sound_control.h" tooltip="space_invaders/src/sound_control.h">
-<persistable path="/space_invaders/src/sound_control.h"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xuartlite_l.c" tooltip="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws2\space_invaders_bsp\microblaze_0\libsrc\uartlite_v2_00_a\src\xuartlite_l.c">
-<persistable path="C:\Users\superman\Documents\ecen427\SpaceInvaders_ws2\space_invaders_bsp\microblaze_0\libsrc\uartlite_v2_00_a\src\xuartlite_l.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="render.h" tooltip="space_invaders/src/render.h">
-<persistable path="/space_invaders/src/render.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" tooltip="space_invaders/src/globals.h">
-<persistable path="/space_invaders/src/globals.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="render.c" tooltip="space_invaders/src/render.c">
-<persistable path="/space_invaders/src/render.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="control.h" tooltip="space_invaders/src/control.h">
-<persistable path="/space_invaders/src/control.h"/>
 </file>
 </mruList>
 </workbench>

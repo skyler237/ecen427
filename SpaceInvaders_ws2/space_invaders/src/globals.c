@@ -761,4 +761,5 @@ bool global_isGameOver(){
  */
 void global_endGame(){
 	gameOver = true;
+	sound_control_stopSaucerFlyingSound();
 }
