@@ -133,6 +133,7 @@ void pb_interrupt_handler() {
   }
 
   if(currentButtonState & DOWN_BTN) { // If down button is pressed...
+      // Decrease the volume
 	  sound_control_decreaseVolume();
   }
 
@@ -142,6 +143,7 @@ void pb_interrupt_handler() {
   }
 
   if(currentButtonState & UP_BTN) { // If up button is pressed...
+	  // Increase the volume
 	  sound_control_increaseVolume();
   }
 
@@ -153,8 +155,11 @@ void pb_interrupt_handler() {
   XGpio_InterruptGlobalEnable(&gpPB);                 // Re-enable PB interrupts.
 }
 
+// Handles interrupts from the AC97 sound controller
 void sound_interrupt_handler() {
+	// Load and mix the appropriate sounds into a local buffer
 	load_sound_buffer();
+	// Load that buffer into the sound FIFO
 	sound_control_load_sound();
 }
 
