@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;space_invaders&apos;" deleteContents="false" description="Delete resource &apos;space_invaders&apos;" element1="/space_invaders" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1474586947011"/>&#x0A;<refactoring comment="Delete resource &apos;space_invaders_bsp&apos;" deleteContents="false" description="Delete resource &apos;space_invaders_bsp&apos;" element1="/space_invaders_bsp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1474586952130"/>
-=======
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;space_invaders_bsp&apos; to &apos;space_invaders_bsp_0&apos;" description="Rename resource &apos;space_invaders_bsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/space_invaders_bsp" name="space_invaders_bsp_0" stamp="1474501232954" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;space_invaders_bsp_0&apos; to &apos;space_invaders_bsp&apos;" description="Rename resource &apos;space_invaders_bsp_0&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/space_invaders_bsp_0" name="space_invaders_bsp" stamp="1474501258039" updateReferences="true"/>
->>>>>>> c3e53f4cdf081ae960b5ca4956ad0b1cc166e437
-</session>

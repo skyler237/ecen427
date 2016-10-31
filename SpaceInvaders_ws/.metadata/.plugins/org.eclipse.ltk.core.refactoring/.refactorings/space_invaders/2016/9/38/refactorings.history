@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;space_invaders/src/helloworld.c&apos; to &apos;vdmaTest.c&apos;" description="Rename resource &apos;helloworld.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/helloworld.c" name="vdmaTest.c" stamp="1474037616938" updateReferences="true"/>&#x0A;<refactoring comment="Move 1 resources to &apos;src&apos;" description="Move 1 resources to &apos;src&apos;" destination="src" element1="include/globals.h" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1474040954360" updateReferences="true"/>
-</session>

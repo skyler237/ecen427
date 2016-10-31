@@ -1,0 +1,9 @@
+-batch 
+-create pitimer 
+-ver 1.00.a 
+-dir "C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaderTestHW2" 
+-lang vhdl 
+-bus axi4lite s 
+-reg 5 
+-xps 
+-driver 
