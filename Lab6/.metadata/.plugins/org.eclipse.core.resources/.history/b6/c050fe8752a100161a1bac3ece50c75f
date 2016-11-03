@@ -1,0 +1,421 @@
+/*
+ * Copyright (c) 2009 Xilinx, Inc.  All rights reserved.
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+#include "xgpio.h"          // Provides access to PB GPIO driver.
+#include <stdint.h>
+#include <stdio.h>          // xil_printf and so forth.
+#include "platform.h"       // Enables caching and other system stuff.
+#include "mb_interface.h"   // provides the microblaze interrupt enables, etc.
+#include "xintc_l.h"        // Provides handy macros for the interrupt controller.
+
+#include "pit_timer.h"
+
+
+// Push Button Definitions
+#define CENTER_BTN 0x01 // GPIO Masks...
+#define RIGHT_BTN 0x02
+#define DOWN_BTN 0x04
+#define LEFT_BTN 0x08
+#define UP_BTN 0x10
+#define DEBOUNCE_MAX 5 // 5 FIT ticks = 50ms
+
+// Clock Definitions
+#define SEC_COUNTER_MAX 100 // 100 FIT ticks = 1000ms
+#define SEC_VALUE_MAX 59
+#define SEC_VALUE_MIN 0
+#define MIN_VALUE_MAX 59
+#define MIN_VALUE_MIN 0
+#define HR_VALUE_MAX 23 // Military time
+#define HR_VALUE_MIN 0
+#define HALF_SECOND 50 // 50 ticks = 500ms
+
+#define TIME_OVERFLOW 1 // Denotes time rollover (e.g. 0:59 -> 1:00)
+#define NO_TIME_OVERFLOW 0 // No rollover
+
+#define TRUE 1 // Booleans!!
+#define FALSE 0
+
+
+XGpio gpLED;  // This is a handle for the LED GPIO block.
+XGpio gpPB;   // This is a handle for the push-button GPIO block.
+
+uint8_t currentButtonState; // Holds the current value of the push buttons (updated each PB interrupt)
+uint8_t upBtnDebounceCounter; // Used to debounce up button (max = 5 = 50ms)
+uint8_t downBtnDebounceCounter; // Used to debounce down button (max = 5 = 50ms)
+uint8_t leftBtnDebounceCounter; // Used to debounce left button (max = 5 = 50ms)
+uint8_t centerBtnDebounceCounter; // Used to debounce center button (max = 5 = 50ms)
+uint8_t rightBtnDebounceCounter; // Used to debounce right button (max = 5 = 50ms)
+
+uint8_t secondCounter; // Used to count 1 second (max = 100 = 1000ms)
+uint8_t secondsValue; // Holds the current seconds value for the clock
+uint8_t minutesValue; // Holds the current minutes value for the clock
+uint8_t hoursValue; // Holds the current hours value for the clock
+
+
+uint8_t downHalfSecond = HALF_SECOND; // Counter for half second interval (on down button)
+uint8_t upHalfSecond = HALF_SECOND; // Counter for half second interval (on up button)
+
+
+// Increment seconds and check for roll-over
+// @return: returns 1/true if there is roll-over - must increment minutes
+uint8_t increment_seconds(){
+	if(secondsValue == SEC_VALUE_MAX){ // If at max...
+		secondsValue = SEC_VALUE_MIN; // Loop back to zero
+		return TIME_OVERFLOW; // Indicate time roll-over
+	}
+	else{ // Otherwise,
+		secondsValue++; // just increment time
+		return NO_TIME_OVERFLOW; // and return normal (no overflow)
+	}
+}
+
+// Increment minutes and check for roll-over
+// @return: returns 1/true if there is roll-over - must increment hours
+uint8_t increment_minutes(){
+	if(minutesValue == MIN_VALUE_MAX){ // If at max...
+		minutesValue = MIN_VALUE_MIN; // Loop back to zero
+		return TIME_OVERFLOW; // Indicate time roll-over
+	}
+	else{ // Otherwise,
+		minutesValue++; // just increment time
+		return NO_TIME_OVERFLOW; // and return normal (no overflow)
+	}
+}
+
+// Increment hours and check for roll-over
+void increment_hours(){
+	if(hoursValue == HR_VALUE_MAX){ // If at max...
+		hoursValue = HR_VALUE_MIN; // Loop back to min
+	}
+	else{ // Otherwise,
+		hoursValue++; // just increment time
+	}
+}
+
+// Decrement seconds by 1
+uint8_t decrement_seconds(){
+	if(secondsValue == SEC_VALUE_MIN){ // If at min...
+		secondsValue = SEC_VALUE_MAX; // Loop back to top
+		return TIME_OVERFLOW; // Indicate time roll-over
+	}
+	else{ // Otherwise,
+		secondsValue--; // just increment time
+		return NO_TIME_OVERFLOW; // and return normal (no overflow)
+	}
+}
+
+// Increment minutes and check for roll-over
+// @return: returns 1/true if there is roll-over - must increment hours
+uint8_t decrement_minutes(){
+	if(minutesValue == MIN_VALUE_MIN){ // If at min...
+		minutesValue = MIN_VALUE_MAX; // Loop back to top
+		return TIME_OVERFLOW; // Indicate time roll-over
+	}
+	else{ // Otherwise,
+		minutesValue--; // just increment time
+		return NO_TIME_OVERFLOW; // and return normal (no overflow)
+	}
+}
+
+// Increment hours and check for roll-over
+void decrement_hours(){
+	if(hoursValue == HR_VALUE_MIN){ // If at min...
+		hoursValue = HR_VALUE_MAX; // Loop back to max
+	}
+	else{ // Otherwise,
+		hoursValue--; // just increment time
+	}
+}
+
+// This is invoked in response to a timer interrupt.
+// It does 2 things: 1) debounce switches, and 2) advances the time.
+void timer_interrupt_handler2() {
+	uint8_t autoIncrementFlag = FALSE; // Denotes ready to auto-increment/decrement
+	uint8_t debouncedFlag = FALSE; // Denotes a button is debounced (used for up and down)
+
+	uint8_t secondsDebounced = FALSE; //Boolean value to denote the seconds button is debounced
+	uint8_t minutesDebounced = FALSE; //Boolean value to denote the minutes button is debounced
+	uint8_t hoursDebounced = FALSE; //Boolean value to denote the hours button is debounced
+
+	//=========================================================
+	//              -----Debounce switches-----
+	//=========================================================
+	// Check which buttons are pressed - increment debounce count
+	if(currentButtonState & CENTER_BTN) { // If center button is pressed...
+		if(centerBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+		  centerBtnDebounceCounter++; // Increment debounce counter
+		}
+		else if(centerBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+			minutesDebounced = TRUE; // Set boolean flag to true
+		}
+	}
+
+	if(currentButtonState & RIGHT_BTN) { // If right button is pressed...
+		if(rightBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+		rightBtnDebounceCounter++; // Increment debounce counter
+		}
+		else if(rightBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+			secondsDebounced = TRUE; // Set boolean flag to true
+		}
+	}
+
+	if(currentButtonState & LEFT_BTN) { // If left button is pressed...
+		if(leftBtnDebounceCounter < DEBOUNCE_MAX) { // If not at max,
+			leftBtnDebounceCounter++; // Increment debounce counter
+		}
+		else if(leftBtnDebounceCounter == DEBOUNCE_MAX) { // If the button is debounced...
+			hoursDebounced = TRUE; // Set boolean flag to true
+		}
+	}
+
+	// Check if set-time buttons are pressed -- We don't want the clock to be running if they are
+	if (secondsDebounced || minutesDebounced || hoursDebounced){
+
+		// When down button is pressed...
+		if(currentButtonState & DOWN_BTN) {
+			// If one second hasn't passed yet,
+			if(downBtnDebounceCounter < SEC_COUNTER_MAX) {
+				downBtnDebounceCounter++; // Increment debounce counter
+				if(downBtnDebounceCounter == DEBOUNCE_MAX) { // When button is debounced (50ms)
+					debouncedFlag = TRUE; // Button debounced!
+				}
+				else {
+					debouncedFlag = FALSE; // Not debounced yet...
+				}
+			}
+			else { // One second has already passed,
+				if (downHalfSecond < HALF_SECOND) { // Check for half-second increments
+					downHalfSecond++; // If not half second yet, increment counter
+					autoIncrementFlag = FALSE; // Not ready for auto-increment
+				}
+				else { // Half second has passed
+					downHalfSecond = 0; // Reset counter
+					autoIncrementFlag = TRUE; // Ready for auto-increment!
+				}
+			}
+			// Register a decrement when:
+			// 1. Button is debounced
+			// 2. One second has passed
+			// 3. Every half-second decrement thereafter
+			if(debouncedFlag || autoIncrementFlag) { // If the button is debounced...
+				if(secondsDebounced == TRUE) { // If seconds buttons is pressed
+					decrement_seconds(); // Decrement seconds by one
+				}
+				if(minutesDebounced == TRUE) { // If minutes buttons is pressed
+					decrement_minutes(); // Decrement minutes by one
+				}
+				if(hoursDebounced == TRUE) { // If hours buttons is pressed
+					decrement_hours(); // Decrement hours by one
+				}
+
+
+				// Update the time display
+//				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+			}
+
+		}
+
+		// When up button is pressed...
+		if(currentButtonState & UP_BTN) {
+			// If one second has not passed yet
+			if(upBtnDebounceCounter < SEC_COUNTER_MAX) {
+				upBtnDebounceCounter++; // Increment debounce counter
+				if(upBtnDebounceCounter == DEBOUNCE_MAX) { // When button is debounced (50ms)
+					debouncedFlag = TRUE; // Button debounced!
+				}
+				else {
+					debouncedFlag = FALSE; // Not debounced yet...
+				}
+			}
+			else { // One second has already passed,
+				if (upHalfSecond < HALF_SECOND) { // Check for half-second increments
+					upHalfSecond++; // If not half second yet, increment counter
+					autoIncrementFlag = FALSE; // Not ready for auto-increment
+				}
+				else { // Half second has passed
+					upHalfSecond = 0; // Reset counter
+					autoIncrementFlag = TRUE; // Ready for auto-increment!
+				}
+			}
+
+			// Register a increment when:
+			// 1. Button is debounced
+			// 2. One second has passed
+			// 3. Every half-second increment thereafter
+			if(debouncedFlag || autoIncrementFlag) { // If the button is debounced...
+				if(secondsDebounced == TRUE) { // If seconds buttons is pressed
+					increment_seconds(); // Increment seconds by one
+				}
+				if(minutesDebounced == TRUE) { // If minutes buttons is pressed
+					increment_minutes(); // Increment minutes by one
+				}
+				if(hoursDebounced == TRUE) { // If hours buttons is pressed
+					increment_hours(); // Increment hours by one
+				}
+				// Increment past max so we don't register continuous presses
+				upBtnDebounceCounter++;
+				// Update the time display
+//				xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+			}
+		}
+	}
+
+	// None of the buttons are pressed -- Go ahead and run the clock
+	else{
+		// -----Advance the time-----
+		// increment time counter
+		secondCounter++;
+
+		// Check for max
+		if(secondCounter == SEC_COUNTER_MAX) {
+			// if 1 second has passed (100 ticks) increment clock
+
+			// NOTE: each of these functions returns true if there is time roll-over
+			if(increment_seconds()){ // Increment seconds
+				if(increment_minutes()){ // If seconds rolled over (increment_seconds() = true), increment minutes
+					increment_hours(); // If minutes rolled over (increment_minutes() = true), increment hours
+				}
+			}
+			// Update clock display
+//			xil_printf("%02d:%02d:%02d\r", hoursValue, minutesValue, secondsValue);
+
+			// Reset second counter
+			secondCounter = SEC_VALUE_MIN;
+		}
+	}
+}
+
+
+// This is invoked each time there is a change in the button state (result of a push or a bounce).
+void pb_interrupt_handler2() {
+  // Clear the GPIO interrupt.
+  XGpio_InterruptGlobalDisable(&gpPB);                // Turn off all PB interrupts for now.
+  currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
+  // Check which buttons are high/low
+  if(!(currentButtonState & CENTER_BTN)) { // If center button is not pressed...
+	  // Clear the debounce timer
+	  centerBtnDebounceCounter = 0;
+  }
+
+  if(!(currentButtonState & RIGHT_BTN)) { // If right button is not pressed...
+	  // Clear the debounce timer
+	  rightBtnDebounceCounter = 0;
+  }
+
+  if(!(currentButtonState & DOWN_BTN)) { // If down button is not pressed...
+	  // Clear the debounce timer
+	  downBtnDebounceCounter = 0;
+  }
+
+  if(!(currentButtonState & LEFT_BTN)) { // If left button is not pressed...
+	  // Clear the debounce timer
+	  leftBtnDebounceCounter = 0;
+  }
+
+  if(!(currentButtonState & UP_BTN)) { // If up button is not pressed...
+	  // Clear the debounce timer
+	  upBtnDebounceCounter = 0;
+  }
+
+  XGpio_InterruptClear(&gpPB, 0xFFFFFFFF);            // Ack the PB interrupt.
+  XGpio_InterruptGlobalEnable(&gpPB);                 // Re-enable PB interrupts.
+}
+
+
+// Main interrupt handler, queries the interrupt controller to see what peripheral
+// fired the interrupt and then dispatches the corresponding interrupt handler.
+// This routine acks the interrupt at the controller level but the peripheral
+// interrupt must be ack'd by the dispatched interrupt handler.
+// Question: Why is the timer_interrupt_handler() called after ack'ing the interrupt controller
+// but pb_interrupt_handler() is called before ack'ing the interrupt controller?
+void interrupt_handler_dispatcher3(void* ptr) {
+	int intc_status = XIntc_GetIntrStatus(XPAR_INTC_0_BASEADDR);
+	// Check the FIT interrupt first.
+	if (intc_status & XPAR_PITIMER_0_MYINTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PITIMER_0_MYINTERRUPT_MASK);
+		timer_interrupt_handler2();
+	}
+	// Check the push buttons.
+	if (intc_status & XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK){
+		pb_interrupt_handler2();
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK);
+	}
+}
+
+int main3 (void) {
+    init_platform();
+    // Initialize the GPIO peripherals.
+    int success;
+    success = XGpio_Initialize(&gpPB, XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID);
+    // Set the push button peripheral to be inputs.
+    XGpio_SetDataDirection(&gpPB, 1, 0x0000001F);
+    // Enable the global GPIO interrupt for push buttons.
+    XGpio_InterruptGlobalEnable(&gpPB);
+    // Enable all interrupts in the push button peripheral.
+    XGpio_InterruptEnable(&gpPB, 0xFFFFFFFF);
+
+    pit_timer_init();
+    pit_timer_enableInterrupt();
+    pit_timer_loopOn();
+
+    microblaze_register_handler(interrupt_handler_dispatcher3, NULL);
+    XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
+    		(XPAR_PITIMER_0_MYINTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK));
+    XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
+    microblaze_enable_interrupts();
+
+    while(1){
+    	// Program never ends.
+
+    }
+
+    cleanup_platform();
+
+    return 0;
+}
+
+void real_time_clock_init() {
+	// Initialize counter values
+	downHalfSecond = HALF_SECOND;
+	upHalfSecond = HALF_SECOND;
+}
+
+void real_time_clock_test() {
+	// Test increment and decrement functions
+	secondsValue = 0;
+	decrement_seconds();
+//	printf("Seconds = %d\n", secondsValue);
+	increment_seconds();
+	increment_seconds();
+//	printf("Seconds = %d\n", secondsValue);
+
+	minutesValue = 0;
+	decrement_minutes();
+//	printf("minutes = %d\n", minutesValue);
+	increment_minutes();
+	increment_minutes();
+//	printf("minutes = %d\n", minutesValue);
+
+	hoursValue = 0;
+	decrement_hours();
+//	printf("hours = %d\n", hoursValue);
+	increment_hours();
+	increment_hours();
+//	printf("hours = %d\n", hoursValue);
+
+}

@@ -1,0 +1,36 @@
+Release 13.4 - xst O.87xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Users/superman/Documents/ecen427/lab6_pit/PIT/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to C:/Users/superman/Documents/ecen427/lab6_pit/PIT/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/user_logic.vhd" in Library work.
+ERROR:HDLParsers:3317 - "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/user_logic.vhd" Line 57.  Library proc_common_v3_00_a cannot be found.
+ERROR:HDLParsers:3013 - "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/user_logic.vhd" Line 58. Library proc_common_v3_00_a is not declared.
+WARNING:HDLParsers:3481 - Library work has no units. Did not save reference file "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/xst/work/hdllib.ref" for it.
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.14 secs
+ 
+--> 
+
+Total memory usage is 214076 kilobytes
+
+Number of errors   :    2 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

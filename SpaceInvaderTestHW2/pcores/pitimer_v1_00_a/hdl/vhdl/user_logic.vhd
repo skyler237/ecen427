@@ -55,7 +55,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 library proc_common_v3_00_a;
-use proc_common_v3_00_a.proc_common_pkg.all;
+--use proc_common_v3_00_a.proc_common_pkg.all;
 
 -- DO NOT EDIT ABOVE THIS LINE --------------------
 
@@ -97,7 +97,7 @@ entity user_logic is
   port
   (
     -- ADD USER PORTS BELOW THIS LINE ------------------
-    --USER ports added here
+    my_interrupt				: out std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
@@ -146,9 +146,6 @@ architecture IMP of user_logic is
   signal slv_write_ack                  : std_logic;
 
   -- Our registers and signals
-  register count_reg					: unsigned(31 downto 0);
-  register ctrl_reg						: std_logic_vector(31 downto 0);
-  register delay_val_reg				: unsigned(31 downto 0);
   signal expired_interrupt				: std_logic;
   signal interrupt_fired				: std_logic;
  
@@ -186,8 +183,8 @@ begin
 
     if Bus2IP_Clk'event and Bus2IP_Clk = '1' then
       if Bus2IP_Resetn = '0' then
-        count_reg <= (others => '1');
         ctrl_reg <= (others => '0');
+				count_reg <= (others => '1');
         delay_val_reg <= (others => '0');
         slv_reg3 <= (others => '0');
         slv_reg4 <= (others => '0');
@@ -196,7 +193,7 @@ begin
           when "10000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                count_reg(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                count_reg(byte_index*8+7 downto byte_index*8) <= unsigned(Bus2IP_Data(byte_index*8+7 downto byte_index*8));
               end if;
             end loop;
           when "01000" =>
@@ -208,7 +205,7 @@ begin
           when "00100" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                delay_val_reg(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                delay_val_reg(byte_index*8+7 downto byte_index*8) <= unsigned(Bus2IP_Data(byte_index*8+7 downto byte_index*8));
               end if;
             end loop;
           when "00010" =>
@@ -225,19 +222,42 @@ begin
             end loop;
           when others => null;
         end case;
+				if (count_reg = 0) then
+					if (ctrl_reg(2) = '1') then
+						count_reg <= delay_val_reg;
+					end if;
+					if (ctrl_reg(1) = '1' and interrupt_fired = '0') then
+						expired_interrupt <= '1';
+						interrupt_fired <= '1';
+					else 
+						expired_interrupt <= '0';
+					end if;
+				else
+					if (ctrl_reg(0) = '1') then
+						if(count_reg > delay_val_reg) then
+							count_reg <= delay_val_reg;
+						else
+							count_reg <= count_reg - 1;
+						end if;
+					end if;
+					expired_interrupt <= '0';
+					interrupt_fired <= '0';
+				end if;
       end if;
     end if;
 
   end process SLAVE_REG_WRITE_PROC;
+	
+	my_interrupt <= interrupt_fired;
 
   -- implement slave model software accessible register(s) read mux
   SLAVE_REG_READ_PROC : process( slv_reg_read_sel, count_reg, ctrl_reg, delay_val_reg, slv_reg3, slv_reg4 ) is
   begin
 
     case slv_reg_read_sel is
-      when "10000" => slv_ip2bus_data <= count_reg;
+      when "10000" => slv_ip2bus_data <= std_logic_vector(count_reg);
       when "01000" => slv_ip2bus_data <= ctrl_reg;
-      when "00100" => slv_ip2bus_data <= delay_val_reg;
+      when "00100" => slv_ip2bus_data <= std_logic_vector(delay_val_reg);
       when "00010" => slv_ip2bus_data <= slv_reg3;
       when "00001" => slv_ip2bus_data <= slv_reg4;
       when others => slv_ip2bus_data <= (others => '0');
@@ -254,28 +274,5 @@ begin
   IP2Bus_WrAck <= slv_write_ack;
   IP2Bus_RdAck <= slv_read_ack;
   IP2Bus_Error <= '0';
-  
-  process (Bus2IP_Clk)
-  begin
-	if Bus2IP_Clk'event and Bus2IP_Clk = '1' then
-		if (count_reg = 0) then
-			if (ctrl_reg(2) = '1') then
-				count_reg <= delay_val_reg;
-			end if;
-			if (ctrl_reg(1) = '1' and interrupt_fired = '0') then
-				expired_interrupt <= '1';
-				interrupt_fired <= '1';
-			else 
-				expired_interrupt <= '0';
-			end if;
-		else
-			if (ctrl_reg(0) = '1') then
-				count_reg <= count_reg - 1;
-			end if;
-			expired_interrupt <= '0';
-			interrupt_fired <= '0';
-		end if;
-	end if;
-  end process;
 
 end IMP;

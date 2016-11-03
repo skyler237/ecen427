@@ -1,0 +1,52 @@
+/*
+ * pit_timer.c
+ *
+ *  Created on: Nov 2, 2016
+ *      Author: superman
+ */
+#include "pit_timer.h"
+#include <stdint.h>
+
+#define COUNT_REG XPAR_PITIMER_0_BASEADDR
+#define DELAY_COUNT_REG XPAR_PITIMER_0_BASEADDR+4
+#define SETTINGS_REG XPAR_PITIMER_0_BASEADDR+8
+
+void pit_timer_start(){
+
+}
+
+void pit_timer_stop(){
+
+}
+
+void pit_timer_enableInt(){
+
+}
+
+void pit_timer_disableInt(){
+
+}
+
+void pit_timer_loopOn(){
+
+}
+
+void pit_timer_loopOff(){
+
+}
+
+void pit_timer_setTimer(){
+
+}
+
+uint32_t pit_timer_readCountReg(){
+
+}
+
+uint32_t pit_timer_readDelayReg(){
+
+}
+
+uint32_t pit_timer_readSettingsReg(){
+
+}
