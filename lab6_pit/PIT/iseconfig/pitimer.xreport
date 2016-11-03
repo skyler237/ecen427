@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-11-02T15:05:26</DateModified>
+  <DateModified>2016-11-03T07:23:31</DateModified>
   <ModuleName>pitimer</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/superman/Documents/ecen427/lab6_pit/PIT/iseconfig/pitimer.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/superman/Documents/ecen427/lab6_pit/PIT</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/superman/Documents/skyand/ecen427/lab6_pit/PIT/iseconfig/pitimer.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/superman/Documents/skyand/ecen427/lab6_pit/PIT\</ImplementationReportsDirectory>
   <DateInitialized>2016-11-02T15:05:26</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

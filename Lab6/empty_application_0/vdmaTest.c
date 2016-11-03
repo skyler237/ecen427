@@ -35,7 +35,7 @@
 #include "xgpio.h"          // Provides access to PB GPIO driver.
 #include "sound_control.h"
 
-#include "pit_timer.h"
+//#include "pit_timer.h"
 
 #define DEBUG
 void print(char *str);
@@ -61,6 +61,7 @@ static uint8_t currentButtonState; // Holds the current value of the push button
 static uint32_t counter;
 
 void timer_interrupt_handler() {
+	xil_printf("Entered timer\n\r");
 	//xil_printf("%d\n\r", counter);
 	// Decrement all counters
 	static bool over = false;
@@ -73,12 +74,14 @@ void timer_interrupt_handler() {
 			render_gameOver();
 			over = true;
 		}
+		xil_printf("Game over\n\r");
 		return;
 	}
 	// Update stuff through controller
 	if(finishedTimers & TANK_DEATH_TIMER_MASK) {
 		// Keep drawing the tank (it will be displaying the tank explosion at this point)
 		render_refreshTank();
+		xil_printf("Tanks dead\n\r");
 		return;
 	}
 	if(finishedTimers & UFO_ENTRY_TIMER_MASK) {
@@ -117,10 +120,12 @@ void timer_interrupt_handler() {
 		// Shoot an alien bullet
 		control_fireAlienBullet();
 	}
+	xil_printf("Finished timer int\n\r");
 }
 
 // This is invoked each time there is a change in the button state (result of a push or a bounce).
 void pb_interrupt_handler() {
+	xil_printf("Entered pb int\n\r");
   // Clear the GPIO interrupt.
   XGpio_InterruptGlobalDisable(&gpPB);                // Turn off all PB interrupts for now.
   currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
@@ -159,6 +164,7 @@ void pb_interrupt_handler() {
   }
   XGpio_InterruptClear(&gpPB, 0xFFFFFFFF);            // Ack the PB interrupt.
   XGpio_InterruptGlobalEnable(&gpPB);                 // Re-enable PB interrupts.
+  xil_printf("Finished pb int\n\r");
 }
 
 // Handles interrupts from the AC97 sound controller
@@ -176,18 +182,19 @@ void sound_interrupt_handler() {
 // Question: Why is the timer_interrupt_handler() called after ack'ing the interrupt controller
 // but pb_interrupt_handler() is called before ack'ing the interrupt controller?
 void interrupt_handler_dispatcher(void* ptr) {
+	xil_printf("Interrupted\n\r");
 	int intc_status = XIntc_GetIntrStatus(XPAR_INTC_0_BASEADDR);
-//	// Check the FIT interrupt first.
-//	if (intc_status & XPAR_FIT_TIMER_0_INTERRUPT_MASK){
-//		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_FIT_TIMER_0_INTERRUPT_MASK);
-//		timer_interrupt_handler();
-//	}
-	// Check the PIT interrupt first
-	if (intc_status & XPAR_PITIMER_0_MYINTERRUPT_MASK){
-//		xil_printf("Interrupt received\r");
-		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PITIMER_0_MYINTERRUPT_MASK);
+	// Check the FIT interrupt first.
+	if (intc_status & XPAR_FIT_TIMER_0_INTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_FIT_TIMER_0_INTERRUPT_MASK);
 		timer_interrupt_handler();
 	}
+	// Check the PIT interrupt first
+//	if (intc_status & XPAR_PITIMER_0_MYINTERRUPT_MASK){
+////		xil_printf("Interrupt received\r");
+//		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PITIMER_0_MYINTERRUPT_MASK);
+//		timer_interrupt_handler();
+//	}
 	// Check the push buttons.
 	if (intc_status & XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK){
 		pb_interrupt_handler();
@@ -295,18 +302,18 @@ int main()
 	 XGpio_InterruptEnable(&gpPB, 0xFFFFFFFF);
 
 
-     pit_timer_init();
-	 pit_timer_enableInt();
-	 pit_timer_loopOn();
-	 pit_timer_start();
-	 xil_printf("control: %d\n\r", pit_timer_readControlReg());
-	 xil_printf("delay: %d\n\r", pit_timer_readDelayReg());
-	 xil_printf("count: %d\n\r", pit_timer_readCountReg());
+//     pit_timer_init();
+//	 pit_timer_enableInt();
+//	 pit_timer_loopOn();
+//	 pit_timer_start();
+//	 xil_printf("control: %d\n\r", pit_timer_readControlReg());
+//	 xil_printf("delay: %d\n\r", pit_timer_readDelayReg());
+//	 xil_printf("count: %d\n\r", pit_timer_readCountReg());
      //xil_printf("%d\n\r", global_getScore());
 	 // Set up interrupts
 	 microblaze_register_handler(interrupt_handler_dispatcher, NULL);
 	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
-			(XPAR_PITIMER_0_MYINTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
+			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
 	 XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
 	 xil_printf("start\n\r");
 	 microblaze_enable_interrupts();

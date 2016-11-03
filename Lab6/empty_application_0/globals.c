@@ -605,7 +605,7 @@ void global_setScore(uint16_t score){
 */
 uint16_t global_incrementScore(uint8_t alien_row) {
 	// Calculate a random score if the UFO was hit
-	uint16_t random_score;
+	uint16_t random_score = 0;
 	if(alien_row == UFO_ID) { 
 		random_score = (rand() % UFO_MAX_SCORE + UFO_SCORE_OFFSET) * UFO_SCORE_MULTIPLIER;
 		current_score += random_score;

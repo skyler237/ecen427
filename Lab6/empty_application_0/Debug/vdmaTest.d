@@ -15,8 +15,7 @@ vdmaTest.d vdmaTest.o: ../vdmaTest.c ../platform.h ../platform_config.h \
   ../../lab6_bsp/microblaze_0/include/xintc_l.h \
   ../../lab6_bsp/microblaze_0/include/xparameters.h \
   ../../lab6_bsp/microblaze_0/include/xgpio.h \
-  ../../lab6_bsp/microblaze_0/include/xgpio_l.h ../sound_control.h \
-  ../pit_timer.h
+  ../../lab6_bsp/microblaze_0/include/xgpio_l.h ../sound_control.h
 
 ../platform.h:
 
@@ -63,5 +62,3 @@ vdmaTest.d vdmaTest.o: ../vdmaTest.c ../platform.h ../platform_config.h \
 ../../lab6_bsp/microblaze_0/include/xgpio_l.h:
 
 ../sound_control.h:
-
-../pit_timer.h:

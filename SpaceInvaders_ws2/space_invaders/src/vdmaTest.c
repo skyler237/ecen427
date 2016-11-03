@@ -34,6 +34,7 @@
 #include "xintc_l.h"        // Provides handy macros for the interrupt controller.
 #include "xgpio.h"          // Provides access to PB GPIO driver.
 #include "sound_control.h"
+#include "pit_timer.h"
 
 #define DEBUG
 void print(char *str);
@@ -41,6 +42,8 @@ void print(char *str);
 #define FRAME_BUFFER_0_ADDR 0xC1000000  // Starting location in DDR where we will store the images that we display.
 
 #define ASCII_NUM_OFFSET 48
+
+#define PARSE_MULTIPLIER 10
 
 // Push Button Definitions
 #define CENTER_BTN 0x01 // GPIO Masks...
@@ -172,8 +175,13 @@ void sound_interrupt_handler() {
 void interrupt_handler_dispatcher(void* ptr) {
 	int intc_status = XIntc_GetIntrStatus(XPAR_INTC_0_BASEADDR);
 	// Check the FIT interrupt first.
-	if (intc_status & XPAR_FIT_TIMER_0_INTERRUPT_MASK){
-		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_FIT_TIMER_0_INTERRUPT_MASK);
+//	if (intc_status & XPAR_FIT_TIMER_0_INTERRUPT_MASK){
+//		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_FIT_TIMER_0_INTERRUPT_MASK);
+//		timer_interrupt_handler();
+//	}
+	 // Check the PIT interrupt first.
+	if (intc_status & XPAR_PITIMER_0_MYINTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PITIMER_0_MYINTERRUPT_MASK);
 		timer_interrupt_handler();
 	}
 	// Check the push buttons.
@@ -273,6 +281,11 @@ int main()
      globals_init();	// Initialize global values
      sound_control_init(); // Initialize the sound control
 
+     pit_timer_init();
+     pit_timer_loopOn();
+     pit_timer_enableInt();
+     pit_timer_start();
+
      XGpio_Initialize(&gpPB, XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID);
      // Set the push button peripheral to be inputs.
 	 XGpio_SetDataDirection(&gpPB, 1, 0x0000001F);
@@ -284,21 +297,31 @@ int main()
 	 // Set up interrupts
 	 microblaze_register_handler(interrupt_handler_dispatcher, NULL);
 	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
-			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
+			(XPAR_PITIMER_0_MYINTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
 	 XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
 	 xil_printf("start\n\r");
 	 microblaze_enable_interrupts();
 
 
 
-     while (1) {
-    	 /*
-         if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ)) {
-        	 xil_printf("vdma parking failed\n\r");
-         }
-         */
-    	 counter++;
-     }
+	 char input;
+	 uint32_t set_value = 0;
+	 while (1) {
+		 input = getchar();
+		 if(input >= '0' && input <= '9'){
+			 uint8_t value = ((uint8_t)input) - ASCII_NUM_OFFSET;
+			 set_value = set_value *PARSE_MULTIPLIER + value;
+
+		 }
+		 else {
+			 if(set_value != 0){
+				 xil_printf("\n\rticks: %d\n\r", set_value);
+				 pit_timer_setTimer(set_value);
+				 set_value = 0;
+			 }
+		 }
+		 counter++;
+	 }
      cleanup_platform();
 
     return 0;

@@ -12,6 +12,7 @@ C_SRCS += \
 ../src/alien_explosion.c \
 ../src/control.c \
 ../src/globals.c \
+../src/pit_timer.c \
 ../src/platform.c \
 ../src/render.c \
 ../src/saucerExplosion.c \
@@ -36,6 +37,7 @@ OBJS += \
 ./src/alien_explosion.o \
 ./src/control.o \
 ./src/globals.o \
+./src/pit_timer.o \
 ./src/platform.o \
 ./src/render.o \
 ./src/saucerExplosion.o \
@@ -57,6 +59,7 @@ C_DEPS += \
 ./src/alien_explosion.d \
 ./src/control.d \
 ./src/globals.d \
+./src/pit_timer.d \
 ./src/platform.d \
 ./src/render.d \
 ./src/saucerExplosion.d \

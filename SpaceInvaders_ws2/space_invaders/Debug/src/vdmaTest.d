@@ -18,7 +18,7 @@ src/vdmaTest.d src/vdmaTest.o: ../src/vdmaTest.c ../src/platform.h \
   ../../space_invaders_bsp/microblaze_0/include/xparameters.h \
   ../../space_invaders_bsp/microblaze_0/include/xgpio.h \
   ../../space_invaders_bsp/microblaze_0/include/xgpio_l.h \
-  ../src/sound_control.h
+  ../src/sound_control.h ../src/pit_timer.h
 
 ../src/platform.h:
 
@@ -65,3 +65,5 @@ src/vdmaTest.d src/vdmaTest.o: ../src/vdmaTest.c ../src/platform.h \
 ../../space_invaders_bsp/microblaze_0/include/xgpio_l.h:
 
 ../src/sound_control.h:
+
+../src/pit_timer.h:
