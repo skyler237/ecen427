@@ -41,9 +41,9 @@ void print(char *str);
 
 #define FRAME_BUFFER_0_ADDR 0xC1000000  // Starting location in DDR where we will store the images that we display.
 
-#define ASCII_NUM_OFFSET 48
+#define ASCII_NUM_OFFSET 48 // Allows us to parse the UART digits as numbers, not characters
 
-#define PARSE_MULTIPLIER 10
+#define PARSE_MULTIPLIER 10 // Used in parsing multi-digit number entries
 
 // Push Button Definitions
 #define CENTER_BTN 0x01 // GPIO Masks...
@@ -274,17 +274,18 @@ int main()
     	 xil_printf("vdma parking failed\n\r");
      }
 
-	 // Initialize the game
+	// Initialize the game
      render_blankScreen(framePointer0); // Blank the screen
      render_init();		// Initialize the renderer
      control_init();	// Initialize control stuff
      globals_init();	// Initialize global values
      sound_control_init(); // Initialize the sound control
-
-     pit_timer_init();
-     pit_timer_loopOn();
-     pit_timer_enableInt();
-     pit_timer_start();
+	
+	// Initialize the PIT
+     pit_timer_init(); // Initialize values
+     pit_timer_loopOn(); // Turn looping on
+     pit_timer_enableInt(); // Turn interrupts on
+     pit_timer_start(); // Start the timer
 
      XGpio_Initialize(&gpPB, XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID);
      // Set the push button peripheral to be inputs.
@@ -307,19 +308,26 @@ int main()
 	 char input;
 	 uint32_t set_value = 0;
 	 while (1) {
+		 // Get input from the keyboard
 		 input = getchar();
+		 // As long as the input is a digit, keep processing
 		 if(input >= '0' && input <= '9'){
+			 // Get the numeric value of the digit
 			 uint8_t value = ((uint8_t)input) - ASCII_NUM_OFFSET;
+			 // Append the digit to the current value
 			 set_value = set_value *PARSE_MULTIPLIER + value;
-
 		 }
+		 // If any other key is pressed, set the previously entered numbers into the timer
 		 else {
+			 // As long as the value is not zero
 			 if(set_value != 0){
-				 xil_printf("\n\rticks: %d\n\r", set_value);
+				 // Set the timer to the entered value
 				 pit_timer_setTimer(set_value);
+				 // Reset the input value
 				 set_value = 0;
 			 }
 		 }
+		 // Increment that utilization counter
 		 counter++;
 	 }
      cleanup_platform();
