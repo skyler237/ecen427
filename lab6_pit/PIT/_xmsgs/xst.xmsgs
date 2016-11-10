@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">192</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">SLV64_ARRAY_TYPE</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">192</arg>. <arg fmt="%s" index="3">SLV64_ARRAY_TYPE</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="3285" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">193</arg>. No array or record type can be found that has elements of types matching the aggregate.
+</msg>
+
+<msg type="error" file="HDLParsers" num="532" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">192</arg>. Deferred constant are allowed only in packages.
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">205</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">INTEGER_ARRAY_TYPE</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">205</arg>. <arg fmt="%s" index="3">INTEGER_ARRAY_TYPE</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="842" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">207</arg>. The type of the element in aggregate does not correspond to any array type.
+</msg>
+
+<msg type="error" file="HDLParsers" num="842" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">208</arg>. The type of the element in aggregate does not correspond to any array type.
+</msg>
+
+<msg type="error" file="HDLParsers" num="532" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">205</arg>. Deferred constant are allowed only in packages.
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">222</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">calc_start_ce_index</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">222</arg>. <arg fmt="%s" index="3">calc_start_ce_index</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">222</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">IPIF_ARD_NUM_CE_ARRAY</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">222</arg>. <arg fmt="%s" index="3">IPIF_ARD_NUM_CE_ARRAY</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="532" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">222</arg>. Deferred constant are allowed only in packages.
+</msg>
+
+<msg type="error" file="HDLParsers" num="3313" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">224</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">USER_SLV_CE_INDEX</arg>&apos;.  Should it be: <arg fmt="%s" index="4">USER_SLV_Cs_INDEX</arg>?
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">224</arg>. <arg fmt="%s" index="3">USER_SLV_CE_INDEX</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="532" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">224</arg>. Deferred constant are allowed only in packages.
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">234</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">IPIF_ARD_ADDR_RANGE_ARRAY</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">235</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">calc_num_ce</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">235</arg>. <arg fmt="%s" index="3">calc_num_ce</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="709" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">259</arg>. <arg fmt="%s" index="3">axi_lite_ipif</arg> is not an entity name
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">267</arg>. <arg fmt="%s" index="3">IPIF_ARD_ADDR_RANGE_ARRAY</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">297</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">ipif_Bus2IP_CS</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">297</arg>. <arg fmt="%s" index="3">ipif_Bus2IP_CS</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">298</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">ipif_Bus2IP_RdCE</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">298</arg>. <arg fmt="%s" index="3">ipif_Bus2IP_RdCE</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">299</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">ipif_Bus2IP_WrCE</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">299</arg>. <arg fmt="%s" index="3">ipif_Bus2IP_WrCE</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="709" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">310</arg>. <arg fmt="%s" index="3">soft_reset</arg> is not an entity name
+</msg>
+
+<msg type="error" file="HDLParsers" num="709" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">332</arg>. <arg fmt="%s" index="3">user_logic</arg> is not an entity name
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">378</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">ipif_Bus2IP_RdCE</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">378</arg>. <arg fmt="%s" index="3">ipif_Bus2IP_RdCE</arg>: Undefined symbol (last report in this block)
+</msg>
+
+<msg type="error" file="HDLParsers" num="3312" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">379</arg>. Undefined symbol &apos;<arg fmt="%s" index="3">ipif_Bus2IP_WrCE</arg>&apos;.
+</msg>
+
+<msg type="error" file="HDLParsers" num="1209" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/pitimer_v1_00_a/hdl/vhdl/pitimer.vhd</arg>&quot; Line <arg fmt="%d" index="2">379</arg>. <arg fmt="%s" index="3">ipif_Bus2IP_WrCE</arg>: Undefined symbol (last report in this block)
+</msg>
+
+</messages>
+

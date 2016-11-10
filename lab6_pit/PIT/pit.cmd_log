@@ -1,0 +1,4 @@
+xst -intstyle ise -ifn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.xst" -ofn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.syr" 
+xst -intstyle ise -ifn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.xst" -ofn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.syr" 
+xst -intstyle ise -ifn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.xst" -ofn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.syr" 
+xst -intstyle ise -ifn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.xst" -ofn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pit.syr" 

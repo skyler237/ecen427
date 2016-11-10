@@ -1,0 +1,29 @@
+    ____  ____
+   /   /\/   /
+  /___/  \  /    VENDOR      : Xilinx Inc.
+  \   \   \/     VERSION     : 13.4 (O.87xd)
+   \   \         APPLICATION : C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\compxlib.exe
+   /   /         CONTENTS    : Compilation Log
+  /___/   /\     FILENAME    : compxlib.log
+  \   \  /  \    
+   \___\/\___\
+
+Release 13.4 - C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\compxlib.exe 13.4 (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Processing command line ...
+Reading the compxlib configuration file - 'compxlib.cfg' ...
+Library Source Paths => 'C:/Xilinx/13.4/ISE_DS/ISE'
+Current Working Directory => 'C:\Users\superman\Documents\ecen427\lab6_pit\PIT'
+Compilation Mode = FAST
+Execute Mode = ON
+Scheduling library installation & compilation for architectures: spartan3e
+
+Scheduling library installation & compilation for libraries: simprim unisim xilinxcorelib edk
+
+Signature:-
+------------------------------------------------------------------------------
+C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\compxlib.exe -s mti_de -l vhdl -arch spartan3e -lib unisim -lib simprim -lib xilinxcorelib -lib edk -exclude_superseded -intstyle ise 
+------------------------------------------------------------------------------
+WARNING:Compxlib:265 - COMPXLIB[sim]: Simulator 'mti_de' does not support 'nt64' platform.
+Simulator 'mti_de' is ignored.

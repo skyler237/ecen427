@@ -1,0 +1,77 @@
+/*
+ * AI.c
+ *
+ *  Created on: Nov 9, 2016
+ *      Author: superman
+ */
+
+#include "globals.h"
+#include <stdbool.h>
+
+// Space Invaders AI Pseudo-code
+typedef enum { SAFE, UNSAFE, SHOOT_ALIEN, SHOOT_SAUCER }SpotType_t;
+SpotType_t tankSpots[SCREEN_WIDTH];
+
+void AI_safeSpotTest() {
+	// ==================== Safe spots
+	// Find unsafe spots
+	bool tankUnsafe = false;
+	point_t tank_pos = global_getTankPosition();
+	uint8_t i;
+	for (i = 0; i < BULLET_COUNT; i++) {
+	  // Check if the bullet is currently on screen
+	  point_t bullet_pos = global_getAlienBulletPosition(i);
+	  if(bullet_pos.x != OFF_SCREEN) {
+		// When the tank can no longer remain in this position or cannot safely move past this position, it is not safe
+		//      ** We are assuming that the tank will always evade when possible...
+		// -- Calculate how long it will take bullet to hit x
+		uint32_t bulletHitTime = ticksPerBulletUpdate * bulletHeight / bulletSpeed;
+
+		// Calculate how long it will take tank to move out of the way
+		uint32_t tankEvadeTime;
+
+		// Measure these from middle of tank... (?)
+		// TODO: take into account other bullets (other unsafe spots)
+		tankEvadeDistance = 0;
+		if(tank is to the left) {
+		  tankEvadeDistance = ticksPerTankUpdate * (safe space to right of bullet_x - tank_x);
+		}
+		else if (tank is to right) {
+		  distance_right = ticksPerTankUpdate * (tank_x - safe spaceLeftOfBullet + tankWidth);
+		  tankEvadeDistance = tankEvadeDistance > distance_right ? tankEvadeDistance : distance_right;
+		}
+
+		tankEvadeTime = tankEvadeDistance / tank_speed;
+
+		if (bulletHitTime < tankEvadeTime + SAFETY_BUFFER) {
+		   tankSpot[bullet_x] = UNSAFE;
+		}
+	  }
+	}
+
+	// Move towards nearest safe spot
+	if(tankSpots[tank_x] == UNSAFE) {
+		bool safeSpotFound = false;
+		offset = TANK_SPEED;
+		while(!safeSpotFound) {
+			// Do bounds checking here
+			if(offset > SCREEN_WIDTH / 2) {
+				xil_printf("ERROR: Offset too big!\n\r");
+			}
+
+			if((tank_x + offset + TANK_WIDTH) < SCREEN_WIDTH && tankSpots[tank_x + offset] != UNSAFE) {
+				// Move right
+
+				safeSpotFound = true;
+				break;
+			}
+			else if((tank_x - offset) >= 0 && tankSpots[tank_x - offset] != UNSAFE) {
+				// Move left
+
+				safeSpotFound = true;
+				break;
+			}
+			offset += TANK_SPEED;
+		}
+	}
+}

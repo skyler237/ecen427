@@ -1,0 +1,14 @@
+[Inputs]
+Bus2IP_Clk
+Bus2IP_Resetn
+=Bus2IP_Data[31:0]=
+=Bus2IP_BE[3:0]=
+=Bus2IP_RdCE[1:0]=
+=Bus2IP_WrCE[1:0]=
+[Outputs]
+myinterrupt
+IP2Bus_RdAck
+IP2Bus_WrAck
+IP2Bus_Error
+=IP2Bus_Data[31:0]=
+[BiDir]

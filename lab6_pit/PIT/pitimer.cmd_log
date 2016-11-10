@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pitimer.xst" -ofn "C:/Users/superman/Documents/ecen427/lab6_pit/PIT/pitimer.syr" 

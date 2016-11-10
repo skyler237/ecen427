@@ -41,6 +41,8 @@
 #define MID_ALIEN_ROW 1			// Middle two rows starting index
 #define BOTTOM_ALIEN_ROW 3		// Bottow two rows starting index
 #define UFO_ID	5				// Identifies the UFO
+#define ALIEN_MOVE_X 4
+#define ALIEN_MOVE_Y 6
 
 // Tank constants
 #define TANK_WIDTH 15		// Tank sprite width
@@ -73,6 +75,7 @@
 #define BULLET_COUNT 4		// Number of alien bullets
 #define TANK_BULLET_WIDTH 1			// Tank bullet sprite height
 #define ALIEN_BULLET_WIDTH 3		// Width of alien bullet sprites
+#define BULLET_SPEED 5
 
 // Status bar constants
 #define STATUS_BAR_Y 10		// Y value of the status bar (top)

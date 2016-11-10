@@ -15,11 +15,8 @@
 #define SCREEN_RIGHT_EDGE SCREEN_WIDTH
 #define SCREEN_LEFT_EDGE 0
 
-#define ALIEN_MOVE_X 4
-#define ALIEN_MOVE_Y 6
 #define EDGE_2_ALIEN_GAP 10
 
-#define BULLET_SPEED 5
 
 #define TANK_BULLET_INDEX -1
 
@@ -274,6 +271,7 @@ void control_updateAlienBlock() {
  */
 void control_killTank(){
 	point_t tankPos = global_getTankPosition();
+//	xil_printf(">>>>>>>>>>>>>>>>>>>>>>>>>>> TANK DIED at %d\n\r", tankPos.x);
 	global_setTankPosition(tankPos.x, tankPos.y);//Update prev_x and prev_y so that they are the same
 												//That lets the render work
 	// Set the state of the tank to dead
