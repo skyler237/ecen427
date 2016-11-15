@@ -6,6 +6,7 @@
  */
 
 #include "globals.h"
+#include "control.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -57,31 +58,78 @@ void AI_findSafeSpots() {
 	}
 }
 
-bool isKillSpot(uint16_t tank_x) {
+bool isKillSpot(uint16_t curr_tank_x, int16_t tank_offset) {
 	point_t alienBlock_pos = global_getAlienBlockPosition();
 	point_t alienPredicted_pos = alienBlock_pos;
+	int16_t bullet_pos = curr_tank_x + tank_offset;
+	if(tankSpots[bullet_pos] == UNSAFE){
+		return false;
+	}
 	// Find time for tank bullet to reach alien block
 	int32_t bulletHitTime = (BULLET_UPDATE_TIMER_MAX * (TANK_INIT_Y - (alienBlock_pos.y + ALIEN_BLOCK_HEIGHT)) / BULLET_SPEED);
+	if(tank_offset >= 0){
+		bulletHitTime += (TANK_MOVE_TIMER_MAX * tank_offset / TANK_SPEED);
+	}
+	else {
+		bulletHitTime -= (TANK_MOVE_TIMER_MAX * tank_offset / TANK_SPEED);
+	}
+	uint8_t row = 0;
+		uint8_t col = 0;
+		// Get left-most alive alien position
+		uint8_t left_most_col = 0;
+		while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
+			if(row >= ALIEN_ROW_MAX) { // If we are at the last row...
+				if(col >= ALIEN_COL_MAX) {
+					// We have cycled through all the aliens and they are all dead
+					return false; // Stop looping
+				}
+				// move to the top of the next column to the right
+				row = 0;
+				col++;
+			}
+			else { // Otherwise, just go down the column
+				row++;
+			}
+		}
+		// We have found an alien that's alive -- this is the left-most column
+		left_most_col = col;
 
+		// Get right-most alive alien position
+		row = 0;
+		col = ALIEN_COL_MAX; // Start at the far right column
+	uint8_t right_most_col;
+	while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
+		if(row >= ALIEN_ROW_MAX) {// If we are at the last row...
+		// move to the top of the next column to the left
+			row = 0;
+			col--;
+		}
+		else { // Otherwise, just go down the column
+			row++;
+		}
+	}
+	// We have found an alien that's alive -- this is the right-most column
+	right_most_col = col;
 	// Check if an alien will be there at that time
 	int8_t alien_row = 0;
 	for(alien_row = ALIEN_ROW_MAX; alien_row >= 0; alien_row--) {
 		// Calculate number of alien updates
 		uint16_t alienUpdates = bulletHitTime / ALIEN_MOVE_TIMER_MAX;
+		bool isMovingRight = control_aliensMovingRight();
 
 		// Predict alien pos
 		uint8_t i;
 
 		for(i = 0; i < alienUpdates; i++) {
 			// If we are moving right and are at the right edge...
-			if(isMovingRight && (blockPosition.x + ALIEN_X_SPACING*(right_most_col) + ALIEN_WIDTH + EDGE_2_ALIEN_GAP) >= SCREEN_RIGHT_EDGE) {
+			if(isMovingRight && (alienPredicted_pos.x + ALIEN_X_SPACING*(right_most_col) + ALIEN_WIDTH + EDGE_2_ALIEN_GAP) >= SCREEN_RIGHT_EDGE) {
 				// Move down
 				alienPredicted_pos.y -= ALIEN_MOVE_Y;
 				// Start moving left
 				isMovingRight = false;
 			}
 			// If we are moving left and are at the left edge...
-			else if(!isMovingRight && (blockPosition.x + ALIEN_X_SPACING*left_most_col - EDGE_2_ALIEN_GAP) <= SCREEN_LEFT_EDGE) {
+			else if(!isMovingRight && (alienPredicted_pos.x + ALIEN_X_SPACING*left_most_col - EDGE_2_ALIEN_GAP) <= SCREEN_LEFT_EDGE) {
 				// Move down
 				alienPredicted_pos.y -= ALIEN_MOVE_Y;
 				// Start moving right
@@ -98,35 +146,58 @@ bool isKillSpot(uint16_t tank_x) {
 				alienPredicted_pos.x -= ALIEN_MOVE_X;
 			}
 		}
-
-		bulletHitTime -= (BULLET_UPDATE_TIMER_MAX * (ALIEN_Y_SPACING) / BULLET_SPEED);
+		point_t bulletPoint;
+		bulletPoint.x = bullet_pos;
+		bulletPoint.y = alienPredicted_pos.y + ALIEN_Y_SPACING * alien_row + ALIEN_HEIGHT;
+		uint16_t x_offset = bulletPoint.x - alienPredicted_pos.x;
+		uint16_t y_offset = bulletPoint.y - alienPredicted_pos.y;
+		if(!(bulletPoint.y < alienPredicted_pos.y || bulletPoint.y > alienPredicted_pos.y + ALIEN_BLOCK_HEIGHT ||
+				bulletPoint.x < alienPredicted_pos.x || bulletPoint.x > alienPredicted_pos.x + ALIEN_BLOCK_WIDTH)) {
+			if (!(x_offset % ALIEN_X_SPACING > ALIEN_WIDTH || y_offset % ALIEN_Y_SPACING > ALIEN_HEIGHT)){
+				xil_printf("KillSpot: %d,%d\n\r", bulletPoint.x, bulletPoint.y);
+				return true;
+			}
+		}
+		bulletHitTime += (BULLET_UPDATE_TIMER_MAX * (ALIEN_Y_SPACING) / BULLET_SPEED);
 	}
+	return false;
 }
 
-void AI_findKillSpot() {
+bool AI_checkBunkers(int16_t bullet_pos){
+
+}
+
+void AI_findClosestKillSpot() {
+	xil_printf("killSpot\n\r");
 	point_t tank_pos = global_getTankPosition();
 	bool killSpotFound = false;
-	uint16_t offset = 0;
+	int16_t offset = 0;
 	while(!killSpotFound) {
 		// Do bounds checking here
 		if(offset > SCREEN_WIDTH / 2) {
 			xil_printf("ERROR: Offset too big!\n\r");
+			return;
 		}
 		// Right offset
-		if(isKillSpot(tank_pos.x + offset)) {
+		if(isKillSpot(tank_pos.x, offset)) {
 			// Move right
 			global_setTankDirection(RIGHT);
 			killSpotFound = true;
 			break;
 		}
 		// Left offset
-		else if(isKillSpot(tank_pos.x - offset)) {
+		else if(isKillSpot(tank_pos.x, -offset)) {
 			// Move left
 			global_setTankDirection(LEFT);
 			killSpotFound = true;
 			break;
 		}
 		offset += TANK_SPEED;
+	}
+	if (offset == 0 && global_getTankBulletPosition().x == OFF_SCREEN) {
+		global_setTankDirection(STOPPED);
+		xil_printf("Firing Bullet at %d\n\r", tank_pos.x);
+		global_fireTankBullet();
 	}
 }
 
@@ -163,8 +234,9 @@ void AI_evadeBullets() {
 	}
 }
 
+
 void AI_update() {
 	setAllSpotsSafe();
 	AI_findSafeSpots();
-	AI_evadeBullets();
+	AI_findClosestKillSpot();
 }

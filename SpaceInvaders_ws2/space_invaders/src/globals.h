@@ -24,6 +24,8 @@
 // Screen constants
 #define SCREEN_WIDTH 320	// Screen width in game pixels
 #define SCREEN_HEIGHT 240	// Screen height in game pixels
+#define SCREEN_RIGHT_EDGE SCREEN_WIDTH
+#define SCREEN_LEFT_EDGE 0
 
 // Alien constants
 #define ALIEN_ROWS 5		// Number of alien rows
@@ -43,6 +45,7 @@
 #define UFO_ID	5				// Identifies the UFO
 #define ALIEN_MOVE_X 4
 #define ALIEN_MOVE_Y 6
+#define EDGE_2_ALIEN_GAP 10
 
 // Tank constants
 #define TANK_WIDTH 15		// Tank sprite width

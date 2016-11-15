@@ -27,5 +27,10 @@ void control_manageBullets();
 // Fires a random alien bullet from the bottom-most row
 void control_fireAlienBullet();
 
+//Returns true if we are moving right, false otherwise
+bool control_aliensMovingRight();
+
+bool control_checkTankBulletAlienCollision(point_t bulletPoint, point_t alienBlockPos);
+
 
 #endif /* CONTROL_H_ */

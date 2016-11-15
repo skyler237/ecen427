@@ -1,0 +1,208 @@
+/*
+ * AI.c
+ *
+ *  Created on: Nov 9, 2016
+ *      Author: superman
+ */
+
+#include "globals.h"
+#include "control.h"
+#include <stdbool.h>
+#include <stdio.h>
+
+#define SAFETY_MARGIN 2*BULLET_UPDATE_TIMER_MAX
+
+// Space Invaders AI Pseudo-code
+typedef enum { SAFE, UNSAFE, SHOOT_ALIEN, SHOOT_SAUCER }SpotType_t;
+SpotType_t tankSpots[SCREEN_WIDTH];
+
+void setAllSpotsSafe() {
+	uint16_t i;
+	for(i = 0; i < SCREEN_WIDTH; i++) {
+		tankSpots[i] = SAFE;
+//		xil_printf("set spot %d\n\r", i);
+	}
+}
+
+void AI_findSafeSpots() {
+	// Find unsafe spots
+	point_t tank_pos = global_getTankPosition();
+	uint8_t i;
+	for (i = 0; i < BULLET_COUNT; i++) {
+	  // Check if the bullet is currently on screen
+	  point_t bullet_pos = global_getAlienBulletPosition(i);
+	  if(bullet_pos.x != OFF_SCREEN) {
+		// Calculate how long it will take the bullet to hit the tank
+		int32_t bulletHitTime = (BULLET_UPDATE_TIMER_MAX * (TANK_INIT_Y - (bullet_pos.y + BULLET_HEIGHT)) / BULLET_SPEED) - SAFETY_MARGIN ;
+
+		// Calculate how far the tank can move in one direction during "bulletHitTime"
+		uint16_t tankMoveDistance = TANK_SPEED * bulletHitTime / TANK_MOVE_TIMER_MAX;
+
+		// Test the tank predicted position for bullets
+		uint16_t tankPredictedRight = tank_pos.x + tankMoveDistance;
+		uint16_t tankPredictedLeft = tank_pos.x - tankMoveDistance;
+//		xil_printf("tankRight: %d\n\r", tankPredictedRight);
+//		xil_printf("bullet: %d\n\r", bullet_pos.x);
+		if((tankPredictedRight - 1 <= bullet_pos.x && tankPredictedRight + TANK_WIDTH + 1 >= bullet_pos.x) ||
+				(tankPredictedLeft - 1 <= bullet_pos.x && tankPredictedLeft + TANK_WIDTH + 1 >= bullet_pos.x)) {
+			int16_t j;
+			// Mark the unsafe tank_x positions
+			for(j = bullet_pos.x - TANK_WIDTH - 1; j <= bullet_pos.x + 2; j++) {
+				if(j >= 0 && j < SCREEN_WIDTH) {
+					tankSpots[j] = UNSAFE;
+//					xil_printf("spot unsafe: %d\n\r", j);
+				}
+			}
+		}
+	  }
+	}
+}
+
+bool isKillSpot(uint16_t curr_tank_x, uint16_t tank_offset) {
+	point_t alienBlock_pos = global_getAlienBlockPosition();
+	point_t alienPredicted_pos = alienBlock_pos;
+	bool isMovingRight = control_aliensMovingRight();
+	// Find time for tank bullet to reach alien block
+	int32_t bulletHitTime = (BULLET_UPDATE_TIMER_MAX * (TANK_INIT_Y - (alienBlock_pos.y + ALIEN_BLOCK_HEIGHT)) / BULLET_SPEED);
+	uint8_t row = 0;
+		uint8_t col = 0;
+		// Get left-most alive alien position
+		uint8_t left_most_col = 0;
+		while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
+			if(row >= ALIEN_ROW_MAX) { // If we are at the last row...
+				if(col >= ALIEN_COL_MAX) {
+					// We have cycled through all the aliens and they are all dead
+					return false; // Stop looping
+				}
+				// move to the top of the next column to the right
+				row = 0;
+				col++;
+			}
+			else { // Otherwise, just go down the column
+				row++;
+			}
+		}
+		// We have found an alien that's alive -- this is the left-most column
+		left_most_col = col;
+
+		// Get right-most alive alien position
+		row = 0;
+		col = ALIEN_COL_MAX; // Start at the far right column
+	uint8_t right_most_col;
+	while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
+		if(row >= ALIEN_ROW_MAX) {// If we are at the last row...
+		// move to the top of the next column to the left
+			row = 0;
+			col--;
+		}
+		else { // Otherwise, just go down the column
+			row++;
+		}
+	}
+	// We have found an alien that's alive -- this is the right-most column
+	right_most_col = col;
+	// Check if an alien will be there at that time
+	int8_t alien_row = 0;
+	for(alien_row = ALIEN_ROW_MAX; alien_row >= 0; alien_row--) {
+		// Calculate number of alien updates
+		uint16_t alienUpdates = bulletHitTime / ALIEN_MOVE_TIMER_MAX;
+
+		// Predict alien pos
+		uint8_t i;
+
+		for(i = 0; i < alienUpdates; i++) {
+			// If we are moving right and are at the right edge...
+			if(isMovingRight && (alienPredicted_pos.x + ALIEN_X_SPACING*(right_most_col) + ALIEN_WIDTH + EDGE_2_ALIEN_GAP) >= SCREEN_RIGHT_EDGE) {
+				// Move down
+				alienPredicted_pos.y -= ALIEN_MOVE_Y;
+				// Start moving left
+				isMovingRight = false;
+			}
+			// If we are moving left and are at the left edge...
+			else if(!isMovingRight && (alienPredicted_pos.x + ALIEN_X_SPACING*left_most_col - EDGE_2_ALIEN_GAP) <= SCREEN_LEFT_EDGE) {
+				// Move down
+				alienPredicted_pos.y -= ALIEN_MOVE_Y;
+				// Start moving right
+				isMovingRight = true;
+			}
+			// If we are moving right, but not at an edge,
+			else if(isMovingRight) {
+				// Move right
+				alienPredicted_pos.x += ALIEN_MOVE_X;
+			}
+			// If we are moving left, but not at an edge,
+			else {
+				// Move left
+				alienPredicted_pos.x -= ALIEN_MOVE_X;
+			}
+		}
+
+		bulletHitTime -= (BULLET_UPDATE_TIMER_MAX * (ALIEN_Y_SPACING) / BULLET_SPEED);
+	}
+}
+
+void AI_findKillSpot() {
+	point_t tank_pos = global_getTankPosition();
+	bool killSpotFound = false;
+	uint16_t offset = 0;
+	while(!killSpotFound) {
+		// Do bounds checking here
+		if(offset > SCREEN_WIDTH / 2) {
+			xil_printf("ERROR: Offset too big!\n\r");
+		}
+		// Right offset
+		if(isKillSpot(tank_pos.x, offset)) {
+			// Move right
+			global_setTankDirection(RIGHT);
+			killSpotFound = true;
+			break;
+		}
+		// Left offset
+		else if(isKillSpot(tank_pos.x, -offset)) {
+			// Move left
+			global_setTankDirection(LEFT);
+			killSpotFound = true;
+			break;
+		}
+		offset += TANK_SPEED;
+	}
+}
+
+void AI_evadeBullets() {
+	point_t tank_pos = global_getTankPosition();
+	// Move towards nearest safe spot
+	if(tankSpots[tank_pos.x] == UNSAFE) {
+		bool safeSpotFound = false;
+		uint16_t offset = TANK_SPEED;
+		while(!safeSpotFound) {
+			// Do bounds checking here
+			if(offset > SCREEN_WIDTH / 2) {
+				xil_printf("ERROR: Offset too big!\n\r");
+			}
+
+			if((tank_pos.x + offset + TANK_WIDTH) < SCREEN_WIDTH && tankSpots[tank_pos.x + offset] != UNSAFE) {
+				// Move right
+				global_setTankDirection(RIGHT);
+				safeSpotFound = true;
+				break;
+			}
+			else if((tank_pos.x - offset) >= 0 && tankSpots[tank_pos.x - offset] != UNSAFE) {
+				// Move left
+				global_setTankDirection(LEFT);
+				safeSpotFound = true;
+				break;
+			}
+			offset += TANK_SPEED;
+		}
+	}
+	else {
+		// Only move if the tank is unsafe
+		global_setTankDirection(STOPPED);
+	}
+}
+
+void AI_update() {
+	setAllSpotsSafe();
+	AI_findSafeSpots();
+	AI_evadeBullets();
+}
