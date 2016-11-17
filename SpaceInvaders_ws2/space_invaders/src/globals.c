@@ -85,6 +85,17 @@ static uint32_t alienShootTimer;	// Timer for how long until we fire another ali
 static uint32_t flashingTimer;		// Timer for how long until we switch guises in flashing animation
 static uint32_t UFOMoveTimer;		// Timer for how long until we move the UFO again
 
+uint32_t global_getAlienMoveTimer(){
+	return alienMoveTimer;
+}
+
+uint32_t global_getTankMoveTimer(){
+	return tankMoveTimer;
+}
+
+uint32_t global_getBulletUpdateTimer(){
+	return bulletUpdateTimer;
+}
 
 /*
 	Initializes the positions of each of the individual bunker blocks
@@ -546,6 +557,7 @@ void global_setBunkerPosition(uint8_t bunker_index, uint8_t x, uint8_t y){
 	@param row, col: the row and column within the alien block of the alien to kill
 */
 void global_killAlien(uint8_t row, uint8_t col){
+	xil_printf("Killing alien: %d, %d\n\r", row, col);
 	// Clears the corresponding bit of the given alien
 	alienPositions[row] = alienPositions[row] & (KILL_ALIEN_MASK >> col);
 	alien_count--;

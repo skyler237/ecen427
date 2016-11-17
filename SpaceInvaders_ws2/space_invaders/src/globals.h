@@ -51,6 +51,7 @@
 #define TANK_WIDTH 15		// Tank sprite width
 #define TANK_HEIGHT 8		// Tank sprite height
 #define TANK_SPEED 2
+#define BULLET_ORIGIN 8
 
 // Bunker constants
 #define BUNKER_0 0	// Bunker index values
@@ -248,6 +249,12 @@ uint8_t global_decrementTimers();
 bool global_isGameOver();
 // Sets the game over flag
 void global_endGame();
+
+uint32_t global_getAlienMoveTimer();
+
+uint32_t global_getTankMoveTimer();
+
+uint32_t global_getBulletUpdateTimer();
 
 
 #endif /* GLOBALS_H_ */
