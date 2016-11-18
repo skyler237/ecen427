@@ -54,14 +54,15 @@ bool AI_checkBunkers(int16_t bullet_pos){
 		return true; // Didn't hit a bunker
 	}
 	block_index = (x_offset/BUNKER_BLOCK_SIZE);
+	bool no_bunker = true;
 	while (block_index < BUNKER_BLOCK_CNT) {
-		if(global_getBlockState(bunker_index, block_index) == DEAD) {
+		if(global_getBlockState(bunker_index, block_index) != DEAD) {
 			// If we are inside the arch of the bunker, return
-			return false;
+			no_bunker = false;
 		}
 		block_index += BUNKER_BLOCK_COLS;
 	}
-	return true;
+	return no_bunker;
 }
 
 void AI_findSafeSpots() {
@@ -107,37 +108,38 @@ bool isKillSpot(uint16_t curr_tank_x, int16_t tank_offset) {
 		return false;
 	}
 	// Find time for tank bullet to reach alien block
-	int32_t bulletHitTime = ((BULLET_UPDATE_TIMER_MAX - 1) * (TANK_INIT_Y - (alienBlock_pos.y + ALIEN_BLOCK_HEIGHT)) / BULLET_SPEED) + global_getBulletUpdateTimer();
+	int32_t bulletHitTime = (BULLET_UPDATE_TIMER_MAX * ((TANK_INIT_Y - (alienBlock_pos.y + ALIEN_BLOCK_HEIGHT)) / BULLET_SPEED)) + (BULLET_UPDATE_TIMER_MAX - global_getBulletUpdateTimer());
 	if(tank_offset >= 0){
-		bulletHitTime += ((TANK_MOVE_TIMER_MAX - 1) * tank_offset / TANK_SPEED) + global_getTankMoveTimer();
+		bulletHitTime += ((TANK_MOVE_TIMER_MAX) * (tank_offset / TANK_SPEED)) + (TANK_MOVE_TIMER_MAX -global_getTankMoveTimer());
 	}
 	else {
-		bulletHitTime -= ((TANK_MOVE_TIMER_MAX - 1) * tank_offset / TANK_SPEED) - global_getTankMoveTimer();
+		bulletHitTime -= ((TANK_MOVE_TIMER_MAX ) * (tank_offset / TANK_SPEED)) - (TANK_MOVE_TIMER_MAX - global_getTankMoveTimer());
 	}
 	uint8_t row = 0;
-		uint8_t col = 0;
-		// Get left-most alive alien position
-		uint8_t left_most_col = 0;
-		while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
-			if(row >= ALIEN_ROW_MAX) { // If we are at the last row...
-				if(col >= ALIEN_COL_MAX) {
-					// We have cycled through all the aliens and they are all dead
-					return false; // Stop looping
-				}
-				// move to the top of the next column to the right
-				row = 0;
-				col++;
-			}
-			else { // Otherwise, just go down the column
-				row++;
-			}
-		}
-		// We have found an alien that's alive -- this is the left-most column
-		left_most_col = col;
+	uint8_t col = 0;
 
-		// Get right-most alive alien position
-		row = 0;
-		col = ALIEN_COL_MAX; // Start at the far right column
+	// Get left-most alive alien position
+	uint8_t left_most_col = 0;
+	while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
+		if(row >= ALIEN_ROW_MAX) { // If we are at the last row...
+			if(col >= ALIEN_COL_MAX) {
+				// We have cycled through all the aliens and they are all dead
+				return false; // Stop looping
+			}
+			// move to the top of the next column to the right
+			row = 0;
+			col++;
+		}
+		else { // Otherwise, just go down the column
+			row++;
+		}
+	}
+	// We have found an alien that's alive -- this is the left-most column
+	left_most_col = col;
+
+	// Get right-most alive alien position
+	row = 0;
+	col = ALIEN_COL_MAX; // Start at the far right column
 	uint8_t right_most_col;
 	while(!global_isAlienAlive(row, col)) { // Keep looking until we find an alien that's alive
 		if(row >= ALIEN_ROW_MAX) {// If we are at the last row...
@@ -151,10 +153,14 @@ bool isKillSpot(uint16_t curr_tank_x, int16_t tank_offset) {
 	}
 	// We have found an alien that's alive -- this is the right-most column
 	right_most_col = col;
+
 	// Check if an alien will be there at that time
 	for(alien_row = ALIEN_ROW_MAX; alien_row >= 0; alien_row--) {
 		// Calculate number of alien updates
-		uint16_t alienUpdates = (bulletHitTime) / ALIEN_MOVE_TIMER_MAX;
+		int16_t alienUpdates = (bulletHitTime - global_getAlienMoveTimer()) / ALIEN_MOVE_TIMER_MAX - 1;
+		if(alienUpdates < 0) {
+			alienUpdates = 0;
+		}
 		bool isMovingRight = control_aliensMovingRight();
 
 		// Predict alien pos

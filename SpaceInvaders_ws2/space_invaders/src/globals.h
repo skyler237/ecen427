@@ -51,7 +51,7 @@
 #define TANK_WIDTH 15		// Tank sprite width
 #define TANK_HEIGHT 8		// Tank sprite height
 #define TANK_SPEED 2
-#define BULLET_ORIGIN 8
+#define BULLET_ORIGIN 7
 
 // Bunker constants
 #define BUNKER_0 0	// Bunker index values
