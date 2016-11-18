@@ -12,6 +12,8 @@
 
 #define SAFETY_MARGIN 2*BULLET_UPDATE_TIMER_MAX
 
+#define HIT_BUFFER 2
+
 // Space Invaders AI Pseudo-code
 typedef enum { SAFE, UNSAFE, SHOOT_ALIEN, SHOOT_SAUCER }SpotType_t;
 SpotType_t tankSpots[SCREEN_WIDTH];
@@ -157,7 +159,7 @@ bool isKillSpot(uint16_t curr_tank_x, int16_t tank_offset) {
 	// Check if an alien will be there at that time
 	for(alien_row = ALIEN_ROW_MAX; alien_row >= 0; alien_row--) {
 		// Calculate number of alien updates
-		int16_t alienUpdates = (bulletHitTime - global_getAlienMoveTimer()) / ALIEN_MOVE_TIMER_MAX - 1;
+		int16_t alienUpdates = (bulletHitTime) / ALIEN_MOVE_TIMER_MAX - 1;
 		if(alienUpdates < 0) {
 			alienUpdates = 0;
 		}
@@ -199,7 +201,7 @@ bool isKillSpot(uint16_t curr_tank_x, int16_t tank_offset) {
 		uint16_t y_offset = bulletPoint.y - alienPredicted_pos.y;
 		if(!(bulletPoint.y < alienPredicted_pos.y || bulletPoint.y > alienPredicted_pos.y + ALIEN_BLOCK_HEIGHT ||
 				bulletPoint.x < alienPredicted_pos.x || bulletPoint.x > alienPredicted_pos.x + ALIEN_BLOCK_WIDTH)) {
-			if (!(x_offset % ALIEN_X_SPACING > ALIEN_WIDTH || y_offset % ALIEN_Y_SPACING > ALIEN_HEIGHT)){
+			if (!((x_offset % ALIEN_X_SPACING > ALIEN_WIDTH - HIT_BUFFER) || (x_offset % ALIEN_X_SPACING < HIT_BUFFER) || y_offset % ALIEN_Y_SPACING > ALIEN_HEIGHT)){
 				alien_col =  x_offset / ALIEN_X_SPACING;
 				alien_row = y_offset / ALIEN_Y_SPACING;
 				if(global_isAlienAlive(alien_row, alien_col) && AI_checkBunkers(bulletPoint.x)) {
