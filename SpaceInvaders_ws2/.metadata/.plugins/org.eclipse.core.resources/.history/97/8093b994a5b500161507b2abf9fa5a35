@@ -557,7 +557,7 @@ void global_setBunkerPosition(uint8_t bunker_index, uint8_t x, uint8_t y){
 	@param row, col: the row and column within the alien block of the alien to kill
 */
 void global_killAlien(uint8_t row, uint8_t col){
-	//xil_printf("Killing alien: %d, %d\n\r", row, col);
+	xil_printf("Killing alien: %d, %d\n\r", row, col);
 	// Clears the corresponding bit of the given alien
 	alienPositions[row] = alienPositions[row] & (KILL_ALIEN_MASK >> col);
 	alien_count--;

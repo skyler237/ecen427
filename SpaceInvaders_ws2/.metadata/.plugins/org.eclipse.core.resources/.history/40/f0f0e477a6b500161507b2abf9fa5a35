@@ -59,7 +59,6 @@ XGpio gpPB;   // This is a handle for the push-button GPIO block.
 static uint8_t currentButtonState; // Holds the current value of the push buttons (updated each PB interrupt)
 
 static uint32_t counter;
-static bool start = false;
 
 void timer_interrupt_handler() {
 	//xil_printf("%d\n\r", counter);
@@ -76,51 +75,50 @@ void timer_interrupt_handler() {
 		}
 		return;
 	}
-	else if (start){// Update stuff through controller
-		if(finishedTimers & TANK_DEATH_TIMER_MASK) {
-			// Keep drawing the tank (it will be displaying the tank explosion at this point)
-			render_refreshTank();
-			return;
-		}
-		if(finishedTimers & UFO_ENTRY_TIMER_MASK) {
-			// Cause the UFO to re-enter the screen
-			global_startUFO();
-		}
-		if(finishedTimers & ALIEN_MOVE_TIMER_MASK) {
-			// Move the aliens
-			control_updateAlienBlock();
-		}
-		if(finishedTimers & TANK_MOVE_TIMER_MASK) {
-			// Execute AI
-			AI_update();
+	// Update stuff through controller
+	if(finishedTimers & TANK_DEATH_TIMER_MASK) {
+		// Keep drawing the tank (it will be displaying the tank explosion at this point)
+		render_refreshTank();
+		return;
+	}
+	if(finishedTimers & UFO_ENTRY_TIMER_MASK) {
+		// Cause the UFO to re-enter the screen
+		global_startUFO();
+	}
+	if(finishedTimers & ALIEN_MOVE_TIMER_MASK) {
+		// Move the aliens
+		control_updateAlienBlock();
+	}
+	if(finishedTimers & TANK_MOVE_TIMER_MASK) {
+		// Execute AI
+		AI_update();
 
-			// Move the tank
-			control_updateTank();
+		// Move the tank
+		control_updateTank();
 
-			// Redraw the tank
-			render_refreshTank();
-		}
-		if(finishedTimers & BULLET_UPDATE_TIMER_MASK) {
-			// Update all bullets and bullet collisions
-			control_manageBullets();
-			// Redraw the bullets
-			render_bullets();
-		}
-		if(finishedTimers & FLASHING_TIMER_MASK) {
-			// The flashing explosion or score is done...
-			render_eraseAlien();	// Erase the alien explosion
-			render_eraseUFOScore(); // Erase the UFO score
-		}
-		if(finishedTimers & UFO_MOVE_TIMER_MASK) {
-			// Move the UFO
-			global_moveUFO();
-			// Redraw the UFO
-			render_UFO();
-		}
-		if(finishedTimers & ALIEN_SHOOT_TIMER_MASK) {
-			// Shoot an alien bullet
-			control_fireAlienBullet();
-		}
+		// Redraw the tank
+		render_refreshTank();
+	}
+	if(finishedTimers & BULLET_UPDATE_TIMER_MASK) {
+		// Update all bullets and bullet collisions
+		control_manageBullets();
+		// Redraw the bullets
+		render_bullets();
+	}
+	if(finishedTimers & FLASHING_TIMER_MASK) {
+		// The flashing explosion or score is done...
+		render_eraseAlien();	// Erase the alien explosion
+		render_eraseUFOScore(); // Erase the UFO score
+	}
+	if(finishedTimers & UFO_MOVE_TIMER_MASK) {
+		// Move the UFO
+		global_moveUFO();
+		// Redraw the UFO
+		render_UFO();
+	}
+	if(finishedTimers & ALIEN_SHOOT_TIMER_MASK) {
+		// Shoot an alien bullet
+		control_fireAlienBullet();
 	}
 }
 
@@ -131,7 +129,6 @@ void pb_interrupt_handler() {
   currentButtonState = XGpio_DiscreteRead(&gpPB, 1);  // Get the current state of the buttons.
   // Check which buttons are high/low
   if((currentButtonState & CENTER_BTN)) { // If center button is pressed...
-	  start = true;
 	  // Shoot bullet
 	  if(!global_isGameOver()){
 		  global_fireTankBullet();

@@ -250,7 +250,6 @@ void control_updateAlienBlock() {
 	else if(!isMovingRight && (blockPosition.x + ALIEN_X_SPACING*left_most_col - EDGE_2_ALIEN_GAP) <= SCREEN_LEFT_EDGE) {
 		// Move down
 		global_moveAlienBlock(0, ALIEN_MOVE_Y);
-		xil_printf("Y: %d\n", blockPosition.y);
 		// Start moving right
 		isMovingRight = true;
 	}
