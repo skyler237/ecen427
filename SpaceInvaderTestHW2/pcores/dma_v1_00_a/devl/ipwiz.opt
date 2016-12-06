@@ -1,0 +1,9 @@
+-batch 
+-create dma 
+-ver 1.00.a 
+-dir "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2" 
+-lang vhdl 
+-bus axi4lite ms 
+-reg 8 
+-xps 
+-driver 
