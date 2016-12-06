@@ -1,0 +1,37 @@
+Release 13.4 - xst O.87xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Users/superman/Documents/ecen427/DMA_HDL/dma/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to C:/Users/superman/Documents/ecen427/DMA_HDL/dma/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/ModuleSearchPath/archived_ip_repository/ProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family_support.vhd" in Library work.
+Architecture family_support of Entity family_support is up to date.
+Compiling vhdl file "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/dma_v1_00_a/hdl/vhdl/user_logic.vhd" in Library work.
+ERROR:HDLParsers:3317 - "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/dma_v1_00_a/hdl/vhdl/user_logic.vhd" Line 57.  Library proc_common_v3_00_b cannot be found.
+ERROR:HDLParsers:3013 - "C:/Users/superman/Documents/ecen427/SpaceInvaderTestHW2/pcores/dma_v1_00_a/hdl/vhdl/user_logic.vhd" Line 58. Library proc_common_v3_00_b is not declared.
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.28 secs
+ 
+--> 
+
+Total memory usage is 228988 kilobytes
+
+Number of errors   :    2 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

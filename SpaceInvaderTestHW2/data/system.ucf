@@ -26,6 +26,15 @@ NET Push_Buttons_5Bits_TRI_I[4] LOC = "F5"  |  IOSTANDARD = "LVCMOS18";
 # additional constraints
 #
 
+NET DIP_Switches_8Bits_TRI_I[0] LOC = "D22"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[1] LOC = "C22"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[2] LOC = "L21"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[3] LOC = "L20"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[4] LOC = "C18"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[5] LOC = "B18"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[6] LOC = "K22"  |  IOSTANDARD = "LVCMOS15";
+NET DIP_Switches_8Bits_TRI_I[7] LOC = "K21"  |  IOSTANDARD = "LVCMOS15";
+
 ################AXI_AC97 CONSTRAINTS########################
 Net axi_ac97_0_Bit_Clk_pin LOC = L13 | IOSTANDARD = LVCMOS33;
 Net axi_ac97_0_SData_In_pin LOC = T18 | IOSTANDARD = LVCMOS33;

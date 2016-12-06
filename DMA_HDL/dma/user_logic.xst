@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/superman/Documents/ecen427/DMA_HDL/dma/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/superman/Documents/ecen427/DMA_HDL/dma/xst"
+elaborate
+-ifn user_logic.prj
+-ifmt mixed

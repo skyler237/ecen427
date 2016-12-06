@@ -137,7 +137,7 @@ library ieee;
 use     ieee.std_logic_1164.all;
 library proc_common_v3_00_a;
 use     proc_common_v3_00_a.proc_common_pkg.clog2;
---
+
 entity srl_fifo_f is
   generic (
     C_DWIDTH : natural;

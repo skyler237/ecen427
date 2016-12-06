@@ -1,0 +1,8 @@
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\proc_common_pkg.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\family_support.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\muxf_struct_f.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\dynshreg_f.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\cntr_incr_decr_addn_f.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\srl_fifo_rbu_f.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\ModuleSearchPath\archived_ip_repository\ProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\srl_fifo_f.vhd"
+vhdl work "C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\pcores\dma_v1_00_a\hdl\vhdl\user_logic.vhd"
