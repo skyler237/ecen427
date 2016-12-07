@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map O.87xd on Mon Dec 05 17:22:13 2016
+// Written by: Map O.87xd on Tue Dec 06 17:44:03 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -15,6 +15,14 @@ COMP "mcbx_dram_ldm" LOCATE = SITE "K3" LEVEL 1;
 COMP "mcbx_dram_dqs" LOCATE = SITE "L4" LEVEL 1;
 COMP "mcbx_dram_odt" LOCATE = SITE "K6" LEVEL 1;
 COMP "mcbx_dram_udm" LOCATE = SITE "K4" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<0>" LOCATE = SITE "A10" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<1>" LOCATE = SITE "D14" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<2>" LOCATE = SITE "C14" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<3>" LOCATE = SITE "P15" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<4>" LOCATE = SITE "P12" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<5>" LOCATE = SITE "R5" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<6>" LOCATE = SITE "T5" LEVEL 1;
+COMP "axi_gpio_0_GPIO_IO_I_pin<7>" LOCATE = SITE "E4" LEVEL 1;
 COMP "axi_ac97_0_SData_In_pin" LOCATE = SITE "T18" LEVEL 1;
 COMP "RESET" LOCATE = SITE "T15" LEVEL 1;
 COMP "mcbx_dram_we_n" LOCATE = SITE "E3" LEVEL 1;
@@ -567,6 +575,83 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         BEL
         "Push_Buttons_5Bits/Push_Buttons_5Bits/ip2Bus_RdAck_intr_reg_hole_d1"
         BEL "Push_Buttons_5Bits/Push_Buttons_5Bits/IP2INTC_Irpt" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0_1"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_24" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_25" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_26" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_27" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_28" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_29" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_30" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_31" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
+        BEL "axi_gpio_0/axi_gpio_0/bus2ip_reset" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_rdack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_wrack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rvalid_i"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/iGPIO_xferAck" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_xferAck_Reg" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_4"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_5"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_6"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_7"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
+        BEL "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_31" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_30" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_29" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_28" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_27" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_26" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_25" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_24" BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/INFERRED_GEN.data_15"
         BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/Mshreg_INFERRED_GEN.data_15"
@@ -2516,27 +2601,31 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         BEL
         "MCB_DDR2/MCB_DDR2/mcb_ui_top_0/P0_UI_AXI.axi_mcb_synch/synch_d2_0"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_4"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_3"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_2"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_3"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_2"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_0"
         BEL
@@ -2555,6 +2644,12 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_grant_hot_i_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/read_active"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/write_active"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
         BEL
@@ -2716,6 +2811,8 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_11"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_12"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1"
@@ -2723,6 +2820,8 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_3"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[11].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[10].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
@@ -2745,6 +2844,10 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[1].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[0].clock_conv_inst/m_axi_reset_out_n_i"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_1"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
         BEL
@@ -12526,30 +12629,6 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         BEL
         "dma_0/dma_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
         BEL "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_busy" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_2" BEL
@@ -12558,22 +12637,22 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_2" BEL
@@ -12582,14 +12661,22 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_2" BEL
@@ -12598,6 +12685,22 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_2" BEL
@@ -12622,134 +12725,70 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_2" BEL
@@ -12782,6 +12821,70 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_2" BEL
@@ -12846,50 +12949,83 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_4" BEL
@@ -12915,7 +13051,6 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_24" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_1" BEL
@@ -13646,6 +13781,83 @@ TIMEGRP s_axi_lite_aclk = PIN
         BEL
         "Push_Buttons_5Bits/Push_Buttons_5Bits/ip2Bus_RdAck_intr_reg_hole_d1"
         BEL "Push_Buttons_5Bits/Push_Buttons_5Bits/IP2INTC_Irpt" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0_1"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_24" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_25" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_26" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_27" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_28" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_29" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_30" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_31" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
+        BEL "axi_gpio_0/axi_gpio_0/bus2ip_reset" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_rdack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_wrack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rvalid_i"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/iGPIO_xferAck" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_xferAck_Reg" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_4"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_5"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_6"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_7"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
+        BEL "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_31" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_30" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_29" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_28" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_27" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_26" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_25" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_24" BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/INFERRED_GEN.data_15"
         BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/Mshreg_INFERRED_GEN.data_15"
@@ -15595,27 +15807,31 @@ TIMEGRP s_axi_lite_aclk = PIN
         BEL
         "MCB_DDR2/MCB_DDR2/mcb_ui_top_0/P0_UI_AXI.axi_mcb_synch/synch_d2_0"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_4"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_3"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_2"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_3"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_2"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_0"
         BEL
@@ -15634,6 +15850,12 @@ TIMEGRP s_axi_lite_aclk = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_grant_hot_i_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/read_active"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/write_active"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
         BEL
@@ -15795,6 +16017,8 @@ TIMEGRP s_axi_lite_aclk = PIN
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_11"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_12"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1"
@@ -15802,6 +16026,8 @@ TIMEGRP s_axi_lite_aclk = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_3"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[11].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[10].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
@@ -15824,6 +16050,10 @@ TIMEGRP s_axi_lite_aclk = PIN
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[1].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[0].clock_conv_inst/m_axi_reset_out_n_i"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_1"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
         BEL
@@ -25605,30 +25835,6 @@ TIMEGRP s_axi_lite_aclk = PIN
         BEL
         "dma_0/dma_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
         BEL "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_busy" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_2" BEL
@@ -25637,22 +25843,22 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_2" BEL
@@ -25661,14 +25867,22 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_2" BEL
@@ -25677,6 +25891,22 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_2" BEL
@@ -25701,134 +25931,70 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_2" BEL
@@ -25861,6 +26027,70 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_2" BEL
@@ -25925,50 +26155,83 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_4" BEL
@@ -25994,7 +26257,6 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_24" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_1" BEL
@@ -26725,6 +26987,83 @@ TIMEGRP globclk = PIN
         BEL
         "Push_Buttons_5Bits/Push_Buttons_5Bits/ip2Bus_RdAck_intr_reg_hole_d1"
         BEL "Push_Buttons_5Bits/Push_Buttons_5Bits/IP2INTC_Irpt" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0_1"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_24" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_25" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_26" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_27" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_28" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_29" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_30" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_31" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
+        BEL "axi_gpio_0/axi_gpio_0/bus2ip_reset" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_rdack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_wrack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rvalid_i"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/iGPIO_xferAck" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_xferAck_Reg" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_4"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_5"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_6"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_7"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
+        BEL "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_31" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_30" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_29" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_28" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_27" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_26" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_25" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_24" BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/INFERRED_GEN.data_15"
         BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/Mshreg_INFERRED_GEN.data_15"
@@ -28675,27 +29014,31 @@ TIMEGRP globclk = PIN
         BEL
         "MCB_DDR2/MCB_DDR2/mcb_ui_top_0/P0_UI_AXI.axi_mcb_synch/synch_d2_0"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_4"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_3"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_2"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_3"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_2"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_0"
         BEL
@@ -28714,6 +29057,12 @@ TIMEGRP globclk = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_grant_hot_i_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/read_active"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/write_active"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
         BEL
@@ -28875,6 +29224,8 @@ TIMEGRP globclk = PIN
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_11"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_12"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1"
@@ -28882,6 +29233,8 @@ TIMEGRP globclk = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_3"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[11].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[10].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
@@ -28904,6 +29257,10 @@ TIMEGRP globclk = PIN
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[1].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[0].clock_conv_inst/m_axi_reset_out_n_i"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_1"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
         BEL
@@ -38685,30 +39042,6 @@ TIMEGRP globclk = PIN
         BEL
         "dma_0/dma_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
         BEL "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_busy" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_2" BEL
@@ -38717,22 +39050,22 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_2" BEL
@@ -38741,14 +39074,22 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_2" BEL
@@ -38757,6 +39098,22 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_2" BEL
@@ -38781,134 +39138,70 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_2" BEL
@@ -38941,6 +39234,70 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_2" BEL
@@ -39005,50 +39362,83 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_4" BEL
@@ -39074,7 +39464,6 @@ TIMEGRP globclk = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_24" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_1" BEL
@@ -39815,6 +40204,83 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         BEL
         "Push_Buttons_5Bits/Push_Buttons_5Bits/ip2Bus_RdAck_intr_reg_hole_d1"
         BEL "Push_Buttons_5Bits/Push_Buttons_5Bits/IP2INTC_Irpt" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/Mshreg_gpio_Data_In_0" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/INCLUDE_DPHASE_TIMER.dpto_cnt_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0_1"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_24" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_25" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_26" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_27" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_28" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_29" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_30" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/GPIO_DBus_i_31" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
+        BEL "axi_gpio_0/axi_gpio_0/bus2ip_reset" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_rdack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_wrack_i_D1" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rvalid_i"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i"
+        BEL "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_7" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_6" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_5" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_4" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_3" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_2" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_1" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_OE_0" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/iGPIO_xferAck" BEL
+        "axi_gpio_0/axi_gpio_0/gpio_core_1/gpio_xferAck_Reg" BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_0"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_1"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_3"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_4"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_5"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_6"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_7"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd2"
+        BEL
+        "axi_gpio_0/axi_gpio_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
+        BEL "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_31" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_30" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_29" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_28" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_27" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_26" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_25" BEL
+        "axi_gpio_0/axi_gpio_0/ip2bus_data_i_D1_24" BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/INFERRED_GEN.data_15"
         BEL
         "RS232_Uart_1/RS232_Uart_1/UARTLITE_CORE_I/UARTLITE_RX_I/DELAY_16_I/Mshreg_INFERRED_GEN.data_15"
@@ -41773,27 +42239,31 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         BEL
         "MCB_DDR2/MCB_DDR2/mcb_ui_top_0/P0_UI_AXI.axi_mcb_synch/synch_d2_0"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_4"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_3"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_2"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_1_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_3"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_2"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_aw/m_ready_d_2_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_2"
         BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1_1"
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i_1"
-        BEL
-        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/grant_rnw_1"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.splitter_ar/m_ready_d_0"
         BEL
@@ -41812,6 +42282,12 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_valid_i"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/gen_crossbar.addr_arbiter_inst/m_grant_hot_i_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/read_active"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/write_active"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/busy"
         BEL
@@ -41973,6 +42449,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_11"
         BEL
+        "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_hot_12"
+        BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_0"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_1"
@@ -41980,6 +42458,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_2"
         BEL
         "axi4lite_0/axi4lite_0/crossbar_samd/gen_sasd.crossbar_sasd_0/m_atarget_enc_3"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[11].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[10].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
@@ -42002,6 +42482,10 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[1].clock_conv_inst/m_axi_reset_out_n_i"
         BEL
         "axi4lite_0/axi4lite_0/mi_converter_bank/gen_conv_slot[0].clock_conv_inst/m_axi_reset_out_n_i"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
+        BEL
+        "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[11].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_1"
         BEL
         "axi4lite_0/axi4lite_0/mi_protocol_conv_bank/gen_protocol_slot[10].gen_prot_conv.conv_inst/gen_axilite.gen_axilite_conv.axilite_conv_inst/areset_d_0"
         BEL
@@ -51783,30 +52267,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         BEL
         "dma_0/dma_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
         BEL "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_busy" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_2" BEL
@@ -51815,22 +52275,22 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_5_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_0_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_4_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_2" BEL
@@ -51839,14 +52299,22 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_8_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_6_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_7_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_2" BEL
@@ -51855,6 +52323,22 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_11_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_9_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_reg_10_7" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_12_2" BEL
@@ -51879,134 +52363,70 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg1_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg2_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_length_reg_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/dest_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_2" BEL
@@ -52039,6 +52459,70 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg5_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg3_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/slv_reg4_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg6_2" BEL
@@ -52103,50 +52587,83 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_29" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_30" BEL
         "dma_0/dma_0/USER_LOGIC_I/slv_reg7_31" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_0" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_1" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_2" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_3" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_4" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_5" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_6" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_7" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_8" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_9" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_10" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_11" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_12" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_13" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_14" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_15" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_16" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_17" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_18" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_19" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_20" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_21" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_22" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_23" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_24" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_25" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_27" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_28" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_29" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_30" BEL
-        "dma_0/dma_0/USER_LOGIC_I/slv_reg0_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/source_addr_reg_31" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_reg_1_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_done" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_0" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_1" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_2" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_3" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_4" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_5" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_6" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_7" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_8" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_9" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_10" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_11" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_12" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_13" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_14" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_15" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_16" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_17" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_18" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_19" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_20" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_21" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_22" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_23" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_24" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_25" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_26" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_27" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_28" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_29" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_30" BEL
+        "dma_0/dma_0/USER_LOGIC_I/transfer_count_31" BEL
+        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_3" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_4" BEL
@@ -52172,7 +52689,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_24" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26" BEL
-        "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_set_error" BEL
         "dma_0/dma_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0" BEL
         "dma_0/dma_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_1" BEL

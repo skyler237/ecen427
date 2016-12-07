@@ -26,11 +26,13 @@
 #include "platform.h"
 #include "xparameters.h"
 
+#define ARRAY_LENGTH 10
+
 void print(char *str);
 
 int main()
 {
-	uint32_t source_word = 0xDEADBEEF;
+/*	uint32_t source_word = 0xDEADBEEF;
 	uint32_t destination_word = 0x0;
 
     init_platform();
@@ -48,5 +50,21 @@ int main()
 
 //    cleanup_platform();
 
-    return 0;
+    return 0;*/
+	uint8_t source[ARRAY_LENGTH];
+	uint8_t destination[ARRAY_LENGTH];
+	init_platform();
+	uint8_t i;
+	for(i = 0; i < ARRAY_LENGTH; i++){
+		source[i] = i+1;
+		destination[i] = 0;
+	}
+
+	DMA_go(XPAR_DMA_0_BASEADDR, source, destination, ARRAY_LENGTH);
+
+
+	for(i = 0; i < ARRAY_LENGTH; i++){
+		xil_printf("%d\n\r", destination[i]);
+	}
+	return 0;
 }

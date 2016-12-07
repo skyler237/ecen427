@@ -73,3 +73,30 @@ void DMA_MasterRecvWord(Xuint32 BaseAddress, Xuint32 SrcAddress)
   Xil_Out8(BaseAddress+DMA_MST_GO_PORT_OFFSET, MST_START);
 }
 
+void DMA_go(Xuint32 BaseAddress, Xuint32 SrcAddress, Xuint32 DstAddress, Xuint32 length){
+	  /*
+	   * Set user logic master control register for read transfer.
+	   */
+	  Xil_Out8(BaseAddress+DMA_MST_CNTL_REG_OFFSET, MST_SGRD);
+
+	  /*
+	   * Set source address
+	   */
+	  Xil_Out32(BaseAddress+DMA_SLV_REG0_OFFSET, SrcAddress);
+
+	  /*
+	   * Set dest. address
+	   */
+	  Xil_Out32(BaseAddress+DMA_SLV_REG1_OFFSET, DstAddress);
+
+	  /*
+	   * Set dest. address
+	   */
+	  Xil_Out32(BaseAddress+DMA_SLV_REG2_OFFSET, length);
+
+	  /*
+	   * Start user logic master read transfer by writting special pattern to its go port.
+	   */
+	  Xil_Out8(BaseAddress+DMA_MST_GO_PORT_OFFSET, MST_START);
+}
+

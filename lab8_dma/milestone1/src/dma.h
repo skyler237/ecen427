@@ -223,6 +223,7 @@
  */
 void DMA_MasterSendWord(Xuint32 BaseAddress, Xuint32 DstAddress);
 void DMA_MasterRecvWord(Xuint32 BaseAddress, Xuint32 SrcAddress);
+void DMA_go(Xuint32 BaseAddress, Xuint32 SrcAddress, Xuint32 DstAddress, Xuint32 length);
 
 /**
  *

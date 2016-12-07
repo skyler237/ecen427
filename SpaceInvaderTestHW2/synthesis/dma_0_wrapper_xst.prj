@@ -181,6 +181,6 @@ vhdl proc_common_v3_00_a C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcore
 vhdl axi_master_lite_v1_00_a C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_lite_v1_00_a/hdl/vhdl/axi_master_lite_reset.vhd
 vhdl axi_master_lite_v1_00_a C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_lite_v1_00_a/hdl/vhdl/axi_master_lite_cntlr.vhd
 vhdl axi_master_lite_v1_00_a C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_lite_v1_00_a/hdl/vhdl/axi_master_lite.vhd
-vhdl dma_v1_00_a C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\pcores\dma_v1_00_a/hdl/vhdl/user_logic.vhd
-vhdl dma_v1_00_a C:\Users\superman\Documents\ecen427\SpaceInvaderTestHW2\pcores\dma_v1_00_a/hdl/vhdl/dma.vhd
+vhdl dma_v1_00_a C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaderTestHW2\pcores\dma_v1_00_a/hdl/vhdl/user_logic.vhd
+vhdl dma_v1_00_a C:\Users\superman\Documents\AndSky\ecen427\SpaceInvaderTestHW2\pcores\dma_v1_00_a/hdl/vhdl/dma.vhd
 vhdl work ../hdl/dma_0_wrapper.vhd
