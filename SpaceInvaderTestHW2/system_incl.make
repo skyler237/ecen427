@@ -160,8 +160,8 @@ implementation/axi_intc_0_wrapper.ngc \
 implementation/axi_timer_0_wrapper.ngc \
 implementation/fit_timer_0_wrapper.ngc \
 implementation/pitimer_0_wrapper.ngc \
-implementation/dma_0_wrapper.ngc \
-implementation/axi_gpio_0_wrapper.ngc
+implementation/axi_gpio_0_wrapper.ngc \
+implementation/dma_0_wrapper.ngc
 
 POSTSYN_NETLIST = implementation/$(SYSTEM).ngc
 

@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "C:/Users/superman/Documents/ecen427/DMA_HDL/DMA_2/user_logic_isim_beh.exe" -prj "C:/Users/superman/Documents/ecen427/DMA_HDL/DMA_2/user_logic_beh.prj" "work.user_logic" 
+-intstyle "ise" -incremental -o "C:/Users/superman/Documents/AndSky/ecen427/DMA_HDL/DMA_2/user_logic_isim_beh.exe" -prj "C:/Users/superman/Documents/AndSky/ecen427/DMA_HDL/DMA_2/user_logic_beh.prj" "work.user_logic" 

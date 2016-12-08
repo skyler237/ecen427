@@ -22,7 +22,7 @@ DEVICE = xc6slx45csg324-3
 INTSTYLE = default
 
 LANGUAGE = vhdl
-GLOBAL_SEARCHPATHOPT =  -lp C:/Users/superman/Desktop/db/space_invaders/user_hardware
+GLOBAL_SEARCHPATHOPT = 
 PROJECT_SEARCHPATHOPT =  -lp C:/EE427/Atlys_BSB_Support_v_3_4/Atlys_AXI_BSB_Support/lib/
 
 SEARCHPATHOPT = $(PROJECT_SEARCHPATHOPT) $(GLOBAL_SEARCHPATHOPT)
@@ -47,17 +47,17 @@ BRAMINIT_ELF_IMP_FILE_ARGS = -pe microblaze_0 $(MICROBLAZE_0_BOOTLOOP)
 BRAMINIT_ELF_SIM_FILES = $(MICROBLAZE_0_BOOTLOOP)
 BRAMINIT_ELF_SIM_FILE_ARGS = -pe microblaze_0 $(MICROBLAZE_0_BOOTLOOP)
 
-SIM_CMD = vsim
+SIM_CMD = isim_system
 
-BEHAVIORAL_SIM_SCRIPT = simulation/behavioral/$(SYSTEM)_setup.do
+BEHAVIORAL_SIM_SCRIPT = simulation/behavioral/$(SYSTEM)_setup.tcl
 
-STRUCTURAL_SIM_SCRIPT = simulation/structural/$(SYSTEM)_setup.do
+STRUCTURAL_SIM_SCRIPT = simulation/structural/$(SYSTEM)_setup.tcl
 
-TIMING_SIM_SCRIPT = simulation/timing/$(SYSTEM)_setup.do
+TIMING_SIM_SCRIPT = simulation/timing/$(SYSTEM)_setup.tcl
 
 DEFAULT_SIM_SCRIPT = $(BEHAVIORAL_SIM_SCRIPT)
 
-SIMGEN_OPTIONS = -p $(DEVICE) -lang $(LANGUAGE) -intstyle $(INTSTYLE) $(SEARCHPATHOPT) $(BRAMINIT_ELF_SIM_FILE_ARGS) -msg __xps/ise/xmsgprops.lst -s mgm -X C:/Users/superman/Documents/AndSky/ecen427/
+SIMGEN_OPTIONS = -p $(DEVICE) -lang $(LANGUAGE) -intstyle $(INTSTYLE) $(SEARCHPATHOPT) $(BRAMINIT_ELF_SIM_FILE_ARGS) -msg __xps/ise/xmsgprops.lst -s isim
 
 
 CORE_STATE_DEVELOPMENT_FILES = 

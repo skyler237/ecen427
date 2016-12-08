@@ -1,0 +1,6 @@
+Clock period:
+100000000
+Hardware:
+12879369
+Software:
+14467035

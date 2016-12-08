@@ -2111,7 +2111,7 @@ architecture STRUCTURE of system is
       S_AXI_RRESP : out std_logic_vector(1 downto 0);
       S_AXI_RVALID : out std_logic;
       S_AXI_RREADY : in std_logic;
-      Intr : in std_logic_vector(4 downto 0);
+      Intr : in std_logic_vector(6 downto 0);
       Irq : out std_logic
     );
   end component;
@@ -2180,6 +2180,37 @@ architecture STRUCTURE of system is
     );
   end component;
 
+  component axi_gpio_0_wrapper is
+    port (
+      S_AXI_ACLK : in std_logic;
+      S_AXI_ARESETN : in std_logic;
+      S_AXI_AWADDR : in std_logic_vector(31 downto 0);
+      S_AXI_AWVALID : in std_logic;
+      S_AXI_AWREADY : out std_logic;
+      S_AXI_WDATA : in std_logic_vector(31 downto 0);
+      S_AXI_WSTRB : in std_logic_vector(3 downto 0);
+      S_AXI_WVALID : in std_logic;
+      S_AXI_WREADY : out std_logic;
+      S_AXI_BRESP : out std_logic_vector(1 downto 0);
+      S_AXI_BVALID : out std_logic;
+      S_AXI_BREADY : in std_logic;
+      S_AXI_ARADDR : in std_logic_vector(31 downto 0);
+      S_AXI_ARVALID : in std_logic;
+      S_AXI_ARREADY : out std_logic;
+      S_AXI_RDATA : out std_logic_vector(31 downto 0);
+      S_AXI_RRESP : out std_logic_vector(1 downto 0);
+      S_AXI_RVALID : out std_logic;
+      S_AXI_RREADY : in std_logic;
+      IP2INTC_Irpt : out std_logic;
+      GPIO_IO_I : in std_logic_vector(7 downto 0);
+      GPIO_IO_O : out std_logic_vector(7 downto 0);
+      GPIO_IO_T : out std_logic_vector(7 downto 0);
+      GPIO2_IO_I : in std_logic_vector(31 downto 0);
+      GPIO2_IO_O : out std_logic_vector(31 downto 0);
+      GPIO2_IO_T : out std_logic_vector(31 downto 0)
+    );
+  end component;
+
   component dma_0_wrapper is
     port (
       S_AXI_ACLK : in std_logic;
@@ -2222,38 +2253,8 @@ architecture STRUCTURE of system is
       m_axi_lite_wstrb : out std_logic_vector(3 downto 0);
       m_axi_lite_bready : out std_logic;
       m_axi_lite_bvalid : in std_logic;
-      m_axi_lite_bresp : in std_logic_vector(1 downto 0)
-    );
-  end component;
-
-  component axi_gpio_0_wrapper is
-    port (
-      S_AXI_ACLK : in std_logic;
-      S_AXI_ARESETN : in std_logic;
-      S_AXI_AWADDR : in std_logic_vector(31 downto 0);
-      S_AXI_AWVALID : in std_logic;
-      S_AXI_AWREADY : out std_logic;
-      S_AXI_WDATA : in std_logic_vector(31 downto 0);
-      S_AXI_WSTRB : in std_logic_vector(3 downto 0);
-      S_AXI_WVALID : in std_logic;
-      S_AXI_WREADY : out std_logic;
-      S_AXI_BRESP : out std_logic_vector(1 downto 0);
-      S_AXI_BVALID : out std_logic;
-      S_AXI_BREADY : in std_logic;
-      S_AXI_ARADDR : in std_logic_vector(31 downto 0);
-      S_AXI_ARVALID : in std_logic;
-      S_AXI_ARREADY : out std_logic;
-      S_AXI_RDATA : out std_logic_vector(31 downto 0);
-      S_AXI_RRESP : out std_logic_vector(1 downto 0);
-      S_AXI_RVALID : out std_logic;
-      S_AXI_RREADY : in std_logic;
-      IP2INTC_Irpt : out std_logic;
-      GPIO_IO_I : in std_logic_vector(7 downto 0);
-      GPIO_IO_O : out std_logic_vector(7 downto 0);
-      GPIO_IO_T : out std_logic_vector(7 downto 0);
-      GPIO2_IO_I : in std_logic_vector(31 downto 0);
-      GPIO2_IO_O : out std_logic_vector(31 downto 0);
-      GPIO2_IO_T : out std_logic_vector(31 downto 0)
+      m_axi_lite_bresp : in std_logic_vector(1 downto 0);
+      myInterrupt : out std_logic
     );
   end component;
 
@@ -2419,6 +2420,7 @@ architecture STRUCTURE of system is
   signal axi_ac97_0_SData_In : std_logic;
   signal axi_ac97_0_SData_Out : std_logic;
   signal axi_ac97_0_Sync : std_logic;
+  signal axi_gpio_0_IP2INTC_Irpt : std_logic;
   signal axi_hdmi_0_TMDS_RX_0_N : std_logic;
   signal axi_hdmi_0_TMDS_RX_0_P : std_logic;
   signal axi_hdmi_0_TMDS_RX_1_N : std_logic;
@@ -2451,6 +2453,7 @@ architecture STRUCTURE of system is
   signal clk_100_0000MHzPLL0 : std_logic_vector(0 to 0);
   signal clk_600_0000MHz180PLL0_nobuf : std_logic;
   signal clk_600_0000MHzPLL0_nobuf : std_logic;
+  signal dma_0_myInterrupt : std_logic;
   signal fit_timer_0_Interrupt : std_logic;
   signal microblaze_0_d_bram_ctrl_2_microblaze_0_bram_block_BRAM_Addr : std_logic_vector(0 to 31);
   signal microblaze_0_d_bram_ctrl_2_microblaze_0_bram_block_BRAM_Clk : std_logic;
@@ -2533,7 +2536,7 @@ architecture STRUCTURE of system is
   signal net_vcc4 : std_logic_vector(3 downto 0);
   signal pgassign1 : std_logic_vector(11 downto 0);
   signal pgassign2 : std_logic_vector(3 downto 0);
-  signal pgassign3 : std_logic_vector(4 downto 0);
+  signal pgassign3 : std_logic_vector(6 downto 0);
   signal pitimer_0_myinterrupt : std_logic;
   signal proc_sys_reset_0_BUS_STRUCT_RESET : std_logic_vector(0 to 0);
   signal proc_sys_reset_0_Dcm_locked : std_logic;
@@ -2564,8 +2567,8 @@ architecture STRUCTURE of system is
   attribute BOX_TYPE of axi_timer_0_wrapper : component is "user_black_box";
   attribute BOX_TYPE of fit_timer_0_wrapper : component is "user_black_box";
   attribute BOX_TYPE of pitimer_0_wrapper : component is "user_black_box";
-  attribute BOX_TYPE of dma_0_wrapper : component is "user_black_box";
   attribute BOX_TYPE of axi_gpio_0_wrapper : component is "user_black_box";
+  attribute BOX_TYPE of dma_0_wrapper : component is "user_black_box";
 
 begin
 
@@ -2651,11 +2654,13 @@ begin
   pgassign2(2 downto 2) <= clk_100_0000MHzPLL0(0 to 0);
   pgassign2(1 downto 1) <= clk_100_0000MHzPLL0(0 to 0);
   pgassign2(0 downto 0) <= clk_100_0000MHzPLL0(0 to 0);
-  pgassign3(4) <= axi_ac97_0_Interrupt;
-  pgassign3(3) <= axi_timer_0_Interrupt;
-  pgassign3(2) <= Push_Buttons_5Bits_IP2INTC_Irpt;
-  pgassign3(1) <= fit_timer_0_Interrupt;
-  pgassign3(0) <= pitimer_0_myinterrupt;
+  pgassign3(6) <= axi_ac97_0_Interrupt;
+  pgassign3(5) <= axi_timer_0_Interrupt;
+  pgassign3(4) <= Push_Buttons_5Bits_IP2INTC_Irpt;
+  pgassign3(3) <= fit_timer_0_Interrupt;
+  pgassign3(2) <= pitimer_0_myinterrupt;
+  pgassign3(1) <= dma_0_myInterrupt;
+  pgassign3(0) <= axi_gpio_0_IP2INTC_Irpt;
   net_gnd0 <= '0';
   net_gnd1(0 to 0) <= B"0";
   net_gnd12(11 downto 0) <= B"000000000000";
@@ -4763,27 +4768,57 @@ begin
       myinterrupt => pitimer_0_myinterrupt
     );
 
-  dma_0 : dma_0_wrapper
+  axi_gpio_0 : axi_gpio_0_wrapper
     port map (
       S_AXI_ACLK => pgassign1(11),
       S_AXI_ARESETN => axi4lite_0_M_ARESETN(10),
       S_AXI_AWADDR => axi4lite_0_M_AWADDR(351 downto 320),
       S_AXI_AWVALID => axi4lite_0_M_AWVALID(10),
+      S_AXI_AWREADY => axi4lite_0_M_AWREADY(10),
       S_AXI_WDATA => axi4lite_0_M_WDATA(351 downto 320),
       S_AXI_WSTRB => axi4lite_0_M_WSTRB(43 downto 40),
       S_AXI_WVALID => axi4lite_0_M_WVALID(10),
+      S_AXI_WREADY => axi4lite_0_M_WREADY(10),
+      S_AXI_BRESP => axi4lite_0_M_BRESP(21 downto 20),
+      S_AXI_BVALID => axi4lite_0_M_BVALID(10),
       S_AXI_BREADY => axi4lite_0_M_BREADY(10),
       S_AXI_ARADDR => axi4lite_0_M_ARADDR(351 downto 320),
       S_AXI_ARVALID => axi4lite_0_M_ARVALID(10),
-      S_AXI_RREADY => axi4lite_0_M_RREADY(10),
       S_AXI_ARREADY => axi4lite_0_M_ARREADY(10),
       S_AXI_RDATA => axi4lite_0_M_RDATA(351 downto 320),
       S_AXI_RRESP => axi4lite_0_M_RRESP(21 downto 20),
       S_AXI_RVALID => axi4lite_0_M_RVALID(10),
-      S_AXI_WREADY => axi4lite_0_M_WREADY(10),
-      S_AXI_BRESP => axi4lite_0_M_BRESP(21 downto 20),
-      S_AXI_BVALID => axi4lite_0_M_BVALID(10),
-      S_AXI_AWREADY => axi4lite_0_M_AWREADY(10),
+      S_AXI_RREADY => axi4lite_0_M_RREADY(10),
+      IP2INTC_Irpt => axi_gpio_0_IP2INTC_Irpt,
+      GPIO_IO_I => net_axi_gpio_0_GPIO_IO_I_pin,
+      GPIO_IO_O => open,
+      GPIO_IO_T => open,
+      GPIO2_IO_I => net_gnd32(0 to 31),
+      GPIO2_IO_O => open,
+      GPIO2_IO_T => open
+    );
+
+  dma_0 : dma_0_wrapper
+    port map (
+      S_AXI_ACLK => pgassign1(11),
+      S_AXI_ARESETN => axi4lite_0_M_ARESETN(11),
+      S_AXI_AWADDR => axi4lite_0_M_AWADDR(383 downto 352),
+      S_AXI_AWVALID => axi4lite_0_M_AWVALID(11),
+      S_AXI_WDATA => axi4lite_0_M_WDATA(383 downto 352),
+      S_AXI_WSTRB => axi4lite_0_M_WSTRB(47 downto 44),
+      S_AXI_WVALID => axi4lite_0_M_WVALID(11),
+      S_AXI_BREADY => axi4lite_0_M_BREADY(11),
+      S_AXI_ARADDR => axi4lite_0_M_ARADDR(383 downto 352),
+      S_AXI_ARVALID => axi4lite_0_M_ARVALID(11),
+      S_AXI_RREADY => axi4lite_0_M_RREADY(11),
+      S_AXI_ARREADY => axi4lite_0_M_ARREADY(11),
+      S_AXI_RDATA => axi4lite_0_M_RDATA(383 downto 352),
+      S_AXI_RRESP => axi4lite_0_M_RRESP(23 downto 22),
+      S_AXI_RVALID => axi4lite_0_M_RVALID(11),
+      S_AXI_WREADY => axi4lite_0_M_WREADY(11),
+      S_AXI_BRESP => axi4lite_0_M_BRESP(23 downto 22),
+      S_AXI_BVALID => axi4lite_0_M_BVALID(11),
+      S_AXI_AWREADY => axi4lite_0_M_AWREADY(11),
       m_axi_lite_aclk => pgassign1(11),
       m_axi_lite_aresetn => axi4_0_S_ARESETN(3),
       md_error => open,
@@ -4805,37 +4840,8 @@ begin
       m_axi_lite_wstrb => axi4_0_S_WSTRB(15 downto 12),
       m_axi_lite_bready => axi4_0_S_BREADY(3),
       m_axi_lite_bvalid => axi4_0_S_BVALID(3),
-      m_axi_lite_bresp => axi4_0_S_BRESP(7 downto 6)
-    );
-
-  axi_gpio_0 : axi_gpio_0_wrapper
-    port map (
-      S_AXI_ACLK => pgassign1(11),
-      S_AXI_ARESETN => axi4lite_0_M_ARESETN(11),
-      S_AXI_AWADDR => axi4lite_0_M_AWADDR(383 downto 352),
-      S_AXI_AWVALID => axi4lite_0_M_AWVALID(11),
-      S_AXI_AWREADY => axi4lite_0_M_AWREADY(11),
-      S_AXI_WDATA => axi4lite_0_M_WDATA(383 downto 352),
-      S_AXI_WSTRB => axi4lite_0_M_WSTRB(47 downto 44),
-      S_AXI_WVALID => axi4lite_0_M_WVALID(11),
-      S_AXI_WREADY => axi4lite_0_M_WREADY(11),
-      S_AXI_BRESP => axi4lite_0_M_BRESP(23 downto 22),
-      S_AXI_BVALID => axi4lite_0_M_BVALID(11),
-      S_AXI_BREADY => axi4lite_0_M_BREADY(11),
-      S_AXI_ARADDR => axi4lite_0_M_ARADDR(383 downto 352),
-      S_AXI_ARVALID => axi4lite_0_M_ARVALID(11),
-      S_AXI_ARREADY => axi4lite_0_M_ARREADY(11),
-      S_AXI_RDATA => axi4lite_0_M_RDATA(383 downto 352),
-      S_AXI_RRESP => axi4lite_0_M_RRESP(23 downto 22),
-      S_AXI_RVALID => axi4lite_0_M_RVALID(11),
-      S_AXI_RREADY => axi4lite_0_M_RREADY(11),
-      IP2INTC_Irpt => open,
-      GPIO_IO_I => net_axi_gpio_0_GPIO_IO_I_pin,
-      GPIO_IO_O => open,
-      GPIO_IO_T => open,
-      GPIO2_IO_I => net_gnd32(0 to 31),
-      GPIO2_IO_O => open,
-      GPIO2_IO_T => open
+      m_axi_lite_bresp => axi4_0_S_BRESP(7 downto 6),
+      myInterrupt => dma_0_myInterrupt
     );
 
   iobuf_0 : IOBUF

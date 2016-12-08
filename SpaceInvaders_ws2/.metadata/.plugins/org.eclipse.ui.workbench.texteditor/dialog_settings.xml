@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="GREEN" key="selection"/>
+		<item value="AXI_TIMER" key="selection"/>
 		<list key="findhistory">
-			<item value="GREEN"/>
-			<item value="UFO_COLOR"/>
-			<item value="saucer"/>
-			<item value="fire"/>
-			<item value="VOL_MAX"/>
-			<item value="ReadReg"/>
-			<item value="rate"/>
-			<item value="sample"/>
+			<item value="AXI_TIMER"/>
+			<item value="WOOHOO"/>
+			<item value="dma"/>
+			<item value="XPAR_DMA_0_BASEADDR"/>
+			<item value="videoDMAController"/>
+			<item value="framePtr"/>
+			<item value="DMA"/>
+			<item value="GPIO"/>
 		</list>
 		<list key="replacehistory">
 			<item value="--;"/>

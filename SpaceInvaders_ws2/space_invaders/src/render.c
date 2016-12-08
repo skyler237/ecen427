@@ -600,7 +600,6 @@ static uint32_t * framePtr = (uint32_t *) FRAME_BUFFER_0_ADDR;
 //=======================================================================================
 // 							Private Helper Functions
 //=======================================================================================
-
 /**
  * Writes a particular color to a given pixel
  * Also provides an abstraction from the actual resolution (640x480) to our game resolution (320x240)

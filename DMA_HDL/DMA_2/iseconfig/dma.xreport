@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-12-06T09:53:52</DateModified>
+  <DateModified>2016-12-07T13:06:04</DateModified>
   <ModuleName>dma</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/superman/Documents/ecen427/DMA_HDL/DMA_2/iseconfig/dma.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/superman/Documents/ecen427/DMA_HDL/DMA_2</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/superman/Documents/AndSky/ecen427/DMA_HDL/DMA_2/iseconfig/dma.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/superman/Documents/AndSky/ecen427/DMA_HDL/DMA_2\</ImplementationReportsDirectory>
   <DateInitialized>2016-12-06T09:53:52</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

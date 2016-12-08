@@ -81,5 +81,6 @@ PORT m_axi_lite_wstrb = WSTRB, DIR = O, VEC = [((C_M_AXI_LITE_DATA_WIDTH/8)-1):0
 PORT m_axi_lite_bready = BREADY, DIR = O, BUS = M_AXI
 PORT m_axi_lite_bvalid = BVALID, DIR = I, BUS = M_AXI
 PORT m_axi_lite_bresp = BRESP, DIR = I, VEC = [1:0], BUS = M_AXI
+PORT myInterrupt = "", DIR = O, SIGIS = INTERRUPT, SENSITIVITY = LEVEL_HIGH
 
 END

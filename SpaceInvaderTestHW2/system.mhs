@@ -360,7 +360,7 @@ BEGIN axi_intc
  PARAMETER C_HIGHADDR = 0x4120ffff
  BUS_INTERFACE S_AXI = axi4lite_0
  PORT S_AXI_ACLK = clk_100_0000MHzPLL0
- PORT Intr = axi_ac97_0_Interrupt & axi_timer_0_Interrupt & Push_Buttons_5Bits_IP2INTC_Irpt & fit_timer_0_Interrupt & pitimer_0_myinterrupt
+ PORT Intr = axi_ac97_0_Interrupt & axi_timer_0_Interrupt & Push_Buttons_5Bits_IP2INTC_Irpt & fit_timer_0_Interrupt & pitimer_0_myinterrupt & dma_0_myInterrupt & axi_gpio_0_IP2INTC_Irpt
  PORT Irq = axi_intc_0_Irq
 END
 
@@ -393,6 +393,19 @@ BEGIN pitimer
  PORT myinterrupt = pitimer_0_myinterrupt
 END
 
+BEGIN axi_gpio
+ PARAMETER INSTANCE = axi_gpio_0
+ PARAMETER HW_VER = 1.01.b
+ PARAMETER C_GPIO_WIDTH = 8
+ PARAMETER C_BASEADDR = 0x40040000
+ PARAMETER C_HIGHADDR = 0x4004ffff
+ PARAMETER C_INTERRUPT_PRESENT = 1
+ BUS_INTERFACE S_AXI = axi4lite_0
+ PORT S_AXI_ACLK = clk_100_0000MHzPLL0
+ PORT GPIO_IO_I = net_axi_gpio_0_GPIO_IO_I_pin
+ PORT IP2INTC_Irpt = axi_gpio_0_IP2INTC_Irpt
+END
+
 BEGIN dma
  PARAMETER INSTANCE = dma_0
  PARAMETER HW_VER = 1.00.a
@@ -402,16 +415,6 @@ BEGIN dma
  BUS_INTERFACE S_AXI = axi4lite_0
  PORT S_AXI_ACLK = clk_100_0000MHzPLL0
  PORT m_axi_lite_aclk = clk_100_0000MHzPLL0
-END
-
-BEGIN axi_gpio
- PARAMETER INSTANCE = axi_gpio_0
- PARAMETER HW_VER = 1.01.b
- PARAMETER C_GPIO_WIDTH = 8
- PARAMETER C_BASEADDR = 0x40040000
- PARAMETER C_HIGHADDR = 0x4004ffff
- BUS_INTERFACE S_AXI = axi4lite_0
- PORT S_AXI_ACLK = clk_100_0000MHzPLL0
- PORT GPIO_IO_I = net_axi_gpio_0_GPIO_IO_I_pin
+ PORT myInterrupt = dma_0_myInterrupt
 END
 

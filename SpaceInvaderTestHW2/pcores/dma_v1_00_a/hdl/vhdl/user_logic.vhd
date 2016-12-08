@@ -26,7 +26,7 @@
 -- Filename:          user_logic.vhd
 -- Version:           1.00.a
 -- Description:       User logic.
--- Date:              Mon Dec 05 17:13:47 2016 (by Create and Import Peripheral Wizard)
+-- Date:              Tue Nov 20 15:21:30 2012 (by Create and Import Peripheral Wizard)
 -- VHDL Standard:     VHDL'93
 ------------------------------------------------------------------------------
 -- Naming Conventions:
@@ -47,21 +47,21 @@
 --   processes:                             "*_PROCESS"
 --   component instantiations:              "<ENTITY_>I_<#|FUNC>"
 ------------------------------------------------------------------------------
-
+ 
 -- DO NOT EDIT BELOW THIS LINE --------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
-
+ 
 library proc_common_v3_00_a;
 use proc_common_v3_00_a.proc_common_pkg.all;
 use proc_common_v3_00_a.srl_fifo_f;
-
+ 
 -- DO NOT EDIT ABOVE THIS LINE --------------------
-
+ 
 --USER libraries added here
-
+ 
 ------------------------------------------------------------------------------
 -- Entity section
 ------------------------------------------------------------------------------
@@ -98,14 +98,14 @@ use proc_common_v3_00_a.srl_fifo_f;
 --   ip2bus_mstwr_d               -- Ip to Bus master write data
 --   bus2ip_mstwr_dst_rdy_n       -- Bus to Ip master write dest. ready
 ------------------------------------------------------------------------------
-
+ 
 entity user_logic is
   generic
   (
     -- ADD USER GENERICS BELOW THIS LINE ---------------
     --USER generics added here
     -- ADD USER GENERICS ABOVE THIS LINE ---------------
-
+ 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
     -- Bus protocol parameters, do not add to or delete
     C_MST_AWIDTH                   : integer              := 32;
@@ -118,8 +118,9 @@ entity user_logic is
   (
     -- ADD USER PORTS BELOW THIS LINE ------------------
     --USER ports added here
+		myInterrupt	:out std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
-
+ 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
     -- Bus protocol ports, do not add to or delete
     Bus2IP_Clk                     : in  std_logic;
@@ -149,30 +150,32 @@ entity user_logic is
     bus2ip_mstwr_dst_rdy_n         : in  std_logic
     -- DO NOT EDIT ABOVE THIS LINE ---------------------
   );
-
+ 
   attribute MAX_FANOUT : string;
   attribute SIGIS : string;
-
+ 
   attribute SIGIS of Bus2IP_Clk    : signal is "CLK";
   attribute SIGIS of Bus2IP_Resetn : signal is "RST";
   attribute SIGIS of ip2bus_mst_reset: signal is "RST";
-
+ 
 end entity user_logic;
-
+ 
 ------------------------------------------------------------------------------
 -- Architecture section
 ------------------------------------------------------------------------------
-
+ 
 architecture IMP of user_logic is
-
+ 
   --USER signal declarations added here, as needed for user logic
-
+	signal addr_in	:unsigned(C_SLV_DWIDTH-1 downto 0);
+	signal addr_out	:unsigned(C_SLV_DWIDTH-1 downto 0);
+	signal transfer_length		:unsigned(C_SLV_DWIDTH-1 downto 0);
   ------------------------------------------
   -- Signals for user logic slave model s/w accessible register example
   ------------------------------------------
-  signal source_addr_reg                : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal dest_addr_reg                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal transfer_length_reg            : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal slv_reg0                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal slv_reg1                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal slv_reg2                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg3                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg4                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg5                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
@@ -183,11 +186,7 @@ architecture IMP of user_logic is
   signal slv_ip2bus_data                : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_read_ack                   : std_logic;
   signal slv_write_ack                  : std_logic;
-	
-	signal transfer_length		: unsigned(C_SLV_DWIDTH-1 downto 0);
-	signal transfer_count			: unsigned(C_SLV_DWIDTH-1 downto 0);
-	signal source_addr				: unsigned(31 downto 0);
-
+ 
   ------------------------------------------
   -- Signals for user logic master model example
   ------------------------------------------
@@ -212,7 +211,7 @@ architecture IMP of user_logic is
   signal mst_ip2bus_be                  : std_logic_vector(15 downto 0);
   signal mst_go                         : std_logic;
   -- signals for master model command interface state machine
-  type CMD_CNTL_SM_TYPE is (CMD_IDLE, CMD_RUN, CMD_WAIT_FOR_DATA, CMD_DONE);
+  type CMD_CNTL_SM_TYPE is (CMD_IDLE, CMD_READ, CMD_READ_WAIT, CMD_WRITE, CMD_WRITE_WAIT, CMD_DONE);
   signal mst_cmd_sm_state               : CMD_CNTL_SM_TYPE;
   signal mst_cmd_sm_set_done            : std_logic;
   signal mst_cmd_sm_set_error           : std_logic;
@@ -230,9 +229,9 @@ architecture IMP of user_logic is
   signal Bus2IP_Reset                   : std_logic;
 attribute SIGIS of Bus2IP_Reset   : signal is "RST";
 begin
-
+ 
   --USER logic implementation added here
-
+ 
   ------------------------------------------
   -- Example code to read/write user logic slave model s/w accessible registers
   -- 
@@ -255,16 +254,18 @@ begin
   slv_reg_read_sel  <= Bus2IP_RdCE(7 downto 0);
   slv_write_ack     <= Bus2IP_WrCE(0) or Bus2IP_WrCE(1) or Bus2IP_WrCE(2) or Bus2IP_WrCE(3) or Bus2IP_WrCE(4) or Bus2IP_WrCE(5) or Bus2IP_WrCE(6) or Bus2IP_WrCE(7);
   slv_read_ack      <= Bus2IP_RdCE(0) or Bus2IP_RdCE(1) or Bus2IP_RdCE(2) or Bus2IP_RdCE(3) or Bus2IP_RdCE(4) or Bus2IP_RdCE(5) or Bus2IP_RdCE(6) or Bus2IP_RdCE(7);
-
+ 
   -- implement slave model software accessible register(s)
+  -- BLH: This only handles writing of the slave registers. These are the
+  -- registers that you asked for when you did import/create peripheral.
   SLAVE_REG_WRITE_PROC : process( Bus2IP_Clk ) is
   begin
-
+ 
     if Bus2IP_Clk'event and Bus2IP_Clk = '1' then
       if Bus2IP_Resetn = '0' then
-        source_addr_reg <= (others => '0');
-        dest_addr_reg <= (others => '0');
-        transfer_length_reg <= (others => '0');
+        slv_reg0 <= (others => '0');
+        slv_reg1 <= (others => '0');
+        slv_reg2 <= (others => '0');
         slv_reg3 <= (others => '0');
         slv_reg4 <= (others => '0');
         slv_reg5 <= (others => '0');
@@ -273,21 +274,23 @@ begin
       else
         case slv_reg_write_sel is
           when "10000000" =>
-            for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
+            -- BLH: 32-bit slave so this iterates 4 times across the 4 bytes of
+            -- the register. Same for all registers.
+            for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop 
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                source_addr_reg(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                slv_reg0(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "01000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                dest_addr_reg(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                slv_reg1(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00100000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                transfer_length_reg(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                slv_reg2(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00010000" =>
@@ -324,17 +327,18 @@ begin
         end case;
       end if;
     end if;
-
+ 
   end process SLAVE_REG_WRITE_PROC;
-
+ 
   -- implement slave model software accessible register(s) read mux
-  SLAVE_REG_READ_PROC : process( slv_reg_read_sel, source_addr_reg, dest_addr_reg, transfer_length_reg, slv_reg3, slv_reg4, slv_reg5, slv_reg6, slv_reg7 ) is
+  -- BLH: This is just for reading the slave registers.
+  SLAVE_REG_READ_PROC : process( slv_reg_read_sel, slv_reg0, slv_reg1, slv_reg2, slv_reg3, slv_reg4, slv_reg5, slv_reg6, slv_reg7 ) is
   begin
-
+ 
     case slv_reg_read_sel is
-      when "10000000" => slv_ip2bus_data <= source_addr_reg;
-      when "01000000" => slv_ip2bus_data <= dest_addr_reg;
-      when "00100000" => slv_ip2bus_data <= std_logic_vector(transfer_length_reg);
+      when "10000000" => slv_ip2bus_data <= slv_reg0;
+      when "01000000" => slv_ip2bus_data <= slv_reg1;
+      when "00100000" => slv_ip2bus_data <= slv_reg2;
       when "00010000" => slv_ip2bus_data <= slv_reg3;
       when "00001000" => slv_ip2bus_data <= slv_reg4;
       when "00000100" => slv_ip2bus_data <= slv_reg5;
@@ -342,9 +346,13 @@ begin
       when "00000001" => slv_ip2bus_data <= slv_reg7;
       when others => slv_ip2bus_data <= (others => '0');
     end case;
-
+ 
   end process SLAVE_REG_READ_PROC;
-
+ 
+ 
+ 
+  -- BLH: Carefully read the comments below. They explain how the state machine
+  -- responsible for behavior as master works.
   ------------------------------------------
   -- Example code to demonstrate user logic master model functionality
   -- 
@@ -407,7 +415,7 @@ begin
   mst_reg_read_sel  <= Bus2IP_RdCE(11 downto 8);
   mst_write_ack     <= mst_reg_write_req;
   mst_read_ack      <= mst_reg_read_req;
-
+ 
   -- rip control bits from master model registers
   mst_cntl_rd_req   <= mst_reg(0)(0);
   mst_cntl_wr_req   <= mst_reg(0)(1);
@@ -416,28 +424,28 @@ begin
   mst_ip2bus_addr   <= mst_reg(7) & mst_reg(6) & mst_reg(5) & mst_reg(4);
   mst_ip2bus_be     <= mst_reg(9) & mst_reg(8);
   mst_xfer_length   <= mst_reg(13)(3 downto 0) & mst_reg(12);
-
+ 
   -- implement byte write enable for each byte slice of the master model registers
   MASTER_REG_BYTE_WR_EN : process( Bus2IP_BE, mst_reg_write_req, mst_reg_write_sel ) is
     constant BE_WIDTH : integer := C_SLV_DWIDTH/8;
   begin
-
+ 
     for byte_index in 0 to 15 loop
       mst_byte_we(byte_index) <= mst_reg_write_req and
                                  mst_reg_write_sel(3 - (byte_index/BE_WIDTH) ) and
                                  Bus2IP_BE(byte_index- ((byte_index/BE_WIDTH)*BE_WIDTH));
     end loop;
-
+ 
   end process MASTER_REG_BYTE_WR_EN;
-
+ 
   -- implement master model registers
   MASTER_REG_WRITE_PROC : process( Bus2IP_Clk ) is
     constant BE_WIDTH : integer := C_SLV_DWIDTH/8;
   begin
-
+ 
     if ( Bus2IP_Clk'event and Bus2IP_Clk = '1' ) then
       if ( Bus2IP_Resetn = '0' ) then
-        mst_reg(0 to 15) <= (others => "00000000");
+        mst_reg(0 to 14) <= (others => "00000000");
       else
         -- control register (byte 0)
         if ( mst_byte_we(0) = '1' ) then
@@ -470,16 +478,16 @@ begin
         end loop;
       end if;
     end if;
-
+ 
   end process MASTER_REG_WRITE_PROC;
-
+ 
   -- implement master model write only 'go' port
   MASTER_WRITE_GO_PORT : process( Bus2IP_Clk ) is
     constant GO_DATA_KEY  : std_logic_vector(7 downto 0) := X"0A";
     constant GO_BYTE_LANE : integer := 15;
     constant BE_WIDTH     : integer := C_SLV_DWIDTH/8;
   begin
-
+ 
     if ( Bus2IP_Clk'event and Bus2IP_Clk = '1' ) then
       if ( Bus2IP_Resetn = '0' or mst_cmd_sm_clr_go = '1' ) then
         mst_go   <= '0';
@@ -491,14 +499,14 @@ begin
         null;
       end if;
     end if;
-
+ 
   end process MASTER_WRITE_GO_PORT;
-
+ 
   -- implement master model register read mux
   MASTER_REG_READ_PROC : process( mst_reg_read_sel, mst_reg ) is
     constant BE_WIDTH : integer := C_SLV_DWIDTH/8;
   begin
-
+ 
     case mst_reg_read_sel is
       when "1000" =>
         for byte_index in 0 to BE_WIDTH-1 loop
@@ -524,9 +532,9 @@ begin
       when others =>
         mst_ip2bus_data <= (others => '0');
     end case;
-
+ 
   end process MASTER_REG_READ_PROC;
-
+ 
   -- user logic master command interface assignments
   IP2Bus_MstRd_Req  <= mst_cmd_sm_rd_req;
   IP2Bus_MstWr_Req  <= mst_cmd_sm_wr_req;
@@ -534,14 +542,14 @@ begin
   IP2Bus_Mst_BE     <= mst_cmd_sm_ip2bus_be;
   IP2Bus_Mst_Lock   <= mst_cmd_sm_bus_lock;
   IP2Bus_Mst_Reset  <= mst_cmd_sm_reset;
-
+ 
   --implement master command interface state machine
   MASTER_CMD_SM_PROC : process( Bus2IP_Clk ) is
-	variable addr : unsigned(31 downto 0);
   begin
+ 
     if ( Bus2IP_Clk'event and Bus2IP_Clk = '1' ) then
       if ( Bus2IP_Resetn = '0' ) then
-
+ 
         -- reset condition
         mst_cmd_sm_state          <= CMD_IDLE;
         mst_cmd_sm_clr_go         <= '0';
@@ -555,10 +563,13 @@ begin
         mst_cmd_sm_set_error      <= '0';
         mst_cmd_sm_set_timeout    <= '0';
         mst_cmd_sm_busy           <= '0';
-				transfer_count						<= (others => '0');
-                
+				addr_in <= (others => '0');
+				addr_out <= (others => '0');
+				transfer_length <= (others => '0');
+				myInterrupt <= '0';
+ 
       else
-
+ 
         -- default condition
         mst_cmd_sm_clr_go         <= '0';
         mst_cmd_sm_rd_req         <= '0';
@@ -571,26 +582,59 @@ begin
         mst_cmd_sm_set_error      <= '0';
         mst_cmd_sm_set_timeout    <= '0';
         mst_cmd_sm_busy           <= '1';
-				transfer_count						<= transfer_count;
-                
+				addr_in <= addr_in;
+				addr_out <= addr_out;
+				transfer_length <= transfer_length;
+				myInterrupt <= '0';
+ 
         -- state transition
         case mst_cmd_sm_state is
-
+ 
           when CMD_IDLE =>
+						addr_in <= unsigned(slv_reg0);
+						addr_out <= unsigned(slv_reg1);
+						transfer_length <= unsigned(slv_reg2);
             if ( mst_go = '1' ) then
-              mst_cmd_sm_state  <= CMD_RUN;
+              mst_cmd_sm_state  <= CMD_READ;
               mst_cmd_sm_clr_go <= '1';
-							transfer_count		<= (others => '0');
             else
               mst_cmd_sm_state  <= CMD_IDLE;
               mst_cmd_sm_busy   <= '0';
             end if;
-
-          when CMD_RUN =>
-            if ( Bus2IP_Mst_CmdAck = '1' and Bus2IP_Mst_Cmplt = '0' ) then
-              mst_cmd_sm_state <= CMD_WAIT_FOR_DATA;
-            elsif ( Bus2IP_Mst_Cmplt = '1' ) then
-              mst_cmd_sm_state <= CMD_DONE;
+ 
+          when CMD_READ =>
+						if(transfer_length = 0) then
+								mst_cmd_sm_state <= CMD_DONE;
+						else
+							if ( Bus2IP_Mst_CmdAck = '1' and Bus2IP_Mst_Cmplt = '0' ) then
+								mst_cmd_sm_state <= CMD_READ_WAIT;
+							elsif ( Bus2IP_Mst_Cmplt = '1' ) then
+								-- Go to the next read location (one 4-byte word away)
+								addr_in <= addr_in + 4;
+								mst_cmd_sm_state <= CMD_WRITE;
+								if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
+									-- AXI4LITE address phase timeout
+									mst_cmd_sm_set_error   <= '1';
+									mst_cmd_sm_set_timeout <= '1';
+								elsif ( Bus2IP_Mst_Error = '1' ) then
+									-- AXI4LITE data transfer error
+									mst_cmd_sm_set_error   <= '1';
+								end if;
+							else
+								mst_cmd_sm_state       <= CMD_READ;
+								mst_cmd_sm_rd_req      <= '1';
+								mst_cmd_sm_wr_req      <= '0';
+								mst_cmd_sm_ip2bus_addr <= std_logic_vector(addr_in);
+								mst_cmd_sm_ip2bus_be   <= mst_ip2bus_be(15 downto 16-C_MST_DWIDTH/8 );
+								mst_cmd_sm_bus_lock    <= mst_cntl_bus_lock;
+							end if;
+						end if;
+ 
+          when CMD_READ_WAIT =>
+            if ( Bus2IP_Mst_Cmplt = '1' ) then
+								-- Go to the next read location (one 4-byte word away)
+								addr_in <= addr_in + 4;
+								mst_cmd_sm_state <= CMD_WRITE;
               if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
                 -- AXI4LITE address phase timeout
                 mst_cmd_sm_set_error   <= '1';
@@ -600,26 +644,40 @@ begin
                 mst_cmd_sm_set_error   <= '1';
               end if;
             else
-              mst_cmd_sm_state       <= CMD_RUN;
+              mst_cmd_sm_state <= CMD_READ_WAIT;
+            end if;
+						
+					when CMD_WRITE =>
+            if ( Bus2IP_Mst_CmdAck = '1' and Bus2IP_Mst_Cmplt = '0' ) then
+              mst_cmd_sm_state <= CMD_WRITE_WAIT;
+            elsif ( Bus2IP_Mst_Cmplt = '1' ) then
+							-- Go to the next write location (one 4-byte word away)
+							addr_out <= addr_out + 4;
+							transfer_length <= transfer_length - 1;							
+              mst_cmd_sm_state <= CMD_READ;
+              if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
+                -- AXI4LITE address phase timeout
+                mst_cmd_sm_set_error   <= '1';
+                mst_cmd_sm_set_timeout <= '1';
+              elsif ( Bus2IP_Mst_Error = '1' ) then
+                -- AXI4LITE data transfer error
+                mst_cmd_sm_set_error   <= '1';
+              end if;
+            else
+							mst_cmd_sm_rd_req      <= '0';
+              mst_cmd_sm_wr_req      <= '1';
+              mst_cmd_sm_ip2bus_addr <= std_logic_vector(addr_out);
               mst_cmd_sm_ip2bus_be   <= mst_ip2bus_be(15 downto 16-C_MST_DWIDTH/8 );
               mst_cmd_sm_bus_lock    <= mst_cntl_bus_lock;
-							
-							-- Select read or write (toggle)
-							mst_cmd_sm_rd_req      <= not(transfer_count(0));
-              mst_cmd_sm_wr_req      <= transfer_count(0);
-							
-							-- Calculate source/destination address
-							if (transfer_count(0) = '0') then
-								addr := unsigned(source_addr_reg) + transfer_count(31 downto 1);
-							else
-								addr := unsigned(dest_addr_reg) + transfer_count(31 downto 1);
-							end if;
-							mst_cmd_sm_ip2bus_addr <= std_logic_vector(addr);
+              mst_cmd_sm_state       <= CMD_WRITE;
             end if;
-
-          when CMD_WAIT_FOR_DATA =>
+						
+					when CMD_WRITE_WAIT =>
             if ( Bus2IP_Mst_Cmplt = '1' ) then
-              mst_cmd_sm_state <= CMD_DONE;
+							-- Go to the next write location (one 4-byte word away)
+							addr_out <= addr_out + 4;
+							transfer_length <= transfer_length - 1;
+              mst_cmd_sm_state <= CMD_READ;
               if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
                 -- AXI4LITE address phase timeout
                 mst_cmd_sm_set_error   <= '1';
@@ -629,38 +687,31 @@ begin
                 mst_cmd_sm_set_error   <= '1';
               end if;
             else
-              mst_cmd_sm_state <= CMD_WAIT_FOR_DATA;
+              mst_cmd_sm_state <= CMD_WRITE_WAIT;
             end if;
-
-          when CMD_DONE => 
-						if (transfer_count = (unsigned(transfer_length_reg) + unsigned(transfer_length_reg)-1)) then
-							mst_cmd_sm_state    <= CMD_IDLE;
-							transfer_count <= (others => '0');
-						else
-							mst_cmd_sm_state	<= CMD_RUN;
-							
-							-- Increment transfer count
-							transfer_count <= transfer_count + 1;
-						end if;
-						mst_cmd_sm_set_done <= '1';
-						mst_cmd_sm_busy     <= '0';
-
+ 
+          when CMD_DONE =>
+            mst_cmd_sm_state    <= CMD_IDLE;
+            mst_cmd_sm_set_done <= '1';
+            mst_cmd_sm_busy     <= '0';
+						myInterrupt <= '1';
+ 
           when others =>
             mst_cmd_sm_state    <= CMD_IDLE;
             mst_cmd_sm_busy     <= '0';
-
+ 
         end case;
-
+ 
       end if;
     end if;
-
+ 
   end process MASTER_CMD_SM_PROC;
-
+ 
   -- local srl fifo for data storage
   mst_fifo_valid_write_xfer <= not(Bus2IP_MstRd_src_rdy_n);
   mst_fifo_valid_read_xfer  <= not(Bus2IP_MstWr_dst_rdy_n);
   Bus2IP_Reset   <= not (Bus2IP_Resetn);
-
+ 
   DATA_CAPTURE_FIFO_I : entity proc_common_v3_00_a.srl_fifo_f
     generic map
     (
@@ -679,16 +730,16 @@ begin
       FIFO_Empty => open,
       Addr       => open
     );
-
+ 
   ------------------------------------------
   -- Example code to drive IP to Bus signals
   ------------------------------------------
   IP2Bus_Data  <= slv_ip2bus_data when slv_read_ack = '1' else
                   mst_ip2bus_data when mst_read_ack = '1' else
                   (others => '0');
-
+ 
   IP2Bus_WrAck <= slv_write_ack or mst_write_ack;
   IP2Bus_RdAck <= slv_read_ack or mst_read_ack;
   IP2Bus_Error <= '0';
-
+ 
 end IMP;

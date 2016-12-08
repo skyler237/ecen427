@@ -94,9 +94,21 @@ void DMA_go(Xuint32 BaseAddress, Xuint32 SrcAddress, Xuint32 DstAddress, Xuint32
 	   */
 	  Xil_Out32(BaseAddress+DMA_SLV_REG2_OFFSET, length);
 
+	  Xil_Out32(BaseAddress+DMA_MST_LEN_REG_OFFSET, 1);
+
 	  /*
-	   * Start user logic master read transfer by writting special pattern to its go port.
+	   * Set user logic master byte enable register to drive IP2Bus_Mst_BE signal.
+	   */
+	  Xil_Out16(BaseAddress+DMA_MST_BE_REG_OFFSET, 0xFFFF);
+
+	  /*
+	   * Start user logic master read transfer by writing special pattern to its go port.
 	   */
 	  Xil_Out8(BaseAddress+DMA_MST_GO_PORT_OFFSET, MST_START);
 }
+
+uint32_t DMA_readReg(Xuint32 BaseAddress, Xuint32 offset){
+	return Xil_In32(BaseAddress+offset);
+}
+
 

@@ -12,6 +12,7 @@ C_SRCS += \
 ../src/alienExplosion.c \
 ../src/alien_explosion.c \
 ../src/control.c \
+../src/dma.c \
 ../src/globals.c \
 ../src/pit_timer.c \
 ../src/platform.c \
@@ -38,6 +39,7 @@ OBJS += \
 ./src/alienExplosion.o \
 ./src/alien_explosion.o \
 ./src/control.o \
+./src/dma.o \
 ./src/globals.o \
 ./src/pit_timer.o \
 ./src/platform.o \
@@ -61,6 +63,7 @@ C_DEPS += \
 ./src/alienExplosion.d \
 ./src/alien_explosion.d \
 ./src/control.d \
+./src/dma.d \
 ./src/globals.d \
 ./src/pit_timer.d \
 ./src/platform.d \

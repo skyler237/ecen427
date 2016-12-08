@@ -52,7 +52,8 @@ entity dma_0_wrapper is
     m_axi_lite_wstrb : out std_logic_vector(3 downto 0);
     m_axi_lite_bready : out std_logic;
     m_axi_lite_bvalid : in std_logic;
-    m_axi_lite_bresp : in std_logic_vector(1 downto 0)
+    m_axi_lite_bresp : in std_logic_vector(1 downto 0);
+    myInterrupt : out std_logic
   );
 end dma_0_wrapper;
 
@@ -116,7 +117,8 @@ architecture STRUCTURE of dma_0_wrapper is
       m_axi_lite_wstrb : out std_logic_vector(((C_M_AXI_LITE_DATA_WIDTH/8)-1) downto 0);
       m_axi_lite_bready : out std_logic;
       m_axi_lite_bvalid : in std_logic;
-      m_axi_lite_bresp : in std_logic_vector(1 downto 0)
+      m_axi_lite_bresp : in std_logic_vector(1 downto 0);
+      myInterrupt : out std_logic
     );
   end component;
 
@@ -180,7 +182,8 @@ begin
       m_axi_lite_wstrb => m_axi_lite_wstrb,
       m_axi_lite_bready => m_axi_lite_bready,
       m_axi_lite_bvalid => m_axi_lite_bvalid,
-      m_axi_lite_bresp => m_axi_lite_bresp
+      m_axi_lite_bresp => m_axi_lite_bresp,
+      myInterrupt => myInterrupt
     );
 
 end architecture STRUCTURE;

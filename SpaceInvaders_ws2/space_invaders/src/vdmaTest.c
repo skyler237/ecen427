@@ -36,11 +36,15 @@
 #include "sound_control.h"
 #include "pit_timer.h"
 #include "AI.h"
+#include "dma.h"
+#include "xtmrctr.h"
 
 #define DEBUG
 void print(char *str);
 
 #define FRAME_BUFFER_0_ADDR 0xC1000000  // Starting location in DDR where we will store the images that we display.
+#define FRAME_BUFFER_1_ADDR (FRAME_BUFFER_0_ADDR + 4*640*480)
+#define SCREEN_SIZE (640*480)
 
 #define ASCII_NUM_OFFSET 48 // Allows us to parse the UART digits as numbers, not characters
 
@@ -54,14 +58,83 @@ void print(char *str);
 #define UP_BTN 0x10
 #define DEBOUNCE_MAX 5 // 5 FIT ticks = 50ms
 
+// Switch Masks
+#define SWITCH_1 0x80
+#define SWITCH_2 0x40
+#define SWITCH_3 0x20
+
+#define GAME_FRAME 0
+#define SCREEN_CAPTURE_FRAME 1
+
+#define TIMER_NUMBER 0
+
 XGpio gpLED;  // This is a handle for the LED GPIO block.
 XGpio gpPB;   // This is a handle for the push-button GPIO block.
+XGpio gpSwitch;   // This is a handle for the switches GPIO block.
+XTmrCtr timer;
 static uint8_t currentButtonState; // Holds the current value of the push buttons (updated each PB interrupt)
+static uint8_t currentSwitchState; // Holds the current value of the push buttons (updated each PB interrupt)
+
+XAxiVdma videoDMAController;
+static uint32_t * framePointer0;
+static uint32_t * framePointer1;
 
 static uint32_t counter;
 
+
+
 void timer_interrupt_handler() {
-	//xil_printf("%d\n\r", counter);
+	static uint8_t switch1_toggle = 0;
+	static uint8_t switch2_toggle = 0;
+
+	// Poll switches
+	currentSwitchState = XGpio_DiscreteRead(&gpSwitch, 1);  // Get the current state of the switches.
+
+	// Perform DMA based screen capture
+	if(currentSwitchState & SWITCH_1) {
+		if(!switch1_toggle) {
+			switch1_toggle = 1;
+			XTmrCtr_Start(&timer, TIMER_NUMBER);
+			DMA_go(XPAR_DMA_0_BASEADDR, FRAME_BUFFER_0_ADDR, FRAME_BUFFER_1_ADDR, SCREEN_SIZE);
+		}
+	}
+	else {
+		switch1_toggle = 0;
+	}
+
+	// Perform software screen capture
+	if(currentSwitchState & SWITCH_2) {
+		if(!switch2_toggle) {
+			switch2_toggle = 1;
+			 XTmrCtr_Start(&timer, TIMER_NUMBER);
+			uint32_t i;
+			for(i = 0; i < SCREEN_SIZE; i++) {
+				framePointer1[i] = framePointer0[i];
+			}
+			 XTmrCtr_Stop(&timer, TIMER_NUMBER);
+			 xil_printf("Software: %d\n\r",  XTmrCtr_GetValue(&timer, TIMER_NUMBER));
+			 XTmrCtr_Reset(&timer, TIMER_NUMBER);
+		}
+	}
+	else {
+		switch2_toggle = 0;
+	}
+
+	// Display second frame buffer
+	if(currentSwitchState & SWITCH_3) {
+		if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, SCREEN_CAPTURE_FRAME,  XAXIVDMA_READ)) {
+			 xil_printf("vdma parking failed\n\r");
+		}
+		return;
+	}
+	else {
+		if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, GAME_FRAME,  XAXIVDMA_READ)) {
+			 xil_printf("vdma parking failed\n\r");
+		}
+	}
+
+
+
 	// Decrement all counters
 	static bool over = false;
 	uint8_t finishedTimers = global_decrementTimers(); // return value holds finished timers
@@ -120,6 +193,8 @@ void timer_interrupt_handler() {
 		// Shoot an alien bullet
 		control_fireAlienBullet();
 	}
+
+
 }
 
 // This is invoked each time there is a change in the button state (result of a push or a bounce).
@@ -171,6 +246,12 @@ void sound_interrupt_handler() {
 	sound_control_load_sound();
 }
 
+void dma_interrupt_handler(){
+	 XTmrCtr_Stop(&timer, TIMER_NUMBER);
+	 xil_printf("Hardware: %d\n\r",  XTmrCtr_GetValue(&timer, TIMER_NUMBER));
+	 XTmrCtr_Reset(&timer, TIMER_NUMBER);
+}
+
 // Main interrupt handler, queries the interrupt controller to see what peripheral
 // fired the interrupt and then dispatches the corresponding interrupt handler.
 // This routine acks the interrupt at the controller level but the peripheral
@@ -199,13 +280,18 @@ void interrupt_handler_dispatcher(void* ptr) {
 		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_AXI_AC97_0_INTERRUPT_MASK);
 		sound_interrupt_handler();
 	}
+	if (intc_status & XPAR_DMA_0_MYINTERRUPT_MASK){
+			XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_DMA_0_MYINTERRUPT_MASK);
+			dma_interrupt_handler();
+	}
+
 }
 
 int main()
 {
 	init_platform();                   // Necessary for all programs.
 	int Status;                        // Keep track of success/failure of system function calls.
-	XAxiVdma videoDMAController;
+
 	// There are 3 steps to initializing the vdma driver and IP.
 	// Step 1: lookup the memory structure that is used to access the vdma driver.
     XAxiVdma_Config * VideoDMAConfig = XAxiVdma_LookupConfig(XPAR_AXI_VDMA_0_DEVICE_ID);
@@ -263,7 +349,8 @@ int main()
      // Now, let's get ready to start displaying some stuff on the screen.
      // The variables framePointer and framePointer1 are just pointers to the base address
      // of frame 0 and frame 1.
-     uint32_t * framePointer0 = (uint32_t *) FRAME_BUFFER_0_ADDR;
+     framePointer0 = (uint32_t *) FRAME_BUFFER_0_ADDR;
+     framePointer1 = (uint32_t *) FRAME_BUFFER_1_ADDR;
 
      // This tells the HDMI controller the resolution of your display (there must be a better way to do this).
      XIo_Out32(XPAR_AXI_HDMI_0_BASEADDR, 640*480);
@@ -300,10 +387,16 @@ int main()
 	 // Enable all interrupts in the push button peripheral.
 	 XGpio_InterruptEnable(&gpPB, 0xFFFFFFFF);
 
+     XGpio_Initialize(&gpSwitch, XPAR_AXI_GPIO_0_DEVICE_ID);
+     // Set the push button peripheral to be inputs.
+	 XGpio_SetDataDirection(&gpSwitch, 1, 0x000000FF);
+
+	 XTmrCtr_Initialize(&timer, XPAR_AXI_TIMER_0_DEVICE_ID);
+	 xil_printf("timer initialized\n\r");
 	 // Set up interrupts
 	 microblaze_register_handler(interrupt_handler_dispatcher, NULL);
 	 XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
-			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
+			(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK|XPAR_DMA_0_MYINTERRUPT_MASK));
 	 XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
 	 xil_printf("start\n\r");
 	 microblaze_enable_interrupts();

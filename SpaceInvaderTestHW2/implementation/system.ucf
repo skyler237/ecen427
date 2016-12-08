@@ -26,6 +26,7 @@ NET Push_Buttons_5Bits_TRI_I[4] LOC = "F5"  |  IOSTANDARD = "LVCMOS18";
 # additional constraints
 #
 
+#
  NET axi_gpio_0_GPIO_IO_I_pin[0] LOC = "A10"  |  IOSTANDARD = "LVCMOS18"; # Bank = 0, Pin name = IO_L37N_GCLK12,      	Sch name = axi_gpio_0_GPIO_IO_I_pin0
  NET axi_gpio_0_GPIO_IO_I_pin[1] LOC = "D14"  |  IOSTANDARD = "LVCMOS18"; # Bank = 0, Pin name = IO_L65P_SCP3,      	Sch name = axi_gpio_0_GPIO_IO_I_pin1
  NET axi_gpio_0_GPIO_IO_I_pin[2] LOC = "C14"  |  IOSTANDARD = "LVCMOS18"; # Bank = 0, Pin name = IO_L65N_SCP2,      	Sch name = axi_gpio_0_GPIO_IO_I_pin2

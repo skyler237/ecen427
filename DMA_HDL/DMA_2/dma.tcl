@@ -39,13 +39,25 @@ run 100ns
 isim force add mst_byte_we 0x00
 
 # Let it go, let it go!!
-for {set i 0} {$i < 16} {incr i} {
+for {set i 0} {$i < 8} {incr i} {
+	isim force add Bus2IP_MstRd_d $i
+	isim force add Bus2IP_MstRd_src_rdy_n 1
 	isim force add Bus2IP_Mst_CmdAck 1
 	run 40 ns
+	isim force add Bus2IP_MstRd_src_rdy_n 0
 	isim force add Bus2IP_Mst_Cmplt 1
-	run 40 ns
+	run 20 ns
 	isim force add Bus2IP_Mst_Cmplt 0
 	isim force add Bus2IP_Mst_CmdAck 0
-	run 100 ns
+	run 250 ns
+	isim force add Bus2IP_MstWr_dst_rdy_n 1
+	isim force add Bus2IP_Mst_CmdAck 1
+	run 40ns
+	isim force add Bus2IP_MstWr_dst_rdy_n 0
+	isim force add Bus2IP_Mst_Cmplt 1
+	run 20 ns
+	isim force add Bus2IP_Mst_Cmplt 0
+	isim force add Bus2IP_Mst_CmdAck 0
+	run 250 ns
 }
 run 6us

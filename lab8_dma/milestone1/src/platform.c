@@ -70,7 +70,7 @@ init_uart()
 void
 init_platform()
 {
-    enable_caches();
+//    enable_caches();
     init_uart();
 }
 

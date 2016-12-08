@@ -167,6 +167,7 @@ entity dma is
   (
     -- ADD USER PORTS BELOW THIS LINE ------------------
     --USER ports added here
+		myInterrupt	: out std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
@@ -444,6 +445,7 @@ begin
     (
       -- MAP USER PORTS BELOW THIS LINE ------------------
       --USER ports mapped here
+			myInterrupt => myInterrupt,
       -- MAP USER PORTS ABOVE THIS LINE ------------------
 
       Bus2IP_Clk                     => ipif_Bus2IP_Clk,
